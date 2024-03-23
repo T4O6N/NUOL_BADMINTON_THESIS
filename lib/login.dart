@@ -8,7 +8,6 @@ class LoginPage extends StatelessWidget {
     return Container();
   }
 }
-
 //file login_page.dart
 //LoginPage
 //loginPage 
