@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/login_with_phone/views/otp_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/login_with_phone/views/widgets/text_form_field_validation.dart';
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
@@ -73,7 +74,7 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
                         const SizedBox(height: 12),
                         TextButton(
                           onPressed: () {
-                            Get.toNamed('home');
+                            Get.offAll(DashboardView());
                           },
                           child: const Text(
                             " Skip",
