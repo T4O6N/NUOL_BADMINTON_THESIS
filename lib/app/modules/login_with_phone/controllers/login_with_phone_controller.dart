@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginWithPhoneController extends GetxController {
-  final formKey = GlobalKey<FormState>();
   final formKeyOtp = GlobalKey<FormState>();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController otpController = TextEditingController();

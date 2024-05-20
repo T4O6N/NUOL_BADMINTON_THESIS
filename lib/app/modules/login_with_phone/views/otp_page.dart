@@ -30,6 +30,14 @@ class OtpPage extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
     );
     return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: const Text(
+          "ປ້ອນລະຫັດ OTP",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.green,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
@@ -37,23 +45,6 @@ class OtpPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: Get.width * 0.2),
-                const Text("ປ້ອນລະຫັດ OTP", style: TextStyle(fontSize: 24)),
-                const SizedBox(height: 12),
-                Column(
-                  children: [
-                    const Text(
-                      "ລະຫັດ OTP ໄດ້ຖືກສົ່ງໄປຍັງ ",
-                      style: TextStyle(fontSize: 14),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "${loginWithPhoneController.phoneCode} $phone",
-                      style: const TextStyle(fontSize: 14),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
                 Center(
                   child: Container(
                     padding: const EdgeInsets.all(20),

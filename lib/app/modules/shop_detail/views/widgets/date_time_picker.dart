@@ -41,8 +41,8 @@ class _DateTimePickerState extends State<DateTimePicker> {
                       ),
                       textButtonTheme: TextButtonThemeData(
                         style: TextButton.styleFrom(
-                          primary: AppColors.primaryColor, // Change the text color of buttons
-                        ),
+                            // primary: AppColors.primaryColor, // Change the text color of buttons
+                            foregroundColor: AppColors.primaryColor),
                       ),
                     ),
                     child: child!);
