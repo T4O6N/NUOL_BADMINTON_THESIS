@@ -20,7 +20,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final heightMedia = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
       body: NestedScrollView(
         // floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [

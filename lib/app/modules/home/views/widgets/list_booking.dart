@@ -48,12 +48,9 @@ class ListBooking extends StatelessWidget {
             return const Padding(
               padding: EdgeInsets.only(bottom: 12),
               child: CardBooking(
-                namePlace: 'ອະໂນໄທປັນຍາປະດິດ',
-                location: 'ບ້ານ ຊຽງຍືນ, ເມືອງ ຈັນທະບູລີ, ນະຄອນຫຼວງວຽງຈັນ',
-                point: 4,
-                date: 'ວັນທີ່ 19/7/2023',
-                price: '80.000 ₭/1h',
+                price: 'ລາຄາ : 80.000 ₭/ ຊົ່ວໂມງ',
                 imageAsset: 'assets/images/football_demo2.png',
+                court: 'ຄອດ : A1',
               ),
             );
           },
