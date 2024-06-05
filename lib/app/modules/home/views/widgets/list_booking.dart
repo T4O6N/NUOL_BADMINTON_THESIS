@@ -16,7 +16,7 @@ class ListBooking extends StatelessWidget {
   final int listNum;
 
   HomeController homeController = Get.put(HomeController());
-
+  final List<String> court = ['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9', 'J10'];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -43,14 +43,14 @@ class ListBooking extends StatelessWidget {
         );
       } else {
         return ListView.builder(
-          itemCount: 15,
+          itemCount: court.length,
           itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.only(bottom: 12),
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
               child: CardBooking(
                 price: 'ລາຄາ : 80.000 ₭/ ຊົ່ວໂມງ',
-                imageAsset: 'assets/images/football_demo2.png',
-                court: 'ຄອດ : A1',
+                imageAsset: 'assets/images/court.jpeg',
+                court: 'ຄອດ : ${(court[index])}',
               ),
             );
           },

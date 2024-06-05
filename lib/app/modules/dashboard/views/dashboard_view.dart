@@ -38,10 +38,10 @@ class DashboardView extends GetView<DashboardController> {
             () => Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "Home"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 1, label: "Booking"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.historyIcon, page: 2, label: "History"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "Profile"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "ໜ້າຫຼັກ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 1, label: "ປະຫວັດການຈອງ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.historyIcon, page: 2, label: "ປະຫວັດການຊຳລະ"),
+                // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
               ],
             ),
           ),

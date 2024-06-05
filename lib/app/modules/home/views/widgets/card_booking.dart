@@ -24,7 +24,7 @@ class CardBooking extends StatelessWidget {
 
       child: Container(
         width: double.infinity,
-        height: .30 * size.height,
+        height: .27 * size.height,
         // color: Colors.red,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
@@ -40,7 +40,7 @@ class CardBooking extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: .20 * size.height,
+              height: .17 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
               decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class CardBooking extends StatelessWidget {
                 image: DecorationImage(
                   //image must scale width screen 500 * 250 pixel
                   image: AssetImage(imageAsset),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -59,9 +59,9 @@ class CardBooking extends StatelessWidget {
               height: .10 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(15),
                   bottomRight: Radius.circular(15),
                 ),
