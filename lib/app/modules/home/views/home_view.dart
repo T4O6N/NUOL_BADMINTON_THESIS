@@ -19,7 +19,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[300],
       // body: NestedScrollView(
       //   // floatHeaderSlivers: true,
       //   headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
@@ -136,12 +136,12 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             children: [
               ListTile(
-                leading: const Icon(Icons.admin_panel_settings),
+                leading: const Icon(Icons.admin_panel_settings, color: Colors.green),
                 title: const Text("ພະນັກງານເດີ່ນ"),
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(Icons.person_pin_circle_rounded),
+                leading: const Icon(Icons.person_pin_circle_rounded, color: Colors.green),
                 title: const Text("ເຈົ້າຂອງ"),
                 onTap: () {},
               ),

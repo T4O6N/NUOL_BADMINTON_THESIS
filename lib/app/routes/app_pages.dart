@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/booking/bindings/booking_binding.dart';
 import '../modules/booking/views/booking_view.dart';
+import '../modules/choose_schedule/bindings/choose_schedule_binding.dart';
+import '../modules/choose_schedule/views/choose_schedule_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/history/bindings/history_binding.dart';
@@ -80,6 +82,11 @@ class AppPages {
       name: _Paths.SETTING,
       page: () => const SettingView(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHOOSE_SCHEDULE,
+      page: () => const ChooseScheduleView(),
+      binding: ChooseScheduleBinding(),
     ),
   ];
 }

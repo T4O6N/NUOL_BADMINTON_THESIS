@@ -9,23 +9,24 @@ class CardBooking extends StatelessWidget {
     required this.price,
     required this.imageAsset,
     required this.court,
+    required this.indexCourt,
   });
 
   final String imageAsset;
   final String court;
   final String price;
+  final int indexCourt;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Get.to(const ShopDetailView());
+        Get.to(const ShopDetailView(), arguments: {'indexCourt': indexCourt});
       },
 
       child: Container(
         width: double.infinity,
-        height: .27 * size.height,
-        // color: Colors.red,
+        height: .28 * size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           boxShadow: [
@@ -73,6 +74,9 @@ class CardBooking extends StatelessWidget {
                   children: [
                     Text(court),
                     Text(price),
+                    const Row(
+                      children: [Text("ຈອງ :"), Icon(Icons.calendar_month_sharp, color: Colors.green)],
+                    ),
                   ],
                 ),
               ),

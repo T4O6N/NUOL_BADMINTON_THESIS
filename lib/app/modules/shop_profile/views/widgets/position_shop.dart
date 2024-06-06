@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 
@@ -11,10 +11,10 @@ class PositionShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GoogleMapController mapController;
-    void onMapCreated(GoogleMapController controller) {
-      mapController = controller;
-    }
+    // GoogleMapController mapController;
+    // void onMapCreated(GoogleMapController controller) {
+    //   mapController = controller;
+    // }
 
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
@@ -45,7 +45,7 @@ class PositionShop extends StatelessWidget {
               ),
               height: 245,
               width: double.infinity,
-              child: GoogleMap(mapType: MapType.terrain, myLocationEnabled: true, onMapCreated: onMapCreated, initialCameraPosition: const CameraPosition(target: LatLng(13.7650836, 100.5379664), zoom: 15)),
+              // child: GoogleMap(mapType: MapType.terrain, myLocationEnabled: true, onMapCreated: onMapCreated, initialCameraPosition: const CameraPosition(target: LatLng(13.7650836, 100.5379664), zoom: 15)),
             ),
           ),
         ],

@@ -13,6 +13,7 @@ abstract class Routes {
   static const HISTORY = _Paths.HISTORY;
   static const USER_PROFILE = _Paths.USER_PROFILE;
   static const SETTING = _Paths.SETTING;
+  static const CHOOSE_SCHEDULE = _Paths.CHOOSE_SCHEDULE;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const HISTORY = '/history';
   static const USER_PROFILE = '/user-profile';
   static const SETTING = '/setting';
+  static const CHOOSE_SCHEDULE = '/choose-schedule';
 }
