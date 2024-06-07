@@ -142,7 +142,7 @@ class HomeView extends GetView<HomeController> {
               ),
               ListTile(
                 leading: const Icon(Icons.person_pin_circle_rounded, color: Colors.green),
-                title: const Text("ເຈົ້າຂອງ"),
+                title: const Text("ເຈົ້າຂອງເດີ່ນ"),
                 onTap: () {},
               ),
             ],
