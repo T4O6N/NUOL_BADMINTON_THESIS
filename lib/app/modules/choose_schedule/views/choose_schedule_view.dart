@@ -178,7 +178,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     ),
                     const SizedBox(height: 20),
                     BookingButton(onTap: () {
-                      Get.to(PaymentDetailView());
+                      Get.to(const PaymentDetailView());
                     }),
                   ],
                 ),
