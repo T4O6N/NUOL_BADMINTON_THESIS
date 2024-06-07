@@ -177,7 +177,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
                     ),
                   )),
                 ),
-              )
+              ),
             ],
           ),
         ),

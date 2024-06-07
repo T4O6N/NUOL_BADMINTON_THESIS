@@ -157,7 +157,7 @@ class HomeView extends GetView<HomeController> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: ScrollConfiguration(
             behavior: CustomScrollBehavior(),
-            child: ListBooking(listNum: 24),
+            child: const ListBooking(),
           ),
         ),
       ),

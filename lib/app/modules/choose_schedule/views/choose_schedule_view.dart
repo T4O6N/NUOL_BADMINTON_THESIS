@@ -1,8 +1,9 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/payment_detail_view.dart';
+import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 
 import '../controllers/choose_schedule_controller.dart';
 
@@ -11,6 +12,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final ChooseScheduleController controller = Get.put(ChooseScheduleController());
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -95,6 +97,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     ),
                     const SizedBox(height: 12),
                     Container(
+                      height: size.height * 0.5, // Set a specific height or use a flexible widget
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -108,33 +111,75 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                           ),
                         ],
                       ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+
+                      child: ListView.builder(
+                        itemCount: controller.courtTime.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                             height: size.height * 0.05,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: Colors.grey, //                   <--- border color
+                                color: Colors.grey,
                                 width: 0.4,
                               ),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("9:00 - 10:00"),
-                                  Text("80.000 ₭"),
+                                  Text(
+                                    controller.courtTime[index],
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "80.000 ₭",
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                      Obx(
+                                        () => Checkbox(
+                                          checkColor: Colors.white,
+                                          focusColor: Colors.green,
+                                          activeColor: Colors.green,
+                                          value: controller.isSelected[index],
+                                          onChanged: (bool? value) {
+                                            controller.toggleSelection(index);
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "ລາຄາລວມ",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "160.000 ₭",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    BookingButton(onTap: () {
+                      Get.to(PaymentDetailView());
+                    }),
                   ],
                 ),
               ),

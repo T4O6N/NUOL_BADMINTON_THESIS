@@ -14,6 +14,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/login_with_phone/bindings/login_with_phone_binding.dart';
 import '../modules/login_with_phone/views/login_with_phone_view.dart';
+import '../modules/payment_detail/bindings/payment_detail_binding.dart';
+import '../modules/payment_detail/views/payment_detail_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/setting_view.dart';
 import '../modules/shop_detail/bindings/shop_detail_binding.dart';
@@ -30,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN_WITH_PHONE;
+  static const INITIAL = Routes.DASHBOARD;
 
   static final routes = [
     GetPage(
@@ -87,6 +89,11 @@ class AppPages {
       name: _Paths.CHOOSE_SCHEDULE,
       page: () => const ChooseScheduleView(),
       binding: ChooseScheduleBinding(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT_DETAIL,
+      page: () => const PaymentDetailView(),
+      binding: PaymentDetailBinding(),
     ),
   ];
 }

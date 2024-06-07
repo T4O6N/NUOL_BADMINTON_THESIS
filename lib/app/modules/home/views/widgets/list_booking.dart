@@ -4,8 +4,7 @@ import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controll
 import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/card_booking.dart';
 
 class ListBooking extends StatelessWidget {
-  const ListBooking({super.key, required this.listNum});
-  final int listNum;
+  const ListBooking({super.key});
 
   @override
   Widget build(BuildContext context) {

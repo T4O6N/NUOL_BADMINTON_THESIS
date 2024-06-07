@@ -26,7 +26,8 @@ class CardBooking extends StatelessWidget {
 
       child: Container(
         width: double.infinity,
-        height: .28 * size.height,
+        height: .30 * size.height,
+        // color: Colors.red,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           boxShadow: [
@@ -41,7 +42,7 @@ class CardBooking extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: .17 * size.height,
+              height: .20 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
               decoration: BoxDecoration(
@@ -52,7 +53,7 @@ class CardBooking extends StatelessWidget {
                 image: DecorationImage(
                   //image must scale width screen 500 * 250 pixel
                   image: AssetImage(imageAsset),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -60,9 +61,9 @@ class CardBooking extends StatelessWidget {
               height: .10 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(15),
                   bottomRight: Radius.circular(15),
                 ),
@@ -74,9 +75,6 @@ class CardBooking extends StatelessWidget {
                   children: [
                     Text(court),
                     Text(price),
-                    const Row(
-                      children: [Text("ຈອງ :"), Icon(Icons.calendar_month_sharp, color: Colors.green)],
-                    ),
                   ],
                 ),
               ),
