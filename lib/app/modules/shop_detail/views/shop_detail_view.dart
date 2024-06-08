@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
+import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
+import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 
 import '../controllers/shop_detail_controller.dart';
 
@@ -12,14 +14,11 @@ class ShopDetailView extends GetView<ShopDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    // Get.put(ShopDetailController());
     final ShopDetailController controller = Get.put(ShopDetailController());
     final HomeController homeController = Get.put(HomeController());
     Size size = MediaQuery.of(context).size;
-    final argumentData = Get.arguments;
-    final indexCourt = argumentData['indexCourt'];
-    final court = homeController.court[indexCourt];
-
+    final courtIndex = controller.court;
+    final court = homeController.court[courtIndex];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -160,23 +159,13 @@ class ShopDetailView extends GetView<ShopDetailController> {
                 ),
               ),
               const SizedBox(height: 10),
-              GestureDetector(
+              BookingButton(
                 onTap: () {
-                  Get.to(const ChooseScheduleView());
+                  Get.toNamed(
+                    Routes.CHOOSE_SCHEDULE,
+                    arguments: courtIndex,
+                  );
                 },
-                child: Container(
-                  height: size.height * 0.055,
-                  width: double.infinity,
-                  decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(8)),
-                  child: const Center(
-                      child: Text(
-                    "ຈອງ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  )),
-                ),
               ),
             ],
           ),
