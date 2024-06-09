@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/shop_detail/views/shop_detail_view.dart';
+import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 
 class CardBooking extends StatelessWidget {
   const CardBooking({
@@ -21,7 +22,10 @@ class CardBooking extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Get.to(const ShopDetailView(), arguments: {'indexCourt': indexCourt});
+        Get.toNamed(
+          Routes.SHOP_DETAIL,
+          arguments: indexCourt,
+        );
       },
 
       child: Container(

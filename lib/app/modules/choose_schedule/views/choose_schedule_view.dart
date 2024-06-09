@@ -1,7 +1,7 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/payment_detail_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 
@@ -13,6 +13,9 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final ChooseScheduleController controller = Get.put(ChooseScheduleController());
+    final HomeController homeController = Get.put(HomeController());
+    final courtIndex = controller.court;
+    final court = homeController.court[courtIndex];
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -78,17 +81,17 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8),
+                          Padding(
+                            padding: const EdgeInsets.all(8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "ເດີ່ນຕີດອກ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Text("ຄອດ : xxx"),
+                                Text("ຄອດ : $court"),
                               ],
                             ),
                           ),
@@ -178,8 +181,9 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     ),
                     const SizedBox(height: 20),
                     BookingButton(onTap: () {
-                      Get.to(PaymentDetailView());
+                      Get.to(const PaymentDetailView());
                     }),
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

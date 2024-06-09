@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/reusetextformfield.dart';
 
@@ -118,7 +119,6 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                           Text("80.000 ₭"),
                         ],
                       ),
-                      const SizedBox(height: 6),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -232,7 +232,9 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                 ),
               ),
               const SizedBox(height: 20),
-              BookingButton(onTap: () {}),
+              BookingButton(onTap: () {
+                Get.to(const BillPaymentDetail());
+              }),
             ],
           ),
         ),
