@@ -15,6 +15,10 @@ abstract class Routes {
   static const SETTING = _Paths.SETTING;
   static const CHOOSE_SCHEDULE = _Paths.CHOOSE_SCHEDULE;
   static const PAYMENT_DETAIL = _Paths.PAYMENT_DETAIL;
+  static const SCAN_QR = _Paths.SCAN_QR;
+  static const ADMIN_USER_PROFILE = _Paths.ADMIN_USER_PROFILE;
+  static const ADMIN_BOOKING = _Paths.ADMIN_BOOKING;
+  static const ADMIN_DASHBOARD = _Paths.ADMIN_DASHBOARD;
 }
 
 abstract class _Paths {
@@ -31,4 +35,8 @@ abstract class _Paths {
   static const SETTING = '/setting';
   static const CHOOSE_SCHEDULE = '/choose-schedule';
   static const PAYMENT_DETAIL = '/payment-detail';
+  static const SCAN_QR = '/scan-qr';
+  static const ADMIN_USER_PROFILE = '/admin-user-profile';
+  static const ADMIN_BOOKING = '/admin-booking';
+  static const ADMIN_DASHBOARD = '/admin-dashboard';
 }

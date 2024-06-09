@@ -1,5 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/admin_booking/bindings/admin_booking_binding.dart';
+import '../modules/admin_booking/views/admin_booking_view.dart';
+import '../modules/admin_dashboard/bindings/admin_dashboard_binding.dart';
+import '../modules/admin_dashboard/views/admin_dashboard_view.dart';
+import '../modules/admin_user_profile/bindings/admin_user_profile_binding.dart';
+import '../modules/admin_user_profile/views/admin_user_profile_view.dart';
 import '../modules/booking/bindings/booking_binding.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/choose_schedule/bindings/choose_schedule_binding.dart';
@@ -16,6 +22,8 @@ import '../modules/login_with_phone/bindings/login_with_phone_binding.dart';
 import '../modules/login_with_phone/views/login_with_phone_view.dart';
 import '../modules/payment_detail/bindings/payment_detail_binding.dart';
 import '../modules/payment_detail/views/payment_detail_view.dart';
+import '../modules/scan_qr/bindings/scan_qr_binding.dart';
+import '../modules/scan_qr/views/scan_qr_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/setting_view.dart';
 import '../modules/shop_detail/bindings/shop_detail_binding.dart';
@@ -94,6 +102,26 @@ class AppPages {
       name: _Paths.PAYMENT_DETAIL,
       page: () => const PaymentDetailView(),
       binding: PaymentDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCAN_QR,
+      page: () => ScanQrView(),
+      binding: ScanQrBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_USER_PROFILE,
+      page: () => const AdminUserProfileView(),
+      binding: AdminUserProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_BOOKING,
+      page: () => const AdminBookingView(),
+      binding: AdminBookingBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_DASHBOARD,
+      page: () => const AdminDashboardView(),
+      binding: AdminDashboardBinding(),
     ),
   ];
 }
