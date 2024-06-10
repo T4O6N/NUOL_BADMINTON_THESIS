@@ -1,9 +1,8 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:get/get.dart';
 
 class AdminBookingController extends GetxController {
-  //TODO: Implement AdminBookingController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +17,4 @@ class AdminBookingController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
