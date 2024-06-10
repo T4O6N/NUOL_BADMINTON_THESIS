@@ -3,8 +3,10 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_booking/bindings/admin_booking_binding.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_booking/views/admin_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_user_profile/views/admin_user_profile_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/views/home_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/scan_qr_view.dart';
 
 import '../controllers/admin_dashboard_controller.dart';
@@ -19,9 +21,11 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
         controller: controller.pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          const AdminBookingView(),
-          ScanQrView(),
           const AdminUserProfileView(),
+          ScanQrView(),
+          const AdminBookingView(),
+          // ScanQrView(),
+          // const AdminUserProfileView(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -35,9 +39,10 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
             () => Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 0, label: "ຈອງ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 0, label: "ໂປຮຟາຍ"),
                 _buttomAppBarItem(context, icon: AppImagesSvg.cameraIcon, page: 1, label: "ສະແກນຄິວອາ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 2, label: "ໂປຮຟາຍ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 2, label: "ຈອງ"),
+
                 // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
               ],
             ),
