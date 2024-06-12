@@ -18,7 +18,7 @@ class AppImagesSvg {
   static const String positionIcon = 'assets/icons/iconSvg/position_icon.svg';
   static const String questionMarkIcon = 'assets/icons/iconSvg/questionMark_icon.svg';
   static const String tennisIcon = 'assets/icons/iconSvg/tennisIcon.svg';
-  static const String batmintonIcon = 'assets/icons/iconSvg/batmintonIcon.svg';
+  static const String badmintonIcon = 'assets/icons/iconSvg/badmintonIcon.svg';
   static const String ballICon = 'assets/icons/iconSvg/ball_icon.svg';
   static const String penIcon = 'assets/icons/iconSvg/penIcon.svg';
   static const String cameraIcon = 'assets/icons/iconSvg/image_icon.svg';

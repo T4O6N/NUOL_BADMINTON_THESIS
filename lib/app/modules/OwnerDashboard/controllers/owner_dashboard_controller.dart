@@ -3,15 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AdminDashboardController extends GetxController {
-  late PageController pageController;
-  //Function for go the page
-  RxInt currentPage = 0.obs;
-  void goToTab(int page) {
-    currentPage.value = page;
-    pageController.jumpToPage(page);
-  }
-
+class OwnerDashboardController extends GetxController {
   @override
   void onInit() {
     pageController = PageController(initialPage: 0);
@@ -26,5 +18,13 @@ class AdminDashboardController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  late PageController pageController;
+  //Function for go the page
+  RxInt currentPage = 0.obs;
+  void goToTab(int page) {
+    currentPage.value = page;
+    pageController.jumpToPage(page);
   }
 }

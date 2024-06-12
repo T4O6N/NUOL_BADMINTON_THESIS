@@ -1,15 +1,12 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/constants/app_color.dart';
-import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/filter_sheet.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/list_booking.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/search_Text_widget.dart';
-import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/scan_qr_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
+
 import 'package:nuol_badminton_thesis/app/widgets/custom_scroll_behavior.dart';
 
 import '../controllers/home_controller.dart';
@@ -147,7 +144,9 @@ class HomeView extends GetView<HomeController> {
               ListTile(
                 leading: const Icon(Icons.person_pin_circle_rounded, color: Colors.green),
                 title: const Text("ເຈົ້າຂອງເດີ່ນ"),
-                onTap: () {},
+                onTap: () {
+                  Get.to(const OwnerDashboardView());
+                },
               ),
             ],
           ),

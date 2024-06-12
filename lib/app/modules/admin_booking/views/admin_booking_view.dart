@@ -85,7 +85,7 @@ class AdminBookingView extends GetView<AdminBookingController> {
                                 value: value,
                                 child: Row(
                                   children: [
-                                    SvgPicture.asset(AppImagesSvg.batmintonIcon),
+                                    SvgPicture.asset(AppImagesSvg.badmintonIcon),
                                     const SizedBox(width: 10),
                                     Text(value),
                                   ],

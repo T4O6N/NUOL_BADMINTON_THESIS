@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/OwnerDashboard/bindings/owner_dashboard_binding.dart';
+import '../modules/OwnerDashboard/views/owner_dashboard_view.dart';
 import '../modules/admin_booking/bindings/admin_booking_binding.dart';
 import '../modules/admin_booking/views/admin_booking_view.dart';
 import '../modules/admin_dashboard/bindings/admin_dashboard_binding.dart';
@@ -10,6 +12,8 @@ import '../modules/booking/bindings/booking_binding.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/choose_schedule/bindings/choose_schedule_binding.dart';
 import '../modules/choose_schedule/views/choose_schedule_view.dart';
+import '../modules/create_admin_for_owner/bindings/create_admin_for_owner_binding.dart';
+import '../modules/create_admin_for_owner/views/create_admin_for_owner_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/history/bindings/history_binding.dart';
@@ -20,6 +24,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/login_with_phone/bindings/login_with_phone_binding.dart';
 import '../modules/login_with_phone/views/login_with_phone_view.dart';
+import '../modules/owner/bindings/owner_binding.dart';
+import '../modules/owner/views/owner_view.dart';
 import '../modules/payment_detail/bindings/payment_detail_binding.dart';
 import '../modules/payment_detail/views/payment_detail_view.dart';
 import '../modules/scan_qr/bindings/scan_qr_binding.dart';
@@ -122,6 +128,21 @@ class AppPages {
       name: _Paths.ADMIN_DASHBOARD,
       page: () => const AdminDashboardView(),
       binding: AdminDashboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.OWNER,
+      page: () => const OwnerView(),
+      binding: OwnerBinding(),
+    ),
+    GetPage(
+      name: _Paths.OWNER_DASHBOARD,
+      page: () => const OwnerDashboardView(),
+      binding: OwnerDashboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_ADMIN_FOR_OWNER,
+      page: () => const CreateAdminForOwnerView(),
+      binding: CreateAdminForOwnerBinding(),
     ),
   ];
 }

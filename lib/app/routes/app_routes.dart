@@ -19,6 +19,9 @@ abstract class Routes {
   static const ADMIN_USER_PROFILE = _Paths.ADMIN_USER_PROFILE;
   static const ADMIN_BOOKING = _Paths.ADMIN_BOOKING;
   static const ADMIN_DASHBOARD = _Paths.ADMIN_DASHBOARD;
+  static const OWNER = _Paths.OWNER;
+  static const OWNER_DASHBOARD = _Paths.OWNER_DASHBOARD;
+  static const CREATE_ADMIN_FOR_OWNER = _Paths.CREATE_ADMIN_FOR_OWNER;
 }
 
 abstract class _Paths {
@@ -39,4 +42,7 @@ abstract class _Paths {
   static const ADMIN_USER_PROFILE = '/admin-user-profile';
   static const ADMIN_BOOKING = '/admin-booking';
   static const ADMIN_DASHBOARD = '/admin-dashboard';
+  static const OWNER = '/owner';
+  static const OWNER_DASHBOARD = '/owner-dashboard';
+  static const CREATE_ADMIN_FOR_OWNER = '/create-admin-for-owner';
 }
