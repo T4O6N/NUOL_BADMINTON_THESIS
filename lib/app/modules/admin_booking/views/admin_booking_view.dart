@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
@@ -132,7 +133,8 @@ class AdminBookingView extends GetView<AdminBookingController> {
                                     Row(
                                       children: [
                                         const Text(
-                                          "80.000 ₭",
+                                          // "80.000 ₭",
+                                          "XXXXXXXX",
                                           style: TextStyle(fontWeight: FontWeight.bold),
                                         ),
                                         Obx(
@@ -170,13 +172,14 @@ class AdminBookingView extends GetView<AdminBookingController> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "160.000 ₭",
+                  "XXXXXXXX",
                   style: TextStyle(fontSize: 18),
                 ),
               ),
               const SizedBox(height: 20),
               BookingButton(onTap: () {
-                warningDialog(des: "des", context: context, btnOkOnPress: () {});
+                // warningDialog(des: "des", context: context, btnOkOnPress: () {});
+                Get.to(const BillPaymentDetail());
               }),
               const SizedBox(height: 40),
             ],

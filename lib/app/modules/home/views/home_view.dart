@@ -145,7 +145,8 @@ class HomeView extends GetView<HomeController> {
                 leading: const Icon(Icons.person_pin_circle_rounded, color: Colors.green),
                 title: const Text("ເຈົ້າຂອງເດີ່ນ"),
                 onTap: () {
-                  Get.to(const OwnerDashboardView());
+                  // Get.to(const OwnerDashboardView());
+                  Get.to(const OwnerView());
                 },
               ),
             ],

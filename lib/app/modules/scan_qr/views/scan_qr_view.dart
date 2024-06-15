@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -12,56 +14,20 @@ class ScanQrView extends GetView<ScanQrController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('scan'.tr),
+        title: const Text(
+          'ສະເເກນ QR',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.green,
       ),
       body: Column(
         children: <Widget>[
-          Expanded(flex: 4, child: _buildQrView(context)),
+          Expanded(flex: 8, child: _buildQrView(context)),
           const SizedBox(height: 24),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: 66,
-                            height: 66,
-                            decoration: const ShapeDecoration(
-                              color: Color(0xFFFF5D15),
-                              shape: OvalBorder(),
-                            ),
-                            child: const Icon(
-                              Icons.barcode_reader,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text('barcode'.tr),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            width: 66,
-                            height: 66,
-                            decoration: const ShapeDecoration(
-                              color: Color(0xFFFF5D15),
-                              shape: OvalBorder(),
-                            ),
-                            child: const Icon(
-                              Icons.qr_code_scanner,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text('qrCode'.tr),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                children: [Text("ສະເເກນ Qr ເພື່ອຢືນຍັນຕົວຕົນ")],
               ),
             ),
           ),

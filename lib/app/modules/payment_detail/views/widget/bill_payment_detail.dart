@@ -10,7 +10,7 @@ class BillPaymentDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text(
           "ບິນລາຍລະອຽດການຈອງ",
