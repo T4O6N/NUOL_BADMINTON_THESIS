@@ -69,24 +69,26 @@ class ShopDetailView extends GetView<ShopDetailController> {
               ),
 
               const SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.all(8),
+              const Padding(
+                padding: EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        const Text("ຄອດ :"),
+                        Text("ຄອດ :"),
                         Text(
-                          " $court",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          // " $court",
+                          "XXXXXXXX",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Text(
-                          "ລາຄາ : 80.000 ₭ ",
+                          // "ລາຄາ : 80.000 ₭ ",
+                          "ລາຄາ : XXXXXXXX",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(

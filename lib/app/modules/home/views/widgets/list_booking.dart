@@ -15,9 +15,11 @@ class ListBooking extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: CardBooking(
-            price: 'ລາຄາ : 80.000 ₭/ ຊົ່ວໂມງ',
-            imageAsset: 'assets/images/court.jpeg',
-            court: 'ຄອດ : ${(homeController.court[index])}',
+            // price: 'ລາຄາ : 80.000 ₭/ ຊົ່ວໂມງ',
+            price: 'ລາຄາ : XXXXXXXX',
+            imageAsset: homeController.imageCourt[index],
+            // court: 'ຄອດ : ${(homeController.court[index])}',
+            court: 'ຄອດ : XXXXXXXX',
             indexCourt: index,
           ),
         );

@@ -81,17 +81,23 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
+                          const Padding(
+                            padding: EdgeInsets.all(8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   "ເດີ່ນຕີດອກ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Text("ຄອດ : $court"),
+                                // Text("ຄອດ : $court"),
+                                Text(
+                                  "ຄອດ : XXXXXXXX",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -134,14 +140,16 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    controller.courtTime[index],
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  const Text(
+                                    // controller.courtTime[index],
+                                    "XXXXXXX",
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   Row(
                                     children: [
                                       const Text(
-                                        "80.000 ₭",
+                                        // "80.000 ₭",
+                                        "XXXXXXX",
                                         style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       Obx(
@@ -175,8 +183,11 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "160.000 ₭",
-                        style: TextStyle(fontSize: 18),
+                        // "160.000 ₭",
+                        "XXXXXXX",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),

@@ -10,7 +10,18 @@ class HomeController extends GetxController {
   List<String> get animals => _animals;
   String? get selectedAnimal => _selectedAnimal;
   final List<String> court = ['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9', 'J10'];
-  
+  final List<String> imageCourt = [
+    'assets/images/court.jpeg',
+    'assets/images/3.jpg',
+    'assets/images/2.jpg',
+    'assets/images/4.jpg',
+    'assets/images/5.jpg',
+    'assets/images/6.jpg',
+    'assets/images/7.jpg',
+    'assets/images/8.jpg',
+    'assets/images/9.jpg',
+    'assets/images/10.jpg',
+  ];
 
   void updateSelectedAnimal(String? value) {
     _selectedAnimal = value;

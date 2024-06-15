@@ -65,9 +65,9 @@ class CardBooking extends StatelessWidget {
               height: .10 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(15),
                   bottomRight: Radius.circular(15),
                 ),
@@ -77,8 +77,18 @@ class CardBooking extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(court),
-                    Text(price),
+                    Text(
+                      court,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      price,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),

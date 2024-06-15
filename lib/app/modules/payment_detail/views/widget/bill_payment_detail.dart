@@ -59,28 +59,49 @@ class BillPaymentDetail extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("ຈອງໂດຍ", style: TextStyle(color: Colors.grey)),
-                            Text("Tontakarn"),
+                            Text(
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("ເບີ", style: TextStyle(color: Colors.grey)),
-                            Text("+8562077454651"),
+                            Text(
+                              "99999999",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("ຄອດ", style: TextStyle(color: Colors.grey)),
-                            Text("A1"),
+                            Text(
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("ວັນທີ່ຈອງ", style: TextStyle(color: Colors.grey)),
-                            Text("1 July 2024"),
+                            // Text("1 July 2024"),
+                            Text(
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 18),
@@ -91,26 +112,50 @@ class BillPaymentDetail extends StatelessWidget {
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            // Text(
+                            //   "10 : 00 - 11 : 00",
+                            //   style: TextStyle(color: Colors.grey),
+                            // ),
                             Text(
-                              "10 : 00 - 11 : 00",
-                              style: TextStyle(color: Colors.grey),
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            // Text(
+                            //   "80.000 ₭",
+                            //   style: TextStyle(color: Colors.grey),
+                            // ),
                             Text(
-                              "80.000 ₭",
-                              style: TextStyle(color: Colors.grey),
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            // Text(
+                            //   "11 : 00 - 12 : 00",
+                            //   style: TextStyle(color: Colors.grey),
+                            // ),
                             Text(
-                              "11 : 00 - 12 : 00",
-                              style: TextStyle(color: Colors.grey),
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            // Text(
+                            //   "80.000 ₭",
+                            //   style: TextStyle(color: Colors.grey),
+                            // ),
                             Text(
-                              "80.000 ₭",
-                              style: TextStyle(color: Colors.grey),
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
@@ -124,8 +169,14 @@ class BillPaymentDetail extends StatelessWidget {
                               "ຈຳນວນເງິນ",
                               style: TextStyle(color: Colors.grey),
                             ),
+                            // Text(
+                            //   "160.000 ₭",
+                            // ),
                             Text(
-                              "160.000 ₭",
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
@@ -137,8 +188,14 @@ class BillPaymentDetail extends StatelessWidget {
                               "ສວນຫຼຸດ",
                               style: TextStyle(color: Colors.grey),
                             ),
+                            // Text(
+                            //   "20.000 ₭",
+                            // ),
                             Text(
-                              "20.000 ₭",
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
@@ -152,9 +209,15 @@ class BillPaymentDetail extends StatelessWidget {
                               "ລາຄາ",
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                             ),
+                            // Text(
+                            //   "140.000 ₭",
+                            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                            // ),
                             Text(
-                              "140.000 ₭",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                              "XXXXXXXX",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),

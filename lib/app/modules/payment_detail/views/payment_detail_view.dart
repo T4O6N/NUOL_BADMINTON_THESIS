@@ -65,22 +65,44 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                         ),
                       ),
                       const Divider(),
-                      const Text("ຄອດ : xxx"),
+                      const Text("ຄອດ : XXXXXXXX",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
                       const SizedBox(height: 6),
-                      const Text("Mon, 1 July 2024"),
                       const SizedBox(height: 6),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("10 : 00 - 11 : 00"),
-                          Text("80.000 ₭"),
+                          Text(
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ],
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("11 : 00 - 12 : 00"),
-                          Text("80.000 ₭"),
+                          Text(
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -150,9 +172,15 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ຈຳນວນເງິນ",
                             style: TextStyle(color: Colors.blue),
                           ),
+                          // Text(
+                          //   "160.000 ₭",
+                          //   style: TextStyle(color: Colors.blue),
+                          // ),
                           Text(
-                            "160.000 ₭",
-                            style: TextStyle(color: Colors.blue),
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -163,9 +191,15 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ສວນຫຼຸດ",
                             style: TextStyle(color: Colors.blue),
                           ),
+                          // Text(
+                          //   "20.000 ₭",
+                          //   style: TextStyle(color: Colors.blue),
+                          // ),
                           Text(
-                            "20.000 ₭",
-                            style: TextStyle(color: Colors.blue),
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -178,9 +212,15 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ລາຄາ",
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
+                          // Text(
+                          //   "140.000 ₭",
+                          //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          // ),
                           Text(
-                            "140.000 ₭",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                            "XXXXXXXX",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
