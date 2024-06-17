@@ -14,7 +14,7 @@ AwesomeDialog warningDialog({
     btnOkText: "okay",
     dialogType: DialogType.warning,
     animType: AnimType.bottomSlide,
-    title: 'notice',
+    title: 'ເເຈ້ງເຕືອນ',
     desc: des,
     btnCancelOnPress: btnCancelOnPress,
     btnOkOnPress: btnOkOnPress,

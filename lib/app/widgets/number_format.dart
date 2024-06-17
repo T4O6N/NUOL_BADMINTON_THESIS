@@ -16,9 +16,9 @@ class NumberFormatter {
   static String formatPriceKip(int price) {
     if (price.toString().length > 3) {
       final formatPrice = formatter.format(price);
-      return "$formatPrice ${"kip".tr}";
+      return "$formatPrice ${"₭".tr}";
     } else {
-      return "$price ${"kip".tr}";
+      return "$price ${"₭".tr}";
     }
   }
 

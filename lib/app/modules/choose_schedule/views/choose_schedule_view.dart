@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/payment_detail_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 import '../controllers/choose_schedule_controller.dart';
 
@@ -192,7 +193,11 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     BookingButton(
                       onTap: () {
                         int totalPrice = controller.getTotalPrice();
-                        Get.to(const PaymentDetailView(), arguments: totalPrice);
+                        if (totalPrice == 0) {
+                          warningDialog(des: "ກະລໍນາເລືອກເວລາການຈອງເດີ່ນ", context: context, btnOkOnPress: () {});
+                        } else {
+                          Get.to(const PaymentDetailView(), arguments: totalPrice);
+                        }
                       },
                     ),
                     const SizedBox(height: 40),

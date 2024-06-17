@@ -40,12 +40,8 @@ class _ChartState extends State<Chart> {
         child: Column(
           children: [
             SfCircularChart(
-              // primaryXAxis: CategoryAxis(),
-              // Chart title
               title: ChartTitle(text: 'ລາຍງານການໃຊ້ຄອດປະຈຳອາທິດ'),
-
               legend: Legend(isVisible: true),
-
               tooltipBehavior: TooltipBehavior(enable: true),
               series: <DoughnutSeries<SalesData, String>>[
                 DoughnutSeries<SalesData, String>(

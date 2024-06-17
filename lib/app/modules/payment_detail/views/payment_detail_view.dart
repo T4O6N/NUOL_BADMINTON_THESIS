@@ -7,6 +7,7 @@ import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_s
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
+import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:nuol_badminton_thesis/app/widgets/reusetextformfield.dart';
 
 import '../controllers/payment_detail_controller.dart';
@@ -18,7 +19,9 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
     Size size = MediaQuery.of(context).size;
     final TextEditingController nameController = TextEditingController();
     final TextEditingController phoneController = TextEditingController();
-    final int totalPrice = Get.arguments;
+    final PaymentDetailController controller = Get.put(PaymentDetailController());
+    // final int totalPrice = Get.arguments;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -174,21 +177,23 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             style: TextStyle(color: Colors.blue),
                           ),
                           Text(
-                            "$totalPrice ₭",
+                            // "${controller.totalPrice} ₭",
+                            NumberFormatter.formatPriceKip(controller.totalPrice),
                             style: const TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "ສວນຫຼຸດ",
                             style: TextStyle(color: Colors.blue),
                           ),
                           Text(
-                            "20.000 ₭",
-                            style: TextStyle(color: Colors.blue),
+                            // "20.000 ₭",
+                            NumberFormatter.formatPriceKip(controller.discount),
+                            style: const TextStyle(color: Colors.blue),
                           ),
                           // Text(
                           //   "XXXXXXXX",
@@ -200,16 +205,17 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                       ),
                       const SizedBox(height: 8),
                       const Divider(),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "ລາຄາ",
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                           Text(
-                            "140.000 ₭",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                            // "${controller.totalAll} ₭",
+                            NumberFormatter.formatPriceKip(controller.totalAll),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                           // Text(
                           //   "XXXXXXXX",

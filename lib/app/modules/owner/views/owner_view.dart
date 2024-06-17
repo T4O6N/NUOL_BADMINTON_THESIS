@@ -9,7 +9,7 @@ class OwnerView extends GetView<OwnerController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'ລາຍງານ',
