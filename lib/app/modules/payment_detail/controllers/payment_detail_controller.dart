@@ -1,9 +1,8 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:get/get.dart';
 
 class PaymentDetailController extends GetxController {
-  //TODO: Implement PaymentDetailController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +17,4 @@ class PaymentDetailController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

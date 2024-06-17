@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
 import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
@@ -69,26 +68,25 @@ class ShopDetailView extends GetView<ShopDetailController> {
               ),
 
               const SizedBox(height: 12),
-              const Padding(
-                padding: EdgeInsets.all(8),
+              Padding(
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Text("ຄອດ :"),
+                        const Text("ຄອດ :"),
                         Text(
-                          // " $court",
-                          "XXXXXXXX",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          " $court",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Text(
-                          // "ລາຄາ : 80.000 ₭ ",
-                          "ລາຄາ : XXXXXXXX",
+                          "ລາຄາ : 80.000 ₭ ",
+                          // "ລາຄາ : XXXXXXXX",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(

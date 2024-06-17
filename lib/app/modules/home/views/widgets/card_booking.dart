@@ -1,7 +1,6 @@
 //card booking for home page
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/modules/shop_detail/views/shop_detail_view.dart';
 import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 
 class CardBooking extends StatelessWidget {
@@ -27,11 +26,9 @@ class CardBooking extends StatelessWidget {
           arguments: indexCourt,
         );
       },
-
       child: Container(
         width: double.infinity,
         height: .30 * size.height,
-        // color: Colors.red,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           boxShadow: [

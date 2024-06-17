@@ -75,13 +75,13 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "XXXXXXXX",
+                            "10 : 00 - 11 : 00",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "XXXXXXXX",
+                            "80.000 ₭",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -92,13 +92,13 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "XXXXXXXX",
+                            "11 : 00 - 12 : 00",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "XXXXXXXX",
+                            "80.000 ₭",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -172,15 +172,9 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ຈຳນວນເງິນ",
                             style: TextStyle(color: Colors.blue),
                           ),
-                          // Text(
-                          //   "160.000 ₭",
-                          //   style: TextStyle(color: Colors.blue),
-                          // ),
                           Text(
-                            "XXXXXXXX",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "160.000 ₭",
+                            style: TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
@@ -191,16 +185,16 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ສວນຫຼຸດ",
                             style: TextStyle(color: Colors.blue),
                           ),
-                          // Text(
-                          //   "20.000 ₭",
-                          //   style: TextStyle(color: Colors.blue),
-                          // ),
                           Text(
-                            "XXXXXXXX",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "20.000 ₭",
+                            style: TextStyle(color: Colors.blue),
                           ),
+                          // Text(
+                          //   "XXXXXXXX",
+                          //   style: TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
                         ],
                       ),
                       SizedBox(height: 8),
@@ -212,16 +206,16 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             "ລາຄາ",
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
-                          // Text(
-                          //   "140.000 ₭",
-                          //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                          // ),
                           Text(
-                            "XXXXXXXX",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "140.000 ₭",
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
+                          // Text(
+                          //   "XXXXXXXX",
+                          //   style: TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ],

@@ -17,6 +17,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
     final courtIndex = controller.court;
     final court = homeController.court[courtIndex];
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'ເລືອກຕາຕະລາງເວລາ',
@@ -43,7 +44,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                   dateTextStyle: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -81,23 +82,17 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8),
+                          Padding(
+                            padding: const EdgeInsets.all(8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "ເດີ່ນຕີດອກ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                // Text("ຄອດ : $court"),
-                                Text(
-                                  "ຄອດ : XXXXXXXX",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                Text("ຄອດ : $court"),
                               ],
                             ),
                           ),
@@ -140,16 +135,14 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text(
-                                    // controller.courtTime[index],
-                                    "XXXXXXX",
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  Text(
+                                    controller.courtTime[index],
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   Row(
                                     children: [
                                       const Text(
-                                        // "80.000 ₭",
-                                        "XXXXXXX",
+                                        "80.000 ₭",
                                         style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       Obx(
@@ -183,8 +176,8 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        // "160.000 ₭",
-                        "XXXXXXX",
+                        "160.000 ₭",
+                        // "XXXXXXX"
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
