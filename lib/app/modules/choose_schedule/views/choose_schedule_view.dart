@@ -16,6 +16,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
     final HomeController homeController = Get.put(HomeController());
     final courtIndex = controller.court;
     final court = homeController.court[courtIndex];
+    final img = homeController.imageCourt[courtIndex];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -76,8 +77,8 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: Colors.white,
-                              image: const DecorationImage(
-                                image: AssetImage("assets/images/court.jpeg"),
+                              image: DecorationImage(
+                                image: AssetImage(img),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -141,18 +142,23 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                                   ),
                                   Row(
                                     children: [
-                                      const Text(
-                                        "80.000 ₭",
-                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      Text(
+                                        '${controller.courtPrices[index]} ₭',
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       Obx(
                                         () => Checkbox(
                                           checkColor: Colors.white,
                                           focusColor: Colors.green,
                                           activeColor: Colors.green,
-                                          value: controller.isSelected[index],
+                                          value: controller.selectedTimes[index],
                                           onChanged: (bool? value) {
                                             controller.toggleSelection(index);
+                                            List<String> selectedTimes = controller.getSelectedTimes();
+                                            List<int> selectedPrices = controller.getSelectedPrices();
+
+                                            print('Selected times: ${selectedTimes.join(', ')}');
+                                            print('Selected prices: ${selectedPrices.join(', ')} ₭');
                                           },
                                         ),
                                       ),
@@ -173,20 +179,22 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "160.000 ₭",
-                        // "XXXXXXX"
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: Obx(() => Text(
+                            " ${controller.getTotalPrice()} ₭",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                     ),
                     const SizedBox(height: 20),
-                    BookingButton(onTap: () {
-                      Get.to(const PaymentDetailView());
-                    }),
+                    BookingButton(
+                      onTap: () {
+                        int totalPrice = controller.getTotalPrice();
+                        Get.to(const PaymentDetailView(), arguments: totalPrice);
+                      },
+                    ),
                     const SizedBox(height: 40),
                   ],
                 ),

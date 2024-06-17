@@ -16,8 +16,9 @@ class ShopDetailView extends GetView<ShopDetailController> {
     final ShopDetailController controller = Get.put(ShopDetailController());
     final HomeController homeController = Get.put(HomeController());
     Size size = MediaQuery.of(context).size;
-    final courtIndex = controller.court;
+    final courtIndex = controller.index;
     final court = homeController.court[courtIndex];
+    final img = homeController.imageCourt[courtIndex];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -52,8 +53,9 @@ class ShopDetailView extends GetView<ShopDetailController> {
                 decoration: BoxDecoration(
                   color: Colors.black12,
                   borderRadius: BorderRadius.circular(15),
-                  image: const DecorationImage(
-                    image: AssetImage("assets/images/court.jpeg"),
+                  image: DecorationImage(
+                    // image: AssetImage("assets/images/court.jpeg"),
+                    image: AssetImage(img),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [

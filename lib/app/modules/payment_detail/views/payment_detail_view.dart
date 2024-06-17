@@ -18,6 +18,7 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
     Size size = MediaQuery.of(context).size;
     final TextEditingController nameController = TextEditingController();
     final TextEditingController phoneController = TextEditingController();
+    final int totalPrice = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -150,35 +151,35 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                     ),
                   ],
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "ສະຫຼຸບການຊຳລະເງິນ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
                       ),
-                      Divider(),
-                      SizedBox(height: 8),
+                      const Divider(),
+                      const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "ຈຳນວນເງິນ",
                             style: TextStyle(color: Colors.blue),
                           ),
                           Text(
-                            "160.000 ₭",
-                            style: TextStyle(color: Colors.blue),
+                            "$totalPrice ₭",
+                            style: const TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
@@ -197,9 +198,9 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                           // ),
                         ],
                       ),
-                      SizedBox(height: 8),
-                      Divider(),
-                      Row(
+                      const SizedBox(height: 8),
+                      const Divider(),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
