@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
-import 'package:nuol_badminton_thesis/app/widgets/reusetextformfield.dart';
 
 import '../controllers/payment_detail_controller.dart';
 
@@ -75,18 +71,18 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                           )),
                       const SizedBox(height: 6),
                       const SizedBox(height: 6),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "10 : 00 - 11 : 00",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "80.000 ₭",
-                            style: TextStyle(
+                            NumberFormatter.formatPriceKip(80000),
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -126,12 +122,13 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             ),
                           ),
                           child: const Center(
-                              child: Text(
-                            "ແກ້ໄຂ",
-                            style: TextStyle(
-                              color: Colors.black,
+                            child: Text(
+                              "ແກ້ໄຂ",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
-                          )),
+                          ),
                         ),
                       ),
                     ],
