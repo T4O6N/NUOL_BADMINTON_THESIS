@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
 import 'package:nuol_badminton_thesis/app/widgets/reusetextformfield.dart';
 
 class ContactInfoWidget extends StatelessWidget {
@@ -13,10 +15,8 @@ class ContactInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-
+    ChooseScheduleController chooseScheduleController = Get.put(ChooseScheduleController());
     return Container(
-      // height: size.height * .3,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -49,6 +49,7 @@ class ContactInfoWidget extends StatelessWidget {
               controller: nameController,
               labelText: 'ຊື່',
               hintText: 'ປ້ອນຊື້',
+              validator: chooseScheduleController.validateUsername,
             ),
             const SizedBox(height: 8),
             ReusableTextFormField(
@@ -57,6 +58,7 @@ class ContactInfoWidget extends StatelessWidget {
               controller: phoneController,
               labelText: 'ເບີໂທ',
               hintText: 'ປ້ອນເບີໂທ',
+              validator: chooseScheduleController.validatePhoneNumber,
             ),
             const SizedBox(height: 8),
           ],

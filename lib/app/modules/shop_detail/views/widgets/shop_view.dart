@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
+import 'package:nuol_badminton_thesis/app/modules/shop_detail/controllers/shop_detail_controller.dart';
 import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
-import '../controllers/shop_detail_controller.dart';
 
-class ShopDetailView extends GetView<ShopDetailController> {
-  const ShopDetailView({Key? key}) : super(key: key);
+class ShopView extends StatefulWidget {
+  final Court court;
+  const ShopView({super.key, required this.court});
+
+  @override
+  State<ShopView> createState() => _ShopViewState();
+}
+
+class _ShopViewState extends State<ShopView> {
   @override
   Widget build(BuildContext context) {
-    final ShopDetailController controller = Get.put(ShopDetailController());
-    final HomeController homeController = Get.put(HomeController());
+    ShopDetailController controller = Get.put(ShopDetailController());
     Size size = MediaQuery.of(context).size;
-    final courtIndex = controller.index;
-    final court = homeController.court[courtIndex];
-    final img = homeController.imageCourt[courtIndex];
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -55,7 +59,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
                     // image: AssetImage("assets/images/court.jpeg"),
-                    image: AssetImage(img),
+                    image: AssetImage(widget.court.imageUrl),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -79,7 +83,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
                       children: [
                         const Text("ຄອດ :"),
                         Text(
-                          " $court",
+                          " ${widget.court.name}",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -106,7 +110,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
                   SvgPicture.asset(AppImagesSvg.positionIcon),
                   const SizedBox(width: 10),
                   const Text(
-                    "ບ້ານ ບຶງຂະຫຍອງ ເມືອງ ສີສັດຕະນາກ ແຂວງ ນະຄອນຫຼວງວຽງຈັນ",
+                    " ບ້ານ ບຶງຂະຫຍອງ ເມືອງ ສີສັດຕະນາກ ແຂວງ ນະຄອນຫຼວງວຽງຈັນ",
                   ),
                 ],
               ),
@@ -163,10 +167,11 @@ class ShopDetailView extends GetView<ShopDetailController> {
               const SizedBox(height: 10),
               BookingButton(
                 onTap: () {
-                  Get.toNamed(
-                    Routes.CHOOSE_SCHEDULE,
-                    arguments: courtIndex,
-                  );
+                  // Get.toNamed(
+                  //   Routes.CHOOSE_SCHEDULE,
+                  //   // arguments: courtIndex,
+                  // );
+                  Get.to(ChooseScheduleStfView(court: widget.court));
                 },
               ),
             ],

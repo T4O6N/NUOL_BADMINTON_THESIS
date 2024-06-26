@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/wave_clipper.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class BillPaymentDetail extends StatelessWidget {
-  const BillPaymentDetail({super.key});
+  final Court court;
+  final Map<DateTime, List<String>> bookingDetails;
+  final String userName;
+  final String phoneNumber;
+  const BillPaymentDetail({
+    super.key,
+    required this.court,
+    required this.bookingDetails,
+    required this.phoneNumber,
+    required this.userName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,37 +67,37 @@ class BillPaymentDetail extends StatelessWidget {
                             "ລາຍລະອຽດການຈອງ",
                             style: TextStyle(fontWeight: FontWeight.w400),
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("ຈອງໂດຍ", style: TextStyle(color: Colors.grey)),
+                              const Text("ຈອງໂດຍ", style: TextStyle(color: Colors.grey)),
                               Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
+                                userName,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("ເບີ", style: TextStyle(color: Colors.grey)),
+                              const Text("ເບີ", style: TextStyle(color: Colors.grey)),
                               Text(
-                                "99999999",
-                                style: TextStyle(
+                                phoneNumber,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("ຄອດ", style: TextStyle(color: Colors.grey)),
+                              const Text("ຄອດ", style: TextStyle(color: Colors.grey)),
                               Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
+                                court.name,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

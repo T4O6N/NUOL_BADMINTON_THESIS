@@ -164,17 +164,18 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                       ),
                       const Divider(),
                       const SizedBox(height: 8),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "ຈຳນວນເງິນ",
                             style: TextStyle(color: Colors.blue),
                           ),
                           Text(
                             // "${controller.totalPrice} ₭",
-                            NumberFormatter.formatPriceKip(controller.totalPrice),
-                            style: const TextStyle(color: Colors.blue),
+                            // NumberFormatter.formatPriceKip(controller.totalPrice),
+                            "s",
+                            style: TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
@@ -194,17 +195,18 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                       ),
                       const SizedBox(height: 8),
                       const Divider(),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "ລາຄາ",
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                           Text(
                             // "${controller.totalAll} ₭",
-                            NumberFormatter.formatPriceKip(controller.totalAll),
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                            // NumberFormatter.formatPriceKip(controller.totalAll),
+                            "a",
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                         ],
                       ),
@@ -214,7 +216,7 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
               ),
               const SizedBox(height: 20),
               BookingButton(onTap: () {
-                Get.to(const BillPaymentDetail());
+                // Get.to(const BillPaymentDetail(court: court,));
               }),
             ],
           ),

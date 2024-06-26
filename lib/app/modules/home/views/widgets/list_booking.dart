@@ -12,13 +12,15 @@ class ListBooking extends StatelessWidget {
     return ListView.builder(
       itemCount: homeController.court.length,
       itemBuilder: (context, index) {
+        final court = homeController.courts[index];
         return Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: CardBooking(
-            price: 'ລາຄາ : 80.000 ₭/ ຊົ່ວໂມງ',
-            imageAsset: homeController.imageCourt[index],
-            court: 'ຄອດ : ${(homeController.court[index])}',
+            price: 'ລາຄາ : ${(court.price.toString())} ₭/ ຊົ່ວໂມງ',
+            imageAsset: court.imageUrl,
+            court: 'ຄອດ : ${(court.name)}',
             indexCourt: index,
+            courtIndex: court,
           ),
         );
       },

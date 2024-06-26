@@ -11,7 +11,7 @@ class ShopDetailController extends GetxController {
     index = indexCourt;
   }
 
-  final List<String> courtPic = [
+  final List<String> courtPicInfo = [
     'assets/images/c1.jpeg',
     'assets/images/c2.jpeg',
     'assets/images/c3.jpeg',
@@ -23,7 +23,7 @@ class ShopDetailController extends GetxController {
   void onInit() {
     super.onInit();
     isChecked;
-    setArgument();
+    // setArgument();
   }
 
   @override

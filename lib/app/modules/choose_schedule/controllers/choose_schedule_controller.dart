@@ -1,8 +1,12 @@
 // ignore_for_file: unnecessary_overrides
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChooseScheduleController extends GetxController {
+  final usernameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+
   final List<String> courtTime = [
     '9:00 - 10:00 AM',
     '10:00 - 11:00 AM',
@@ -60,15 +64,6 @@ class ChooseScheduleController extends GetxController {
     return selected;
   }
 
-  // RxInt getTotalPrice() {
-  //   RxInt total = 0.obs;
-  //   for (int i = 0; i < courtPrices.length; i++) {
-  //     if (selectedTimes[i]) {
-  //       total += courtPrices[i];
-  //     }
-  //   }
-  //   return total;
-  // }
   int getTotalPrice() {
     int total = 0;
     for (int i = 0; i < courtPrices.length; i++) {
@@ -79,14 +74,26 @@ class ChooseScheduleController extends GetxController {
     return total;
   }
 
-  void setArgument() {
-    final int courtIndex = Get.arguments as int;
-    court = courtIndex;
+  String? validateUsername(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your username';
+    }
+    return null;
+  }
+
+  String? validatePhoneNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your phone number';
+    }
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'Please enter a valid phone number';
+    }
+    return null;
   }
 
   @override
   void onInit() {
-    setArgument();
+    // setArgument();
     super.onInit();
   }
 
@@ -97,6 +104,8 @@ class ChooseScheduleController extends GetxController {
 
   @override
   void onClose() {
+    usernameController.dispose();
+    phoneNumberController.dispose();
     super.onClose();
   }
 }

@@ -1,7 +1,8 @@
 //card booking for home page
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
+import 'package:nuol_badminton_thesis/app/modules/shop_detail/views/widgets/shop_view.dart';
 
 class CardBooking extends StatelessWidget {
   const CardBooking({
@@ -10,21 +11,20 @@ class CardBooking extends StatelessWidget {
     required this.imageAsset,
     required this.court,
     required this.indexCourt,
+    required this.courtIndex,
   });
 
   final String imageAsset;
   final String court;
   final String price;
   final int indexCourt;
+  final Court courtIndex;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Get.toNamed(
-          Routes.SHOP_DETAIL,
-          arguments: indexCourt,
-        );
+        Get.to(ShopView(court: courtIndex));
       },
       child: Container(
         width: double.infinity,
