@@ -5,12 +5,10 @@ import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
 import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
-
 import '../controllers/shop_detail_controller.dart';
 
 class ShopDetailView extends GetView<ShopDetailController> {
   const ShopDetailView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final ShopDetailController controller = Get.put(ShopDetailController());
@@ -19,6 +17,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
     final courtIndex = controller.index;
     final court = homeController.court[courtIndex];
     final img = homeController.imageCourt[courtIndex];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

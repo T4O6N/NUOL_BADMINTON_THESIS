@@ -16,8 +16,6 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController phoneController = TextEditingController();
     final PaymentDetailController controller = Get.put(PaymentDetailController());
-    // final int totalPrice = Get.arguments;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -192,12 +190,6 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             NumberFormatter.formatPriceKip(controller.discount),
                             style: const TextStyle(color: Colors.blue),
                           ),
-                          // Text(
-                          //   "XXXXXXXX",
-                          //   style: TextStyle(
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
                         ],
                       ),
                       const SizedBox(height: 8),
@@ -214,12 +206,6 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                             NumberFormatter.formatPriceKip(controller.totalAll),
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                           ),
-                          // Text(
-                          //   "XXXXXXXX",
-                          //   style: TextStyle(
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ],
