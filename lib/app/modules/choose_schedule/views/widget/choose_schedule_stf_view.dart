@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/detail_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
@@ -20,19 +21,20 @@ class ChooseScheduleStfView extends StatefulWidget {
 
 class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
   final List<String> timeSlots = [
-    '9:00 - 10:00 AM',
-    '10:00 - 11:00 AM',
-    '11:00 - 12:00 PM',
-    '1:00 - 2:00 PM',
-    '2:00 - 3:00 PM',
-    '3:00 - 4:00 PM',
-    '4:00 - 5:00 PM',
-    '5:00 - 6:00 PM',
-    '6:00 - 7:00 PM',
-    '7:00 - 8:00 PM',
-    '8:00 - 9:00 PM',
-    '9:00 - 10:00 PM',
-    '10:00 - 11:00 PM',
+    '9:00 AM - 10:00 AM',
+    '10:00 AM- 11:00 AM',
+    '11:00 AM- 12:00 PM',
+    '12:00 PM- 1:00 PM',
+    '1:00 PM - 2:00 PM',
+    '2:00 PM - 3:00 PM',
+    '3:00 PM - 4:00 PM',
+    '4:00 PM - 5:00 PM',
+    '5:00 PM - 6:00 PM',
+    '6:00 PM - 7:00 PM',
+    '7:00 PM - 8:00 PM',
+    '8:00 PM - 9:00 PM',
+    '9:00 PM - 10:00 PM',
+    '10:00 PM - 11:00 PM',
   ];
 
   Map<DateTime, Map<String, bool>> bookingDetails = {};
@@ -226,6 +228,33 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                           //     },
                           //   ),
                           // ),
+                          // Expanded(
+                          //   child: ListView.builder(
+                          //     itemCount: timeSlots.length,
+                          //     itemBuilder: (context, index) {
+                          //       final timeSlot = timeSlots[index];
+                          //       final isSelected = bookingDetails[_selectedDate]?[timeSlot] ?? false;
+                          //       final isTimePassed = _isTimePassed(timeSlot);
+                          //       return CheckboxListTile(
+                          //         title: Text(timeSlot),
+                          //         value: isSelected,
+                          //         onChanged: isTimePassed
+                          //             ? null
+                          //             : (bool? value) {
+                          //                 setState(() {
+                          //                   bookingDetails[_selectedDate]![timeSlot] = value!;
+                          //                   controller.toggleSelection(index);
+                          //                   List<String> selectedTimes = controller.getSelectedTimes();
+                          //                   List<int> selectedPrices = controller.getSelectedPrices();
+
+                          //                   print('Selected times: ${selectedTimes.join(', ')}');
+                          //                   print('Selected prices: ${selectedPrices.join(', ')} ₭');
+                          //                 });
+                          //               },
+                          //       );
+                          //     },
+                          //   ),
+                          // ),
                           Expanded(
                             child: ListView.builder(
                               itemCount: timeSlots.length,
@@ -233,22 +262,21 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                 final timeSlot = timeSlots[index];
                                 final isSelected = bookingDetails[_selectedDate]?[timeSlot] ?? false;
                                 final isTimePassed = _isTimePassed(timeSlot);
+                                final isCurrentDate = _selectedDate.isAtSameMomentAs(DateTime.now());
+
+                                // Enable or disable onChanged based on whether it's the current date
+                                final canChangeTimeSlot = isCurrentDate || !isTimePassed;
+
                                 return CheckboxListTile(
                                   title: Text(timeSlot),
                                   value: isSelected,
-                                  onChanged: isTimePassed
-                                      ? null
-                                      : (bool? value) {
+                                  onChanged: canChangeTimeSlot
+                                      ? (bool? value) {
                                           setState(() {
                                             bookingDetails[_selectedDate]![timeSlot] = value!;
-                                            controller.toggleSelection(index);
-                                            List<String> selectedTimes = controller.getSelectedTimes();
-                                            List<int> selectedPrices = controller.getSelectedPrices();
-
-                                            print('Selected times: ${selectedTimes.join(', ')}');
-                                            print('Selected prices: ${selectedPrices.join(', ')} ₭');
                                           });
-                                        },
+                                        }
+                                      : null,
                                 );
                               },
                             ),
@@ -311,22 +339,14 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
   }
 
   bool _isTimePassed(String timeSlot) {
-    final now = DateTime.now();
-    final currentTime = TimeOfDay.fromDateTime(now);
-    final slotStart = timeSlot.split(' ')[0];
-    final slotTime = TimeOfDay(
-      hour: int.parse(slotStart.split(':')[0]),
-      minute: int.parse(slotStart.split(':')[1]),
-    );
-    final slotDateTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      slotTime.hour,
-      slotTime.minute,
-    );
+    DateTime now = DateTime.now();
+    DateTime parsedTime = DateFormat('hh:mm a').parse(timeSlot.split(' - ')[0]);
 
-    return now.isAfter(slotDateTime);
+    // Adjust the parsedTime to compare against _selectedDate's date
+    parsedTime = DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day, parsedTime.hour, parsedTime.minute);
+
+    // Check if parsedTime is in the past relative to now
+    return now.isAfter(parsedTime);
   }
 
   Widget _buildDatePicker() {

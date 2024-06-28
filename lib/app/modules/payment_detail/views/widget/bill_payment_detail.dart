@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/wave_clipper.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class BillPaymentDetail extends StatelessWidget {
   final Court court;
   final Map<DateTime, List<String>> bookingDetails;
   final String userName;
   final String phoneNumber;
+
   const BillPaymentDetail({
     super.key,
     required this.court,
@@ -20,6 +23,7 @@ class BillPaymentDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> allTimeSlots = bookingDetails.values.expand((slots) => slots).toList();
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -62,15 +66,17 @@ class BillPaymentDetail extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Column 1
                           const Text(
                             "ລາຍລະອຽດການຈອງ",
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("ຈອງໂດຍ", style: TextStyle(color: Colors.grey)),
+                              const Text(
+                                "ຈອງໂດຍ",
+                                style: TextStyle(color: Colors.grey),
+                              ),
                               Text(
                                 userName,
                                 style: const TextStyle(
@@ -82,7 +88,10 @@ class BillPaymentDetail extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("ເບີ", style: TextStyle(color: Colors.grey)),
+                              const Text(
+                                "ເບີ",
+                                style: TextStyle(color: Colors.grey),
+                              ),
                               Text(
                                 phoneNumber,
                                 style: const TextStyle(
@@ -103,73 +112,78 @@ class BillPaymentDetail extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("ວັນທີ່ຈອງ", style: TextStyle(color: Colors.grey)),
-                              // Text("1 July 2024"),
-                              Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          const Divider(),
+                          // ignore: prefer_const_constructors
+                          Text(
+                            "ວັນທີ່ຈອງ",
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          const SizedBox(height: 18),
+                          ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: bookingDetails.keys.length,
+                            itemBuilder: (context, index) {
+                              final date = bookingDetails.keys.elementAt(index);
+                              final timeSlots = bookingDetails[date]!;
+                              final formattedDate = DateFormat('dd/MM/yyyy').format(date);
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                                child: ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                  title: Text(
+                                    'ວັນ: $formattedDate',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    'ເວລາ: ${timeSlots.join(', ')}',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (BuildContext context, int index) => const Divider(),
+                          ),
+                          const Divider(),
                           const Text(
                             "ລາຍລະອຽດການຈ່າຍເງິນ",
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              // Text(
-                              //   "10 : 00 - 11 : 00",
-                              //   style: TextStyle(color: Colors.grey),
-                              // ),
-                              Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: allTimeSlots.length,
+                            itemBuilder: (context, index) {
+                              final timeSlot = allTimeSlots[index];
+                              return ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                title: Text(
+                                  timeSlot,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.grey,
+                                  ),
                                 ),
-                              ),
-                              // Text(
-                              //   "80.000 ₭",
-                              //   style: TextStyle(color: Colors.grey),
-                              // ),
-                              Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                trailing: const Text(
+                                  "80,000 ₭",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              // Text(
-                              //   "11 : 00 - 12 : 00",
-                              //   style: TextStyle(color: Colors.grey),
-                              // ),
-                              Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              // Text(
-                              //   "80.000 ₭",
-                              //   style: TextStyle(color: Colors.grey),
-                              // ),
-                              Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
                           const SizedBox(height: 10),
                           const Divider(),
@@ -181,9 +195,6 @@ class BillPaymentDetail extends StatelessWidget {
                                 "ຈຳນວນເງິນ",
                                 style: TextStyle(color: Colors.grey),
                               ),
-                              // Text(
-                              //   "160.000 ₭",
-                              // ),
                               Text(
                                 "XXXXXXXX",
                                 style: TextStyle(
@@ -192,7 +203,6 @@ class BillPaymentDetail extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -200,9 +210,6 @@ class BillPaymentDetail extends StatelessWidget {
                                 "ສວນຫຼຸດ",
                                 style: TextStyle(color: Colors.grey),
                               ),
-                              // Text(
-                              //   "20.000 ₭",
-                              // ),
                               Text(
                                 "XXXXXXXX",
                                 style: TextStyle(
@@ -221,10 +228,6 @@ class BillPaymentDetail extends StatelessWidget {
                                 "ລາຄາ",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                               ),
-                              // Text(
-                              //   "140.000 ₭",
-                              //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                              // ),
                               Text(
                                 "XXXXXXXX",
                                 style: TextStyle(
@@ -240,7 +243,6 @@ class BillPaymentDetail extends StatelessWidget {
                               dataModuleStyle: const QrDataModuleStyle(color: Colors.grey),
                             ),
                           ),
-                          // Divide 2
                         ],
                       ),
                     ),

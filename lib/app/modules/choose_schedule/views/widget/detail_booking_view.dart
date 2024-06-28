@@ -124,7 +124,6 @@ class DetailBookingView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  height: size.height * .25,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),

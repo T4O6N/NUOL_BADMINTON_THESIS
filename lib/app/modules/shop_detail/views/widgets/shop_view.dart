@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/shop_detail/controllers/shop_detail_controller.dart';
-import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
+
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 
 class ShopView extends StatefulWidget {
@@ -91,7 +91,7 @@ class _ShopViewState extends State<ShopView> {
                     const Row(
                       children: [
                         Text(
-                          "ລາຄາ : 80.000 ₭ ",
+                          "ລາຄາ : 80,000 ₭ ",
                           // "ລາຄາ : XXXXXXXX",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -111,13 +111,21 @@ class _ShopViewState extends State<ShopView> {
                   const SizedBox(width: 10),
                   const Text(
                     " ບ້ານ ບຶງຂະຫຍອງ ເມືອງ ສີສັດຕະນາກ ແຂວງ ນະຄອນຫຼວງວຽງຈັນ",
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),
-
               const Text(
-                "     ສາໜາມໃນຮົ່ມແມ່ນເປັນທີ່ນິຍົມຫຼາຍເພາະວ່າສະພາບອາກາດສາມາດຄວບຄຸມໄດ້. ມີການຕິດຕັ້ງແສງໄຟຢ່າງພຽງພໍເພື່ອໃຫ້ຜູ້ຫຼິ້ນສາມາດເບິ່ງເຫັນລູກດອກໄດ້ຢ່າງຊັດເຈນ ແລະ ຫຼິ້ນໄດ້ເຕັມທີ່ຂອງເຂົາເຈົ້າ.ນອກຈາກນັ້ນຍັງມີສິ່ງອໍານວຍຄວາມສະດວກອື່ນໆເຊັ່ນ: ບ່ອນນັ່ງສໍາລັບຜູ້ຊົມ. ພື້ນທີ່ພັກຜ່ອນ ແລະ ຫ້ອງປ່ຽນເຄື່ອງ ເພື່ອໃຫ້ຜູ້ຫຼິ້ນ ແລະ ຜູ້ຊົມໄດ້ຮັບປະສົບການທີ່ດີທີ່ສຸດເມື່ອມາເບິ່ງ ແລະ ຫຼິ້ນກິລາແບດມິນຕັນ",
-                style: TextStyle(color: Colors.grey),
+                " ສາໜາມໃນຮົ່ມແມ່ນເປັນທີ່ນິຍົມຫຼາຍເພາະວ່າສະພາບອາກາດສາມາດຄວບຄຸມໄດ້. ມີການຕິດຕັ້ງແສງໄຟຢ່າງພຽງພໍເພື່ອໃຫ້ຜູ້ຫຼິ້ນສາມາດເບິ່ງເຫັນລູກດອກໄດ້ຢ່າງຊັດເຈນ ແລະ ຫຼິ້ນໄດ້ເຕັມທີ່ຂອງເຂົາເຈົ້າ.ນອກຈາກນັ້ນຍັງມີສິ່ງອໍານວຍຄວາມສະດວກອື່ນໆເຊັ່ນ: ບ່ອນນັ່ງສໍາລັບຜູ້ຊົມ. ພື້ນທີ່ພັກຜ່ອນ ແລະ ຫ້ອງປ່ຽນເຄື່ອງ ເພື່ອໃຫ້ຜູ້ຫຼິ້ນ ແລະ ຜູ້ຊົມໄດ້ຮັບປະສົບການທີ່ດີທີ່ສຸດເມື່ອມາເບິ່ງ ແລະ ຫຼິ້ນກິລາແບດມິນຕັນ",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 10,
+                ),
               ),
               // const SelectedList()
               const SizedBox(height: 20),
