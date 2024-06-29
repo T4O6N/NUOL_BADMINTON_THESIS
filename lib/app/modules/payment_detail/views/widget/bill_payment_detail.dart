@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -7,11 +8,15 @@ import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/wave_clipper.dart';
 
+import '../../../../widgets/number_format.dart';
+
 class BillPaymentDetail extends StatelessWidget {
   final Court court;
   final Map<DateTime, List<String>> bookingDetails;
   final String userName;
   final String phoneNumber;
+  final int finalTotalPrice;
+  final int totalPrice;
 
   const BillPaymentDetail({
     super.key,
@@ -19,10 +24,13 @@ class BillPaymentDetail extends StatelessWidget {
     required this.bookingDetails,
     required this.phoneNumber,
     required this.userName,
+    required this.finalTotalPrice,
+    required this.totalPrice,
   });
 
   @override
   Widget build(BuildContext context) {
+    final int discount = 20000;
     final List<String> allTimeSlots = bookingDetails.values.expand((slots) => slots).toList();
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -66,6 +74,7 @@ class BillPaymentDetail extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          const SizedBox(height: 20),
                           const Text(
                             "ລາຍລະອຽດການຈອງ",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -185,34 +194,36 @@ class BillPaymentDetail extends StatelessWidget {
                               );
                             },
                           ),
-                          const SizedBox(height: 10),
+
                           const Divider(),
                           const SizedBox(height: 10),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 "ຈຳນວນເງິນ",
-                                style: TextStyle(color: Colors.grey),
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
                               ),
                               Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
+                                NumberFormatter.formatPriceKip(totalPrice),
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 "ສວນຫຼຸດ",
                                 style: TextStyle(color: Colors.grey),
                               ),
                               Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
+                                NumberFormatter.formatPriceKip(discount),
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -221,16 +232,16 @@ class BillPaymentDetail extends StatelessWidget {
                           const SizedBox(height: 10),
                           const Divider(),
                           const SizedBox(height: 10),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 "ລາຄາ",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                               ),
                               Text(
-                                "XXXXXXXX",
-                                style: TextStyle(
+                                NumberFormatter.formatPriceKip(finalTotalPrice),
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

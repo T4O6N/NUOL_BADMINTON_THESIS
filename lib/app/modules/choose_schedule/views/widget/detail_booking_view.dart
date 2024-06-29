@@ -14,13 +14,24 @@ import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 class DetailBookingView extends StatelessWidget {
   final Court court;
   final Map<DateTime, List<String>> bookingDetails;
-  const DetailBookingView({super.key, required this.court, required this.bookingDetails});
+  final int totalPrice;
+  const DetailBookingView({
+    super.key,
+    required this.court,
+    required this.bookingDetails,
+    required this.totalPrice,
+  });
+  final int discount = 20000;
+
+  int calculateDiscountedPrice(int totalPrice) {
+    return totalPrice - discount;
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    final PaymentDetailController controller = Get.put(PaymentDetailController());
+    final int finalTotalPrice = calculateDiscountedPrice(totalPrice);
+    // final PaymentDetailController controller = Get.put(PaymentDetailController());
     ChooseScheduleController chooseScheduleController = Get.put(ChooseScheduleController());
     return Scaffold(
       appBar: AppBar(
@@ -161,7 +172,7 @@ class DetailBookingView extends StatelessWidget {
                             ),
                             Text(
                               // "${controller.totalPrice} ₭",
-                              NumberFormatter.formatPriceKip(controller.totalPrice),
+                              NumberFormatter.formatPriceKip(totalPrice),
                               // "s",
                               style: const TextStyle(color: Colors.blue),
                             ),
@@ -175,7 +186,7 @@ class DetailBookingView extends StatelessWidget {
                               style: TextStyle(color: Colors.blue),
                             ),
                             Text(
-                              NumberFormatter.formatPriceKip(controller.discount),
+                              NumberFormatter.formatPriceKip(discount),
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ],
@@ -190,7 +201,7 @@ class DetailBookingView extends StatelessWidget {
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                             Text(
-                              NumberFormatter.formatPriceKip(controller.totalAll),
+                              NumberFormatter.formatPriceKip(finalTotalPrice),
                               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                           ],
@@ -200,14 +211,20 @@ class DetailBookingView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                BookingButton(onTap: () {
-                  Get.to(BillPaymentDetail(
-                    court: court,
-                    bookingDetails: bookingDetails,
-                    userName: chooseScheduleController.usernameController.text,
-                    phoneNumber: chooseScheduleController.phoneNumberController.text,
-                  ));
-                }),
+                BookingButton(
+                  onTap: () {
+                    Get.to(
+                      BillPaymentDetail(
+                        court: court,
+                        bookingDetails: bookingDetails,
+                        userName: chooseScheduleController.usernameController.text,
+                        phoneNumber: chooseScheduleController.phoneNumberController.text,
+                        finalTotalPrice: finalTotalPrice,
+                        totalPrice: totalPrice,
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

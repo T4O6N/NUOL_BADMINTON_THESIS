@@ -1,12 +1,10 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/detail_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
-import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/payment_detail_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
@@ -39,6 +37,19 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
 
   Map<DateTime, Map<String, bool>> bookingDetails = {};
   DateTime _selectedDate = DateTime.now();
+  int totalPrice = 0;
+  final int pricePerSlot = 80000;
+
+  void _calculateTotalPrice() {
+    totalPrice = 0;
+    bookingDetails.forEach((date, slots) {
+      slots.forEach((timeSlot, isSelected) {
+        if (isSelected) {
+          totalPrice += pricePerSlot;
+        }
+      });
+    });
+  }
 
   @override
   void initState() {
@@ -152,7 +163,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "ຄອດ",
+                                    "ເວລາ",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
@@ -268,12 +279,15 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                 final canChangeTimeSlot = isCurrentDate || !isTimePassed;
 
                                 return CheckboxListTile(
+                                  //  focusColor: Colors.green,
+                                  activeColor: Colors.green,
                                   title: Text(timeSlot),
                                   value: isSelected,
                                   onChanged: canChangeTimeSlot
                                       ? (bool? value) {
                                           setState(() {
                                             bookingDetails[_selectedDate]![timeSlot] = value!;
+                                            _calculateTotalPrice();
                                           });
                                         }
                                       : null,
@@ -294,15 +308,39 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Obx(() => Text(
-                            NumberFormatter.formatPriceKip(controller.getTotalPrice()),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
+                      child: Text(
+                        // NumberFormatter.formatPriceKip(totalPrice),
+                        NumberFormatter.formatPriceKip(totalPrice),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     BookingButton(
+                      // onTap: () {
+                      //   final Map<DateTime, List<String>> selectedBookingDetails = {};
+
+                      //   bookingDetails.forEach(
+                      //     (date, slots) {
+                      //       final selectedSlots = slots.entries.where((entry) => entry.value).map((entry) => entry.key).toList();
+                      //       if (selectedSlots.isNotEmpty) {
+                      //         selectedBookingDetails[date] = selectedSlots;
+                      //       }
+                      //     },
+                      //   );
+                      //   int totalPrice = controller.getTotalPrice();
+                      //   if (totalPrice == 0) {
+                      //     warningDialog(des: "ກະລຸນາເລືອກເວລາການຈອງເດີ່ນ", context: context, btnOkOnPress: () {});
+                      //   } else {
+                      //     Get.to(
+                      //         DetailBookingView(
+                      //           court: widget.court,
+                      //           bookingDetails: selectedBookingDetails,
+                      //         ),
+                      //         arguments: totalPrice);
+                      //   }
+                      // },
                       onTap: () {
                         final Map<DateTime, List<String>> selectedBookingDetails = {};
 
@@ -314,17 +352,18 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                             }
                           },
                         );
-                        int totalPrice = controller.getTotalPrice();
-                        if (totalPrice == 0) {
-                          warningDialog(des: "ກະລຸນາເລືອກເວລາການຈອງເດີ່ນ", context: context, btnOkOnPress: () {});
-                        } else {
-                          Get.to(
-                              DetailBookingView(
-                                court: widget.court,
-                                bookingDetails: selectedBookingDetails,
-                              ),
-                              arguments: totalPrice);
+
+                        if (selectedBookingDetails.isEmpty) {
+                          Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
+                          return;
                         }
+                        Get.to(
+                          DetailBookingView(
+                            court: widget.court,
+                            bookingDetails: selectedBookingDetails,
+                            totalPrice: totalPrice, // Pass the total price
+                          ),
+                        );
                       },
                     ),
                     const SizedBox(height: 40),

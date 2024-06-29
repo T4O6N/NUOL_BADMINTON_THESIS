@@ -4,13 +4,12 @@ import 'package:get/get.dart';
 
 class PaymentDetailController extends GetxController {
   //TODO! focus
-  final int totalPrice = Get.arguments;
+
   int discount = 20000;
 
   late final int totalAll;
   @override
   void onInit() {
-    totalAll = totalPrice - discount;
     super.onInit();
   }
 
