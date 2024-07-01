@@ -30,9 +30,11 @@ class DetailBookingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     final int finalTotalPrice = calculateDiscountedPrice(totalPrice);
     // final PaymentDetailController controller = Get.put(PaymentDetailController());
     ChooseScheduleController chooseScheduleController = Get.put(ChooseScheduleController());
+    chooseScheduleController.totalPrice.value = finalTotalPrice;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -96,6 +98,7 @@ class DetailBookingView extends StatelessWidget {
                             final date = bookingDetails.keys.elementAt(index);
                             final timeSlots = bookingDetails[date]!;
                             final formattedDate = DateFormat('dd/MM/yyyy').format(date);
+                            chooseScheduleController.formattedDate.value = formattedDate;
                             return ListTile(
                               title: Text('ວັນ: $formattedDate'),
                               subtitle: Text('ເວລາ: ${timeSlots.join(', ')}'),

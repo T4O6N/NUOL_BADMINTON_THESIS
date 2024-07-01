@@ -318,29 +318,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                     ),
                     const SizedBox(height: 20),
                     BookingButton(
-                      // onTap: () {
-                      //   final Map<DateTime, List<String>> selectedBookingDetails = {};
-
-                      //   bookingDetails.forEach(
-                      //     (date, slots) {
-                      //       final selectedSlots = slots.entries.where((entry) => entry.value).map((entry) => entry.key).toList();
-                      //       if (selectedSlots.isNotEmpty) {
-                      //         selectedBookingDetails[date] = selectedSlots;
-                      //       }
-                      //     },
-                      //   );
-                      //   int totalPrice = controller.getTotalPrice();
-                      //   if (totalPrice == 0) {
-                      //     warningDialog(des: "ກະລຸນາເລືອກເວລາການຈອງເດີ່ນ", context: context, btnOkOnPress: () {});
-                      //   } else {
-                      //     Get.to(
-                      //         DetailBookingView(
-                      //           court: widget.court,
-                      //           bookingDetails: selectedBookingDetails,
-                      //         ),
-                      //         arguments: totalPrice);
-                      //   }
-                      // },
+           
                       onTap: () {
                         final Map<DateTime, List<String>> selectedBookingDetails = {};
 
