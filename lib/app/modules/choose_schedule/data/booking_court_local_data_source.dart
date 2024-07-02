@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+
 import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_detail_court_model.dart';
@@ -11,9 +14,9 @@ class BookingCourtLocalDataSource {
   Future<Either<String, ResponseBookingDetailCourtModel>> createCourtBooking(CreateBookingCourtParam param) async {
     final Dio dio = Dio();
     final url = "$baseUrl$bookingUrl";
-    final data = param.toJson();
+    final data = jsonEncode(param.toJson());
     try {
-      final response = await dio.post(url, data: {'title': 'My post', 'body': 'This is my post content', 'userId': 1});
+      final response = await dio.post(url, data: data);
       final res = ResponseBookingDetailCourtModel.fromJson(response.data);
       return Right(res);
     } on DioException catch (e) {

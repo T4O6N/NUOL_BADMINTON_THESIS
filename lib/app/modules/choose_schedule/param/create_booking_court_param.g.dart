@@ -9,15 +9,15 @@ part of 'create_booking_court_param.dart';
 _$CreateBookingCourtParamImpl _$$CreateBookingCourtParamImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateBookingCourtParamImpl(
-      deviceId: json['deviceId'] as String? ?? '',
+      deviceId: json['device_id'] as String? ?? '',
       phone: json['phone'] as String? ?? '',
-      fullName: json['fullName'] as String? ?? '',
-      paymentStatus: json['paymentStatus'] as String? ?? '',
-      bookedBy: json['bookedBy'] as String? ?? '',
-      totalAmount: (json['totalAmount'] as num?)?.toInt() ?? 0,
+      fullName: json['full_name'] as String? ?? '',
+      courtNumber: json['court_number'] as String? ?? '',
+      paymentStatus: json['payment_status'] as String? ?? '',
+      bookedBy: json['booked_by'] as String? ?? '',
+      totalAmount: (json['total_amount'] as num?)?.toInt() ?? 0,
       court: (json['court'] as List<dynamic>?)
-              ?.map((e) => CreateBookingCourtDurationTimeParam.fromJson(
-                  e as Map<String, dynamic>))
+              ?.map((e) => ListCourt.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
@@ -25,11 +25,12 @@ _$CreateBookingCourtParamImpl _$$CreateBookingCourtParamImplFromJson(
 Map<String, dynamic> _$$CreateBookingCourtParamImplToJson(
         _$CreateBookingCourtParamImpl instance) =>
     <String, dynamic>{
-      'deviceId': instance.deviceId,
+      'device_id': instance.deviceId,
       'phone': instance.phone,
-      'fullName': instance.fullName,
-      'paymentStatus': instance.paymentStatus,
-      'bookedBy': instance.bookedBy,
-      'totalAmount': instance.totalAmount,
+      'full_name': instance.fullName,
+      'court_number': instance.courtNumber,
+      'payment_status': instance.paymentStatus,
+      'booked_by': instance.bookedBy,
+      'total_amount': instance.totalAmount,
       'court': instance.court,
     };

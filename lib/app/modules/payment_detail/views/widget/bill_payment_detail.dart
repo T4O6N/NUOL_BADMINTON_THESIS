@@ -1,7 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
@@ -12,13 +15,13 @@ import '../../../../widgets/number_format.dart';
 
 class BillPaymentDetail extends StatelessWidget {
   final Court court;
-  final Map<DateTime, List<String>> bookingDetails;
+  List<ListCourt> bookingDetails;
   final String userName;
   final String phoneNumber;
   final int finalTotalPrice;
   final int totalPrice;
 
-  const BillPaymentDetail({
+  BillPaymentDetail({
     super.key,
     required this.court,
     required this.bookingDetails,
@@ -30,8 +33,8 @@ class BillPaymentDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int discount = 20000;
-    final List<String> allTimeSlots = bookingDetails.values.expand((slots) => slots).toList();
+    const int discount = 20000;
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -122,80 +125,91 @@ class BillPaymentDetail extends StatelessWidget {
                             ],
                           ),
                           const Divider(),
-                          // ignore: prefer_const_constructors
-                          Text(
-                            "ວັນທີ່ຈອງ",
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: bookingDetails.keys.length,
-                            itemBuilder: (context, index) {
-                              final date = bookingDetails.keys.elementAt(index);
-                              final timeSlots = bookingDetails[date]!;
-                              final formattedDate = DateFormat('dd/MM/yyyy').format(date);
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                                child: ListTile(
-                                  dense: true,
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  title: Text(
-                                    'ວັນ: $formattedDate',
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  subtitle: Text(
-                                    'ເວລາ: ${timeSlots.join(', ')}',
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
+
+                          // ListView.separated(
+                          //   shrinkWrap: true,
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          //   itemCount: bookingDetails.keys.length,
+                          //   itemBuilder: (context, index) {
+                          //     final date = bookingDetails.keys.elementAt(index);
+                          //     final timeSlots = bookingDetails[date]!;
+                          //     final formattedDate = DateFormat('dd/MM/yyyy').format(date);
+                          //     return Padding(
+                          //       padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          //       child: ListTile(
+                          //         dense: true,
+                          //         contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          //         title: Text(
+                          //           'ວັນ: $formattedDate',
+                          //           style: const TextStyle(
+                          //             fontSize: 12,
+                          //             fontWeight: FontWeight.bold,
+                          //           ),
+                          //         ),
+                          //         subtitle: Text(
+                          //           'ເວລາ: ${timeSlots.join(', ')}',
+                          //           style: const TextStyle(
+                          //             fontSize: 12,
+                          //             fontWeight: FontWeight.w400,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     );
+                          //   },
+                          //   separatorBuilder: (BuildContext context, int index) => const Divider(),
+                          // ),
+                          ...bookingDetails.map((courtModel) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ວັນທີ່: ${courtModel.date}',
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
-                              );
-                            },
-                            separatorBuilder: (BuildContext context, int index) => const Divider(),
-                          ),
+                                const SizedBox(height: 5),
+                                ...courtModel.durationTime.map((timeSlot) {
+                                  return Text(
+                                    timeSlot,
+                                    style: const TextStyle(color: Colors.grey),
+                                  );
+                                }).toList(),
+                                const SizedBox(height: 10),
+                              ],
+                            );
+                          }).toList(),
                           const Divider(),
                           const Text(
                             "ລາຍລະອຽດການຈ່າຍເງິນ",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: allTimeSlots.length,
-                            itemBuilder: (context, index) {
-                              final timeSlot = allTimeSlots[index];
-                              return ListTile(
-                                dense: true,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                                title: Text(
-                                  timeSlot,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                trailing: const Text(
-                                  "80,000 ₭",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          // ListView.builder(
+                          //   shrinkWrap: true,
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          //   itemCount: allTimeSlots.length,
+                          //   itemBuilder: (context, index) {
+                          //     final timeSlot = allTimeSlots[index];
+                          //     return ListTile(
+                          //       dense: true,
+                          //       contentPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          //       title: Text(
+                          //         timeSlot,
+                          //         style: const TextStyle(
+                          //           fontSize: 12,
+                          //           fontWeight: FontWeight.w400,
+                          //           color: Colors.grey,
+                          //         ),
+                          //       ),
+                          //       trailing: const Text(
+                          //         "80,000 ₭",
+                          //         style: TextStyle(
+                          //           fontSize: 12,
+                          //           fontWeight: FontWeight.bold,
+                          //         ),
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
 
-                          const Divider(),
                           const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

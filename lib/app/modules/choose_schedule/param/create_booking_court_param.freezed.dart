@@ -21,14 +21,21 @@ CreateBookingCourtParam _$CreateBookingCourtParamFromJson(
 
 /// @nodoc
 mixin _$CreateBookingCourtParam {
+  @JsonKey(name: 'device_id')
   String get deviceId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone')
   String get phone => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_name')
   String get fullName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'court_number')
+  String get courtNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 'payment_status')
   String get paymentStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'booked_by')
   String get bookedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_amount')
   int get totalAmount => throw _privateConstructorUsedError;
-  List<CreateBookingCourtDurationTimeParam> get court =>
-      throw _privateConstructorUsedError;
+  List<ListCourt> get court => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,13 +50,14 @@ abstract class $CreateBookingCourtParamCopyWith<$Res> {
       _$CreateBookingCourtParamCopyWithImpl<$Res, CreateBookingCourtParam>;
   @useResult
   $Res call(
-      {String deviceId,
-      String phone,
-      String fullName,
-      String paymentStatus,
-      String bookedBy,
-      int totalAmount,
-      List<CreateBookingCourtDurationTimeParam> court});
+      {@JsonKey(name: 'device_id') String deviceId,
+      @JsonKey(name: 'phone') String phone,
+      @JsonKey(name: 'full_name') String fullName,
+      @JsonKey(name: 'court_number') String courtNumber,
+      @JsonKey(name: 'payment_status') String paymentStatus,
+      @JsonKey(name: 'booked_by') String bookedBy,
+      @JsonKey(name: 'total_amount') int totalAmount,
+      List<ListCourt> court});
 }
 
 /// @nodoc
@@ -69,6 +77,7 @@ class _$CreateBookingCourtParamCopyWithImpl<$Res,
     Object? deviceId = null,
     Object? phone = null,
     Object? fullName = null,
+    Object? courtNumber = null,
     Object? paymentStatus = null,
     Object? bookedBy = null,
     Object? totalAmount = null,
@@ -87,6 +96,10 @@ class _$CreateBookingCourtParamCopyWithImpl<$Res,
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      courtNumber: null == courtNumber
+          ? _value.courtNumber
+          : courtNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
@@ -102,7 +115,7 @@ class _$CreateBookingCourtParamCopyWithImpl<$Res,
       court: null == court
           ? _value.court
           : court // ignore: cast_nullable_to_non_nullable
-              as List<CreateBookingCourtDurationTimeParam>,
+              as List<ListCourt>,
     ) as $Val);
   }
 }
@@ -117,13 +130,14 @@ abstract class _$$CreateBookingCourtParamImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String deviceId,
-      String phone,
-      String fullName,
-      String paymentStatus,
-      String bookedBy,
-      int totalAmount,
-      List<CreateBookingCourtDurationTimeParam> court});
+      {@JsonKey(name: 'device_id') String deviceId,
+      @JsonKey(name: 'phone') String phone,
+      @JsonKey(name: 'full_name') String fullName,
+      @JsonKey(name: 'court_number') String courtNumber,
+      @JsonKey(name: 'payment_status') String paymentStatus,
+      @JsonKey(name: 'booked_by') String bookedBy,
+      @JsonKey(name: 'total_amount') int totalAmount,
+      List<ListCourt> court});
 }
 
 /// @nodoc
@@ -142,6 +156,7 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
     Object? deviceId = null,
     Object? phone = null,
     Object? fullName = null,
+    Object? courtNumber = null,
     Object? paymentStatus = null,
     Object? bookedBy = null,
     Object? totalAmount = null,
@@ -160,6 +175,10 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      courtNumber: null == courtNumber
+          ? _value.courtNumber
+          : courtNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
@@ -175,7 +194,7 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
       court: null == court
           ? _value._court
           : court // ignore: cast_nullable_to_non_nullable
-              as List<CreateBookingCourtDurationTimeParam>,
+              as List<ListCourt>,
     ));
   }
 }
@@ -184,40 +203,44 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
   const _$CreateBookingCourtParamImpl(
-      {this.deviceId = '',
-      this.phone = '',
-      this.fullName = '',
-      this.paymentStatus = '',
-      this.bookedBy = '',
-      this.totalAmount = 0,
-      final List<CreateBookingCourtDurationTimeParam> court = const []})
+      {@JsonKey(name: 'device_id') this.deviceId = '',
+      @JsonKey(name: 'phone') this.phone = '',
+      @JsonKey(name: 'full_name') this.fullName = '',
+      @JsonKey(name: 'court_number') this.courtNumber = '',
+      @JsonKey(name: 'payment_status') this.paymentStatus = '',
+      @JsonKey(name: 'booked_by') this.bookedBy = '',
+      @JsonKey(name: 'total_amount') this.totalAmount = 0,
+      final List<ListCourt> court = const []})
       : _court = court;
 
   factory _$CreateBookingCourtParamImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateBookingCourtParamImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'device_id')
   final String deviceId;
   @override
-  @JsonKey()
+  @JsonKey(name: 'phone')
   final String phone;
   @override
-  @JsonKey()
+  @JsonKey(name: 'full_name')
   final String fullName;
   @override
-  @JsonKey()
+  @JsonKey(name: 'court_number')
+  final String courtNumber;
+  @override
+  @JsonKey(name: 'payment_status')
   final String paymentStatus;
   @override
-  @JsonKey()
+  @JsonKey(name: 'booked_by')
   final String bookedBy;
   @override
-  @JsonKey()
+  @JsonKey(name: 'total_amount')
   final int totalAmount;
-  final List<CreateBookingCourtDurationTimeParam> _court;
+  final List<ListCourt> _court;
   @override
   @JsonKey()
-  List<CreateBookingCourtDurationTimeParam> get court {
+  List<ListCourt> get court {
     if (_court is EqualUnmodifiableListView) return _court;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_court);
@@ -225,7 +248,7 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
 
   @override
   String toString() {
-    return 'CreateBookingCourtParam(deviceId: $deviceId, phone: $phone, fullName: $fullName, paymentStatus: $paymentStatus, bookedBy: $bookedBy, totalAmount: $totalAmount, court: $court)';
+    return 'CreateBookingCourtParam(deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, bookedBy: $bookedBy, totalAmount: $totalAmount, court: $court)';
   }
 
   @override
@@ -238,6 +261,8 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
+            (identical(other.courtNumber, courtNumber) ||
+                other.courtNumber == courtNumber) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
             (identical(other.bookedBy, bookedBy) ||
@@ -254,6 +279,7 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
       deviceId,
       phone,
       fullName,
+      courtNumber,
       paymentStatus,
       bookedBy,
       totalAmount,
@@ -276,32 +302,41 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
 
 abstract class _CreateBookingCourtParam implements CreateBookingCourtParam {
   const factory _CreateBookingCourtParam(
-          {final String deviceId,
-          final String phone,
-          final String fullName,
-          final String paymentStatus,
-          final String bookedBy,
-          final int totalAmount,
-          final List<CreateBookingCourtDurationTimeParam> court}) =
-      _$CreateBookingCourtParamImpl;
+      {@JsonKey(name: 'device_id') final String deviceId,
+      @JsonKey(name: 'phone') final String phone,
+      @JsonKey(name: 'full_name') final String fullName,
+      @JsonKey(name: 'court_number') final String courtNumber,
+      @JsonKey(name: 'payment_status') final String paymentStatus,
+      @JsonKey(name: 'booked_by') final String bookedBy,
+      @JsonKey(name: 'total_amount') final int totalAmount,
+      final List<ListCourt> court}) = _$CreateBookingCourtParamImpl;
 
   factory _CreateBookingCourtParam.fromJson(Map<String, dynamic> json) =
       _$CreateBookingCourtParamImpl.fromJson;
 
   @override
+  @JsonKey(name: 'device_id')
   String get deviceId;
   @override
+  @JsonKey(name: 'phone')
   String get phone;
   @override
+  @JsonKey(name: 'full_name')
   String get fullName;
   @override
+  @JsonKey(name: 'court_number')
+  String get courtNumber;
+  @override
+  @JsonKey(name: 'payment_status')
   String get paymentStatus;
   @override
+  @JsonKey(name: 'booked_by')
   String get bookedBy;
   @override
+  @JsonKey(name: 'total_amount')
   int get totalAmount;
   @override
-  List<CreateBookingCourtDurationTimeParam> get court;
+  List<ListCourt> get court;
   @override
   @JsonKey(ignore: true)
   _$$CreateBookingCourtParamImplCopyWith<_$CreateBookingCourtParamImpl>

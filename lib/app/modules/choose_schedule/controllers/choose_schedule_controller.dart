@@ -1,11 +1,18 @@
 // ignore_for_file: unnecessary_overrides
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_duration_time_param.dart';
+import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
+import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/loading_dialog.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class ChooseScheduleController extends GetxController {
   final usernameController = TextEditingController();
@@ -16,8 +23,10 @@ class ChooseScheduleController extends GetxController {
   final List<int> courtPrices = [80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000, 80000];
   final RxList<bool> selectedTimes = List<bool>.filled(13, false).obs;
   int court = 0;
-  RxInt totalPrice = 0.obs;
+  RxInt finalTotalPrice = 0.obs;
   RxString formattedDate = "".obs;
+  List<ListCourt> bookingDetails = [];
+  Rx<Court> courtModel = const Court().obs;
 
   void toggleSelection(int index) {
     selectedTimes[index] = !selectedTimes[index];
@@ -70,24 +79,64 @@ class ChooseScheduleController extends GetxController {
     return null;
   }
 
-  //function connect api
+  // //function connect api
+  // Future<void> bookingWaterParkOrder({required BuildContext context}) async {
+  //   Loading.show();
+  //   var logger = Logger();
+  //   final deviceId = dashboardController.deviceInfoModel.value.id;
+  //   final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
+  //   if (selectedCourtModels.isEmpty) {
+  //     Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
+  //     return;
+  //   }
+  //   final param = CreateBookingCourtParam(
+  //     deviceId: deviceId,
+  //     phone: phoneNumberController.text,
+  //     fullName: usernameController.text,
+  //     courtNumber: courtModel.value.name,
+  //     paymentStatus: "booked",
+  //     bookedBy: usernameController.text,
+  //     totalAmount: finalTotalPrice.value,
+  //     court: selectedCourtModels,
+  //   );
+  //   logger.d("this data in param ; ${param.toJson()}");
+  // }
+
+  // Your updated function
   Future<void> bookingWaterParkOrder({required BuildContext context}) async {
     Loading.show();
+    var logger = Logger();
     final deviceId = dashboardController.deviceInfoModel.value.id;
+    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
+    if (selectedCourtModels.isEmpty) {
+      Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
+      return;
+    }
     final param = CreateBookingCourtParam(
       deviceId: deviceId,
-      phone: phoneNumberController.toString(),
-      fullName: usernameController.toString(),
+      phone: phoneNumberController.text,
+      fullName: usernameController.text,
+      courtNumber: courtModel.value.name,
       paymentStatus: "booked",
-      totalAmount: totalPrice.value,
-      bookedBy: usernameController.toString(),
-      court: [
-        CreateBookingCourtDurationTimeParam(
-          courtNumber: "A1",
-          courtPrice: 80000,
-          date: formattedDate.value,
-        ),
-      ],
+      bookedBy: usernameController.text,
+      totalAmount: finalTotalPrice.value,
+      court: selectedCourtModels,
+    );
+    logger.d("print data : ${jsonEncode(param.toJson())}");
+    logger.d("print court list: $selectedCourtModels");
+
+    final data = await BookingCourtLocalDataSource().createCourtBooking(param);
+
+    data.fold(
+      (l) {
+        Loading.hide();
+        warningDialog(context: context, des: l, btnOkOnPress: () {});
+      },
+      (r) {
+        Loading.hide();
+        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillPaymentDetail(data: r.data.orderData)));
+        warningDialog(context: context, des: "dai leo der ", btnOkOnPress: () {});
+      },
     );
   }
 
@@ -109,3 +158,28 @@ class ChooseScheduleController extends GetxController {
     super.onClose();
   }
 }
+
+
+//  final bookingDetailsPayload = bookingDetails.map((court) {
+//       return {
+//         'date': court.date,
+//         'duration_time': court.durationTime,
+//       };
+//     }).toList();
+
+
+
+
+// final data = await BookingCourtLocalDataSource().createCourtBooking(param);
+
+//     data.fold(
+//       (l) {
+//         Loading.hide();
+//         warningDialog(context: context, des: l, btnOkOnPress: () {});
+//       },
+//       (r) {
+//         Loading.hide();
+//         // Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillPaymentDetail(data: r.data.orderData)));
+//         warningDialog(context: context, des: "dai leo der ", btnOkOnPress: () {});
+//       },
+//     );

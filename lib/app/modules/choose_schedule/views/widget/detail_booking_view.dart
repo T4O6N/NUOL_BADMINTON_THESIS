@@ -1,11 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
-import 'package:nuol_badminton_thesis/app/modules/payment_detail/controllers/payment_detail_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
@@ -13,9 +15,9 @@ import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class DetailBookingView extends StatelessWidget {
   final Court court;
-  final Map<DateTime, List<String>> bookingDetails;
+  List<ListCourt> bookingDetails;
   final int totalPrice;
-  const DetailBookingView({
+  DetailBookingView({
     super.key,
     required this.court,
     required this.bookingDetails,
@@ -23,18 +25,14 @@ class DetailBookingView extends StatelessWidget {
   });
   final int discount = 20000;
 
-  int calculateDiscountedPrice(int totalPrice) {
-    return totalPrice - discount;
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    final int finalTotalPrice = calculateDiscountedPrice(totalPrice);
-    // final PaymentDetailController controller = Get.put(PaymentDetailController());
+    final int finalTotalPrice = totalPrice - discount;
     ChooseScheduleController chooseScheduleController = Get.put(ChooseScheduleController());
-    chooseScheduleController.totalPrice.value = finalTotalPrice;
+    chooseScheduleController.finalTotalPrice.value = finalTotalPrice;
+    chooseScheduleController.bookingDetails = bookingDetails;
+    chooseScheduleController.courtModel.value = court;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -90,22 +88,27 @@ class DetailBookingView extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             )),
                         const SizedBox(height: 12),
-                        ListView.separated(
-                          shrinkWrap: true, // Added shrinkWrap to ListView.builder
-                          physics: const NeverScrollableScrollPhysics(), // Disabled internal scrolling
-                          itemCount: bookingDetails.keys.length,
-                          itemBuilder: (context, index) {
-                            final date = bookingDetails.keys.elementAt(index);
-                            final timeSlots = bookingDetails[date]!;
-                            final formattedDate = DateFormat('dd/MM/yyyy').format(date);
-                            chooseScheduleController.formattedDate.value = formattedDate;
-                            return ListTile(
-                              title: Text('ວັນ: $formattedDate'),
-                              subtitle: Text('ເວລາ: ${timeSlots.join(', ')}'),
+                        ...bookingDetails.map(
+                          (courtModel) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ວັນທີ່: ${courtModel.date}',
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 5),
+                                ...courtModel.durationTime.map((timeSlot) {
+                                  return Text(
+                                    timeSlot,
+                                    style: const TextStyle(color: Colors.grey),
+                                  );
+                                }).toList(),
+                                const SizedBox(height: 10),
+                              ],
                             );
                           },
-                          separatorBuilder: (BuildContext context, int index) => const Divider(),
-                        ),
+                        ).toList(),
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
@@ -147,7 +150,7 @@ class DetailBookingView extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 10,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -174,9 +177,7 @@ class DetailBookingView extends StatelessWidget {
                               style: TextStyle(color: Colors.blue),
                             ),
                             Text(
-                              // "${controller.totalPrice} ₭",
                               NumberFormatter.formatPriceKip(totalPrice),
-                              // "s",
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ],
@@ -216,16 +217,18 @@ class DetailBookingView extends StatelessWidget {
                 const SizedBox(height: 20),
                 BookingButton(
                   onTap: () {
-                    Get.to(
-                      BillPaymentDetail(
-                        court: court,
-                        bookingDetails: bookingDetails,
-                        userName: chooseScheduleController.usernameController.text,
-                        phoneNumber: chooseScheduleController.phoneNumberController.text,
-                        finalTotalPrice: finalTotalPrice,
-                        totalPrice: totalPrice,
-                      ),
-                    );
+                    chooseScheduleController.bookingWaterParkOrder(context: context);
+
+                    // Get.to(
+                    //   BillPaymentDetail(
+                    //     court: court,
+                    //     bookingDetails: bookingDetails,
+                    //     userName: chooseScheduleController.usernameController.text,
+                    //     phoneNumber: chooseScheduleController.phoneNumberController.text,
+                    //     finalTotalPrice: finalTotalPrice,
+                    //     totalPrice: totalPrice,
+                    //   ),
+                    // );
                   },
                 ),
               ],

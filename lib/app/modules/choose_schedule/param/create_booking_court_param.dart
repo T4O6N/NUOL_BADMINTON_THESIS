@@ -1,7 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_duration_time_param.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 
 part 'create_booking_court_param.freezed.dart';
 part 'create_booking_court_param.g.dart';
@@ -13,13 +13,14 @@ String createBookingCourtParamToJson(CreateBookingCourtParam data) => json.encod
 @freezed
 class CreateBookingCourtParam with _$CreateBookingCourtParam {
   const factory CreateBookingCourtParam({
-    @Default('') String deviceId,
-    @Default('') String phone,
-    @Default('') String fullName,
-    @Default('') String paymentStatus,
-    @Default('') String bookedBy,
-    @Default(0) int totalAmount,
-    @Default([]) List<CreateBookingCourtDurationTimeParam> court,
+    @Default('') @JsonKey(name: 'device_id') String deviceId,
+    @Default('') @JsonKey(name: 'phone') String phone,
+    @Default('') @JsonKey(name: 'full_name') String fullName,
+    @Default('') @JsonKey(name: 'court_number') String courtNumber,
+    @Default('') @JsonKey(name: 'payment_status') String paymentStatus,
+    @Default('') @JsonKey(name: 'booked_by') String bookedBy,
+    @Default(0) @JsonKey(name: 'total_amount') int totalAmount,
+    @Default([]) List<ListCourt> court,
   }) = _CreateBookingCourtParam;
 
   factory CreateBookingCourtParam.fromJson(Map<String, dynamic> json) => _$CreateBookingCourtParamFromJson(json);
