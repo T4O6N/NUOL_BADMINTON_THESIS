@@ -1,10 +1,13 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/service/booking_sevice.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
@@ -25,6 +28,10 @@ class ChooseScheduleController extends GetxController {
   RxString formattedDate = "".obs;
   List<ListCourt> bookingDetails = [];
   Rx<Court> courtModel = const Court().obs;
+  final BookingService bookingService = BookingService();
+  var bookingResponse = Rx<ResponseBookingModel?>(null);
+  var isLoading = false.obs;
+  var logger = Logger();
 
   void toggleSelection(int index) {
     selectedTimes[index] = !selectedTimes[index];
@@ -81,23 +88,66 @@ class ChooseScheduleController extends GetxController {
     Loading.show();
     final deviceId = dashboardController.deviceInfoModel.value.id;
     final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
+
     if (selectedCourtModels.isEmpty) {
-      Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
+      Get.snackbar(
+        'Error',
+        'Please select at least one time slot',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
       return;
     }
-    final param = CreateBookingCourtParam(deviceId: deviceId, phone: phoneNumberController.text, fullName: usernameController.text, courtNumber: courtModel.value.name, paymentStatus: "booked", bookedBy: usernameController.text, totalAmount: finalTotalPrice.value, court: selectedCourtModels);
-    final data = await BookingCourtLocalDataSource().createCourtBooking(param);
-    data.fold(
-      (l) {
-        Loading.hide();
-        warningDialog(context: context, des: l, btnOkOnPress: () {});
-      },
-      (r) {
-        Loading.hide();
-        Get.snackbar('ສຳເລັດ', 'ການຈອງເດີ່ນສຳເລັດ', backgroundColor: Colors.white, colorText: Colors.black);
-        Get.to(BillPaymentDetail(court: courtModel.value, bookingDetails: bookingDetails, userName: usernameController.text, phoneNumber: phoneNumberController.text, finalTotalPrice: finalTotalPrice.value, totalPrice: totalPrice.value));
-      },
+    final bookingRequest = CreateBookingCourtParam(
+      deviceId: deviceId,
+      phone: phoneNumberController.text,
+      fullName: usernameController.text,
+      courtNumber: courtModel.value.name,
+      paymentStatus: "booked",
+      bookedBy: usernameController.text,
+      totalAmount: finalTotalPrice.value,
+      court: selectedCourtModels,
     );
+    isLoading.value = true;
+    logger.d(bookingRequest);
+
+    try {
+      final response = await bookingService.createBooking(bookingRequest);
+      bookingResponse.value = response;
+      logger.d(bookingResponse);
+    } catch (e) {
+      print('Failed to create booking: $e');
+    } finally {
+      isLoading.value = false;
+    }
+
+    // final data = await BookingCourtLocalDataSource().createCourtBooking(param);
+
+    // data.fold(
+    //   (l) {
+    //     Loading.hide();
+    //     warningDialog(context: context, des: l, btnOkOnPress: () {});
+    //   },
+    //   (r) {
+    //     Loading.hide();
+    //     Get.snackbar(
+    //       'ສຳເລັດ',
+    //       'ການຈອງເດີ່ນສຳເລັດ',
+    //       backgroundColor: Colors.white,
+    //       colorText: Colors.black,
+    //     );
+    //     Get.to(
+    //       BillPaymentDetail(
+    //         court: courtModel.value,
+    //         bookingDetails: bookingDetails,
+    //         userName: usernameController.text,
+    //         phoneNumber: phoneNumberController.text,
+    //         finalTotalPrice: finalTotalPrice.value,
+    //         totalPrice: totalPrice.value,
+    //       ),
+    //     );
+    //   },
+    // );
   }
 
   @override
