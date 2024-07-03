@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_request.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_response.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/service/booking_sevice.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
@@ -26,10 +26,10 @@ class ChooseScheduleController extends GetxController {
   RxInt finalTotalPrice = 0.obs;
   RxInt totalPrice = 0.obs;
   RxString formattedDate = "".obs;
-  List<ListCourt> bookingDetails = [];
+  List<CourtDuration> bookingDetails = [];
   Rx<Court> courtModel = const Court().obs;
   final BookingService bookingService = BookingService();
-  var bookingResponse = Rx<ResponseBookingModel?>(null);
+  var bookingResponse = Rx<BookingResponse?>(null);
   var isLoading = false.obs;
   var logger = Logger();
 
@@ -87,7 +87,7 @@ class ChooseScheduleController extends GetxController {
   Future<void> bookingWaterParkOrder({required BuildContext context}) async {
     Loading.show();
     final deviceId = dashboardController.deviceInfoModel.value.id;
-    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
+    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.duration_time.isNotEmpty).toList();
 
     if (selectedCourtModels.isEmpty) {
       Get.snackbar(
@@ -98,56 +98,46 @@ class ChooseScheduleController extends GetxController {
       );
       return;
     }
-    final bookingRequest = CreateBookingCourtParam(
-      deviceId: deviceId,
+    final bookingRequest = BookingRequest(
       phone: phoneNumberController.text,
-      fullName: usernameController.text,
-      courtNumber: courtModel.value.name,
-      paymentStatus: "booked",
-      bookedBy: usernameController.text,
-      totalAmount: finalTotalPrice.value,
       court: selectedCourtModels,
+      device_id: deviceId,
+      full_name: usernameController.text,
+      court_number: courtModel.value.name,
+      payment_status: "booked",
+      total_amount: finalTotalPrice.value,
+      booked_by: usernameController.text,
     );
-    isLoading.value = true;
+
     logger.d(bookingRequest);
 
-    try {
-      final response = await bookingService.createBooking(bookingRequest);
-      bookingResponse.value = response;
-      logger.d(bookingResponse);
-    } catch (e) {
-      print('Failed to create booking: $e');
-    } finally {
-      isLoading.value = false;
-    }
-
-    // final data = await BookingCourtLocalDataSource().createCourtBooking(param);
-
-    // data.fold(
-    //   (l) {
-    //     Loading.hide();
-    //     warningDialog(context: context, des: l, btnOkOnPress: () {});
-    //   },
-    //   (r) {
-    //     Loading.hide();
-    //     Get.snackbar(
-    //       'ສຳເລັດ',
-    //       'ການຈອງເດີ່ນສຳເລັດ',
-    //       backgroundColor: Colors.white,
-    //       colorText: Colors.black,
-    //     );
-    //     Get.to(
-    //       BillPaymentDetail(
-    //         court: courtModel.value,
-    //         bookingDetails: bookingDetails,
-    //         userName: usernameController.text,
-    //         phoneNumber: phoneNumberController.text,
-    //         finalTotalPrice: finalTotalPrice.value,
-    //         totalPrice: totalPrice.value,
-    //       ),
-    //     );
-    //   },
-    // );
+    final data = await BookingCourtLocalDataSource().createCourtBooking(bookingRequest);
+    data.fold(
+      (l) {
+        Loading.hide();
+        warningDialog(context: context, des: l, btnOkOnPress: () {});
+      },
+      (r) {
+        Loading.hide();
+        Get.snackbar(
+          'ສຳເລັດ',
+          'ການຈອງເດີ່ນສຳເລັດ',
+          backgroundColor: Colors.white,
+          colorText: Colors.black,
+        );
+        Get.to(
+          BillPaymentDetail(
+            court: courtModel.value,
+            bookingDetails: bookingDetails,
+            userName: usernameController.text,
+            phoneNumber: phoneNumberController.text,
+            finalTotalPrice: finalTotalPrice.value,
+            totalPrice: totalPrice.value,
+            bookingResponse: r,
+          ),
+        );
+      },
+    );
   }
 
   @override

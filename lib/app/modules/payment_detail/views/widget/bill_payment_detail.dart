@@ -1,12 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_response.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/wave_clipper.dart';
@@ -15,11 +13,12 @@ import '../../../../widgets/number_format.dart';
 
 class BillPaymentDetail extends StatelessWidget {
   final Court court;
-  List<ListCourt> bookingDetails;
+  List<CourtDuration> bookingDetails;
   final String userName;
   final String phoneNumber;
   final int finalTotalPrice;
   final int totalPrice;
+  final BookingResponse bookingResponse;
 
   BillPaymentDetail({
     super.key,
@@ -29,6 +28,7 @@ class BillPaymentDetail extends StatelessWidget {
     required this.userName,
     required this.finalTotalPrice,
     required this.totalPrice,
+    required this.bookingResponse,
   });
 
   @override
@@ -134,7 +134,7 @@ class BillPaymentDetail extends StatelessWidget {
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
-                                ...courtModel.durationTime.map((timeSlot) {
+                                ...courtModel.duration_time.map((timeSlot) {
                                   return Text(
                                     timeSlot,
                                     style: const TextStyle(color: Colors.grey),
@@ -202,7 +202,7 @@ class BillPaymentDetail extends StatelessWidget {
                           ),
                           Center(
                             child: QrImageView(
-                              data: "12345678",
+                              data: bookingResponse.data.id,
                               size: Get.height * 0.2,
                               dataModuleStyle: const QrDataModuleStyle(color: Colors.grey),
                             ),

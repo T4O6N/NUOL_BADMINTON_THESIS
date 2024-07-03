@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_court.dart';
+part of 'court_duration.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ListCourtImpl _$$ListCourtImplFromJson(Map<String, dynamic> json) =>
-    _$ListCourtImpl(
-      date: json['date'] as String? ?? '',
-      durationTime: (json['duration_time'] as List<dynamic>?)
+_$CourtDurationImpl _$$CourtDurationImplFromJson(Map<String, dynamic> json) =>
+    _$CourtDurationImpl(
+      date: json['date'] as String,
+      duration_time: (json['duration_time'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$ListCourtImplToJson(_$ListCourtImpl instance) =>
+Map<String, dynamic> _$$CourtDurationImplToJson(_$CourtDurationImpl instance) =>
     <String, dynamic>{
       'date': instance.date,
-      'duration_time': instance.durationTime,
+      'duration_time': instance.duration_time,
     };

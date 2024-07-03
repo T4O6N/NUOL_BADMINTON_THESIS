@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_request.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_response.dart';
 
 class BookingService {
   final Dio _dio = Dio();
 
-  Future<ResponseBookingModel> createBooking(CreateBookingCourtParam request) async {
+  Future<BookingResponse> createBooking(BookingRequest request) async {
     final data = request.toJson();
     print(data);
     final response = await _dio.post(
@@ -14,7 +14,7 @@ class BookingService {
     );
 
     if (response.statusCode == 201) {
-      return ResponseBookingModel.fromJson(response.data);
+      return BookingResponse.fromJson(response.data);
     } else {
       throw Exception('Failed to create booking');
     }

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
@@ -14,7 +15,7 @@ import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class DetailBookingView extends StatelessWidget {
   final Court court;
-  List<ListCourt> bookingDetails;
+  List<CourtDuration> bookingDetails;
   final int totalPrice;
   DetailBookingView({
     super.key,
@@ -98,7 +99,7 @@ class DetailBookingView extends StatelessWidget {
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
-                                ...courtModel.durationTime.map((timeSlot) {
+                                ...courtModel.duration_time.map((timeSlot) {
                                   return Text(
                                     timeSlot,
                                     style: const TextStyle(color: Colors.grey),
