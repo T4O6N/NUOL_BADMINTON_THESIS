@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 
 class BookingController extends GetxController {
+  fetchBookingHistory() {}
   @override
   void onInit() {
     super.onInit();
