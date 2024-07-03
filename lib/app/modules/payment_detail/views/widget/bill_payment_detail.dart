@@ -125,39 +125,6 @@ class BillPaymentDetail extends StatelessWidget {
                             ],
                           ),
                           const Divider(),
-
-                          // ListView.separated(
-                          //   shrinkWrap: true,
-                          //   physics: const NeverScrollableScrollPhysics(),
-                          //   itemCount: bookingDetails.keys.length,
-                          //   itemBuilder: (context, index) {
-                          //     final date = bookingDetails.keys.elementAt(index);
-                          //     final timeSlots = bookingDetails[date]!;
-                          //     final formattedDate = DateFormat('dd/MM/yyyy').format(date);
-                          //     return Padding(
-                          //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          //       child: ListTile(
-                          //         dense: true,
-                          //         contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          //         title: Text(
-                          //           'ວັນ: $formattedDate',
-                          //           style: const TextStyle(
-                          //             fontSize: 12,
-                          //             fontWeight: FontWeight.bold,
-                          //           ),
-                          //         ),
-                          //         subtitle: Text(
-                          //           'ເວລາ: ${timeSlots.join(', ')}',
-                          //           style: const TextStyle(
-                          //             fontSize: 12,
-                          //             fontWeight: FontWeight.w400,
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     );
-                          //   },
-                          //   separatorBuilder: (BuildContext context, int index) => const Divider(),
-                          // ),
                           ...bookingDetails.map((courtModel) {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,34 +149,6 @@ class BillPaymentDetail extends StatelessWidget {
                             "ລາຍລະອຽດການຈ່າຍເງິນ",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          // ListView.builder(
-                          //   shrinkWrap: true,
-                          //   physics: const NeverScrollableScrollPhysics(),
-                          //   itemCount: allTimeSlots.length,
-                          //   itemBuilder: (context, index) {
-                          //     final timeSlot = allTimeSlots[index];
-                          //     return ListTile(
-                          //       dense: true,
-                          //       contentPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                          //       title: Text(
-                          //         timeSlot,
-                          //         style: const TextStyle(
-                          //           fontSize: 12,
-                          //           fontWeight: FontWeight.w400,
-                          //           color: Colors.grey,
-                          //         ),
-                          //       ),
-                          //       trailing: const Text(
-                          //         "80,000 ₭",
-                          //         style: TextStyle(
-                          //           fontSize: 12,
-                          //           fontWeight: FontWeight.bold,
-                          //         ),
-                          //       ),
-                          //     );
-                          //   },
-                          // ),
-
                           const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

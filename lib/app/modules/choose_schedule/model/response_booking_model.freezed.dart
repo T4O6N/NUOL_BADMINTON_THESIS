@@ -21,7 +21,7 @@ ResponseBookingModel _$ResponseBookingModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ResponseBookingModel {
   String get message => throw _privateConstructorUsedError;
-  ResponseBookingDetailModel get data => throw _privateConstructorUsedError;
+  ResponseBookingDataModel get data => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   int get statusCode => throw _privateConstructorUsedError;
@@ -40,12 +40,12 @@ abstract class $ResponseBookingModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String message,
-      ResponseBookingDetailModel data,
+      ResponseBookingDataModel data,
       String duration,
       String method,
       int statusCode});
 
-  $ResponseBookingDetailModelCopyWith<$Res> get data;
+  $ResponseBookingDataModelCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$ResponseBookingModelCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ResponseBookingDetailModel,
+              as ResponseBookingDataModel,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -94,8 +94,8 @@ class _$ResponseBookingModelCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $ResponseBookingDetailModelCopyWith<$Res> get data {
-    return $ResponseBookingDetailModelCopyWith<$Res>(_value.data, (value) {
+  $ResponseBookingDataModelCopyWith<$Res> get data {
+    return $ResponseBookingDataModelCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
@@ -111,13 +111,13 @@ abstract class _$$ResponseBookingModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String message,
-      ResponseBookingDetailModel data,
+      ResponseBookingDataModel data,
       String duration,
       String method,
       int statusCode});
 
   @override
-  $ResponseBookingDetailModelCopyWith<$Res> get data;
+  $ResponseBookingDataModelCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$$ResponseBookingModelImplCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ResponseBookingDetailModel,
+              as ResponseBookingDataModel,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -166,10 +166,10 @@ class __$$ResponseBookingModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResponseBookingModelImpl implements _ResponseBookingModel {
   const _$ResponseBookingModelImpl(
-      {this.message = '',
-      this.data = const ResponseBookingDetailModel(),
-      this.duration = '',
-      this.method = '',
+      {this.message = "",
+      this.data = const ResponseBookingDataModel(),
+      this.duration = "",
+      this.method = "",
       this.statusCode = 0});
 
   factory _$ResponseBookingModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -180,7 +180,7 @@ class _$ResponseBookingModelImpl implements _ResponseBookingModel {
   final String message;
   @override
   @JsonKey()
-  final ResponseBookingDetailModel data;
+  final ResponseBookingDataModel data;
   @override
   @JsonKey()
   final String duration;
@@ -234,7 +234,7 @@ class _$ResponseBookingModelImpl implements _ResponseBookingModel {
 abstract class _ResponseBookingModel implements ResponseBookingModel {
   const factory _ResponseBookingModel(
       {final String message,
-      final ResponseBookingDetailModel data,
+      final ResponseBookingDataModel data,
       final String duration,
       final String method,
       final int statusCode}) = _$ResponseBookingModelImpl;
@@ -245,7 +245,7 @@ abstract class _ResponseBookingModel implements ResponseBookingModel {
   @override
   String get message;
   @override
-  ResponseBookingDetailModel get data;
+  ResponseBookingDataModel get data;
   @override
   String get duration;
   @override

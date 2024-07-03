@@ -8,7 +8,6 @@ import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/ch
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
-import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
@@ -33,6 +32,7 @@ class DetailBookingView extends StatelessWidget {
     chooseScheduleController.finalTotalPrice.value = finalTotalPrice;
     chooseScheduleController.bookingDetails = bookingDetails;
     chooseScheduleController.courtModel.value = court;
+    chooseScheduleController.totalPrice.value = totalPrice;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -218,17 +218,6 @@ class DetailBookingView extends StatelessWidget {
                 BookingButton(
                   onTap: () {
                     chooseScheduleController.bookingWaterParkOrder(context: context);
-
-                    // Get.to(
-                    //   BillPaymentDetail(
-                    //     court: court,
-                    //     bookingDetails: bookingDetails,
-                    //     userName: chooseScheduleController.usernameController.text,
-                    //     phoneNumber: chooseScheduleController.phoneNumberController.text,
-                    //     finalTotalPrice: finalTotalPrice,
-                    //     totalPrice: totalPrice,
-                    //   ),
-                    // );
                   },
                 ),
               ],

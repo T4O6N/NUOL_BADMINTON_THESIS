@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'response_booking_detail_model.dart';
+part of 'response_booking_data_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,60 +14,61 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ResponseBookingDetailModel _$ResponseBookingDetailModelFromJson(
+ResponseBookingDataModel _$ResponseBookingDataModelFromJson(
     Map<String, dynamic> json) {
-  return _ResponseBookingDetailModel.fromJson(json);
+  return _ResponseBookingDataModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ResponseBookingDetailModel {
+mixin _$ResponseBookingDataModel {
   String get id => throw _privateConstructorUsedError;
   String get deviceId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
+  String get courtNumber => throw _privateConstructorUsedError;
   String get paymentStatus => throw _privateConstructorUsedError;
-  String get expiredTime => throw _privateConstructorUsedError;
-  String get bookedBy => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
+  String get bookedBy => throw _privateConstructorUsedError;
+  String get expiredTime => throw _privateConstructorUsedError;
   String get bookingDate => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
-  List<ResponseBookingDetailCourtModel> get court =>
+  List<ResponseBookingDataCourtModel> get court =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ResponseBookingDetailModelCopyWith<ResponseBookingDetailModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $ResponseBookingDataModelCopyWith<ResponseBookingDataModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ResponseBookingDetailModelCopyWith<$Res> {
-  factory $ResponseBookingDetailModelCopyWith(ResponseBookingDetailModel value,
-          $Res Function(ResponseBookingDetailModel) then) =
-      _$ResponseBookingDetailModelCopyWithImpl<$Res,
-          ResponseBookingDetailModel>;
+abstract class $ResponseBookingDataModelCopyWith<$Res> {
+  factory $ResponseBookingDataModelCopyWith(ResponseBookingDataModel value,
+          $Res Function(ResponseBookingDataModel) then) =
+      _$ResponseBookingDataModelCopyWithImpl<$Res, ResponseBookingDataModel>;
   @useResult
   $Res call(
       {String id,
       String deviceId,
       String phone,
       String fullName,
+      String courtNumber,
       String paymentStatus,
-      String expiredTime,
-      String bookedBy,
       int totalAmount,
+      String bookedBy,
+      String expiredTime,
       String bookingDate,
       String createdAt,
       String updatedAt,
-      List<ResponseBookingDetailCourtModel> court});
+      List<ResponseBookingDataCourtModel> court});
 }
 
 /// @nodoc
-class _$ResponseBookingDetailModelCopyWithImpl<$Res,
-        $Val extends ResponseBookingDetailModel>
-    implements $ResponseBookingDetailModelCopyWith<$Res> {
-  _$ResponseBookingDetailModelCopyWithImpl(this._value, this._then);
+class _$ResponseBookingDataModelCopyWithImpl<$Res,
+        $Val extends ResponseBookingDataModel>
+    implements $ResponseBookingDataModelCopyWith<$Res> {
+  _$ResponseBookingDataModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,10 +82,11 @@ class _$ResponseBookingDetailModelCopyWithImpl<$Res,
     Object? deviceId = null,
     Object? phone = null,
     Object? fullName = null,
+    Object? courtNumber = null,
     Object? paymentStatus = null,
-    Object? expiredTime = null,
-    Object? bookedBy = null,
     Object? totalAmount = null,
+    Object? bookedBy = null,
+    Object? expiredTime = null,
     Object? bookingDate = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -107,22 +109,26 @@ class _$ResponseBookingDetailModelCopyWithImpl<$Res,
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      courtNumber: null == courtNumber
+          ? _value.courtNumber
+          : courtNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiredTime: null == expiredTime
-          ? _value.expiredTime
-          : expiredTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookedBy: null == bookedBy
-          ? _value.bookedBy
-          : bookedBy // ignore: cast_nullable_to_non_nullable
               as String,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      bookedBy: null == bookedBy
+          ? _value.bookedBy
+          : bookedBy // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiredTime: null == expiredTime
+          ? _value.expiredTime
+          : expiredTime // ignore: cast_nullable_to_non_nullable
+              as String,
       bookingDate: null == bookingDate
           ? _value.bookingDate
           : bookingDate // ignore: cast_nullable_to_non_nullable
@@ -138,18 +144,18 @@ class _$ResponseBookingDetailModelCopyWithImpl<$Res,
       court: null == court
           ? _value.court
           : court // ignore: cast_nullable_to_non_nullable
-              as List<ResponseBookingDetailCourtModel>,
+              as List<ResponseBookingDataCourtModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ResponseBookingDetailModelImplCopyWith<$Res>
-    implements $ResponseBookingDetailModelCopyWith<$Res> {
-  factory _$$ResponseBookingDetailModelImplCopyWith(
-          _$ResponseBookingDetailModelImpl value,
-          $Res Function(_$ResponseBookingDetailModelImpl) then) =
-      __$$ResponseBookingDetailModelImplCopyWithImpl<$Res>;
+abstract class _$$ResponseBookingDataModelImplCopyWith<$Res>
+    implements $ResponseBookingDataModelCopyWith<$Res> {
+  factory _$$ResponseBookingDataModelImplCopyWith(
+          _$ResponseBookingDataModelImpl value,
+          $Res Function(_$ResponseBookingDataModelImpl) then) =
+      __$$ResponseBookingDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,24 +163,25 @@ abstract class _$$ResponseBookingDetailModelImplCopyWith<$Res>
       String deviceId,
       String phone,
       String fullName,
+      String courtNumber,
       String paymentStatus,
-      String expiredTime,
-      String bookedBy,
       int totalAmount,
+      String bookedBy,
+      String expiredTime,
       String bookingDate,
       String createdAt,
       String updatedAt,
-      List<ResponseBookingDetailCourtModel> court});
+      List<ResponseBookingDataCourtModel> court});
 }
 
 /// @nodoc
-class __$$ResponseBookingDetailModelImplCopyWithImpl<$Res>
-    extends _$ResponseBookingDetailModelCopyWithImpl<$Res,
-        _$ResponseBookingDetailModelImpl>
-    implements _$$ResponseBookingDetailModelImplCopyWith<$Res> {
-  __$$ResponseBookingDetailModelImplCopyWithImpl(
-      _$ResponseBookingDetailModelImpl _value,
-      $Res Function(_$ResponseBookingDetailModelImpl) _then)
+class __$$ResponseBookingDataModelImplCopyWithImpl<$Res>
+    extends _$ResponseBookingDataModelCopyWithImpl<$Res,
+        _$ResponseBookingDataModelImpl>
+    implements _$$ResponseBookingDataModelImplCopyWith<$Res> {
+  __$$ResponseBookingDataModelImplCopyWithImpl(
+      _$ResponseBookingDataModelImpl _value,
+      $Res Function(_$ResponseBookingDataModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -184,16 +191,17 @@ class __$$ResponseBookingDetailModelImplCopyWithImpl<$Res>
     Object? deviceId = null,
     Object? phone = null,
     Object? fullName = null,
+    Object? courtNumber = null,
     Object? paymentStatus = null,
-    Object? expiredTime = null,
-    Object? bookedBy = null,
     Object? totalAmount = null,
+    Object? bookedBy = null,
+    Object? expiredTime = null,
     Object? bookingDate = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? court = null,
   }) {
-    return _then(_$ResponseBookingDetailModelImpl(
+    return _then(_$ResponseBookingDataModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -210,22 +218,26 @@ class __$$ResponseBookingDetailModelImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      courtNumber: null == courtNumber
+          ? _value.courtNumber
+          : courtNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiredTime: null == expiredTime
-          ? _value.expiredTime
-          : expiredTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookedBy: null == bookedBy
-          ? _value.bookedBy
-          : bookedBy // ignore: cast_nullable_to_non_nullable
               as String,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      bookedBy: null == bookedBy
+          ? _value.bookedBy
+          : bookedBy // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiredTime: null == expiredTime
+          ? _value.expiredTime
+          : expiredTime // ignore: cast_nullable_to_non_nullable
+              as String,
       bookingDate: null == bookingDate
           ? _value.bookingDate
           : bookingDate // ignore: cast_nullable_to_non_nullable
@@ -241,32 +253,32 @@ class __$$ResponseBookingDetailModelImplCopyWithImpl<$Res>
       court: null == court
           ? _value._court
           : court // ignore: cast_nullable_to_non_nullable
-              as List<ResponseBookingDetailCourtModel>,
+              as List<ResponseBookingDataCourtModel>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
-  const _$ResponseBookingDetailModelImpl(
-      {this.id = '',
-      this.deviceId = '',
-      this.phone = '',
-      this.fullName = '',
-      this.paymentStatus = '',
-      this.expiredTime = '',
-      this.bookedBy = '',
+class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
+  const _$ResponseBookingDataModelImpl(
+      {this.id = "",
+      this.deviceId = "",
+      this.phone = "",
+      this.fullName = "",
+      this.courtNumber = "",
+      this.paymentStatus = "",
       this.totalAmount = 0,
-      this.bookingDate = '',
-      this.createdAt = '',
-      this.updatedAt = '',
-      final List<ResponseBookingDetailCourtModel> court = const []})
+      this.bookedBy = "",
+      this.expiredTime = "",
+      this.bookingDate = "",
+      this.createdAt = "",
+      this.updatedAt = "",
+      final List<ResponseBookingDataCourtModel> court = const []})
       : _court = court;
 
-  factory _$ResponseBookingDetailModelImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ResponseBookingDetailModelImplFromJson(json);
+  factory _$ResponseBookingDataModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResponseBookingDataModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -282,16 +294,19 @@ class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
   final String fullName;
   @override
   @JsonKey()
+  final String courtNumber;
+  @override
+  @JsonKey()
   final String paymentStatus;
   @override
   @JsonKey()
-  final String expiredTime;
+  final int totalAmount;
   @override
   @JsonKey()
   final String bookedBy;
   @override
   @JsonKey()
-  final int totalAmount;
+  final String expiredTime;
   @override
   @JsonKey()
   final String bookingDate;
@@ -301,10 +316,10 @@ class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
   @override
   @JsonKey()
   final String updatedAt;
-  final List<ResponseBookingDetailCourtModel> _court;
+  final List<ResponseBookingDataCourtModel> _court;
   @override
   @JsonKey()
-  List<ResponseBookingDetailCourtModel> get court {
+  List<ResponseBookingDataCourtModel> get court {
     if (_court is EqualUnmodifiableListView) return _court;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_court);
@@ -312,28 +327,30 @@ class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
 
   @override
   String toString() {
-    return 'ResponseBookingDetailModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, paymentStatus: $paymentStatus, expiredTime: $expiredTime, bookedBy: $bookedBy, totalAmount: $totalAmount, bookingDate: $bookingDate, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
+    return 'ResponseBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, expiredTime: $expiredTime, bookingDate: $bookingDate, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ResponseBookingDetailModelImpl &&
+            other is _$ResponseBookingDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
+            (identical(other.courtNumber, courtNumber) ||
+                other.courtNumber == courtNumber) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
-            (identical(other.expiredTime, expiredTime) ||
-                other.expiredTime == expiredTime) &&
-            (identical(other.bookedBy, bookedBy) ||
-                other.bookedBy == bookedBy) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
+            (identical(other.bookedBy, bookedBy) ||
+                other.bookedBy == bookedBy) &&
+            (identical(other.expiredTime, expiredTime) ||
+                other.expiredTime == expiredTime) &&
             (identical(other.bookingDate, bookingDate) ||
                 other.bookingDate == bookingDate) &&
             (identical(other.createdAt, createdAt) ||
@@ -351,10 +368,11 @@ class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
       deviceId,
       phone,
       fullName,
+      courtNumber,
       paymentStatus,
-      expiredTime,
-      bookedBy,
       totalAmount,
+      bookedBy,
+      expiredTime,
       bookingDate,
       createdAt,
       updatedAt,
@@ -363,37 +381,37 @@ class _$ResponseBookingDetailModelImpl implements _ResponseBookingDetailModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ResponseBookingDetailModelImplCopyWith<_$ResponseBookingDetailModelImpl>
-      get copyWith => __$$ResponseBookingDetailModelImplCopyWithImpl<
-          _$ResponseBookingDetailModelImpl>(this, _$identity);
+  _$$ResponseBookingDataModelImplCopyWith<_$ResponseBookingDataModelImpl>
+      get copyWith => __$$ResponseBookingDataModelImplCopyWithImpl<
+          _$ResponseBookingDataModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ResponseBookingDetailModelImplToJson(
+    return _$$ResponseBookingDataModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ResponseBookingDetailModel
-    implements ResponseBookingDetailModel {
-  const factory _ResponseBookingDetailModel(
+abstract class _ResponseBookingDataModel implements ResponseBookingDataModel {
+  const factory _ResponseBookingDataModel(
           {final String id,
           final String deviceId,
           final String phone,
           final String fullName,
+          final String courtNumber,
           final String paymentStatus,
-          final String expiredTime,
-          final String bookedBy,
           final int totalAmount,
+          final String bookedBy,
+          final String expiredTime,
           final String bookingDate,
           final String createdAt,
           final String updatedAt,
-          final List<ResponseBookingDetailCourtModel> court}) =
-      _$ResponseBookingDetailModelImpl;
+          final List<ResponseBookingDataCourtModel> court}) =
+      _$ResponseBookingDataModelImpl;
 
-  factory _ResponseBookingDetailModel.fromJson(Map<String, dynamic> json) =
-      _$ResponseBookingDetailModelImpl.fromJson;
+  factory _ResponseBookingDataModel.fromJson(Map<String, dynamic> json) =
+      _$ResponseBookingDataModelImpl.fromJson;
 
   @override
   String get id;
@@ -404,13 +422,15 @@ abstract class _ResponseBookingDetailModel
   @override
   String get fullName;
   @override
+  String get courtNumber;
+  @override
   String get paymentStatus;
   @override
-  String get expiredTime;
+  int get totalAmount;
   @override
   String get bookedBy;
   @override
-  int get totalAmount;
+  String get expiredTime;
   @override
   String get bookingDate;
   @override
@@ -418,9 +438,9 @@ abstract class _ResponseBookingDetailModel
   @override
   String get updatedAt;
   @override
-  List<ResponseBookingDetailCourtModel> get court;
+  List<ResponseBookingDataCourtModel> get court;
   @override
   @JsonKey(ignore: true)
-  _$$ResponseBookingDetailModelImplCopyWith<_$ResponseBookingDetailModelImpl>
+  _$$ResponseBookingDataModelImplCopyWith<_$ResponseBookingDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_detail_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/response_booking_data_model.dart';
 
 part 'response_booking_model.freezed.dart';
 part 'response_booking_model.g.dart';
@@ -13,10 +13,10 @@ String responseBookingModelToJson(ResponseBookingModel data) => json.encode(data
 @freezed
 class ResponseBookingModel with _$ResponseBookingModel {
   const factory ResponseBookingModel({
-    @Default('') String message,
-    @Default(ResponseBookingDetailModel()) ResponseBookingDetailModel data,
-    @Default('') String duration,
-    @Default('') String method,
+    @Default("") String message,
+    @Default(ResponseBookingDataModel()) ResponseBookingDataModel data,
+    @Default("") String duration,
+    @Default("") String method,
     @Default(0) int statusCode,
   }) = _ResponseBookingModel;
 

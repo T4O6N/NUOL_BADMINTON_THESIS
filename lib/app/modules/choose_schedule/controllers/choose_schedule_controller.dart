@@ -1,10 +1,7 @@
 // ignore_for_file: unnecessary_overrides
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
@@ -24,6 +21,7 @@ class ChooseScheduleController extends GetxController {
   final RxList<bool> selectedTimes = List<bool>.filled(13, false).obs;
   int court = 0;
   RxInt finalTotalPrice = 0.obs;
+  RxInt totalPrice = 0.obs;
   RxString formattedDate = "".obs;
   List<ListCourt> bookingDetails = [];
   Rx<Court> courtModel = const Court().obs;
@@ -79,54 +77,16 @@ class ChooseScheduleController extends GetxController {
     return null;
   }
 
-  // //function connect api
-  // Future<void> bookingWaterParkOrder({required BuildContext context}) async {
-  //   Loading.show();
-  //   var logger = Logger();
-  //   final deviceId = dashboardController.deviceInfoModel.value.id;
-  //   final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
-  //   if (selectedCourtModels.isEmpty) {
-  //     Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
-  //     return;
-  //   }
-  //   final param = CreateBookingCourtParam(
-  //     deviceId: deviceId,
-  //     phone: phoneNumberController.text,
-  //     fullName: usernameController.text,
-  //     courtNumber: courtModel.value.name,
-  //     paymentStatus: "booked",
-  //     bookedBy: usernameController.text,
-  //     totalAmount: finalTotalPrice.value,
-  //     court: selectedCourtModels,
-  //   );
-  //   logger.d("this data in param ; ${param.toJson()}");
-  // }
-
-  // Your updated function
   Future<void> bookingWaterParkOrder({required BuildContext context}) async {
     Loading.show();
-    var logger = Logger();
     final deviceId = dashboardController.deviceInfoModel.value.id;
     final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
     if (selectedCourtModels.isEmpty) {
       Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
-    final param = CreateBookingCourtParam(
-      deviceId: deviceId,
-      phone: phoneNumberController.text,
-      fullName: usernameController.text,
-      courtNumber: courtModel.value.name,
-      paymentStatus: "booked",
-      bookedBy: usernameController.text,
-      totalAmount: finalTotalPrice.value,
-      court: selectedCourtModels,
-    );
-    logger.d("print data : ${jsonEncode(param.toJson())}");
-    logger.d("print court list: $selectedCourtModels");
-
+    final param = CreateBookingCourtParam(deviceId: deviceId, phone: phoneNumberController.text, fullName: usernameController.text, courtNumber: courtModel.value.name, paymentStatus: "booked", bookedBy: usernameController.text, totalAmount: finalTotalPrice.value, court: selectedCourtModels);
     final data = await BookingCourtLocalDataSource().createCourtBooking(param);
-
     data.fold(
       (l) {
         Loading.hide();
@@ -134,15 +94,14 @@ class ChooseScheduleController extends GetxController {
       },
       (r) {
         Loading.hide();
-        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillPaymentDetail(data: r.data.orderData)));
-        warningDialog(context: context, des: "dai leo der ", btnOkOnPress: () {});
+        Get.snackbar('ສຳເລັດ', 'ການຈອງເດີ່ນສຳເລັດ', backgroundColor: Colors.white, colorText: Colors.black);
+        Get.to(BillPaymentDetail(court: courtModel.value, bookingDetails: bookingDetails, userName: usernameController.text, phoneNumber: phoneNumberController.text, finalTotalPrice: finalTotalPrice.value, totalPrice: totalPrice.value));
       },
     );
   }
 
   @override
   void onInit() {
-    // setArgument();
     super.onInit();
   }
 
@@ -158,28 +117,3 @@ class ChooseScheduleController extends GetxController {
     super.onClose();
   }
 }
-
-
-//  final bookingDetailsPayload = bookingDetails.map((court) {
-//       return {
-//         'date': court.date,
-//         'duration_time': court.durationTime,
-//       };
-//     }).toList();
-
-
-
-
-// final data = await BookingCourtLocalDataSource().createCourtBooking(param);
-
-//     data.fold(
-//       (l) {
-//         Loading.hide();
-//         warningDialog(context: context, des: l, btnOkOnPress: () {});
-//       },
-//       (r) {
-//         Loading.hide();
-//         // Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillPaymentDetail(data: r.data.orderData)));
-//         warningDialog(context: context, des: "dai leo der ", btnOkOnPress: () {});
-//       },
-//     );

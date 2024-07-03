@@ -9,13 +9,13 @@ part of 'response_booking_model.dart';
 _$ResponseBookingModelImpl _$$ResponseBookingModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseBookingModelImpl(
-      message: json['message'] as String? ?? '',
+      message: json['message'] as String? ?? "",
       data: json['data'] == null
-          ? const ResponseBookingDetailModel()
-          : ResponseBookingDetailModel.fromJson(
+          ? const ResponseBookingDataModel()
+          : ResponseBookingDataModel.fromJson(
               json['data'] as Map<String, dynamic>),
-      duration: json['duration'] as String? ?? '',
-      method: json['method'] as String? ?? '',
+      duration: json['duration'] as String? ?? "",
+      method: json['method'] as String? ?? "",
       statusCode: (json['statusCode'] as num?)?.toInt() ?? 0,
     );
 
