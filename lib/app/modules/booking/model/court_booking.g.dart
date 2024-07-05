@@ -20,6 +20,10 @@ _$CourtBookingImpl _$$CourtBookingImplFromJson(Map<String, dynamic> json) =>
       bookingDate: json['bookingDate'] as String,
       created_at: json['created_at'] as String,
       updated_at: json['updated_at'] as String,
+      court: (json['court'] as List<dynamic>?)
+              ?.map((e) => CourtTime.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$CourtBookingImplToJson(_$CourtBookingImpl instance) =>
@@ -36,4 +40,5 @@ Map<String, dynamic> _$$CourtBookingImplToJson(_$CourtBookingImpl instance) =>
       'bookingDate': instance.bookingDate,
       'created_at': instance.created_at,
       'updated_at': instance.updated_at,
+      'court': instance.court,
     };

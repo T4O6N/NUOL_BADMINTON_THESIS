@@ -16,33 +16,86 @@ class DashboardView extends GetView<DashboardController> {
   final DashboardController controller = Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: controller.pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          HomeView(),
-          const BookingView(),
-          const HistoryView(),
-          const UserProfileView(),
-        ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 10,
-        elevation: 0,
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 35,
+    final Size size = MediaQuery.of(context).size;
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        extendBody: true,
+        appBar: AppBar(backgroundColor: Colors.white, toolbarHeight: 0, elevation: 0),
+        body: PageView(
+          controller: controller.pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            HomeView(),
+            const BookingView(),
+            const HistoryView(),
+            const UserProfileView(),
+          ],
+        ),
+        // bottomNavigationBar: BottomAppBar(
+        //   notchMargin: 10,
+        //   elevation: 0,
+        //   child: Container(
+        //     padding: const EdgeInsets.symmetric(
+        //       horizontal: 35,
+        //     ),
+        //     child: Obx(
+        //       () => Row(
+        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //         children: [
+        //           _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "ໜ້າຫຼັກ"),
+        //           _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 1, label: "ປະຫວັດການຈອງ"),
+        //           _buttomAppBarItem(context, icon: AppImagesSvg.historyIcon, page: 2, label: "ປະຫວັດການຊຳລະ"),
+        //           // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            boxShadow: [BoxShadow(blurRadius: 10, spreadRadius: 1, color: Colors.black12)], // Adjust shadow properties as needed
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
-          child: Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "ໜ້າຫຼັກ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 1, label: "ປະຫວັດການຈອງ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.historyIcon, page: 2, label: "ປະຫວັດການຊຳລະ"),
-                // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: BottomNavigationBar(
+              unselectedItemColor: Colors.grey,
+              backgroundColor: Colors.white,
+              fixedColor: Colors.green,
+              iconSize: 25,
+              selectedLabelStyle: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              showUnselectedLabels: true,
+              items: [
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppImagesSvg.homeIcon,
+                    height: size.height * 0.03,
+                  ),
+                  label: "ໜ້າຫຼັກ",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppImagesSvg.bookingIcon,
+                    height: size.height * 0.03,
+                  ),
+                  label: "ປະຫວັດການຈອງ",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppImagesSvg.historyIcon,
+                    height: size.height * 0.03,
+                  ),
+                  label: "ປະຫວັດການຊຳລະ",
+                ),
               ],
+              onTap: (value) => controller.changeTabIndex(value),
+              currentIndex: controller.tabIndex,
             ),
           ),
         ),

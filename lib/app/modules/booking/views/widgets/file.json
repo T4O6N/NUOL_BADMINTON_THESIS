@@ -1,0 +1,57 @@
+{
+    "message": "Resource retrieved",
+    "data": {
+        "id": "66842b34e4e65e659b863f45",
+        "device_id": "UP1A.231005.007",
+        "phone": "2055736369",
+        "full_name": "Ton",
+        "court_number": "A1",
+        "payment_status": "paided",
+        "total_amount": 0,
+        "booked_by": "Ton",
+        "expiredTime": "2024-07-02T17:00:44.171Z",
+        "bookingDate": "2024-07-02T16:30:44.172Z",
+        "created_at": "2024-07-02T16:30:44.172Z",
+        "updated_at": "2024-07-02T16:30:44.172Z",
+        "court_booking": [
+            {
+                "id": "66842b34e4e65e659b863f46",
+                "created_at": "2024-07-02T16:30:44.172Z",
+                "updated_at": "2024-07-02T16:30:44.172Z",
+                "date": "30/06/2024",
+                "duration_time": [
+                    "9:00 AM - 10:00 AM",
+                    "10:00 AM - 11:00 AM"
+                ],
+                "available": true,
+                "courtBookingId": "66842b34e4e65e659b863f45",
+                "courtBookingHistoryId": null
+            },
+            {
+                "id": "66842b34e4e65e659b863f47",
+                "created_at": "2024-07-02T16:30:44.172Z",
+                "updated_at": "2024-07-02T16:30:44.172Z",
+                "date": "30/07/2024",
+                "duration_time": [
+                    "9:00 AM - 10:00 AM",
+                    "10:00 AM - 11:00 AM"
+                ],
+                "available": true,
+                "courtBookingId": "66842b34e4e65e659b863f45",
+                "courtBookingHistoryId": null
+            }
+        ],
+        "show_court_available": {
+            "total_amount": 80000,
+            "duration_time": [
+                "9:00 AM - 10:00 AM"
+            ]
+        },
+        "show_court_available": {
+            "message": "null",
+        }
+    },
+    "duration": "73ms",
+    "method": "GET",
+    "statusCode": 200
+}

@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nuol_badminton_thesis/app/modules/booking/model/court_time.dart';
+import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 
 part 'court_booking.freezed.dart';
 part 'court_booking.g.dart';
@@ -18,6 +20,7 @@ class CourtBooking with _$CourtBooking {
     required String bookingDate,
     required String created_at,
     required String updated_at,
+    @Default([]) List<CourtTime> court,
   }) = _CourtBooking;
 
   factory CourtBooking.fromJson(Map<String, dynamic> json) => _$CourtBookingFromJson(json);

@@ -32,6 +32,7 @@ mixin _$CourtBooking {
   String get bookingDate => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
   String get updated_at => throw _privateConstructorUsedError;
+  List<CourtTime> get court => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +58,8 @@ abstract class $CourtBookingCopyWith<$Res> {
       String expiredTime,
       String bookingDate,
       String created_at,
-      String updated_at});
+      String updated_at,
+      List<CourtTime> court});
 }
 
 /// @nodoc
@@ -85,6 +87,7 @@ class _$CourtBookingCopyWithImpl<$Res, $Val extends CourtBooking>
     Object? bookingDate = null,
     Object? created_at = null,
     Object? updated_at = null,
+    Object? court = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -135,6 +138,10 @@ class _$CourtBookingCopyWithImpl<$Res, $Val extends CourtBooking>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as String,
+      court: null == court
+          ? _value.court
+          : court // ignore: cast_nullable_to_non_nullable
+              as List<CourtTime>,
     ) as $Val);
   }
 }
@@ -159,7 +166,8 @@ abstract class _$$CourtBookingImplCopyWith<$Res>
       String expiredTime,
       String bookingDate,
       String created_at,
-      String updated_at});
+      String updated_at,
+      List<CourtTime> court});
 }
 
 /// @nodoc
@@ -185,6 +193,7 @@ class __$$CourtBookingImplCopyWithImpl<$Res>
     Object? bookingDate = null,
     Object? created_at = null,
     Object? updated_at = null,
+    Object? court = null,
   }) {
     return _then(_$CourtBookingImpl(
       id: null == id
@@ -235,6 +244,10 @@ class __$$CourtBookingImplCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as String,
+      court: null == court
+          ? _value._court
+          : court // ignore: cast_nullable_to_non_nullable
+              as List<CourtTime>,
     ));
   }
 }
@@ -254,7 +267,9 @@ class _$CourtBookingImpl implements _CourtBooking {
       required this.expiredTime,
       required this.bookingDate,
       required this.created_at,
-      required this.updated_at});
+      required this.updated_at,
+      final List<CourtTime> court = const []})
+      : _court = court;
 
   factory _$CourtBookingImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourtBookingImplFromJson(json);
@@ -285,10 +300,18 @@ class _$CourtBookingImpl implements _CourtBooking {
   final String created_at;
   @override
   final String updated_at;
+  final List<CourtTime> _court;
+  @override
+  @JsonKey()
+  List<CourtTime> get court {
+    if (_court is EqualUnmodifiableListView) return _court;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_court);
+  }
 
   @override
   String toString() {
-    return 'CourtBooking(id: $id, device_id: $device_id, phone: $phone, full_name: $full_name, court_number: $court_number, payment_status: $payment_status, total_amount: $total_amount, booked_by: $booked_by, expiredTime: $expiredTime, bookingDate: $bookingDate, created_at: $created_at, updated_at: $updated_at)';
+    return 'CourtBooking(id: $id, device_id: $device_id, phone: $phone, full_name: $full_name, court_number: $court_number, payment_status: $payment_status, total_amount: $total_amount, booked_by: $booked_by, expiredTime: $expiredTime, bookingDate: $bookingDate, created_at: $created_at, updated_at: $updated_at, court: $court)';
   }
 
   @override
@@ -317,7 +340,8 @@ class _$CourtBookingImpl implements _CourtBooking {
             (identical(other.created_at, created_at) ||
                 other.created_at == created_at) &&
             (identical(other.updated_at, updated_at) ||
-                other.updated_at == updated_at));
+                other.updated_at == updated_at) &&
+            const DeepCollectionEquality().equals(other._court, _court));
   }
 
   @JsonKey(ignore: true)
@@ -335,7 +359,8 @@ class _$CourtBookingImpl implements _CourtBooking {
       expiredTime,
       bookingDate,
       created_at,
-      updated_at);
+      updated_at,
+      const DeepCollectionEquality().hash(_court));
 
   @JsonKey(ignore: true)
   @override
@@ -364,7 +389,8 @@ abstract class _CourtBooking implements CourtBooking {
       required final String expiredTime,
       required final String bookingDate,
       required final String created_at,
-      required final String updated_at}) = _$CourtBookingImpl;
+      required final String updated_at,
+      final List<CourtTime> court}) = _$CourtBookingImpl;
 
   factory _CourtBooking.fromJson(Map<String, dynamic> json) =
       _$CourtBookingImpl.fromJson;
@@ -393,6 +419,8 @@ abstract class _CourtBooking implements CourtBooking {
   String get created_at;
   @override
   String get updated_at;
+  @override
+  List<CourtTime> get court;
   @override
   @JsonKey(ignore: true)
   _$$CourtBookingImplCopyWith<_$CourtBookingImpl> get copyWith =>

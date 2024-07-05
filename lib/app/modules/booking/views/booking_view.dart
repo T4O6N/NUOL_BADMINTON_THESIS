@@ -1,15 +1,8 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:nuol_badminton_thesis/app/constants/app_color.dart';
-import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
-import 'package:nuol_badminton_thesis/app/modules/booking/model/booking_history.dart';
-import 'package:nuol_badminton_thesis/app/modules/booking/views/widgets/listview_stack_booking.dart';
-import 'package:nuol_badminton_thesis/app/modules/booking/views/widgets/show_duration_booking.dart';
-
+import 'package:lottie/lottie.dart';
+import 'package:nuol_badminton_thesis/app/constants/lottie_constants.dart';
 import '../controllers/booking_controller.dart';
 
 class BookingView extends GetView<BookingController> {
@@ -19,41 +12,105 @@ class BookingView extends GetView<BookingController> {
     final BookingController bookingController = Get.put(BookingController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Booking History'),
+        centerTitle: true,
+        title: const Text(
+          'ປະຫວັດການຈອງ',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.green,
+        actions: [
+          Obx(
+            () => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  'ຈຳນວນ: ${bookingController.bookingList.length}',
+                  style: const TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
-      body: FutureBuilder<List<BookingHistory>>(
-        future: bookingController.fetchBookingHistory(), // Replace with your fetch method
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error fetching data: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No booking history available.'));
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return _buildBookingCard(snapshot.data![index]);
-              },
-            );
-          }
-        },
-      ),
-    );
-  }
-
-  Widget _buildBookingCard(BookingHistory booking) {
-    return Card(
-      margin: EdgeInsets.all(8),
-      child: ListTile(
-        title: Text('Booking ID: ${booking.id}'),
-        subtitle: Text('Booking Date: ${DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(booking.courtBooking.bookingDate))}'), // Example date formatting
-        onTap: () {
-          // Handle onTap if needed
-        },
+      body: RefreshIndicator(
+        onRefresh: () => bookingController.fetchBookingHistory(),
+        child: bookingController.obx(
+          (bookingList) => ListView.builder(
+            itemCount: controller.bookingList.length,
+            itemBuilder: (context, index) {
+              final historyList = controller.bookingList[index];
+              return Card(
+                margin: const EdgeInsets.all(8),
+                child: ListTile(
+                  // title: Text('ຊື່: ${historyList.courtBooking.full_name}'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ຊື່: ${historyList.courtBooking.full_name}'),
+                      Text('ເບີໂທ: ${historyList.courtBooking.phone}'),
+                      Text('ຄອດ: ${historyList.courtBooking.court_number}'),
+                      Text(
+                        'ວັນທີ່ຈອງ: ${DateFormat('yyyy-MM-dd HH:mm').format(
+                          DateTime.parse(historyList.courtBooking.created_at),
+                        )}',
+                      ),
+                      ...historyList.courtBooking.court.map(
+                        (courtModel) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "ວັນທີ່ : ${courtModel.date}",
+                              ),
+                              ...courtModel.duration_time.map((timeSlot) {
+                                return Text(
+                                  timeSlot,
+                                  style: const TextStyle(color: Colors.grey),
+                                );
+                              }).toList(),
+                            ],
+                          );
+                        },
+                      ).toList(),
+                    ],
+                  ),
+                  onTap: () {},
+                ),
+              );
+            },
+          ),
+          onEmpty: ListView(
+            children: [
+              SizedBox(
+                height: Get.height * 0.6,
+                width: Get.width,
+                child: Center(
+                  child: LottieBuilder.asset(LottieConstants.empty),
+                ),
+              ),
+            ],
+          ),
+          onLoading: SizedBox(
+            height: Get.height * 0.6,
+            width: Get.width,
+            child: Center(
+              child: CircularProgressIndicator(color: Colors.orange.withOpacity(0.2)),
+            ),
+          ),
+          onError: (error) => ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            children: [
+              SizedBox(
+                height: Get.height * 0.6,
+                width: Get.width,
+                child: Center(
+                  child: LottieBuilder.asset(LottieConstants.empty),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-//  DateContainer(), 

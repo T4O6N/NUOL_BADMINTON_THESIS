@@ -152,20 +152,22 @@ class __$$HistoryResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HistoryResponseImpl implements _HistoryResponse {
   _$HistoryResponseImpl(
-      {required this.message,
-      required final List<BookingHistory> data,
-      required this.duration,
-      required this.method,
-      required this.statusCode})
+      {this.message = '',
+      final List<BookingHistory> data = const [],
+      this.duration = '',
+      this.method = '',
+      this.statusCode = 0})
       : _data = data;
 
   factory _$HistoryResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$HistoryResponseImplFromJson(json);
 
   @override
+  @JsonKey()
   final String message;
   final List<BookingHistory> _data;
   @override
+  @JsonKey()
   List<BookingHistory> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
@@ -173,10 +175,13 @@ class _$HistoryResponseImpl implements _HistoryResponse {
   }
 
   @override
+  @JsonKey()
   final String duration;
   @override
+  @JsonKey()
   final String method;
   @override
+  @JsonKey()
   final int statusCode;
 
   @override
@@ -220,11 +225,11 @@ class _$HistoryResponseImpl implements _HistoryResponse {
 
 abstract class _HistoryResponse implements HistoryResponse {
   factory _HistoryResponse(
-      {required final String message,
-      required final List<BookingHistory> data,
-      required final String duration,
-      required final String method,
-      required final int statusCode}) = _$HistoryResponseImpl;
+      {final String message,
+      final List<BookingHistory> data,
+      final String duration,
+      final String method,
+      final int statusCode}) = _$HistoryResponseImpl;
 
   factory _HistoryResponse.fromJson(Map<String, dynamic> json) =
       _$HistoryResponseImpl.fromJson;

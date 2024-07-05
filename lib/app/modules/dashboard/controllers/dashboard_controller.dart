@@ -6,7 +6,17 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/model/device_info_model.dart';
 
 class DashboardController extends GetxController {
-  late PageController pageController;
+  
+  int tabIndex = 0;
+  final PageController pageController = PageController();
+  void changeTabIndex(int index) {
+    tabIndex = index;
+    pageController.jumpToPage(index);
+    update();
+  }
+
+  Rx<int> pageChangNum = 0.obs;
+
   //Function for go the page
   RxInt currentPage = 0.obs;
   void goToTab(int page) {
@@ -23,7 +33,6 @@ class DashboardController extends GetxController {
 
   @override
   void onInit() {
-    pageController = PageController(initialPage: 0);
     initPlatformState();
     super.onInit();
   }

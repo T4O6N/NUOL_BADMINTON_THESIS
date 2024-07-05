@@ -9,13 +9,14 @@ part of 'history_response.dart';
 _$HistoryResponseImpl _$$HistoryResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$HistoryResponseImpl(
-      message: json['message'] as String,
-      data: (json['data'] as List<dynamic>)
-          .map((e) => BookingHistory.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      duration: json['duration'] as String,
-      method: json['method'] as String,
-      statusCode: (json['statusCode'] as num).toInt(),
+      message: json['message'] as String? ?? '',
+      data: (json['data'] as List<dynamic>?)
+              ?.map((e) => BookingHistory.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      duration: json['duration'] as String? ?? '',
+      method: json['method'] as String? ?? '',
+      statusCode: (json['statusCode'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$HistoryResponseImplToJson(
