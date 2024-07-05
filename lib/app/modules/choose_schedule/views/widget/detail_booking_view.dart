@@ -12,6 +12,7 @@ import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class DetailBookingView extends StatelessWidget {
   final Court court;
@@ -87,15 +88,15 @@ class DetailBookingView extends StatelessWidget {
                         Text("ຄອດ : ${court.name}",
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             )),
-                        const SizedBox(height: 12),
                         ...bookingDetails.map(
                           (courtModel) {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'ວັນທີ່: ${courtModel.date}',
+                                  'ວັນທີ່ : ${courtModel.date}',
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
@@ -116,7 +117,7 @@ class DetailBookingView extends StatelessWidget {
                             Get.to(ChooseScheduleStfView(court: court));
                           },
                           child: Container(
-                            height: size.height * 0.04,
+                            height: size.height * 0.05,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.grey[200],
@@ -218,7 +219,15 @@ class DetailBookingView extends StatelessWidget {
                 const SizedBox(height: 20),
                 BookingButton(
                   onTap: () {
-                    chooseScheduleController.bookingWaterParkOrder(context: context);
+                    final name = chooseScheduleController.usernameController.text;
+                    final phone = chooseScheduleController.phoneNumberController.text;
+                    if (phone.isEmpty || name.isEmpty) {
+                      warningDialog(des: "ກະລຸນາເພີ່ມຂໍ້ມູນຕິດຕໍ່", context: context, btnOkOnPress: () {});
+                    } else if (!['2', '5', '7', '9'].contains(phone[2]) || phone.length != 10) {
+                      warningDialog(des: "ກະລຸນາປ້ອນເບີໃຫ້ຖືກຕ້ອງ", context: context, btnOkOnPress: () {});
+                    } else {
+                      chooseScheduleController.bookingWaterParkOrder(context: context);
+                    }
                   },
                 ),
               ],

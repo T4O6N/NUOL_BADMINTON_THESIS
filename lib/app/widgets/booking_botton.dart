@@ -9,7 +9,7 @@ class BookingButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: size.height * 0.055,
+        height: size.height * 0.06,
         width: double.infinity,
         decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(8)),
         child: const Center(

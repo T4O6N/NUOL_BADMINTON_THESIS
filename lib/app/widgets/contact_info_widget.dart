@@ -60,6 +60,7 @@ class ContactInfoWidget extends StatelessWidget {
               hintText: 'ປ້ອນເບີໂທ',
               validator: chooseScheduleController.validatePhoneNumber,
             ),
+            const Text("ກະລຸນາປ້ອນເບີໂທ : 20xxxx xxxx"),
             const SizedBox(height: 8),
           ],
         ),

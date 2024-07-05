@@ -1,10 +1,8 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, avoid_print
 
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-
 import '../controllers/scan_qr_controller.dart';
 
 class ScanQrView extends GetView<ScanQrController> {
@@ -54,7 +52,6 @@ class ScanQrView extends GetView<ScanQrController> {
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    // ignore: avoid_print
     print('${DateTime.now().toIso8601String()}_onPermissionSet $p');
     if (!p) {
       ScaffoldMessenger.of(context).showSnackBar(
