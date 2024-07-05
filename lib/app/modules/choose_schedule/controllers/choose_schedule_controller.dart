@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_request.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_response.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/service/booking_sevice.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/models/response_booking_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
@@ -25,10 +25,9 @@ class ChooseScheduleController extends GetxController {
   RxInt finalTotalPrice = 0.obs;
   RxInt totalPrice = 0.obs;
   RxString formattedDate = "".obs;
-  List<CourtDuration> bookingDetails = [];
+  List<ListCourt> bookingDetails = [];
   Rx<Court> courtModel = const Court().obs;
-  final BookingService bookingService = BookingService();
-  var bookingResponse = Rx<BookingResponse?>(null);
+  var bookingResponse = Rx<ResponseBookingModel?>(null);
   var isLoading = false.obs;
   var logger = Logger();
 
@@ -86,7 +85,7 @@ class ChooseScheduleController extends GetxController {
   Future<void> bookingWaterParkOrder({required BuildContext context}) async {
     Loading.show();
     final deviceId = dashboardController.deviceInfoModel.value.id;
-    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.duration_time.isNotEmpty).toList();
+    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
 
     if (selectedCourtModels.isEmpty) {
       Get.snackbar(
@@ -97,15 +96,15 @@ class ChooseScheduleController extends GetxController {
       );
       return;
     }
-    final bookingRequest = BookingRequest(
+    final bookingRequest = CreateBookingCourtParam(
       phone: phoneNumberController.text,
       court: selectedCourtModels,
-      device_id: deviceId,
-      full_name: usernameController.text,
-      court_number: courtModel.value.name,
-      payment_status: "booked",
-      total_amount: finalTotalPrice.value,
-      booked_by: usernameController.text,
+      deviceId: deviceId,
+      fullName: usernameController.text,
+      courtNumber: courtModel.value.name,
+      paymentStatus: 'booked',
+      bookedBy: usernameController.text,
+      totalAmount: finalTotalPrice.value,
     );
 
     logger.d(bookingRequest);
