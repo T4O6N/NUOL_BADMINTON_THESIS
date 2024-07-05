@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
-import 'package:nuol_badminton_thesis/app/modules/booking/model/booking_history.dart';
-import 'package:nuol_badminton_thesis/app/modules/booking/model/history_response.dart';
+import 'package:nuol_badminton_thesis/app/modules/booking/models/response_booking_item_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/booking/models/response_booking_list_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 
-class BookingController extends GetxController with StateMixin<List<BookingHistory>> {
+class BookingController extends GetxController with StateMixin<List<ResponseBookingItemModel>> {
   DashboardController dashboardController = Get.put(DashboardController());
-  RxList<BookingHistory> bookingList = <BookingHistory>[].obs;
+  RxList<ResponseBookingItemModel> bookingList = <ResponseBookingItemModel>[].obs;
   var log = Logger();
 
   final Dio _dio = Dio();
@@ -20,8 +20,9 @@ class BookingController extends GetxController with StateMixin<List<BookingHisto
     final path = "$baseUrl/$deviceId";
     try {
       final response = await _dio.get(path);
+      log.d("this is response: $response");
       final json = response.data;
-      final res = HistoryResponse.fromJson(json);
+      final res = ResponseBookingListModel.fromJson(json);
       log.d("this is data: ${res.data.length}");
       bookingList.value = res.data;
       if (res.data.isEmpty) {
@@ -40,15 +41,5 @@ class BookingController extends GetxController with StateMixin<List<BookingHisto
   Future<void> onInit() async {
     await fetchBookingHistory();
     super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }

@@ -2,7 +2,7 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/params/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/detail_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
@@ -19,7 +19,7 @@ class ChooseScheduleStfView extends StatefulWidget {
 class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
   final List<String> timeSlots = ['9:00 AM - 10:00 AM', '10:00 AM- 11:00 AM', '11:00 AM- 12:00 PM', '12:00 PM- 1:00 PM', '1:00 PM - 2:00 PM', '2:00 PM - 3:00 PM', '3:00 PM - 4:00 PM', '4:00 PM - 5:00 PM', '5:00 PM - 6:00 PM', '6:00 PM - 7:00 PM', '7:00 PM - 8:00 PM', '8:00 PM - 9:00 PM', '9:00 PM - 10:00 PM', '10:00 PM - 11:00 PM'];
 
-  List<CourtDuration> bookingDetails = [];
+  List<ListCourt> bookingDetails = [];
   DateTime _selectedDate = DateTime.now();
   int totalPrice = 0;
   final int pricePerSlot = 80000;
@@ -33,19 +33,19 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
 
   void _initializeBookingDetails(DateTime date) {
     setState(() {
-      bookingDetails.add(CourtDuration(date: DateFormat('yyyy-MM-dd').format(date), duration_time: []));
+      bookingDetails.add(ListCourt(date: DateFormat('yyyy-MM-dd').format(date), durationTime: []));
     });
   }
 
   void _calculateTotalPrice() {
     totalPrice = bookingDetails.fold(
       0,
-      (sum, courtModel) => sum + (courtModel.duration_time.length * pricePerSlot),
+      (sum, courtModel) => sum + (courtModel.durationTime.length * pricePerSlot),
     );
   }
 
   void _addToCart() {
-    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.duration_time.isNotEmpty).toList();
+    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
 
     if (selectedCourtModels.isEmpty) {
       Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
@@ -180,10 +180,10 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                 final timeSlot = timeSlots[index];
                                 final currentCourtModel = bookingDetails.firstWhere(
                                   (courtModel) => courtModel.date == DateFormat('yyyy-MM-dd').format(_selectedDate),
-                                  orElse: () => CourtDuration(date: '', duration_time: []),
+                                  orElse: () => ListCourt(date: '', durationTime: []),
                                 );
 
-                                final isSelected = currentCourtModel.duration_time.contains(timeSlot);
+                                final isSelected = currentCourtModel.durationTime.contains(timeSlot);
                                 final isTimePassed = _isTimePassed(timeSlot);
                                 final isCurrentDate = _selectedDate.isAtSameMomentAs(DateTime.now());
                                 final canChangeTimeSlot = isCurrentDate || !isTimePassed;
@@ -197,7 +197,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                           setState(() {
                                             if (value == true) {
                                               final updatedCourtModel = currentCourtModel.copyWith(
-                                                duration_time: [...currentCourtModel.duration_time, timeSlot],
+                                                durationTime: [...currentCourtModel.durationTime, timeSlot],
                                               );
                                               final index = bookingDetails.indexWhere(
                                                 (courtModel) => courtModel.date == updatedCourtModel.date,
@@ -205,7 +205,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                               bookingDetails[index] = updatedCourtModel;
                                             } else {
                                               final updatedCourtModel = currentCourtModel.copyWith(
-                                                duration_time: currentCourtModel.duration_time.where((slot) => slot != timeSlot).toList(),
+                                                durationTime: currentCourtModel.durationTime.where((slot) => slot != timeSlot).toList(),
                                               );
                                               final index = bookingDetails.indexWhere(
                                                 (courtModel) => courtModel.date == updatedCourtModel.date,

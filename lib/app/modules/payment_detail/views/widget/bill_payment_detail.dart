@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/booking_response.dart';
-import 'package:nuol_badminton_thesis/app/modules/choose_schedule/model/court_duration.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/models/response_booking_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/choose_schedule/params/list_court.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
@@ -13,12 +13,12 @@ import '../../../../widgets/number_format.dart';
 
 class BillPaymentDetail extends StatelessWidget {
   final Court court;
-  List<CourtDuration> bookingDetails;
+  List<ListCourt> bookingDetails;
   final String userName;
   final String phoneNumber;
   final int finalTotalPrice;
   final int totalPrice;
-  final BookingResponse bookingResponse;
+  final ResponseBookingModel bookingResponse;
 
   BillPaymentDetail({
     super.key,
@@ -134,7 +134,7 @@ class BillPaymentDetail extends StatelessWidget {
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
-                                ...courtModel.duration_time.map((timeSlot) {
+                                ...courtModel.durationTime.map((timeSlot) {
                                   return Text(
                                     timeSlot,
                                     style: const TextStyle(color: Colors.grey),

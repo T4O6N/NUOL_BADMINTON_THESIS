@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'booking_response.dart';
+part of 'response_booking_list_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,44 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-BookingResponse _$BookingResponseFromJson(Map<String, dynamic> json) {
-  return _BookingResponse.fromJson(json);
+ResponseBookingListModel _$ResponseBookingListModelFromJson(
+    Map<String, dynamic> json) {
+  return _ResponseBookingListModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BookingResponse {
+mixin _$ResponseBookingListModel {
   String get message => throw _privateConstructorUsedError;
-  BookingData get data => throw _privateConstructorUsedError;
+  List<ResponseBookingItemModel> get data => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   int get statusCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BookingResponseCopyWith<BookingResponse> get copyWith =>
+  $ResponseBookingListModelCopyWith<ResponseBookingListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BookingResponseCopyWith<$Res> {
-  factory $BookingResponseCopyWith(
-          BookingResponse value, $Res Function(BookingResponse) then) =
-      _$BookingResponseCopyWithImpl<$Res, BookingResponse>;
+abstract class $ResponseBookingListModelCopyWith<$Res> {
+  factory $ResponseBookingListModelCopyWith(ResponseBookingListModel value,
+          $Res Function(ResponseBookingListModel) then) =
+      _$ResponseBookingListModelCopyWithImpl<$Res, ResponseBookingListModel>;
   @useResult
   $Res call(
       {String message,
-      BookingData data,
+      List<ResponseBookingItemModel> data,
       String duration,
       String method,
       int statusCode});
-
-  $BookingDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class _$BookingResponseCopyWithImpl<$Res, $Val extends BookingResponse>
-    implements $BookingResponseCopyWith<$Res> {
-  _$BookingResponseCopyWithImpl(this._value, this._then);
+class _$ResponseBookingListModelCopyWithImpl<$Res,
+        $Val extends ResponseBookingListModel>
+    implements $ResponseBookingListModelCopyWith<$Res> {
+  _$ResponseBookingListModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,7 +75,7 @@ class _$BookingResponseCopyWithImpl<$Res, $Val extends BookingResponse>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as BookingData,
+              as List<ResponseBookingItemModel>,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -90,41 +90,33 @@ class _$BookingResponseCopyWithImpl<$Res, $Val extends BookingResponse>
               as int,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BookingDataCopyWith<$Res> get data {
-    return $BookingDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$BookingResponseImplCopyWith<$Res>
-    implements $BookingResponseCopyWith<$Res> {
-  factory _$$BookingResponseImplCopyWith(_$BookingResponseImpl value,
-          $Res Function(_$BookingResponseImpl) then) =
-      __$$BookingResponseImplCopyWithImpl<$Res>;
+abstract class _$$ResponseBookingListModelImplCopyWith<$Res>
+    implements $ResponseBookingListModelCopyWith<$Res> {
+  factory _$$ResponseBookingListModelImplCopyWith(
+          _$ResponseBookingListModelImpl value,
+          $Res Function(_$ResponseBookingListModelImpl) then) =
+      __$$ResponseBookingListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String message,
-      BookingData data,
+      List<ResponseBookingItemModel> data,
       String duration,
       String method,
       int statusCode});
-
-  @override
-  $BookingDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$BookingResponseImplCopyWithImpl<$Res>
-    extends _$BookingResponseCopyWithImpl<$Res, _$BookingResponseImpl>
-    implements _$$BookingResponseImplCopyWith<$Res> {
-  __$$BookingResponseImplCopyWithImpl(
-      _$BookingResponseImpl _value, $Res Function(_$BookingResponseImpl) _then)
+class __$$ResponseBookingListModelImplCopyWithImpl<$Res>
+    extends _$ResponseBookingListModelCopyWithImpl<$Res,
+        _$ResponseBookingListModelImpl>
+    implements _$$ResponseBookingListModelImplCopyWith<$Res> {
+  __$$ResponseBookingListModelImplCopyWithImpl(
+      _$ResponseBookingListModelImpl _value,
+      $Res Function(_$ResponseBookingListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,15 +128,15 @@ class __$$BookingResponseImplCopyWithImpl<$Res>
     Object? method = null,
     Object? statusCode = null,
   }) {
-    return _then(_$BookingResponseImpl(
+    return _then(_$ResponseBookingListModelImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as BookingData,
+              as List<ResponseBookingItemModel>,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -163,40 +155,52 @@ class __$$BookingResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BookingResponseImpl implements _BookingResponse {
-  _$BookingResponseImpl(
-      {required this.message,
-      required this.data,
-      required this.duration,
-      required this.method,
-      required this.statusCode});
+class _$ResponseBookingListModelImpl implements _ResponseBookingListModel {
+  const _$ResponseBookingListModelImpl(
+      {this.message = "",
+      final List<ResponseBookingItemModel> data = const [],
+      this.duration = "",
+      this.method = "",
+      this.statusCode = 0})
+      : _data = data;
 
-  factory _$BookingResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BookingResponseImplFromJson(json);
+  factory _$ResponseBookingListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResponseBookingListModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final String message;
+  final List<ResponseBookingItemModel> _data;
   @override
-  final BookingData data;
+  @JsonKey()
+  List<ResponseBookingItemModel> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
   @override
+  @JsonKey()
   final String duration;
   @override
+  @JsonKey()
   final String method;
   @override
+  @JsonKey()
   final int statusCode;
 
   @override
   String toString() {
-    return 'BookingResponse(message: $message, data: $data, duration: $duration, method: $method, statusCode: $statusCode)';
+    return 'ResponseBookingListModel(message: $message, data: $data, duration: $duration, method: $method, statusCode: $statusCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BookingResponseImpl &&
+            other is _$ResponseBookingListModelImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.method, method) || other.method == method) &&
@@ -206,39 +210,39 @@ class _$BookingResponseImpl implements _BookingResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, message, data, duration, method, statusCode);
+  int get hashCode => Object.hash(runtimeType, message,
+      const DeepCollectionEquality().hash(_data), duration, method, statusCode);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BookingResponseImplCopyWith<_$BookingResponseImpl> get copyWith =>
-      __$$BookingResponseImplCopyWithImpl<_$BookingResponseImpl>(
-          this, _$identity);
+  _$$ResponseBookingListModelImplCopyWith<_$ResponseBookingListModelImpl>
+      get copyWith => __$$ResponseBookingListModelImplCopyWithImpl<
+          _$ResponseBookingListModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BookingResponseImplToJson(
+    return _$$ResponseBookingListModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _BookingResponse implements BookingResponse {
-  factory _BookingResponse(
-      {required final String message,
-      required final BookingData data,
-      required final String duration,
-      required final String method,
-      required final int statusCode}) = _$BookingResponseImpl;
+abstract class _ResponseBookingListModel implements ResponseBookingListModel {
+  const factory _ResponseBookingListModel(
+      {final String message,
+      final List<ResponseBookingItemModel> data,
+      final String duration,
+      final String method,
+      final int statusCode}) = _$ResponseBookingListModelImpl;
 
-  factory _BookingResponse.fromJson(Map<String, dynamic> json) =
-      _$BookingResponseImpl.fromJson;
+  factory _ResponseBookingListModel.fromJson(Map<String, dynamic> json) =
+      _$ResponseBookingListModelImpl.fromJson;
 
   @override
   String get message;
   @override
-  BookingData get data;
+  List<ResponseBookingItemModel> get data;
   @override
   String get duration;
   @override
@@ -247,6 +251,6 @@ abstract class _BookingResponse implements BookingResponse {
   int get statusCode;
   @override
   @JsonKey(ignore: true)
-  _$$BookingResponseImplCopyWith<_$BookingResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ResponseBookingListModelImplCopyWith<_$ResponseBookingListModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
