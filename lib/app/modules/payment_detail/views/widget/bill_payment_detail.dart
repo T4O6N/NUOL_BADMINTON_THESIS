@@ -42,10 +42,6 @@ class BillPaymentDetail extends StatelessWidget {
           "ບິນລາຍລະອຽດການຈອງ",
           style: TextStyle(color: Colors.white),
         ),
-        leading: GestureDetector(
-          onTap: () => Get.close(4),
-          child: const Icon(Icons.arrow_back, color: Colors.white),
-        ),
         backgroundColor: Colors.green,
       ),
       body: SingleChildScrollView(

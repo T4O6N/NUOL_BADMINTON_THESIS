@@ -186,10 +186,10 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                 final isSelected = currentCourtModel.duration_time.contains(timeSlot);
                                 final isTimePassed = _isTimePassed(timeSlot);
                                 final isCurrentDate = _selectedDate.isAtSameMomentAs(DateTime.now());
-
                                 final canChangeTimeSlot = isCurrentDate || !isTimePassed;
 
                                 return CheckboxListTile(
+                                  activeColor: Colors.green,
                                   title: Text(timeSlot),
                                   value: isSelected,
                                   onChanged: canChangeTimeSlot

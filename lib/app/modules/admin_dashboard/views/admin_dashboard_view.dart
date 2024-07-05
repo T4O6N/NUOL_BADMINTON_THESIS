@@ -1,71 +1,97 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_booking/views/admin_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/scan_qr_view.dart';
-import '../controllers/admin_dashboard_controller.dart';
 
-class AdminDashboardView extends GetView<AdminDashboardController> {
+class AdminDashboardView extends StatefulWidget {
   const AdminDashboardView({Key? key}) : super(key: key);
+
+  @override
+  _AdminDashboardViewState createState() => _AdminDashboardViewState();
+}
+
+class _AdminDashboardViewState extends State<AdminDashboardView> {
+  int _currentIndex = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    _pageController.jumpToPage(index);
+  }
+
+  Widget _bottomAppBarItem(BuildContext context, {required String icon, required int page, required String label}) {
+    return InkWell(
+      onTap: () => _onTabTapped(page),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            icon,
+            color: _currentIndex == page ? const Color(0xFF00A950) : const Color(0xFF00A950).withOpacity(0.5),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              color: _currentIndex == page ? Colors.green : Colors.grey,
+              fontWeight: _currentIndex == page ? FontWeight.bold : null,
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    AdminDashboardController controller = Get.put(AdminDashboardController());
     return Scaffold(
       body: PageView(
-        controller: controller.pageController,
+        controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          // const AdminUserProfileView(),
           ScanQrView(),
           const AdminBookingView(),
-          // ScanQrView(),
-          // const AdminUserProfileView(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 10,
         elevation: 0,
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 35,
-          ),
-          child: Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 0, label: "ໂປຮຟາຍ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.cameraIcon, page: 0, label: "ສະແກນຄິວອາ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.bookingIcon, page: 1, label: "ຈອງ"),
-
-                // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
-              ],
-            ),
+          padding: const EdgeInsets.symmetric(horizontal: 35),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _bottomAppBarItem(
+                context,
+                icon: AppImagesSvg.cameraIcon,
+                page: 0,
+                label: "ສະແກນຄິວອາ",
+              ),
+              _bottomAppBarItem(
+                context,
+                icon: AppImagesSvg.bookingIcon,
+                page: 1,
+                label: "ຈອງ",
+              ),
+            ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buttomAppBarItem(BuildContext context, {required String icon, required page, required label}) {
-    return InkWell(
-      onTap: () => controller.goToTab(page),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            child: SvgPicture.asset(
-              icon,
-              color: controller.currentPage.value == page ? const Color(0xFF00A950) : const Color(0xFF00A950).withOpacity(0.5),
-            ),
-          ),
-          Text(
-            label,
-            style: TextStyle(color: controller.currentPage.value == page ? Colors.green : Colors.grey, fontWeight: controller.currentPage.value == page ? FontWeight.bold : null, fontSize: 12),
-          )
-        ],
       ),
     );
   }

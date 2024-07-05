@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:nuol_badminton_thesis/app/modules/scan_qr/widget/qr_data_detail.dart';
+import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/widget/qr_data_detail.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanQrController extends GetxController {

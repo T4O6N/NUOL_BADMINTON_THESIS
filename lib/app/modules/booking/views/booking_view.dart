@@ -41,19 +41,58 @@ class BookingView extends GetView<BookingController> {
               final historyList = controller.bookingList[index];
               return Card(
                 margin: const EdgeInsets.all(8),
+                elevation: 4, // Change this
+                shadowColor: Colors.green,
+                color: Colors.white,
                 child: ListTile(
                   // title: Text('ຊື່: ${historyList.courtBooking.full_name}'),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('ຊື່: ${historyList.courtBooking.full_name}'),
-                      Text('ເບີໂທ: ${historyList.courtBooking.phone}'),
-                      Text('ຄອດ: ${historyList.courtBooking.court_number}'),
-                      Text(
-                        'ວັນທີ່ຈອງ: ${DateFormat('yyyy-MM-dd HH:mm').format(
-                          DateTime.parse(historyList.courtBooking.created_at),
-                        )}',
+                      Row(
+                        children: [
+                          const Text('ວັນທີ່ຈອງ: '),
+                          Text(
+                            DateFormat('yyyy-MM-dd HH:mm').format(
+                              DateTime.parse(historyList.courtBooking.created_at),
+                            ),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
+                      Row(
+                        children: [
+                          const Text('ຊື່:'),
+                          Text(
+                            ' ${historyList.courtBooking.full_name}',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('ເບີໂທ:'),
+                          Text(
+                            ' ${historyList.courtBooking.phone}',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('ຄອດ:'),
+                          Text(
+                            ' ${historyList.courtBooking.court_number}',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      const Divider(),
+                      // Text(
+                      //   'ວັນທີ່ຈອງ: ${DateFormat('yyyy-MM-dd HH:mm').format(
+                      //     DateTime.parse(historyList.courtBooking.created_at),
+                      //   )}',
+                      // ),
                       ...historyList.courtBooking.court.map(
                         (courtModel) {
                           return Column(
@@ -61,6 +100,7 @@ class BookingView extends GetView<BookingController> {
                             children: [
                               Text(
                                 "ວັນທີ່ : ${courtModel.date}",
+                                style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                               ...courtModel.duration_time.map((timeSlot) {
                                 return Text(

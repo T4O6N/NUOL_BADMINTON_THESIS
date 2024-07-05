@@ -99,14 +99,13 @@ class DetailBookingView extends StatelessWidget {
                                   'ວັນທີ່ : ${courtModel.date}',
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(height: 5),
                                 ...courtModel.duration_time.map((timeSlot) {
                                   return Text(
                                     timeSlot,
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 12),
                               ],
                             );
                           },
