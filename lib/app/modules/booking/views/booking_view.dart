@@ -54,7 +54,7 @@ class BookingView extends GetView<BookingController> {
                           const Text('ວັນທີ່ຈອງ: '),
                           Text(
                             DateFormat('yyyy-MM-dd HH:mm').format(
-                              DateTime.parse(historyList.courtBooking.created_at),
+                              DateTime.parse(historyList.courtBooking.createdAt),
                             ),
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -64,7 +64,7 @@ class BookingView extends GetView<BookingController> {
                         children: [
                           const Text('ຊື່:'),
                           Text(
-                            ' ${historyList.courtBooking.full_name}',
+                            ' ${historyList.courtBooking.fullName}',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -82,7 +82,7 @@ class BookingView extends GetView<BookingController> {
                         children: [
                           const Text('ຄອດ:'),
                           Text(
-                            ' ${historyList.courtBooking.court_number}',
+                            ' ${historyList.courtBooking.courtNumber}',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -102,7 +102,7 @@ class BookingView extends GetView<BookingController> {
                                 "ວັນທີ່ : ${courtModel.date}",
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
-                              ...courtModel.duration_time.map((timeSlot) {
+                              ...courtModel.durationTime.map((timeSlot) {
                                 return Text(
                                   timeSlot,
                                   style: const TextStyle(color: Colors.grey),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'history_response.dart';
+part of 'response_booking_history_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,42 +14,47 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-HistoryResponse _$HistoryResponseFromJson(Map<String, dynamic> json) {
-  return _HistoryResponse.fromJson(json);
+ResponseBookingHistoryModel _$ResponseBookingHistoryModelFromJson(
+    Map<String, dynamic> json) {
+  return _ResponseBookingHistoryModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$HistoryResponse {
+mixin _$ResponseBookingHistoryModel {
   String get message => throw _privateConstructorUsedError;
-  List<BookingHistory> get data => throw _privateConstructorUsedError;
+  List<ResponseBookingHistoryDataModel> get data =>
+      throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   int get statusCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $HistoryResponseCopyWith<HistoryResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ResponseBookingHistoryModelCopyWith<ResponseBookingHistoryModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HistoryResponseCopyWith<$Res> {
-  factory $HistoryResponseCopyWith(
-          HistoryResponse value, $Res Function(HistoryResponse) then) =
-      _$HistoryResponseCopyWithImpl<$Res, HistoryResponse>;
+abstract class $ResponseBookingHistoryModelCopyWith<$Res> {
+  factory $ResponseBookingHistoryModelCopyWith(
+          ResponseBookingHistoryModel value,
+          $Res Function(ResponseBookingHistoryModel) then) =
+      _$ResponseBookingHistoryModelCopyWithImpl<$Res,
+          ResponseBookingHistoryModel>;
   @useResult
   $Res call(
       {String message,
-      List<BookingHistory> data,
+      List<ResponseBookingHistoryDataModel> data,
       String duration,
       String method,
       int statusCode});
 }
 
 /// @nodoc
-class _$HistoryResponseCopyWithImpl<$Res, $Val extends HistoryResponse>
-    implements $HistoryResponseCopyWith<$Res> {
-  _$HistoryResponseCopyWithImpl(this._value, this._then);
+class _$ResponseBookingHistoryModelCopyWithImpl<$Res,
+        $Val extends ResponseBookingHistoryModel>
+    implements $ResponseBookingHistoryModelCopyWith<$Res> {
+  _$ResponseBookingHistoryModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -73,7 +78,7 @@ class _$HistoryResponseCopyWithImpl<$Res, $Val extends HistoryResponse>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<BookingHistory>,
+              as List<ResponseBookingHistoryDataModel>,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -91,27 +96,30 @@ class _$HistoryResponseCopyWithImpl<$Res, $Val extends HistoryResponse>
 }
 
 /// @nodoc
-abstract class _$$HistoryResponseImplCopyWith<$Res>
-    implements $HistoryResponseCopyWith<$Res> {
-  factory _$$HistoryResponseImplCopyWith(_$HistoryResponseImpl value,
-          $Res Function(_$HistoryResponseImpl) then) =
-      __$$HistoryResponseImplCopyWithImpl<$Res>;
+abstract class _$$ResponseBookingHistoryModelImplCopyWith<$Res>
+    implements $ResponseBookingHistoryModelCopyWith<$Res> {
+  factory _$$ResponseBookingHistoryModelImplCopyWith(
+          _$ResponseBookingHistoryModelImpl value,
+          $Res Function(_$ResponseBookingHistoryModelImpl) then) =
+      __$$ResponseBookingHistoryModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String message,
-      List<BookingHistory> data,
+      List<ResponseBookingHistoryDataModel> data,
       String duration,
       String method,
       int statusCode});
 }
 
 /// @nodoc
-class __$$HistoryResponseImplCopyWithImpl<$Res>
-    extends _$HistoryResponseCopyWithImpl<$Res, _$HistoryResponseImpl>
-    implements _$$HistoryResponseImplCopyWith<$Res> {
-  __$$HistoryResponseImplCopyWithImpl(
-      _$HistoryResponseImpl _value, $Res Function(_$HistoryResponseImpl) _then)
+class __$$ResponseBookingHistoryModelImplCopyWithImpl<$Res>
+    extends _$ResponseBookingHistoryModelCopyWithImpl<$Res,
+        _$ResponseBookingHistoryModelImpl>
+    implements _$$ResponseBookingHistoryModelImplCopyWith<$Res> {
+  __$$ResponseBookingHistoryModelImplCopyWithImpl(
+      _$ResponseBookingHistoryModelImpl _value,
+      $Res Function(_$ResponseBookingHistoryModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +131,7 @@ class __$$HistoryResponseImplCopyWithImpl<$Res>
     Object? method = null,
     Object? statusCode = null,
   }) {
-    return _then(_$HistoryResponseImpl(
+    return _then(_$ResponseBookingHistoryModelImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -131,7 +139,7 @@ class __$$HistoryResponseImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<BookingHistory>,
+              as List<ResponseBookingHistoryDataModel>,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -150,25 +158,27 @@ class __$$HistoryResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$HistoryResponseImpl implements _HistoryResponse {
-  _$HistoryResponseImpl(
-      {this.message = '',
-      final List<BookingHistory> data = const [],
-      this.duration = '',
-      this.method = '',
+class _$ResponseBookingHistoryModelImpl
+    implements _ResponseBookingHistoryModel {
+  const _$ResponseBookingHistoryModelImpl(
+      {this.message = "",
+      final List<ResponseBookingHistoryDataModel> data = const [],
+      this.duration = "",
+      this.method = "",
       this.statusCode = 0})
       : _data = data;
 
-  factory _$HistoryResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HistoryResponseImplFromJson(json);
+  factory _$ResponseBookingHistoryModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ResponseBookingHistoryModelImplFromJson(json);
 
   @override
   @JsonKey()
   final String message;
-  final List<BookingHistory> _data;
+  final List<ResponseBookingHistoryDataModel> _data;
   @override
   @JsonKey()
-  List<BookingHistory> get data {
+  List<ResponseBookingHistoryDataModel> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -186,14 +196,14 @@ class _$HistoryResponseImpl implements _HistoryResponse {
 
   @override
   String toString() {
-    return 'HistoryResponse(message: $message, data: $data, duration: $duration, method: $method, statusCode: $statusCode)';
+    return 'ResponseBookingHistoryModel(message: $message, data: $data, duration: $duration, method: $method, statusCode: $statusCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HistoryResponseImpl &&
+            other is _$ResponseBookingHistoryModelImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.duration, duration) ||
@@ -211,33 +221,34 @@ class _$HistoryResponseImpl implements _HistoryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HistoryResponseImplCopyWith<_$HistoryResponseImpl> get copyWith =>
-      __$$HistoryResponseImplCopyWithImpl<_$HistoryResponseImpl>(
-          this, _$identity);
+  _$$ResponseBookingHistoryModelImplCopyWith<_$ResponseBookingHistoryModelImpl>
+      get copyWith => __$$ResponseBookingHistoryModelImplCopyWithImpl<
+          _$ResponseBookingHistoryModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HistoryResponseImplToJson(
+    return _$$ResponseBookingHistoryModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _HistoryResponse implements HistoryResponse {
-  factory _HistoryResponse(
+abstract class _ResponseBookingHistoryModel
+    implements ResponseBookingHistoryModel {
+  const factory _ResponseBookingHistoryModel(
       {final String message,
-      final List<BookingHistory> data,
+      final List<ResponseBookingHistoryDataModel> data,
       final String duration,
       final String method,
-      final int statusCode}) = _$HistoryResponseImpl;
+      final int statusCode}) = _$ResponseBookingHistoryModelImpl;
 
-  factory _HistoryResponse.fromJson(Map<String, dynamic> json) =
-      _$HistoryResponseImpl.fromJson;
+  factory _ResponseBookingHistoryModel.fromJson(Map<String, dynamic> json) =
+      _$ResponseBookingHistoryModelImpl.fromJson;
 
   @override
   String get message;
   @override
-  List<BookingHistory> get data;
+  List<ResponseBookingHistoryDataModel> get data;
   @override
   String get duration;
   @override
@@ -246,6 +257,6 @@ abstract class _HistoryResponse implements HistoryResponse {
   int get statusCode;
   @override
   @JsonKey(ignore: true)
-  _$$HistoryResponseImplCopyWith<_$HistoryResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ResponseBookingHistoryModelImplCopyWith<_$ResponseBookingHistoryModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

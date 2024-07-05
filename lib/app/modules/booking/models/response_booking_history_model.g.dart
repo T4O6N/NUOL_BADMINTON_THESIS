@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'history_response.dart';
+part of 'response_booking_history_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HistoryResponseImpl _$$HistoryResponseImplFromJson(
+_$ResponseBookingHistoryModelImpl _$$ResponseBookingHistoryModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$HistoryResponseImpl(
-      message: json['message'] as String? ?? '',
+    _$ResponseBookingHistoryModelImpl(
+      message: json['message'] as String? ?? "",
       data: (json['data'] as List<dynamic>?)
-              ?.map((e) => BookingHistory.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ResponseBookingHistoryDataModel.fromJson(
+                  e as Map<String, dynamic>))
               .toList() ??
           const [],
-      duration: json['duration'] as String? ?? '',
-      method: json['method'] as String? ?? '',
+      duration: json['duration'] as String? ?? "",
+      method: json['method'] as String? ?? "",
       statusCode: (json['statusCode'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$HistoryResponseImplToJson(
-        _$HistoryResponseImpl instance) =>
+Map<String, dynamic> _$$ResponseBookingHistoryModelImplToJson(
+        _$ResponseBookingHistoryModelImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'data': instance.data,
