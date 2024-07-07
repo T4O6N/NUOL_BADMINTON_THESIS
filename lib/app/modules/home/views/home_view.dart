@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/list_booking.dart';
+import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/login_with_phone/views/login_with_phone_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
 
 import 'package:nuol_badminton_thesis/app/widgets/custom_scroll_behavior.dart';
@@ -146,7 +148,7 @@ class HomeView extends GetView<HomeController> {
                 title: const Text("ເຈົ້າຂອງເດີ່ນ"),
                 onTap: () {
                   // Get.to(const OwnerDashboardView());
-                  Get.to(const OwnerView());
+                  Get.to(const LoginView());
                 },
               ),
             ],

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
-class LoginController extends GetxController {
+class UserManagementController extends GetxController {
+  //TODO: Implement UserManagementController
+
   final count = 0.obs;
   @override
   void onInit() {

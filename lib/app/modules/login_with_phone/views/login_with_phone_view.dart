@@ -13,7 +13,6 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
   const LoginWithPhoneView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     final Size size = MediaQuery.of(context).size;
     final LoginWithPhoneController loginPhoneController = Get.put(LoginWithPhoneController());
     return GestureDetector(
@@ -40,7 +39,7 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
                     ),
                     const SizedBox(height: 22),
                     const Text(
-                      'Jong',
+                      'ເດີ່ນຕີດອກປີກໄກ່ສະໂມສອນເສດຖ້າ',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -48,85 +47,42 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
                       ),
                     ),
                     const SizedBox(height: 22),
-                    const Text(
-                      'ລົງທະບຽນ ຫຼື ລົງຊື່ເຂົ້າໃຊ້ດ້ວຍເບີໂທລະສັບ',
-                      style: TextStyle(
-                        fontFamily: 'NotoSansLao',
+                    TextFormField(
+                      cursorColor: Colors.blue,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
-                    ),
-                    const SizedBox(height: 22),
-                    Form(
-                      key: formKey,
-                      child: TextFormField(
-                        onChanged: (value) => loginPhoneController.mobile.value = value,
-                        controller: loginPhoneController.phoneController,
-                        maxLength: 8,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your phone number';
-                          } else if (value.length < 8) {
-                            return 'Please enter a valid phone number';
-                          } else if (!['2', '5', '7', '9'].contains(value[0])) {
-                            return 'Please enter a valid phone number';
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.number,
-                        cursorColor: Colors.blue,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        isDense: false,
+                        hintStyle: TextStyle(
+                          fontFamily: 'NotoSansLao',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey.shade600,
                           fontSize: 15,
-                          color: Colors.black,
                         ),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'XXXX XXXX',
-                          isDense: false,
-                          hintStyle: TextStyle(
-                            fontFamily: 'NotoSansLao',
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey.shade600,
-                            fontSize: 15,
-                          ),
-                          prefixIcon: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                            width: size.width * .32,
-                            child: Row(
-                              children: [
-                                const Icon(Icons.phone),
-                                Text(
-                                  "(+856) 20",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade600,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(width: 2, color: Colors.red), //<-- SEE HERE
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(width: 2, color: Colors.red), //<-- SEE HERE
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
+                        prefixIcon: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                          width: size.width * .1,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(width: 2, color: Colors.red), //<-- SEE HERE
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(width: 2, color: Colors.red), //<-- SEE HERE
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
                       ),
                     ),
@@ -135,26 +91,13 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
                       height: 50,
                       child: ButtonLogin(
                         onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            Get.to(OtpPage(onCompleted: (String value) {}, onChange: (String value) {}, phone: '', onSummit: () {}));
-                          }
+                          // if (formKey.currentState!.validate()) {
+                          //   Get.to(OtpPage(onCompleted: (String value) {}, onChange: (String value) {}, phone: '', onSummit: () {}));
+                          // }
                         },
-                        label: 'Submit',
+                        label: 'Login',
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    TextButton(
-                      onPressed: () {
-                        Get.offAll(DashboardView());
-                      },
-                      child: const Text(
-                        " Skip",
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),

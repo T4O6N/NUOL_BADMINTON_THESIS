@@ -19,6 +19,7 @@ class OwnerDashboardView extends GetView<OwnerDashboardController> {
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           // const AdminUserProfileView(),
+
           OwnerView(),
           CreateAdminForOwnerView(),
           // ScanQrView(),
