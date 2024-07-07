@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'response_booking_data_model.dart';
+part of 'response_court_booking_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ResponseBookingDataModelImpl _$$ResponseBookingDataModelImplFromJson(
+_$ResponseCourtBookingModelImpl _$$ResponseCourtBookingModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ResponseBookingDataModelImpl(
+    _$ResponseCourtBookingModelImpl(
       id: json['id'] as String? ?? "",
       deviceId: json['device_id'] as String? ?? "",
       phone: json['phone'] as String? ?? "",
@@ -17,19 +17,17 @@ _$ResponseBookingDataModelImpl _$$ResponseBookingDataModelImplFromJson(
       paymentStatus: json['payment_status'] as String? ?? "",
       totalAmount: (json['total_amount'] as num?)?.toInt() ?? 0,
       bookedBy: json['booked_by'] as String? ?? "",
-      expiredTime: json['expiredTime'] as String? ?? "",
-      bookingDate: json['bookingDate'] as String? ?? "",
       createdAt: json['created_at'] as String? ?? "",
       updatedAt: json['updated_at'] as String? ?? "",
       court: (json['court'] as List<dynamic>?)
-              ?.map((e) => ResponseBookingDataCourtModel.fromJson(
+              ?.map((e) => ResponseFindOneHistoryBookingDataCourtModel.fromJson(
                   e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$ResponseBookingDataModelImplToJson(
-        _$ResponseBookingDataModelImpl instance) =>
+Map<String, dynamic> _$$ResponseCourtBookingModelImplToJson(
+        _$ResponseCourtBookingModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'device_id': instance.deviceId,
@@ -39,8 +37,6 @@ Map<String, dynamic> _$$ResponseBookingDataModelImplToJson(
       'payment_status': instance.paymentStatus,
       'total_amount': instance.totalAmount,
       'booked_by': instance.bookedBy,
-      'expiredTime': instance.expiredTime,
-      'bookingDate': instance.bookingDate,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'court': instance.court,
