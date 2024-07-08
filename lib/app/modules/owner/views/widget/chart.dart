@@ -23,6 +23,7 @@ class _ChartState extends State<Chart> {
     SalesData('I', 40),
     SalesData('J', 40),
   ];
+
   List<CourtUse> courtUse = [
     CourtUse('Monday', 1),
     CourtUse('Tuesday', 2),
@@ -32,6 +33,7 @@ class _ChartState extends State<Chart> {
     CourtUse('Saturday', 10),
     CourtUse('Sunday', 0),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_booking/views/admin_booking_view.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/home/views/home_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/scan_qr_view.dart';
 
@@ -67,7 +68,7 @@ class _AdminDashboardViewState extends State<AdminDashboardView> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           ScanQrView(),
-          HomeView(),
+          const AdminBookingView(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

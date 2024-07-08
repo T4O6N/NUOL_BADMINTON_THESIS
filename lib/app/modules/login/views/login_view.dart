@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/user_management/views/user_management_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
@@ -153,6 +155,24 @@ class LoginView extends GetView<LoginController> {
                         },
                         label: 'ເຂົ້າສູ້ລະບົບ',
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Get.to(const AdminDashboardView());
+                          },
+                          child: const Text("admin"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Get.to(const OwnerDashboardView());
+                          },
+                          child: const Text("owner"),
+                        ),
+                      ],
                     ),
                   ],
                 ),

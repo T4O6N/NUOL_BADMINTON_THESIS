@@ -10,6 +10,7 @@ import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_cou
 
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
+import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/loading_dialog.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
@@ -82,7 +83,62 @@ class ChooseScheduleController extends GetxController {
     return null;
   }
 
-  Future<void> bookingWaterParkOrder({required BuildContext context}) async {
+  // Future<void> bookingCourtOrder({required BuildContext context}) async {
+  //   Loading.show();
+  //   final deviceId = dashboardController.deviceInfoModel.value.id;
+  //   final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
+
+  //   if (selectedCourtModels.isEmpty) {
+  //     Get.snackbar(
+  //       'Error',
+  //       'Please select at least one time slot',
+  //       backgroundColor: Colors.red,
+  //       colorText: Colors.white,
+  //     );
+  //     return;
+  //   }
+  //   final bookingRequest = CreateBookingCourtParam(
+  //     phone: phoneNumberController.text,
+  //     court: selectedCourtModels,
+  //     deviceId: deviceId,
+  //     fullName: usernameController.text,
+  //     courtNumber: courtModel.value.name,
+  //     paymentStatus: 'booked',
+  //     bookedBy: usernameController.text,
+  //     totalAmount: finalTotalPrice.value,
+  //   );
+
+  //   logger.d(bookingRequest);
+
+  //   final data = await BookingCourtLocalDataSource().createCourtBooking(bookingRequest);
+  //   data.fold(
+  //     (l) {
+  //       Loading.hide();
+  //       warningDialog(context: context, des: l, btnOkOnPress: () {});
+  //     },
+  //     (r) {
+  //       Loading.hide();
+  //       Get.snackbar(
+  //         'ສຳເລັດ',
+  //         'ການຈອງເດີ່ນສຳເລັດ',
+  //         backgroundColor: Colors.white,
+  //         colorText: Colors.black,
+  //       );
+  //       Get.to(
+  //           court: courtModel.value,
+  //           bookingDetails: bookingDetails,
+  //           userName: usernameController.text,
+  //           phoneNumber: phoneNumberController.text,
+  //           finalTotalPrice: finalTotalPrice.value,
+  //           totalPrice: totalPrice.value,
+  //           bookingResponse: r,
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+  Future<void> bookingCourtOrder({required BuildContext context}) async {
     Loading.show();
     final deviceId = dashboardController.deviceInfoModel.value.id;
     final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
@@ -123,17 +179,22 @@ class ChooseScheduleController extends GetxController {
           backgroundColor: Colors.white,
           colorText: Colors.black,
         );
-        Get.to(
-          BillPaymentDetail(
-            court: courtModel.value,
-            bookingDetails: bookingDetails,
-            userName: usernameController.text,
-            phoneNumber: phoneNumberController.text,
-            finalTotalPrice: finalTotalPrice.value,
-            totalPrice: totalPrice.value,
-            bookingResponse: r,
-          ),
-        );
+
+        if (usernameController.text.contains('admin')) {
+          Get.to(const LoginView()); // Replace with your actual AdminPage
+        } else {
+          Get.to(
+            BillPaymentDetail(
+              court: courtModel.value,
+              bookingDetails: bookingDetails,
+              userName: usernameController.text,
+              phoneNumber: phoneNumberController.text,
+              finalTotalPrice: finalTotalPrice.value,
+              totalPrice: totalPrice.value,
+              bookingResponse: r,
+            ),
+          );
+        }
       },
     );
   }

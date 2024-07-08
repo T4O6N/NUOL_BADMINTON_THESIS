@@ -11,33 +11,11 @@ class HomeController extends GetxController {
   List<String> get animals => _animals;
   String? get selectedAnimal => _selectedAnimal;
   final List<String> court = ['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9', 'J10'];
-  final List<String> imageCourt = [
-    'assets/images/court.jpeg',
-    'assets/images/3.jpg',
-    'assets/images/2.jpg',
-    'assets/images/4.jpg',
-    'assets/images/5.jpg',
-    'assets/images/6.jpg',
-    'assets/images/7.jpg',
-    'assets/images/8.jpg',
-    'assets/images/9.jpg',
-    'assets/images/10.jpg',
-  ];
+  final List<String> imageCourt = ['assets/images/court.jpeg', 'assets/images/3.jpg', 'assets/images/2.jpg', 'assets/images/4.jpg', 'assets/images/5.jpg', 'assets/images/6.jpg', 'assets/images/7.jpg', 'assets/images/8.jpg', 'assets/images/9.jpg', 'assets/images/10.jpg'];
 
   var courts = <Court>[].obs;
   void fetchCourts() {
-    var courtResults = [
-      Court(id: '1', name: 'A1', imageUrl: 'assets/images/court.jpeg', price: 80000),
-      Court(id: '2', name: 'B2', imageUrl: 'assets/images/3.jpg', price: 80000),
-      Court(id: '3', name: 'C3', imageUrl: 'assets/images/2.jpg', price: 80000),
-      Court(id: '4', name: 'D4', imageUrl: 'assets/images/4.jpg', price: 80000),
-      Court(id: '5', name: 'E5', imageUrl: 'assets/images/5.jpg', price: 80000),
-      Court(id: '6', name: 'F6', imageUrl: 'assets/images/6.jpg', price: 80000),
-      Court(id: '7', name: 'G7', imageUrl: 'assets/images/7.jpg', price: 80000),
-      Court(id: '8', name: 'H8', imageUrl: 'assets/images/8.jpg', price: 80000),
-      Court(id: '9', name: 'I9', imageUrl: 'assets/images/9.jpg', price: 80000),
-      Court(id: '10', name: 'J10', imageUrl: 'assets/images/10.jpg', price: 80000),
-    ];
+    var courtResults = [const Court(id: '1', name: 'A1', imageUrl: 'assets/images/court.jpeg', price: 80000), const Court(id: '2', name: 'B2', imageUrl: 'assets/images/3.jpg', price: 80000), const Court(id: '3', name: 'C3', imageUrl: 'assets/images/2.jpg', price: 80000), const Court(id: '4', name: 'D4', imageUrl: 'assets/images/4.jpg', price: 80000), const Court(id: '5', name: 'E5', imageUrl: 'assets/images/5.jpg', price: 80000), const Court(id: '6', name: 'F6', imageUrl: 'assets/images/6.jpg', price: 80000), const Court(id: '7', name: 'G7', imageUrl: 'assets/images/7.jpg', price: 80000), const Court(id: '8', name: 'H8', imageUrl: 'assets/images/8.jpg', price: 80000), const Court(id: '9', name: 'I9', imageUrl: 'assets/images/9.jpg', price: 80000), const Court(id: '10', name: 'J10', imageUrl: 'assets/images/10.jpg', price: 80000)];
     courts.assignAll(courtResults);
   }
 
@@ -88,6 +66,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

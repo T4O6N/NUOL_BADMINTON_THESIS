@@ -22,6 +22,8 @@ PaymentParamModel _$PaymentParamModelFromJson(Map<String, dynamic> json) {
 mixin _$PaymentParamModel {
   @JsonKey(name: 'court_booking_id')
   String get courtBookingId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'court_available_id')
+  String get courtAvailableId => throw _privateConstructorUsedError;
   @JsonKey(name: 'device_id')
   String get deviceId => throw _privateConstructorUsedError;
 
@@ -39,6 +41,7 @@ abstract class $PaymentParamModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'court_available_id') String courtAvailableId,
       @JsonKey(name: 'device_id') String deviceId});
 }
 
@@ -56,12 +59,17 @@ class _$PaymentParamModelCopyWithImpl<$Res, $Val extends PaymentParamModel>
   @override
   $Res call({
     Object? courtBookingId = null,
+    Object? courtAvailableId = null,
     Object? deviceId = null,
   }) {
     return _then(_value.copyWith(
       courtBookingId: null == courtBookingId
           ? _value.courtBookingId
           : courtBookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtAvailableId: null == courtAvailableId
+          ? _value.courtAvailableId
+          : courtAvailableId // ignore: cast_nullable_to_non_nullable
               as String,
       deviceId: null == deviceId
           ? _value.deviceId
@@ -81,6 +89,7 @@ abstract class _$$PaymentParamModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'court_available_id') String courtAvailableId,
       @JsonKey(name: 'device_id') String deviceId});
 }
 
@@ -96,12 +105,17 @@ class __$$PaymentParamModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? courtBookingId = null,
+    Object? courtAvailableId = null,
     Object? deviceId = null,
   }) {
     return _then(_$PaymentParamModelImpl(
       courtBookingId: null == courtBookingId
           ? _value.courtBookingId
           : courtBookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtAvailableId: null == courtAvailableId
+          ? _value.courtAvailableId
+          : courtAvailableId // ignore: cast_nullable_to_non_nullable
               as String,
       deviceId: null == deviceId
           ? _value.deviceId
@@ -116,6 +130,7 @@ class __$$PaymentParamModelImplCopyWithImpl<$Res>
 class _$PaymentParamModelImpl implements _PaymentParamModel {
   const _$PaymentParamModelImpl(
       {@JsonKey(name: 'court_booking_id') required this.courtBookingId,
+      @JsonKey(name: 'court_available_id') required this.courtAvailableId,
       @JsonKey(name: 'device_id') required this.deviceId});
 
   factory _$PaymentParamModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -125,12 +140,15 @@ class _$PaymentParamModelImpl implements _PaymentParamModel {
   @JsonKey(name: 'court_booking_id')
   final String courtBookingId;
   @override
+  @JsonKey(name: 'court_available_id')
+  final String courtAvailableId;
+  @override
   @JsonKey(name: 'device_id')
   final String deviceId;
 
   @override
   String toString() {
-    return 'PaymentParamModel(courtBookingId: $courtBookingId, deviceId: $deviceId)';
+    return 'PaymentParamModel(courtBookingId: $courtBookingId, courtAvailableId: $courtAvailableId, deviceId: $deviceId)';
   }
 
   @override
@@ -140,13 +158,16 @@ class _$PaymentParamModelImpl implements _PaymentParamModel {
             other is _$PaymentParamModelImpl &&
             (identical(other.courtBookingId, courtBookingId) ||
                 other.courtBookingId == courtBookingId) &&
+            (identical(other.courtAvailableId, courtAvailableId) ||
+                other.courtAvailableId == courtAvailableId) &&
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, courtBookingId, deviceId);
+  int get hashCode =>
+      Object.hash(runtimeType, courtBookingId, courtAvailableId, deviceId);
 
   @JsonKey(ignore: true)
   @override
@@ -166,6 +187,8 @@ class _$PaymentParamModelImpl implements _PaymentParamModel {
 abstract class _PaymentParamModel implements PaymentParamModel {
   const factory _PaymentParamModel(
       {@JsonKey(name: 'court_booking_id') required final String courtBookingId,
+      @JsonKey(name: 'court_available_id')
+      required final String courtAvailableId,
       @JsonKey(name: 'device_id')
       required final String deviceId}) = _$PaymentParamModelImpl;
 
@@ -175,6 +198,9 @@ abstract class _PaymentParamModel implements PaymentParamModel {
   @override
   @JsonKey(name: 'court_booking_id')
   String get courtBookingId;
+  @override
+  @JsonKey(name: 'court_available_id')
+  String get courtAvailableId;
   @override
   @JsonKey(name: 'device_id')
   String get deviceId;

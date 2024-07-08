@@ -222,7 +222,7 @@ class DetailBookingView extends StatelessWidget {
                     } else if (!['2', '5', '7', '9'].contains(phone[2]) || phone.length != 10) {
                       warningDialog(des: "ກະລຸນາປ້ອນເບີໃຫ້ຖືກຕ້ອງ", context: context, btnOkOnPress: () {});
                     } else {
-                      chooseScheduleController.bookingWaterParkOrder(context: context);
+                      chooseScheduleController.bookingCourtOrder(context: context);
                     }
                   },
                 ),

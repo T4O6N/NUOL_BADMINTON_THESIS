@@ -2,13 +2,14 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'response_find_one_history_booking_data_court_model.dart';
+import 'response_booking_data_court_available_model.dart';
 
-part 'response_court_booking_model.freezed.dart';
-part 'response_court_booking_model.g.dart';
+part 'response_find_one_history_booking_data_model.freezed.dart';
+part 'response_find_one_history_booking_data_model.g.dart';
 
 @freezed
-class ResponseCourtBookingModel with _$ResponseCourtBookingModel {
-  const factory ResponseCourtBookingModel({
+class ResponseFindOneHistoryBookingDataModel with _$ResponseFindOneHistoryBookingDataModel {
+  const factory ResponseFindOneHistoryBookingDataModel({
     @Default("") String id,
     @JsonKey(name: 'device_id') @Default("") String deviceId,
     @Default("") String phone,
@@ -20,7 +21,8 @@ class ResponseCourtBookingModel with _$ResponseCourtBookingModel {
     @JsonKey(name: 'created_at') @Default("") String createdAt,
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
     @Default([]) List<ResponseFindOneHistoryBookingDataCourtModel> court,
-  }) = _ResponseCourtBookingModel;
+    @JsonKey(name: 'court_available') @Default([]) List<ResponseBookingDataCourtAvailableModel> courtAvailable,
+  }) = _ResponseFindOneHistoryBookingDataModel;
 
-  factory ResponseCourtBookingModel.fromJson(Map<String, dynamic> json) => _$ResponseCourtBookingModelFromJson(json);
+  factory ResponseFindOneHistoryBookingDataModel.fromJson(Map<String, dynamic> json) => _$ResponseFindOneHistoryBookingDataModelFromJson(json);
 }

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/create_admin_for_owner/views/create_admin_for_owner_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/user_management/views/user_management_view.dart';
 
 import '../controllers/owner_dashboard_controller.dart';
 
@@ -22,6 +23,7 @@ class OwnerDashboardView extends GetView<OwnerDashboardController> {
 
           OwnerView(),
           CreateAdminForOwnerView(),
+          // UserManagementView(),
           // ScanQrView(),
           // const AdminUserProfileView(),
         ],

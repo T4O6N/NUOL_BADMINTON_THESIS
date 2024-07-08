@@ -175,10 +175,6 @@ class _ShopViewState extends State<ShopView> {
               const SizedBox(height: 10),
               BookingButton(
                 onTap: () {
-                  // Get.toNamed(
-                  //   Routes.CHOOSE_SCHEDULE,
-                  //   // arguments: courtIndex,
-                  // );
                   Get.to(ChooseScheduleStfView(court: widget.court));
                 },
               ),

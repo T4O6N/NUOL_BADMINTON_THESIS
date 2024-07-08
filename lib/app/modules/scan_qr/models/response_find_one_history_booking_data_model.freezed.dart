@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'response_court_booking_model.dart';
+part of 'response_find_one_history_booking_data_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ResponseCourtBookingModel _$ResponseCourtBookingModelFromJson(
-    Map<String, dynamic> json) {
-  return _ResponseCourtBookingModel.fromJson(json);
+ResponseFindOneHistoryBookingDataModel
+    _$ResponseFindOneHistoryBookingDataModelFromJson(
+        Map<String, dynamic> json) {
+  return _ResponseFindOneHistoryBookingDataModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ResponseCourtBookingModel {
+mixin _$ResponseFindOneHistoryBookingDataModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'device_id')
   String get deviceId => throw _privateConstructorUsedError;
@@ -41,18 +42,24 @@ mixin _$ResponseCourtBookingModel {
   String get updatedAt => throw _privateConstructorUsedError;
   List<ResponseFindOneHistoryBookingDataCourtModel> get court =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'court_available')
+  List<ResponseBookingDataCourtAvailableModel> get courtAvailable =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ResponseCourtBookingModelCopyWith<ResponseCourtBookingModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ResponseFindOneHistoryBookingDataModelCopyWith<
+          ResponseFindOneHistoryBookingDataModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ResponseCourtBookingModelCopyWith<$Res> {
-  factory $ResponseCourtBookingModelCopyWith(ResponseCourtBookingModel value,
-          $Res Function(ResponseCourtBookingModel) then) =
-      _$ResponseCourtBookingModelCopyWithImpl<$Res, ResponseCourtBookingModel>;
+abstract class $ResponseFindOneHistoryBookingDataModelCopyWith<$Res> {
+  factory $ResponseFindOneHistoryBookingDataModelCopyWith(
+          ResponseFindOneHistoryBookingDataModel value,
+          $Res Function(ResponseFindOneHistoryBookingDataModel) then) =
+      _$ResponseFindOneHistoryBookingDataModelCopyWithImpl<$Res,
+          ResponseFindOneHistoryBookingDataModel>;
   @useResult
   $Res call(
       {String id,
@@ -65,14 +72,16 @@ abstract class $ResponseCourtBookingModelCopyWith<$Res> {
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      List<ResponseFindOneHistoryBookingDataCourtModel> court});
+      List<ResponseFindOneHistoryBookingDataCourtModel> court,
+      @JsonKey(name: 'court_available')
+      List<ResponseBookingDataCourtAvailableModel> courtAvailable});
 }
 
 /// @nodoc
-class _$ResponseCourtBookingModelCopyWithImpl<$Res,
-        $Val extends ResponseCourtBookingModel>
-    implements $ResponseCourtBookingModelCopyWith<$Res> {
-  _$ResponseCourtBookingModelCopyWithImpl(this._value, this._then);
+class _$ResponseFindOneHistoryBookingDataModelCopyWithImpl<$Res,
+        $Val extends ResponseFindOneHistoryBookingDataModel>
+    implements $ResponseFindOneHistoryBookingDataModelCopyWith<$Res> {
+  _$ResponseFindOneHistoryBookingDataModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,6 +102,7 @@ class _$ResponseCourtBookingModelCopyWithImpl<$Res,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? court = null,
+    Object? courtAvailable = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -139,17 +149,21 @@ class _$ResponseCourtBookingModelCopyWithImpl<$Res,
           ? _value.court
           : court // ignore: cast_nullable_to_non_nullable
               as List<ResponseFindOneHistoryBookingDataCourtModel>,
+      courtAvailable: null == courtAvailable
+          ? _value.courtAvailable
+          : courtAvailable // ignore: cast_nullable_to_non_nullable
+              as List<ResponseBookingDataCourtAvailableModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ResponseCourtBookingModelImplCopyWith<$Res>
-    implements $ResponseCourtBookingModelCopyWith<$Res> {
-  factory _$$ResponseCourtBookingModelImplCopyWith(
-          _$ResponseCourtBookingModelImpl value,
-          $Res Function(_$ResponseCourtBookingModelImpl) then) =
-      __$$ResponseCourtBookingModelImplCopyWithImpl<$Res>;
+abstract class _$$ResponseFindOneHistoryBookingDataModelImplCopyWith<$Res>
+    implements $ResponseFindOneHistoryBookingDataModelCopyWith<$Res> {
+  factory _$$ResponseFindOneHistoryBookingDataModelImplCopyWith(
+          _$ResponseFindOneHistoryBookingDataModelImpl value,
+          $Res Function(_$ResponseFindOneHistoryBookingDataModelImpl) then) =
+      __$$ResponseFindOneHistoryBookingDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,17 +177,19 @@ abstract class _$$ResponseCourtBookingModelImplCopyWith<$Res>
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      List<ResponseFindOneHistoryBookingDataCourtModel> court});
+      List<ResponseFindOneHistoryBookingDataCourtModel> court,
+      @JsonKey(name: 'court_available')
+      List<ResponseBookingDataCourtAvailableModel> courtAvailable});
 }
 
 /// @nodoc
-class __$$ResponseCourtBookingModelImplCopyWithImpl<$Res>
-    extends _$ResponseCourtBookingModelCopyWithImpl<$Res,
-        _$ResponseCourtBookingModelImpl>
-    implements _$$ResponseCourtBookingModelImplCopyWith<$Res> {
-  __$$ResponseCourtBookingModelImplCopyWithImpl(
-      _$ResponseCourtBookingModelImpl _value,
-      $Res Function(_$ResponseCourtBookingModelImpl) _then)
+class __$$ResponseFindOneHistoryBookingDataModelImplCopyWithImpl<$Res>
+    extends _$ResponseFindOneHistoryBookingDataModelCopyWithImpl<$Res,
+        _$ResponseFindOneHistoryBookingDataModelImpl>
+    implements _$$ResponseFindOneHistoryBookingDataModelImplCopyWith<$Res> {
+  __$$ResponseFindOneHistoryBookingDataModelImplCopyWithImpl(
+      _$ResponseFindOneHistoryBookingDataModelImpl _value,
+      $Res Function(_$ResponseFindOneHistoryBookingDataModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -190,8 +206,9 @@ class __$$ResponseCourtBookingModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? court = null,
+    Object? courtAvailable = null,
   }) {
-    return _then(_$ResponseCourtBookingModelImpl(
+    return _then(_$ResponseFindOneHistoryBookingDataModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -236,14 +253,19 @@ class __$$ResponseCourtBookingModelImplCopyWithImpl<$Res>
           ? _value._court
           : court // ignore: cast_nullable_to_non_nullable
               as List<ResponseFindOneHistoryBookingDataCourtModel>,
+      courtAvailable: null == courtAvailable
+          ? _value._courtAvailable
+          : courtAvailable // ignore: cast_nullable_to_non_nullable
+              as List<ResponseBookingDataCourtAvailableModel>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ResponseCourtBookingModelImpl implements _ResponseCourtBookingModel {
-  const _$ResponseCourtBookingModelImpl(
+class _$ResponseFindOneHistoryBookingDataModelImpl
+    implements _ResponseFindOneHistoryBookingDataModel {
+  const _$ResponseFindOneHistoryBookingDataModelImpl(
       {this.id = "",
       @JsonKey(name: 'device_id') this.deviceId = "",
       this.phone = "",
@@ -254,11 +276,16 @@ class _$ResponseCourtBookingModelImpl implements _ResponseCourtBookingModel {
       @JsonKey(name: 'booked_by') this.bookedBy = "",
       @JsonKey(name: 'created_at') this.createdAt = "",
       @JsonKey(name: 'updated_at') this.updatedAt = "",
-      final List<ResponseFindOneHistoryBookingDataCourtModel> court = const []})
-      : _court = court;
+      final List<ResponseFindOneHistoryBookingDataCourtModel> court = const [],
+      @JsonKey(name: 'court_available')
+      final List<ResponseBookingDataCourtAvailableModel> courtAvailable =
+          const []})
+      : _court = court,
+        _courtAvailable = courtAvailable;
 
-  factory _$ResponseCourtBookingModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ResponseCourtBookingModelImplFromJson(json);
+  factory _$ResponseFindOneHistoryBookingDataModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ResponseFindOneHistoryBookingDataModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -299,16 +326,25 @@ class _$ResponseCourtBookingModelImpl implements _ResponseCourtBookingModel {
     return EqualUnmodifiableListView(_court);
   }
 
+  final List<ResponseBookingDataCourtAvailableModel> _courtAvailable;
+  @override
+  @JsonKey(name: 'court_available')
+  List<ResponseBookingDataCourtAvailableModel> get courtAvailable {
+    if (_courtAvailable is EqualUnmodifiableListView) return _courtAvailable;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_courtAvailable);
+  }
+
   @override
   String toString() {
-    return 'ResponseCourtBookingModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
+    return 'ResponseFindOneHistoryBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, createdAt: $createdAt, updatedAt: $updatedAt, court: $court, courtAvailable: $courtAvailable)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ResponseCourtBookingModelImpl &&
+            other is _$ResponseFindOneHistoryBookingDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId) &&
@@ -327,7 +363,9 @@ class _$ResponseCourtBookingModelImpl implements _ResponseCourtBookingModel {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality().equals(other._court, _court));
+            const DeepCollectionEquality().equals(other._court, _court) &&
+            const DeepCollectionEquality()
+                .equals(other._courtAvailable, _courtAvailable));
   }
 
   @JsonKey(ignore: true)
@@ -344,25 +382,29 @@ class _$ResponseCourtBookingModelImpl implements _ResponseCourtBookingModel {
       bookedBy,
       createdAt,
       updatedAt,
-      const DeepCollectionEquality().hash(_court));
+      const DeepCollectionEquality().hash(_court),
+      const DeepCollectionEquality().hash(_courtAvailable));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ResponseCourtBookingModelImplCopyWith<_$ResponseCourtBookingModelImpl>
-      get copyWith => __$$ResponseCourtBookingModelImplCopyWithImpl<
-          _$ResponseCourtBookingModelImpl>(this, _$identity);
+  _$$ResponseFindOneHistoryBookingDataModelImplCopyWith<
+          _$ResponseFindOneHistoryBookingDataModelImpl>
+      get copyWith =>
+          __$$ResponseFindOneHistoryBookingDataModelImplCopyWithImpl<
+              _$ResponseFindOneHistoryBookingDataModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ResponseCourtBookingModelImplToJson(
+    return _$$ResponseFindOneHistoryBookingDataModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ResponseCourtBookingModel implements ResponseCourtBookingModel {
-  const factory _ResponseCourtBookingModel(
+abstract class _ResponseFindOneHistoryBookingDataModel
+    implements ResponseFindOneHistoryBookingDataModel {
+  const factory _ResponseFindOneHistoryBookingDataModel(
           {final String id,
           @JsonKey(name: 'device_id') final String deviceId,
           final String phone,
@@ -373,11 +415,14 @@ abstract class _ResponseCourtBookingModel implements ResponseCourtBookingModel {
           @JsonKey(name: 'booked_by') final String bookedBy,
           @JsonKey(name: 'created_at') final String createdAt,
           @JsonKey(name: 'updated_at') final String updatedAt,
-          final List<ResponseFindOneHistoryBookingDataCourtModel> court}) =
-      _$ResponseCourtBookingModelImpl;
+          final List<ResponseFindOneHistoryBookingDataCourtModel> court,
+          @JsonKey(name: 'court_available')
+          final List<ResponseBookingDataCourtAvailableModel> courtAvailable}) =
+      _$ResponseFindOneHistoryBookingDataModelImpl;
 
-  factory _ResponseCourtBookingModel.fromJson(Map<String, dynamic> json) =
-      _$ResponseCourtBookingModelImpl.fromJson;
+  factory _ResponseFindOneHistoryBookingDataModel.fromJson(
+          Map<String, dynamic> json) =
+      _$ResponseFindOneHistoryBookingDataModelImpl.fromJson;
 
   @override
   String get id;
@@ -410,7 +455,11 @@ abstract class _ResponseCourtBookingModel implements ResponseCourtBookingModel {
   @override
   List<ResponseFindOneHistoryBookingDataCourtModel> get court;
   @override
+  @JsonKey(name: 'court_available')
+  List<ResponseBookingDataCourtAvailableModel> get courtAvailable;
+  @override
   @JsonKey(ignore: true)
-  _$$ResponseCourtBookingModelImplCopyWith<_$ResponseCourtBookingModelImpl>
+  _$$ResponseFindOneHistoryBookingDataModelImplCopyWith<
+          _$ResponseFindOneHistoryBookingDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

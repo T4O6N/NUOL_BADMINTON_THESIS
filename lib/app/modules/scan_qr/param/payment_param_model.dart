@@ -9,6 +9,7 @@ part 'payment_param_model.g.dart';
 class PaymentParamModel with _$PaymentParamModel {
   const factory PaymentParamModel({
     @JsonKey(name: 'court_booking_id') required String courtBookingId,
+    @JsonKey(name: 'court_available_id') required String courtAvailableId,
     @JsonKey(name: 'device_id') required String deviceId,
   }) = _PaymentParamModel;
 
