@@ -1,0 +1,260 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'owner_model.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+OwnerModel _$OwnerModelFromJson(Map<String, dynamic> json) {
+  return _OwnerModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OwnerModel {
+  String get id => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  bool get isActive => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OwnerModelCopyWith<OwnerModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OwnerModelCopyWith<$Res> {
+  factory $OwnerModelCopyWith(
+          OwnerModel value, $Res Function(OwnerModel) then) =
+      _$OwnerModelCopyWithImpl<$Res, OwnerModel>;
+  @useResult
+  $Res call(
+      {String id,
+      String username,
+      String phone,
+      String password,
+      bool isActive,
+      String role});
+}
+
+/// @nodoc
+class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel>
+    implements $OwnerModelCopyWith<$Res> {
+  _$OwnerModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? username = null,
+    Object? phone = null,
+    Object? password = null,
+    Object? isActive = null,
+    Object? role = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OwnerModelImplCopyWith<$Res>
+    implements $OwnerModelCopyWith<$Res> {
+  factory _$$OwnerModelImplCopyWith(
+          _$OwnerModelImpl value, $Res Function(_$OwnerModelImpl) then) =
+      __$$OwnerModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String username,
+      String phone,
+      String password,
+      bool isActive,
+      String role});
+}
+
+/// @nodoc
+class __$$OwnerModelImplCopyWithImpl<$Res>
+    extends _$OwnerModelCopyWithImpl<$Res, _$OwnerModelImpl>
+    implements _$$OwnerModelImplCopyWith<$Res> {
+  __$$OwnerModelImplCopyWithImpl(
+      _$OwnerModelImpl _value, $Res Function(_$OwnerModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? username = null,
+    Object? phone = null,
+    Object? password = null,
+    Object? isActive = null,
+    Object? role = null,
+  }) {
+    return _then(_$OwnerModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OwnerModelImpl implements _OwnerModel {
+  const _$OwnerModelImpl(
+      {required this.id,
+      required this.username,
+      required this.phone,
+      required this.password,
+      required this.isActive,
+      this.role = 'owner'});
+
+  factory _$OwnerModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OwnerModelImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String username;
+  @override
+  final String phone;
+  @override
+  final String password;
+  @override
+  final bool isActive;
+  @override
+  @JsonKey()
+  final String role;
+
+  @override
+  String toString() {
+    return 'OwnerModel(id: $id, username: $username, phone: $phone, password: $password, isActive: $isActive, role: $role)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OwnerModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.role, role) || other.role == role));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, username, phone, password, isActive, role);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith =>
+      __$$OwnerModelImplCopyWithImpl<_$OwnerModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OwnerModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OwnerModel implements OwnerModel {
+  const factory _OwnerModel(
+      {required final String id,
+      required final String username,
+      required final String phone,
+      required final String password,
+      required final bool isActive,
+      final String role}) = _$OwnerModelImpl;
+
+  factory _OwnerModel.fromJson(Map<String, dynamic> json) =
+      _$OwnerModelImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get username;
+  @override
+  String get phone;
+  @override
+  String get password;
+  @override
+  bool get isActive;
+  @override
+  String get role;
+  @override
+  @JsonKey(ignore: true)
+  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

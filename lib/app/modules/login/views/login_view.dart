@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/user_management/views/user_management_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
 import '../controllers/login_controller.dart';
@@ -148,6 +149,7 @@ class LoginView extends GetView<LoginController> {
                           // if (formKey.currentState!.validate()) {
                           //   Get.to(OtpPage(onCompleted: (String value) {}, onChange: (String value) {}, phone: '', onSummit: () {}));
                           // }
+                          Get.to(const UserManagementView());
                         },
                         label: 'ເຂົ້າສູ້ລະບົບ',
                       ),

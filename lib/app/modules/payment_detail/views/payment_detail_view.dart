@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/choose_schedule_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';

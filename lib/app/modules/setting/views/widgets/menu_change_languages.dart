@@ -21,7 +21,6 @@ class MenuChangeLanguages extends StatefulWidget {
 class _MenuChangeLanguagesState extends State<MenuChangeLanguages> {
   @override
   Widget build(BuildContext context) {
-    bool selected = true;
     return Container(
       height: 75,
       decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withOpacity(.1), blurRadius: 7, spreadRadius: 0, offset: const Offset(0, 0))]),

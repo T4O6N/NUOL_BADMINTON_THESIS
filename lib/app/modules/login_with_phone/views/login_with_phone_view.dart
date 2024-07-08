@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
-import 'package:nuol_badminton_thesis/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/login_with_phone/views/otp_page.dart';
+
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
 import '../controllers/login_with_phone_controller.dart';
@@ -14,7 +12,7 @@ class LoginWithPhoneView extends GetView<LoginWithPhoneController> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final LoginWithPhoneController loginPhoneController = Get.put(LoginWithPhoneController());
+    // final LoginWithPhoneController loginPhoneController = Get.put(LoginWithPhoneController());
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

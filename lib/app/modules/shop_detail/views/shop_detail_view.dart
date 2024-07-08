@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/controllers/home_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
+
 import 'package:nuol_badminton_thesis/app/routes/app_pages.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import '../controllers/shop_detail_controller.dart';

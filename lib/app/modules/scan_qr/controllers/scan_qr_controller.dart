@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/model/response_booking_data_court_available_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/scan_qr/model/response_court_available_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/model/response_find_one_history_booking_data_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/model/response_find_one_history_booking_data_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/model/response_find_one_history_booking_model.dart';
