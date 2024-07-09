@@ -168,6 +168,7 @@ class ShopDetailView extends GetView<ShopDetailController> {
                     arguments: courtIndex,
                   );
                 },
+                text: 'ຈອງ',
               ),
             ],
           ),

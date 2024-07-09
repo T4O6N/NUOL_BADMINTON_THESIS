@@ -242,7 +242,10 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    BookingButton(onTap: () => _addToCart()),
+                    BookingButton(
+                      onTap: () => _addToCart(),
+                      text: 'ຈອງ',
+                    ),
                     const SizedBox(height: 40),
                   ],
                 ),

@@ -228,6 +228,7 @@ class ChooseScheduleView extends GetView<ChooseScheduleController> {
                           Get.to(const PaymentDetailView(), arguments: totalPrice);
                         }
                       },
+                      text: 'ຈອງ',
                     ),
                     const SizedBox(height: 40),
                   ],

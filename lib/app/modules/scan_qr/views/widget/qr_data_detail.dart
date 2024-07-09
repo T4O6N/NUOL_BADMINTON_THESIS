@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/constants/lottie_constants.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/controllers/scan_qr_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/scan_qr/param/payment_param_model.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
@@ -106,16 +108,16 @@ class QrDataDetail extends StatelessWidget {
                             ],
                           ),
                           const Divider(),
-                          ...controller.courtList.map((courtModel) {
-                            return Column(
+                          if (controller.courtList.isNotEmpty) ...[
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'ວັນທີ່: ${courtModel.date}',
+                                  'ວັນທີ່: ${controller.courtList[0].date}',
                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
-                                ...courtModel.durationTime.map((timeSlot) {
+                                ...controller.courtList[0].durationTime.map((timeSlot) {
                                   return Text(
                                     timeSlot,
                                     style: const TextStyle(color: Colors.grey),
@@ -123,16 +125,18 @@ class QrDataDetail extends StatelessWidget {
                                 }).toList(),
                                 const SizedBox(height: 10),
                               ],
-                            );
-                          }).toList(),
+                            ),
+                          ] else ...[
+                            const Text('No court data available.'),
+                          ],
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   const Text(
                     "ຄອດທີ່ສາມາດລົງຫຼິ້ນໄດ້ປັດຈຸບັນ",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
                   Container(
@@ -155,52 +159,66 @@ class QrDataDetail extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           const Divider(),
-                          ...controller.courtAvailableList.isNotEmpty
-                              ? [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'ວັນທີ່: ${controller.courtAvailableList[0].date}',
-                                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      ...controller.courtAvailableList[0].durationTime.map((timeSlot) {
-                                        return Text(
-                                          timeSlot,
-                                          style: const TextStyle(color: Colors.grey),
-                                        );
-                                      }).toList(),
-                                      const SizedBox(height: 10),
-                                    ],
-                                  ),
-                                ]
-                              : [
-                                  const Text('No available court data.'),
-                                ],
-                          const Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                "ລາຄາ",
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              Text(
-                                NumberFormatter.formatPriceKip(
-                                  controller.courtAvailableList[0].allTotalAmount,
+                          if (controller.courtAvailableList.isNotEmpty) ...[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ວັນທີ່: ${controller.courtAvailableList[0].date}',
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
-                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green),
-                              ),
-                            ],
-                          ),
+                                const SizedBox(height: 5),
+                                ...controller.courtAvailableList[0].durationTime.map((timeSlot) {
+                                  return Text(
+                                    timeSlot,
+                                    style: const TextStyle(color: Colors.grey),
+                                  );
+                                }).toList(),
+                                const SizedBox(height: 10),
+                                const Divider(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text(
+                                      "ລາຄາ :",
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                    ),
+                                    Text(
+                                      NumberFormatter.formatPriceKip(
+                                        controller.courtAvailableList[0].allTotalAmount,
+                                      ),
+                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ] else ...[
+                            const Text('No available court data.'),
+                          ],
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
-                  BookingButton(
-                    onTap: () {},
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: BookingButton(
+                      onTap: () async {
+                        if (controller.courtAvailableList.isNotEmpty) {
+                          final deviceId = controller.dashboardController.deviceInfoModel.value.id;
+                          final paymentArgument = PaymentParamModel(
+                            courtAvailableId: controller.courtAvailableList[0].id,
+                            deviceId: deviceId,
+                            courtBookingId: controller.bookingData.value.id,
+                          );
+                          await controller.sendPayment(paymentArgument);
+                        } else {
+                          Get.snackbar("Error", "No available court data to make payment.");
+                        }
+                      },
+                      text: 'ຈ່າຍເງິນ',
+                    ),
                   ),
                 ],
               ),

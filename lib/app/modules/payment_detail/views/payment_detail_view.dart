@@ -214,9 +214,12 @@ class PaymentDetailView extends GetView<PaymentDetailController> {
                 ),
               ),
               const SizedBox(height: 20),
-              BookingButton(onTap: () {
-                // Get.to(const BillPaymentDetail(court: court,));
-              }),
+              BookingButton(
+                onTap: () {
+                  // Get.to(const BillPaymentDetail(court: court,));
+                },
+                text: 'ຈອງ',
+              ),
             ],
           ),
         ),

@@ -13,6 +13,7 @@ import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/loading_dialog.dart';
+import 'package:nuol_badminton_thesis/app/widgets/snackbar.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class ChooseScheduleController extends GetxController {
@@ -146,7 +147,7 @@ class ChooseScheduleController extends GetxController {
     if (selectedCourtModels.isEmpty) {
       Get.snackbar(
         'Error',
-        'Please select at least one time slot',
+        'ກະລຸນາເລືອກເວລາ',
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
@@ -173,11 +174,15 @@ class ChooseScheduleController extends GetxController {
       },
       (r) {
         Loading.hide();
-        Get.snackbar(
+        // Get.snackbar(
+        //   'ສຳເລັດ',
+        //   'ການຈອງເດີ່ນສຳເລັດ',
+        //   backgroundColor: Colors.white,
+        //   colorText: Colors.black,
+        // );
+        showCustomSnackbar(
           'ສຳເລັດ',
           'ການຈອງເດີ່ນສຳເລັດ',
-          backgroundColor: Colors.white,
-          colorText: Colors.black,
         );
 
         if (usernameController.text.contains('admin')) {

@@ -177,6 +177,7 @@ class _ShopViewState extends State<ShopView> {
                 onTap: () {
                   Get.to(ChooseScheduleStfView(court: widget.court));
                 },
+                text: 'ຈອງ',
               ),
             ],
           ),

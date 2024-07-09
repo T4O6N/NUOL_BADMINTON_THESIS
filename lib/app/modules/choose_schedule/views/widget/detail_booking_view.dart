@@ -225,6 +225,7 @@ class DetailBookingView extends StatelessWidget {
                       chooseScheduleController.bookingCourtOrder(context: context);
                     }
                   },
+                  text: 'ຈອງ',
                 ),
               ],
             ),
