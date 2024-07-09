@@ -18,13 +18,12 @@ class ChooseScheduleStfView extends StatefulWidget {
 }
 
 class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
-  final List<String> timeSlots = ['9:00 AM - 10:00 AM', '10:00 AM- 11:00 AM', '11:00 AM- 12:00 PM', '12:00 PM- 1:00 PM', '1:00 PM - 2:00 PM', '2:00 PM - 3:00 PM', '3:00 PM - 4:00 PM', '4:00 PM - 5:00 PM', '5:00 PM - 6:00 PM', '6:00 PM - 7:00 PM', '7:00 PM - 8:00 PM', '8:00 PM - 9:00 PM', '9:00 PM - 10:00 PM', '10:00 PM - 11:00 PM'];
+  final List<String> timeSlots = ['9:00 AM - 10:00 AM', '10:00 AM - 11:00 AM', '11:00 AM - 12:00 PM', '12:00 PM - 1:00 PM', '1:00 PM - 2:00 PM', '2:00 PM - 3:00 PM', '3:00 PM - 4:00 PM', '4:00 PM - 5:00 PM', '5:00 PM - 6:00 PM', '6:00 PM - 7:00 PM', '7:00 PM - 8:00 PM', '8:00 PM - 9:00 PM', '9:00 PM - 10:00 PM', '10:00 PM - 11:00 PM'];
 
-  List<ListCourt> bookingDetails = [];
+  ListCourt bookingDetails = ListCourt(date: '', durationTime: []);
   DateTime _selectedDate = DateTime.now();
   int totalPrice = 0;
   final int pricePerSlot = 80000;
-  final int discount = 20000;
 
   @override
   void initState() {
@@ -34,21 +33,16 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
 
   void _initializeBookingDetails(DateTime date) {
     setState(() {
-      bookingDetails.add(ListCourt(date: DateFormat('yyyy-MM-dd').format(date), durationTime: []));
+      bookingDetails = ListCourt(date: DateFormat('yyyy-MM-dd').format(date), durationTime: []);
     });
   }
 
   void _calculateTotalPrice() {
-    totalPrice = bookingDetails.fold(
-      0,
-      (sum, courtModel) => sum + (courtModel.durationTime.length * pricePerSlot),
-    );
+    totalPrice = bookingDetails.durationTime.length * pricePerSlot;
   }
 
   void _addToCart() {
-    final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
-
-    if (selectedCourtModels.isEmpty) {
+    if (bookingDetails.durationTime.isEmpty) {
       Get.snackbar('Error', 'Please select at least one time slot', backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
@@ -56,7 +50,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
     Get.to(
       DetailBookingView(
         court: widget.court,
-        bookingDetails: selectedCourtModels,
+        bookingDetails: [bookingDetails],
         totalPrice: totalPrice,
       ),
     );
@@ -179,12 +173,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                               itemCount: timeSlots.length,
                               itemBuilder: (context, index) {
                                 final timeSlot = timeSlots[index];
-                                final currentCourtModel = bookingDetails.firstWhere(
-                                  (courtModel) => courtModel.date == DateFormat('yyyy-MM-dd').format(_selectedDate),
-                                  orElse: () => const ListCourt(date: '', durationTime: []),
-                                );
-
-                                final isSelected = currentCourtModel.durationTime.contains(timeSlot);
+                                final isSelected = bookingDetails.durationTime.contains(timeSlot);
                                 final isTimePassed = _isTimePassed(timeSlot);
                                 final isCurrentDate = _selectedDate.isAtSameMomentAs(DateTime.now());
                                 final canChangeTimeSlot = isCurrentDate || !isTimePassed;
@@ -196,23 +185,13 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                   onChanged: canChangeTimeSlot
                                       ? (bool? value) {
                                           setState(() {
+                                            final mutableDurationTime = List<String>.from(bookingDetails.durationTime);
                                             if (value == true) {
-                                              final updatedCourtModel = currentCourtModel.copyWith(
-                                                durationTime: [...currentCourtModel.durationTime, timeSlot],
-                                              );
-                                              final index = bookingDetails.indexWhere(
-                                                (courtModel) => courtModel.date == updatedCourtModel.date,
-                                              );
-                                              bookingDetails[index] = updatedCourtModel;
+                                              mutableDurationTime.add(timeSlot);
                                             } else {
-                                              final updatedCourtModel = currentCourtModel.copyWith(
-                                                durationTime: currentCourtModel.durationTime.where((slot) => slot != timeSlot).toList(),
-                                              );
-                                              final index = bookingDetails.indexWhere(
-                                                (courtModel) => courtModel.date == updatedCourtModel.date,
-                                              );
-                                              bookingDetails[index] = updatedCourtModel;
+                                              mutableDurationTime.remove(timeSlot);
                                             }
+                                            bookingDetails = bookingDetails.copyWith(durationTime: mutableDurationTime);
                                             _calculateTotalPrice();
                                           });
                                         }
@@ -272,12 +251,14 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
         color: Colors.black,
       ),
       onDateChange: (date) {
-        setState(() {
-          _selectedDate = date;
-          if (!bookingDetails.any((courtModel) => courtModel.date == DateFormat('yyyy-MM-dd').format(date))) {
-            _initializeBookingDetails(date);
-          }
-        });
+        if (bookingDetails.durationTime.isNotEmpty && _selectedDate != date) {
+          Get.snackbar('Error', 'ສາມາດຈອງໄດ້ພຽງແຕ່ໜື່ງມື້ເທົ່ານັ້ນ', backgroundColor: Colors.red, colorText: Colors.white);
+        } else {
+          setState(() {
+            _selectedDate = date;
+            _initializeBookingDetails(date); // Reinitialize for the new date
+          });
+        }
       },
     );
   }

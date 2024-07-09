@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
-import 'package:nuol_badminton_thesis/app/constants/lottie_constants.dart';
 import '../controllers/booking_controller.dart';
 
 class BookingView extends GetView<BookingController> {
@@ -88,11 +86,6 @@ class BookingView extends GetView<BookingController> {
                         ],
                       ),
                       const Divider(),
-                      // Text(
-                      //   'ວັນທີ່ຈອງ: ${DateFormat('yyyy-MM-dd HH:mm').format(
-                      //     DateTime.parse(historyList.courtBooking.created_at),
-                      //   )}',
-                      // ),
                       ...historyList.courtBooking.court.map(
                         (courtModel) {
                           return Column(
@@ -104,7 +97,7 @@ class BookingView extends GetView<BookingController> {
                               ),
                               ...courtModel.durationTime.map((timeSlot) {
                                 return Text(
-                                  timeSlot,
+                                  "- $timeSlot.",
                                   style: const TextStyle(color: Colors.grey),
                                 );
                               }).toList(),
@@ -124,8 +117,8 @@ class BookingView extends GetView<BookingController> {
               SizedBox(
                 height: Get.height * 0.6,
                 width: Get.width,
-                child: Center(
-                  child: LottieBuilder.asset(LottieConstants.empty),
+                child: const Center(
+                  child: Text("ບໍ່ມີຂໍ້ມູນ"),
                 ),
               ),
             ],
@@ -143,8 +136,8 @@ class BookingView extends GetView<BookingController> {
               SizedBox(
                 height: Get.height * 0.6,
                 width: Get.width,
-                child: Center(
-                  child: LottieBuilder.asset(LottieConstants.empty),
+                child: const Center(
+                  child: Text("ມີບາງຢ່າງຜິດພາດ"),
                 ),
               ),
             ],

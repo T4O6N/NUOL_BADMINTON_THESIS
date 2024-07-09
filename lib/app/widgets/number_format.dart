@@ -22,6 +22,15 @@ class NumberFormatter {
     }
   }
 
+  static String paymentFormatPriceKip(int price) {
+    if (price.toString().length > 3) {
+      final formatPrice = formatter.format(price);
+      return "-$formatPrice ${"₭".tr}";
+    } else {
+      return "-$price ${"₭".tr}";
+    }
+  }
+
   static String formatPriceWithoutKip(int price) {
     if (price.toString().length > 3) {
       final formatPrice = formatter.format(price);

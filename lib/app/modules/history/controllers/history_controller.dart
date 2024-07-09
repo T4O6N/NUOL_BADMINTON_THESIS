@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/history/model/response_find_many_payment_history_data_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/history/model/response_find_many_payment_history_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/history/models/response_find_many_payment_history_data_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/history/models/response_find_many_payment_history_model.dart';
 
 class HistoryController extends GetxController with StateMixin<List<ResponseFindManyPaymentHistoryDataModel>> {
   DashboardController dashboardController = Get.put(DashboardController());

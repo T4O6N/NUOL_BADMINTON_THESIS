@@ -136,7 +136,7 @@ class BillPaymentDetail extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 ...courtModel.durationTime.map((timeSlot) {
                                   return Text(
-                                    timeSlot,
+                                    "- $timeSlot.",
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),

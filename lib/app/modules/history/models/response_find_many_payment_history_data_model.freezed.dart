@@ -33,6 +33,9 @@ mixin _$ResponseFindManyPaymentHistoryDataModel {
   String get bookingPaymentId => throw _privateConstructorUsedError;
   @JsonKey(name: 'court_available_id')
   String get courtAvailableId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'booking_payment')
+  ResponseBookingPaymentModel get bookingPayment =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'court_available')
   ResponseBookingDataCourtAvailableModel get courtAvailable =>
       throw _privateConstructorUsedError;
@@ -59,9 +62,12 @@ abstract class $ResponseFindManyPaymentHistoryDataModelCopyWith<$Res> {
       @JsonKey(name: 'device_id') String deviceId,
       @JsonKey(name: 'booking_payment_id') String bookingPaymentId,
       @JsonKey(name: 'court_available_id') String courtAvailableId,
+      @JsonKey(name: 'booking_payment')
+      ResponseBookingPaymentModel bookingPayment,
       @JsonKey(name: 'court_available')
       ResponseBookingDataCourtAvailableModel courtAvailable});
 
+  $ResponseBookingPaymentModelCopyWith<$Res> get bookingPayment;
   $ResponseBookingDataCourtAvailableModelCopyWith<$Res> get courtAvailable;
 }
 
@@ -86,6 +92,7 @@ class _$ResponseFindManyPaymentHistoryDataModelCopyWithImpl<$Res,
     Object? deviceId = null,
     Object? bookingPaymentId = null,
     Object? courtAvailableId = null,
+    Object? bookingPayment = null,
     Object? courtAvailable = null,
   }) {
     return _then(_value.copyWith(
@@ -113,11 +120,24 @@ class _$ResponseFindManyPaymentHistoryDataModelCopyWithImpl<$Res,
           ? _value.courtAvailableId
           : courtAvailableId // ignore: cast_nullable_to_non_nullable
               as String,
+      bookingPayment: null == bookingPayment
+          ? _value.bookingPayment
+          : bookingPayment // ignore: cast_nullable_to_non_nullable
+              as ResponseBookingPaymentModel,
       courtAvailable: null == courtAvailable
           ? _value.courtAvailable
           : courtAvailable // ignore: cast_nullable_to_non_nullable
               as ResponseBookingDataCourtAvailableModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseBookingPaymentModelCopyWith<$Res> get bookingPayment {
+    return $ResponseBookingPaymentModelCopyWith<$Res>(_value.bookingPayment,
+        (value) {
+      return _then(_value.copyWith(bookingPayment: value) as $Val);
+    });
   }
 
   @override
@@ -146,9 +166,13 @@ abstract class _$$ResponseFindManyPaymentHistoryDataModelImplCopyWith<$Res>
       @JsonKey(name: 'device_id') String deviceId,
       @JsonKey(name: 'booking_payment_id') String bookingPaymentId,
       @JsonKey(name: 'court_available_id') String courtAvailableId,
+      @JsonKey(name: 'booking_payment')
+      ResponseBookingPaymentModel bookingPayment,
       @JsonKey(name: 'court_available')
       ResponseBookingDataCourtAvailableModel courtAvailable});
 
+  @override
+  $ResponseBookingPaymentModelCopyWith<$Res> get bookingPayment;
   @override
   $ResponseBookingDataCourtAvailableModelCopyWith<$Res> get courtAvailable;
 }
@@ -172,6 +196,7 @@ class __$$ResponseFindManyPaymentHistoryDataModelImplCopyWithImpl<$Res>
     Object? deviceId = null,
     Object? bookingPaymentId = null,
     Object? courtAvailableId = null,
+    Object? bookingPayment = null,
     Object? courtAvailable = null,
   }) {
     return _then(_$ResponseFindManyPaymentHistoryDataModelImpl(
@@ -199,6 +224,10 @@ class __$$ResponseFindManyPaymentHistoryDataModelImplCopyWithImpl<$Res>
           ? _value.courtAvailableId
           : courtAvailableId // ignore: cast_nullable_to_non_nullable
               as String,
+      bookingPayment: null == bookingPayment
+          ? _value.bookingPayment
+          : bookingPayment // ignore: cast_nullable_to_non_nullable
+              as ResponseBookingPaymentModel,
       courtAvailable: null == courtAvailable
           ? _value.courtAvailable
           : courtAvailable // ignore: cast_nullable_to_non_nullable
@@ -218,6 +247,8 @@ class _$ResponseFindManyPaymentHistoryDataModelImpl
       @JsonKey(name: 'device_id') this.deviceId = "",
       @JsonKey(name: 'booking_payment_id') this.bookingPaymentId = "",
       @JsonKey(name: 'court_available_id') this.courtAvailableId = "",
+      @JsonKey(name: 'booking_payment')
+      this.bookingPayment = const ResponseBookingPaymentModel(),
       @JsonKey(name: 'court_available')
       this.courtAvailable = const ResponseBookingDataCourtAvailableModel()});
 
@@ -244,12 +275,15 @@ class _$ResponseFindManyPaymentHistoryDataModelImpl
   @JsonKey(name: 'court_available_id')
   final String courtAvailableId;
   @override
+  @JsonKey(name: 'booking_payment')
+  final ResponseBookingPaymentModel bookingPayment;
+  @override
   @JsonKey(name: 'court_available')
   final ResponseBookingDataCourtAvailableModel courtAvailable;
 
   @override
   String toString() {
-    return 'ResponseFindManyPaymentHistoryDataModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deviceId: $deviceId, bookingPaymentId: $bookingPaymentId, courtAvailableId: $courtAvailableId, courtAvailable: $courtAvailable)';
+    return 'ResponseFindManyPaymentHistoryDataModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deviceId: $deviceId, bookingPaymentId: $bookingPaymentId, courtAvailableId: $courtAvailableId, bookingPayment: $bookingPayment, courtAvailable: $courtAvailable)';
   }
 
   @override
@@ -268,14 +302,24 @@ class _$ResponseFindManyPaymentHistoryDataModelImpl
                 other.bookingPaymentId == bookingPaymentId) &&
             (identical(other.courtAvailableId, courtAvailableId) ||
                 other.courtAvailableId == courtAvailableId) &&
+            (identical(other.bookingPayment, bookingPayment) ||
+                other.bookingPayment == bookingPayment) &&
             (identical(other.courtAvailable, courtAvailable) ||
                 other.courtAvailable == courtAvailable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt,
-      deviceId, bookingPaymentId, courtAvailableId, courtAvailable);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createdAt,
+      updatedAt,
+      deviceId,
+      bookingPaymentId,
+      courtAvailableId,
+      bookingPayment,
+      courtAvailable);
 
   @JsonKey(ignore: true)
   @override
@@ -303,6 +347,8 @@ abstract class _ResponseFindManyPaymentHistoryDataModel
           @JsonKey(name: 'device_id') final String deviceId,
           @JsonKey(name: 'booking_payment_id') final String bookingPaymentId,
           @JsonKey(name: 'court_available_id') final String courtAvailableId,
+          @JsonKey(name: 'booking_payment')
+          final ResponseBookingPaymentModel bookingPayment,
           @JsonKey(name: 'court_available')
           final ResponseBookingDataCourtAvailableModel courtAvailable}) =
       _$ResponseFindManyPaymentHistoryDataModelImpl;
@@ -328,6 +374,9 @@ abstract class _ResponseFindManyPaymentHistoryDataModel
   @override
   @JsonKey(name: 'court_available_id')
   String get courtAvailableId;
+  @override
+  @JsonKey(name: 'booking_payment')
+  ResponseBookingPaymentModel get bookingPayment;
   @override
   @JsonKey(name: 'court_available')
   ResponseBookingDataCourtAvailableModel get courtAvailable;

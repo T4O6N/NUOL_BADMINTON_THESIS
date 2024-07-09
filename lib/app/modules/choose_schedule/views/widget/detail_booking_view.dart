@@ -98,7 +98,7 @@ class DetailBookingView extends StatelessWidget {
                                 ),
                                 ...courtModel.durationTime.map((timeSlot) {
                                   return Text(
-                                    timeSlot,
+                                    " - $timeSlot.",
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),

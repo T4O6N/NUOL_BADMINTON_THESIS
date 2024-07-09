@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
-
-import 'package:nuol_badminton_thesis/app/constants/lottie_constants.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
-
 import '../controllers/history_controller.dart';
 
 class HistoryView extends GetView<HistoryController> {
@@ -56,70 +52,71 @@ class HistoryView extends GetView<HistoryController> {
                     children: [
                       Row(
                         children: [
-                          const Text('ວັນທີ່ຈອງ: '),
+                          const Text(
+                            "ຊື່ : ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(
-                            DateFormat('yyyy-MM-dd HH:mm').format(
-                              DateTime.parse(historyList.createdAt),
-                            ),
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            historyList.bookingPayment.courtBooking.fullName,
                           ),
                         ],
                       ),
-                      // Row(
-                      //   children: [
-                      //     const Text('ຊື່:'),
-                      //     Text(
-                      //       ' ${historyList.courtBooking.fullName}',
-                      //       style: const TextStyle(fontWeight: FontWeight.bold),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     const Text('ເບີໂທ:'),
-                      //     Text(
-                      //       ' ${historyList.courtBooking.phone}',
-                      //       style: const TextStyle(fontWeight: FontWeight.bold),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     const Text('ຄອດ:'),
-                      //     Text(
-                      //       ' ${historyList.courtBooking.courtNumber}',
-                      //       style: const TextStyle(fontWeight: FontWeight.bold),
-                      //     ),
-                      //   ],
-                      // ),
-                      const Divider(),
-
                       Row(
                         children: [
-                          const Text('ວັນທີ່ການໃຊ້ຄອດ: '),
+                          const Text(
+                            "ເບີໂທ : ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(
-                            DateFormat('yyyy-MM-dd HH:mm').format(
-                              DateTime.parse(historyList.courtAvailable.date),
-                            ),
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            historyList.bookingPayment.courtBooking.phone,
                           ),
                         ],
                       ),
-
-                      // Text(
-                      //   'ວັນທີ່ຈອງ: ${DateFormat('yyyy-MM-dd HH:mm').format(
-                      //     DateTime.parse(historyList.courtBooking.created_at),
-                      //   )}',
-                      // ),
-                      const Text('ໄລຍະເວລາການນຳໃຊ້ຄອດ:'),
+                      Row(
+                        children: [
+                          const Text(
+                            "ຄອດ : ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            historyList.bookingPayment.courtBooking.courtNumber,
+                          ),
+                        ],
+                      ),
+                      const Divider(),
+                      const Text(
+                        '# ໄລຍະເວລາການນຳໃຊ້ຄອດ',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       ...historyList.courtAvailable.durationTime.map((time) => Text(' - $time .')).toList(),
-                      const Divider(),
+                      const SizedBox(height: 16),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text('ລາຄາລວມ: '),
+                          const Text(
+                            'ວັນທີ່ຈ່າຍເງິນ: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                DateFormat('yyyy-MM-dd').format(
+                                  DateTime.parse(historyList.bookingPayment.date),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(historyList.bookingPayment.paymentTime)
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'ລາຄາລວມ: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(
-                            NumberFormatter.formatPriceKip(historyList.courtAvailable.allTotalAmount),
+                            NumberFormatter.paymentFormatPriceKip(historyList.courtAvailable.allTotalAmount),
                             style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
                           ),
                         ],
@@ -136,8 +133,8 @@ class HistoryView extends GetView<HistoryController> {
               SizedBox(
                 height: Get.height * 0.6,
                 width: Get.width,
-                child: Center(
-                  child: LottieBuilder.asset(LottieConstants.empty),
+                child: const Center(
+                  child: Text("ບໍ່ມີຂໍ້ມູນ"),
                 ),
               ),
             ],
@@ -155,8 +152,8 @@ class HistoryView extends GetView<HistoryController> {
               SizedBox(
                 height: Get.height * 0.6,
                 width: Get.width,
-                child: Center(
-                  child: LottieBuilder.asset(LottieConstants.empty),
+                child: const Center(
+                  child: Text("ມີບາງຢ່າງຜິດພາດ"),
                 ),
               ),
             ],

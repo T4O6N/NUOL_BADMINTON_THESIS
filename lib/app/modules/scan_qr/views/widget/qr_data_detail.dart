@@ -119,7 +119,7 @@ class QrDataDetail extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 ...controller.courtList[0].durationTime.map((timeSlot) {
                                   return Text(
-                                    timeSlot,
+                                    "- $timeSlot.",
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),
@@ -170,7 +170,7 @@ class QrDataDetail extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 ...controller.courtAvailableList[0].durationTime.map((timeSlot) {
                                   return Text(
-                                    timeSlot,
+                                    "- $timeSlot.",
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),
