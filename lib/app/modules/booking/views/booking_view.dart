@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import '../controllers/booking_controller.dart';
 
 class BookingView extends GetView<BookingController> {
@@ -88,26 +89,70 @@ class BookingView extends GetView<BookingController> {
                       const Divider(),
                       ...historyList.courtBooking.court.map(
                         (courtModel) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "ວັນທີ່ : ${courtModel.date}",
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "ວັນທີ່ : ${courtModel.date}",
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  ...courtModel.durationTime.map((timeSlot) {
+                                    return Text(
+                                      "- $timeSlot.",
+                                      style: const TextStyle(color: Colors.grey),
+                                    );
+                                  }).toList(),
+                                ],
                               ),
-                              ...courtModel.durationTime.map((timeSlot) {
-                                return Text(
-                                  "- $timeSlot.",
-                                  style: const TextStyle(color: Colors.grey),
-                                );
-                              }).toList(),
+                              QrImageView(
+                                data: historyList.courtBookingId,
+                                size: Get.height * 0.1,
+                                dataModuleStyle: const QrDataModuleStyle(color: Colors.grey),
+                              ),
                             ],
                           );
                         },
                       ).toList(),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    // showModalBottomSheet(
+                    //   context: context,
+                    //   isScrollControlled: true,
+                    //   builder: (BuildContext context) {
+                    //     return Container(
+                    //       padding: const EdgeInsets.all(20),
+                    //       height: Get.height * 0.6,
+                    //       child: Center(
+                    //         child: QrImageView(
+                    //           data: historyList.courtBookingId,
+                    //           size: Get.height * 0.4,
+                    //           dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },
+                    // );
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            color: Colors.white,
+                            child: QrImageView(
+                              data: historyList.courtBookingId,
+                              size: Get.height * 0.4,
+                              dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               );
             },
