@@ -119,39 +119,108 @@ class BookingView extends GetView<BookingController> {
                     ],
                   ),
                   onTap: () {
-                    // showModalBottomSheet(
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return Container(
+                          padding: const EdgeInsets.all(20),
+                          height: Get.height * 0.8,
+                          child: Column(
+                            children: [
+                              const Text(
+                                "ສະແກນ ",
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                              QrImageView(
+                                data: historyList.courtBookingId,
+                                size: Get.height * 0.3,
+                                dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
+                              ),
+                              const Divider(),
+                              Row(
+                                children: [
+                                  const Text('ຄອດ:'),
+                                  Text(
+                                    ' ${historyList.courtBooking.courtNumber}',
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              ...historyList.courtBooking.court.map(
+                                (courtModel) {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "ວັນທີ່ : ${courtModel.date}",
+                                            style: const TextStyle(fontWeight: FontWeight.bold),
+                                          ),
+                                          ...courtModel.durationTime.map((timeSlot) {
+                                            return Text(
+                                              "- $timeSlot.",
+                                              style: const TextStyle(color: Colors.grey),
+                                            );
+                                          }).toList(),
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ).toList(),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                    // showDialog(
                     //   context: context,
-                    //   isScrollControlled: true,
                     //   builder: (BuildContext context) {
-                    //     return Container(
-                    //       padding: const EdgeInsets.all(20),
-                    //       height: Get.height * 0.6,
-                    //       child: Center(
-                    //         child: QrImageView(
-                    //           data: historyList.courtBookingId,
-                    //           size: Get.height * 0.4,
-                    //           dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
+                    //     return Dialog(
+                    //       child: Container(
+                    //         height: Get.height * 0.7,
+                    //         padding: const EdgeInsets.all(20),
+                    //         color: Colors.white,
+                    //         child: Column(
+                    //           children: [
+                    //             QrImageView(
+                    //               data: historyList.courtBookingId,
+                    //               size: Get.height * 0.4,
+                    //               dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
+                    //             ),
+                    //             ...historyList.courtBooking.court.map(
+                    //               (courtModel) {
+                    //                 return Row(
+                    //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //                   children: [
+                    //                     Column(
+                    //                       crossAxisAlignment: CrossAxisAlignment.start,
+                    //                       children: [
+                    //                         Text(
+                    //                           "ວັນທີ່ : ${courtModel.date}",
+                    //                           style: const TextStyle(fontWeight: FontWeight.bold),
+                    //                         ),
+                    //                         ...courtModel.durationTime.map((timeSlot) {
+                    //                           return Text(
+                    //                             "- $timeSlot.",
+                    //                             style: const TextStyle(color: Colors.grey),
+                    //                           );
+                    //                         }).toList(),
+                    //                       ],
+                    //                     ),
+                    //                   ],
+                    //                 );
+                    //               },
+                    //             ).toList(),
+                    //           ],
                     //         ),
                     //       ),
                     //     );
                     //   },
                     // );
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Dialog(
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            color: Colors.white,
-                            child: QrImageView(
-                              data: historyList.courtBookingId,
-                              size: Get.height * 0.4,
-                              dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
-                            ),
-                          ),
-                        );
-                      },
-                    );
                   },
                 ),
               );

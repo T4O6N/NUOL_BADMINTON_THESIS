@@ -170,7 +170,7 @@ class QrDataDetail extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 ...controller.courtAvailableList[0].durationTime.map((timeSlot) {
                                   return Text(
-                                    "- $timeSlot.",
+                                    "- $timeSlot .",
                                     style: const TextStyle(color: Colors.grey),
                                   );
                                 }).toList(),
@@ -249,8 +249,11 @@ class QrDataDetail extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.6,
               width: Get.width,
-              child: Center(
-                child: LottieBuilder.asset(LottieConstants.empty),
+              child: const Center(
+                child: Text(
+                  "ຄິວອາຖືກນຳໃຊ້ແລ້ວ..",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
             ),
           ],

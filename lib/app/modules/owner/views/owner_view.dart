@@ -19,7 +19,7 @@ class OwnerView extends GetView<OwnerController> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: const Chart(),
+      body: Chart(),
     );
   }
 }
