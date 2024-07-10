@@ -174,10 +174,7 @@ class AdminBookingView extends GetView<AdminBookingController> {
               ),
               const SizedBox(height: 20),
               BookingButton(
-                onTap: () {
-                  // warningDialog(des: "des", context: context, btnOkOnPress: () {});
-                  // Get.to(const BillPaymentDetail());
-                },
+                onTap: () {},
                 text: 'ຈອງ',
               ),
               const SizedBox(height: 40),

@@ -185,6 +185,7 @@ class BillPaymentDetail extends StatelessWidget {
                           const SizedBox(height: 10),
                           const Divider(),
                           const SizedBox(height: 10),
+                          Text(bookingResponse.data.deviceId),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

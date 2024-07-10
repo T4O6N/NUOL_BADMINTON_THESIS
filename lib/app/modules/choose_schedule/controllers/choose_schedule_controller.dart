@@ -174,16 +174,8 @@ class ChooseScheduleController extends GetxController {
       },
       (r) {
         Loading.hide();
-        // Get.snackbar(
-        //   'ສຳເລັດ',
-        //   'ການຈອງເດີ່ນສຳເລັດ',
-        //   backgroundColor: Colors.white,
-        //   colorText: Colors.black,
-        // );
-        showCustomSnackbar(
-          'ສຳເລັດ',
-          'ການຈອງເດີ່ນສຳເລັດ',
-        );
+
+        showCustomSnackbar('ສຳເລັດ', 'ການຈອງເດີ່ນສຳເລັດ');
 
         if (usernameController.text.contains('admin')) {
           Get.to(const LoginView()); // Replace with your actual AdminPage
