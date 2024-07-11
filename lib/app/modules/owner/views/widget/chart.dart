@@ -48,19 +48,19 @@ class Chart extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Court Usage Summary',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: ownerDashboardController.courtUsageList.map((courtUsage) {
-                                  return Text('${courtUsage.courtNumber} : ${courtUsage.bookingCount}');
-                                }).toList(),
-                              ),
-                            ),
+                            // const Text(
+                            //   'Court Usage Summary',
+                            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            // ),
+                            // Align(
+                            //   alignment: Alignment.centerLeft,
+                            //   child: Column(
+                            //     crossAxisAlignment: CrossAxisAlignment.start,
+                            //     children: ownerDashboardController.courtUsageList.map((courtUsage) {
+                            //       return Text('${courtUsage.courtNumber} : ${courtUsage.bookingCount}');
+                            //     }).toList(),
+                            //   ),
+                            // ),
                           ],
                         );
                 }),
@@ -88,19 +88,19 @@ class Chart extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Weekly Income Summary',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: ownerDashboardController.weeklyIncomeList.map((income) {
-                                  return Text('${income.day} : ${NumberFormatter.formatPriceKip(income.incomeAmount)}');
-                                }).toList(),
-                              ),
-                            ),
+                            // const Text(
+                            //   'Weekly Income Summary',
+                            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            // ),
+                            // Align(
+                            //   alignment: Alignment.centerLeft,
+                            //   child: Column(
+                            //     crossAxisAlignment: CrossAxisAlignment.start,
+                            //     children: ownerDashboardController.weeklyIncomeList.map((income) {
+                            //       return Text('${income.day} : ${NumberFormatter.formatPriceKip(income.incomeAmount)}');
+                            //     }).toList(),
+                            //   ),
+                            // ),
                             const SizedBox(height: 10),
                             Obx(() {
                               return Row(

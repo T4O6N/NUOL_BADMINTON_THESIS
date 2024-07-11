@@ -53,7 +53,7 @@ class OwnerManagementAdminController extends GetxController {
               onPressed: () {
                 Get.back(); // Close the dialog
                 // Get.to(() => AdminManagementPage());
-                Get.to(() => AdminLoginPage());
+                // Get.to(() => AdminLoginPage());
               },
               child: const Text('OK'),
             ),

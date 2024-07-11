@@ -1,6 +1,7 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_login_and_register/admin_login_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/views/widgets/list_booking.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/custom_scroll_behavior.dart';
@@ -33,7 +34,8 @@ class HomeView extends GetView<HomeController> {
                 title: const Text("ພະນັກງານເດີ່ນ"),
                 onTap: () {
                   // Get.to(const AdminDashboardView());
-                  Get.to(LoginView());
+                  // Get.to(LoginView());
+                  Get.to(AdminLoginPage());
                 },
               ),
               ListTile(

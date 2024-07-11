@@ -90,7 +90,7 @@ class _AdminDashboardViewState extends State<AdminDashboardView> {
                 context,
                 icon: AppImagesSvg.bookingIcon,
                 page: 1,
-                label: "ຈອງ",
+                label: "ຈັດການ",
               ),
             ],
           ),

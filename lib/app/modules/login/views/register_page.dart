@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/param/param_create_owner_model.dart';
@@ -24,88 +25,99 @@ class RegisterPage extends StatelessWidget {
       phone: phoneController.text,
       password: passwordController.text,
     );
-
-    // ownerController.createOwner(owner).then((_) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     const SnackBar(content: Text('Account created successfully')),
-    //   );
-    //   Get.back(); // Navigate back to login page
-    // }).catchError((error) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     const SnackBar(content: Text('Failed to create account')),
-    //   );
-    // });
     ownerController.createOwner(owner);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 60.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Create Account',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+              const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'ສ້າງ Account',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
+              const SizedBox(height: 40),
+              _buildTextField(
                 controller: usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
-                ),
+                label: 'Username',
+                icon: Icons.person,
               ),
               const SizedBox(height: 20),
-              TextField(
+              _buildTextField(
                 controller: phoneController,
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.phone),
-                ),
+                label: 'Phone',
+                icon: Icons.phone,
                 keyboardType: TextInputType.phone,
               ),
               const SizedBox(height: 20),
-              TextField(
+              _buildTextField(
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                ),
+                label: 'Password',
+                icon: Icons.lock,
                 obscureText: true,
               ),
               const SizedBox(height: 20),
-              TextField(
+              _buildTextField(
                 controller: confirmPasswordController,
-                decoration: const InputDecoration(
-                  labelText: 'Confirm Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                ),
+                label: 'Confirm Password',
+                icon: Icons.lock,
                 obscureText: true,
               ),
               const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () => register(context),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  textStyle: const TextStyle(fontSize: 18),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () => register(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  child: const Text(
+                    'ລົງທະບຽນ',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
-                child: const Text('Register'),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required IconData icon,
+    bool obscureText = false,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(icon, color: Colors.green),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      obscureText: obscureText,
+      keyboardType: keyboardType,
     );
   }
 }

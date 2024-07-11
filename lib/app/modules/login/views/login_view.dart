@@ -29,7 +29,8 @@ class LoginView extends GetView<LoginController> {
       (owner) => owner.username == username && owner.password == password,
     );
     if (owner != null) {
-      Get.to(OwnerManagementPage()); // Navigate to Owner Management Page
+      // Get.to(OwnerManagementPage()); // Navigate to Owner Management Page
+      Get.to(const OwnerDashboardView());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid username or password')),
