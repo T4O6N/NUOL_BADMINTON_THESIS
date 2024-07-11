@@ -178,7 +178,7 @@ class ChooseScheduleController extends GetxController {
         showCustomSnackbar('ສຳເລັດ', 'ການຈອງເດີ່ນສຳເລັດ');
 
         if (usernameController.text.contains('admin')) {
-          Get.to(const LoginView()); // Replace with your actual AdminPage
+          Get.to(LoginView()); // Replace with your actual AdminPage
         } else {
           Get.to(
             BillPaymentDetail(

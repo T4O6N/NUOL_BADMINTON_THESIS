@@ -3,13 +3,37 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/user_management/views/user_management_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/login/views/register_page.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
+
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final OwnerController ownerController = Get.put(OwnerController());
+
+  void login(BuildContext context) {
+    final username = usernameController.text;
+    final password = passwordController.text;
+
+    final owner = ownerController.ownersList.firstWhereOrNull(
+      (owner) => owner.username == username && owner.password == password,
+    );
+
+    if (owner != null) {
+      Get.to(const OwnerView()); // Navigate to home page
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid username or password')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -56,6 +80,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     TextFormField(
+                      controller: usernameController,
                       cursorColor: Colors.blue,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -105,6 +130,8 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
                       cursorColor: Colors.blue,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -151,12 +178,17 @@ class LoginView extends GetView<LoginController> {
                           // if (formKey.currentState!.validate()) {
                           //   Get.to(OtpPage(onCompleted: (String value) {}, onChange: (String value) {}, phone: '', onSummit: () {}));
                           // }
-                          Get.to(const UserManagementView());
+                          // Get.to(const UserManagementView());
+                          login(context);
                         },
                         label: 'ເຂົ້າສູ້ລະບົບ',
                       ),
                     ),
                     const SizedBox(height: 10),
+                    TextButton(
+                      onPressed: () => Get.to(RegisterPage()), // Navigate to register page
+                      child: const Text('Don\'t have an account? Register'),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/court_usage_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/court_usage_response_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/court_usage_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/court_usage_response_model.dart';
 
-import 'package:nuol_badminton_thesis/app/modules/owner/model/weekly_income_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/weekly_income_response_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/weekly_income_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/weekly_income_response_model.dart';
 
 class OwnerDashboard extends GetxController {
   final Dio _dio = Dio();

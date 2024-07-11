@@ -36,8 +36,7 @@ import '../modules/shop_detail/bindings/shop_detail_binding.dart';
 import '../modules/shop_detail/views/shop_detail_view.dart';
 import '../modules/shop_profile/bindings/shop_profile_binding.dart';
 import '../modules/shop_profile/views/shop_profile_view.dart';
-import '../modules/user_management/bindings/user_management_binding.dart';
-import '../modules/user_management/views/user_management_view.dart';
+
 import '../modules/user_profile/bindings/user_profile_binding.dart';
 import '../modules/user_profile/views/user_profile_view.dart';
 
@@ -58,7 +57,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LoginView(),
+      page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -145,11 +144,6 @@ class AppPages {
       name: _Paths.CREATE_ADMIN_FOR_OWNER,
       page: () => const CreateAdminForOwnerView(),
       binding: CreateAdminForOwnerBinding(),
-    ),
-    GetPage(
-      name: _Paths.USER_MANAGEMENT,
-      page: () => const UserManagementView(),
-      binding: UserManagementBinding(),
     ),
   ];
 }

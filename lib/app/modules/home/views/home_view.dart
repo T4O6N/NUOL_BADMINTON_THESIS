@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                 title: const Text("ພະນັກງານເດີ່ນ"),
                 onTap: () {
                   // Get.to(const AdminDashboardView());
-                  Get.to(const LoginView());
+                  Get.to(LoginView());
                 },
               ),
               ListTile(
@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                 title: const Text("ເຈົ້າຂອງເດີ່ນ"),
                 onTap: () {
                   // Get.to(const OwnerDashboardView());
-                  Get.to(const LoginView());
+                  Get.to(LoginView());
                 },
               ),
             ],
