@@ -60,7 +60,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                     const SizedBox(height: 22),
                     const Text(
-                      'ເດີ່ນຕີດອກປີກໄກ່ສະໂມສອນເສດຖ້າ',
+                      'ເດີ່ນຕີດອກປີກໄກ່ສະໂມສອນເສດຖາ',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
