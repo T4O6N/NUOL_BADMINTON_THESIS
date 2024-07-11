@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner/owner_model.dart';
 
 part 'fetch_owners_response_model.freezed.dart';
 part 'fetch_owners_response_model.g.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/param/param_create_owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/param/param_create_owner_model.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();

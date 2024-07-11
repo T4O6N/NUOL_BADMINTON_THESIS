@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner/owner_model.dart';
 
 class UpdateOwnerPage extends StatelessWidget {
   final OwnerController ownerController = Get.find<OwnerController>();
   final OwnerModel owner;
 
-  UpdateOwnerPage({required this.owner});
+  UpdateOwnerPage({super.key, required this.owner});
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -22,39 +22,86 @@ class UpdateOwnerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Update Owner'),
+        backgroundColor: Colors.green,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
+            const SizedBox(height: 20),
+            _buildTextField(
               controller: usernameController,
-              decoration: const InputDecoration(labelText: 'Username'),
-            ),
-            TextField(
-              controller: phoneController,
-              decoration: const InputDecoration(labelText: 'Phone'),
-            ),
-            TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
+              label: 'Username',
+              icon: Icons.person,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                final updatedOwner = owner.copyWith(
-                  username: usernameController.text,
-                  phone: phoneController.text,
-                  password: passwordController.text,
-                );
-                ownerController.updateOwner(updatedOwner);
-              },
-              child: const Text('Update'),
+            _buildTextField(
+              controller: phoneController,
+              label: 'Phone',
+              icon: Icons.phone,
+              keyboardType: TextInputType.phone,
+            ),
+            const SizedBox(height: 20),
+            _buildTextField(
+              controller: passwordController,
+              label: 'Password',
+              icon: Icons.lock,
+              obscureText: true,
+            ),
+            const SizedBox(height: 30),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  final updatedOwner = OwnerModel(
+                    id: owner.id,
+                    username: usernameController.text,
+                    phone: phoneController.text,
+                    password: passwordController.text,
+                    isActive: owner.isActive,
+                    createdAt: owner.createdAt,
+                    updatedAt: owner.updatedAt,
+                  );
+                  ownerController.updateOwner(updatedOwner);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: const Text(
+                  'Update Owner',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required IconData icon,
+    bool obscureText = false,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(icon, color: Colors.green),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      obscureText: obscureText,
+      keyboardType: keyboardType,
     );
   }
 }

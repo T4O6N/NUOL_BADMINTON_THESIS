@@ -1,54 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/update_admin_page.dart';
 
-import 'update_owner_page.dart';
+class AdminManagementPage extends StatelessWidget {
+  final OwnerManagementAdminController adminController = Get.put(OwnerManagementAdminController());
 
-class OwnerManagementPage extends StatelessWidget {
-  final OwnerController ownerController = Get.put(OwnerController());
-
-  OwnerManagementPage({super.key});
+  AdminManagementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: const Text(
-          'Owner Management',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('Admin Management'),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.refresh,
-              color: Colors.white,
-            ),
-            onPressed: () => ownerController.fetchOwners(),
+            icon: const Icon(Icons.refresh),
+            onPressed: () => adminController.fetchAdmins(),
           ),
         ],
       ),
       body: Obx(() {
-        if (ownerController.ownersList.isEmpty) {
-          return const Center(child: Text('No owners available'));
+        if (adminController.adminsList.isEmpty) {
+          return const Center(child: Text('No admins available'));
         }
         return RefreshIndicator(
-          onRefresh: () => ownerController.fetchOwners(),
+          onRefresh: () => adminController.fetchAdmins(),
           child: ListView.builder(
-            itemCount: ownerController.ownersList.length,
+            itemCount: adminController.adminsList.length,
             itemBuilder: (context, index) {
-              final owner = ownerController.ownersList[index];
+              final admin = adminController.adminsList[index];
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
                   leading: CircleAvatar(
-                    child: Text(owner.username[0].toUpperCase()),
+                    child: Text(admin.username[0].toUpperCase()),
                   ),
-                  title: Text("ຊື້ : ${owner.username}"),
+                  title: Text(admin.username),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('ເບີໂທ: ${owner.phone}'),
+                      Text('Phone: ${admin.phone}'),
+                      Text('ID: ${admin.id}'),
                     ],
                   ),
                   trailing: Row(
@@ -57,13 +50,13 @@ class OwnerManagementPage extends StatelessWidget {
                       IconButton(
                         icon: const Icon(Icons.edit, color: Colors.blue),
                         onPressed: () {
-                          Get.to(() => UpdateOwnerPage(owner: owner));
+                          Get.to(() => UpdateAdminPage(admin: admin));
                         },
                       ),
                       IconButton(
                         icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
-                          ownerController.deleteOwner(owner.id);
+                          adminController.deleteAdmin(admin.id);
                         },
                       ),
                     ],

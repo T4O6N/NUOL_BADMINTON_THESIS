@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/create_owner/response_create_owner_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/find_many_owner/fetch_owners_response_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/create_owner/response_create_owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/find_many_owner/fetch_owners_response_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner/owner_model.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/param/param_create_owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/param/param_create_owner_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
 
 class OwnerController extends GetxController {

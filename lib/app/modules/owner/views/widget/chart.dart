@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_dashboard_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/court_usage_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/court_usage_model.dart';
 import 'package:flutter/material.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_dashboard/weekly_income_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/weekly_income_model.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

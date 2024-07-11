@@ -3,8 +3,11 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_login_and_register/admin_login_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/register_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
 
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
@@ -16,6 +19,7 @@ class LoginView extends GetView<LoginController> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final OwnerController ownerController = Get.put(OwnerController());
+  final OwnerManagementAdminController adminController = Get.put(OwnerManagementAdminController());
 
   void login(BuildContext context) {
     final username = usernameController.text;
@@ -33,9 +37,24 @@ class LoginView extends GetView<LoginController> {
     }
   }
 
+  void loginForAdmin(BuildContext context) {
+    final username = usernameController.text;
+    final password = passwordController.text;
+
+    final admin = adminController.adminsList.firstWhereOrNull(
+      (adm) => adm.username == username && adm.password == password,
+    );
+    if (admin != null) {
+      Get.to(AdminManagementPage()); // Navigate to Owner Management Page
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid username or password')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -96,10 +115,12 @@ class LoginView extends GetView<LoginController> {
                           color: Colors.grey.shade600,
                           fontSize: 15,
                         ),
-                        prefixIcon: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                          width: size.width * .1,
-                        ),
+                        // prefixIcon: Container(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                        //   width: size.width * .1,
+
+                        // ),
+                        prefixIcon: const Icon(Icons.person, color: Colors.green),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
                           borderRadius: BorderRadius.circular(50.0),
@@ -147,10 +168,11 @@ class LoginView extends GetView<LoginController> {
                           color: Colors.grey.shade600,
                           fontSize: 15,
                         ),
-                        prefixIcon: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                          width: size.width * .1,
-                        ),
+                        // prefixIcon: Container(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                        //   width: size.width * .1,
+                        // ),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.green),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(width: 2, color: Colors.green), //<-- SEE HERE
                           borderRadius: BorderRadius.circular(50.0),
@@ -193,7 +215,8 @@ class LoginView extends GetView<LoginController> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Get.to(const AdminDashboardView());
+                            // Get.to(const AdminDashboardView());
+                            Get.to(AdminLoginPage());
                           },
                           child: const Text("admin"),
                         ),

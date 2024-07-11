@@ -3,7 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner/owner_model.dart';
 
 part 'response_create_owner_model.freezed.dart';
 part 'response_create_owner_model.g.dart';
