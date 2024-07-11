@@ -5,7 +5,7 @@ import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_das
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/register_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
 
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
@@ -24,9 +24,8 @@ class LoginView extends GetView<LoginController> {
     final owner = ownerController.ownersList.firstWhereOrNull(
       (owner) => owner.username == username && owner.password == password,
     );
-
     if (owner != null) {
-      Get.to(const OwnerView()); // Navigate to home page
+      Get.to(OwnerManagementPage()); // Navigate to Owner Management Page
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid username or password')),

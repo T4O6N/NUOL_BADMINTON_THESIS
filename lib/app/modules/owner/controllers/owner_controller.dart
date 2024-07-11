@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
+import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/param/param_create_owner_model.dart';
 
 class OwnerController extends GetxController {
   final Dio _dio = Dio();
@@ -28,14 +29,17 @@ class OwnerController extends GetxController {
     }
   }
 
-  Future<void> createOwner(OwnerModel owner) async {
+  Future<void> createOwner(ParamCreateOwnerModel owner) async {
     try {
       final response = await _dio.post(createOwnerUrl, data: owner.toJson());
       log.d("Response : ${response.data}");
       final OwnerModel createdOwner = OwnerModel.fromJson(response.data['data']);
+      log.e("createdOwner:$createdOwner");
       ownersList.add(createdOwner);
+      log.w("ownersList:$ownersList");
       currentOwner.value = createdOwner; // Set the current owner
-      Get.offAll(OwnerManagementPage()); // Navigate to Owner Management Page
+      log.e("currentOwner:$createdOwner");
+      Get.to(LoginView);
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
     } catch (err) {
