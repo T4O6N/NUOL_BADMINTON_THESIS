@@ -52,7 +52,7 @@ class BookingView extends GetView<BookingController> {
                         children: [
                           const Text('ວັນທີ່ຈອງ: '),
                           Text(
-                            DateFormat('yyyy-MM-dd HH:mm').format(
+                            DateFormat('yyyy-MM-dd').format(
                               DateTime.parse(historyList.courtBooking.createdAt),
                             ),
                             style: const TextStyle(fontWeight: FontWeight.bold),
@@ -133,11 +133,20 @@ class BookingView extends GetView<BookingController> {
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                               QrImageView(
-                                data: historyList.courtBookingId,
+                                data: historyList.courtBooking.id,
                                 size: Get.height * 0.3,
                                 dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
                               ),
                               const Divider(),
+                              Row(
+                                children: [
+                                  const Text('ຊື່:'),
+                                  Text(
+                                    ' ${historyList.courtBooking.fullName}',
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                               Row(
                                 children: [
                                   const Text('ຄອດ:'),
@@ -176,51 +185,6 @@ class BookingView extends GetView<BookingController> {
                         );
                       },
                     );
-                    // showDialog(
-                    //   context: context,
-                    //   builder: (BuildContext context) {
-                    //     return Dialog(
-                    //       child: Container(
-                    //         height: Get.height * 0.7,
-                    //         padding: const EdgeInsets.all(20),
-                    //         color: Colors.white,
-                    //         child: Column(
-                    //           children: [
-                    //             QrImageView(
-                    //               data: historyList.courtBookingId,
-                    //               size: Get.height * 0.4,
-                    //               dataModuleStyle: const QrDataModuleStyle(color: Colors.black),
-                    //             ),
-                    //             ...historyList.courtBooking.court.map(
-                    //               (courtModel) {
-                    //                 return Row(
-                    //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //                   children: [
-                    //                     Column(
-                    //                       crossAxisAlignment: CrossAxisAlignment.start,
-                    //                       children: [
-                    //                         Text(
-                    //                           "ວັນທີ່ : ${courtModel.date}",
-                    //                           style: const TextStyle(fontWeight: FontWeight.bold),
-                    //                         ),
-                    //                         ...courtModel.durationTime.map((timeSlot) {
-                    //                           return Text(
-                    //                             "- $timeSlot.",
-                    //                             style: const TextStyle(color: Colors.grey),
-                    //                           );
-                    //                         }).toList(),
-                    //                       ],
-                    //                     ),
-                    //                   ],
-                    //                 );
-                    //               },
-                    //             ).toList(),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     );
-                    //   },
-                    // );
                   },
                 ),
               );

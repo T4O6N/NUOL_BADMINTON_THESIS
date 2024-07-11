@@ -50,16 +50,19 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
     log.e(" QR details for: $qr");
     change(courtList, status: RxStatus.loading());
     final path = "$baseUrl$qr";
+
+    log.d("path: $path");
     try {
       final response = await _dio.get(path);
       log.d("Response data: ${response.data}");
 
       final responseData = ResponseFindOneHistoryBookingModel.fromJson(response.data);
-      log.d("Number of courts: ${responseData.data.court.length}");
+      log.d("responseData:$responseData");
 
       bookingData.value = responseData.data;
       courtList.value = responseData.data.court;
       courtAvailableList.value = responseData.data.courtAvailable;
+      log.d("courtAvailableList:$courtAvailableList");
 
       if (responseData.data.court.isEmpty) {
         change(courtList, status: RxStatus.empty());

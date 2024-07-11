@@ -206,7 +206,7 @@ class QrDataDetail extends StatelessWidget {
                     child: BookingButton(
                       onTap: () async {
                         if (controller.courtAvailableList.isNotEmpty) {
-                          final deviceId = controller.dashboardController.deviceInfoModel.value.id;
+                          final deviceId = controller.bookingData.value.deviceId;
                           final paymentArgument = PaymentParamModel(
                             courtAvailableId: controller.courtAvailableList[0].id,
                             deviceId: deviceId,

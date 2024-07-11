@@ -9,9 +9,10 @@ part 'response_find_one_history_booking_data_court_model.g.dart';
 class ResponseFindOneHistoryBookingDataCourtModel with _$ResponseFindOneHistoryBookingDataCourtModel {
   const factory ResponseFindOneHistoryBookingDataCourtModel({
     @Default("") String id,
-    @JsonKey(name: 'court_booking_id') @Default("") String courtBookingId,
     @JsonKey(name: 'created_at') @Default("") String createdAt,
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
+    @JsonKey(name: 'court_booking_id') @Default("") String courtBookingId,
+    @JsonKey(name: 'court_booking_history_id') @Default("") String courtBookingHistoryId,
     @Default("") String date,
     @JsonKey(name: 'duration_time') @Default([]) List<String> durationTime,
     @Default(true) bool available,

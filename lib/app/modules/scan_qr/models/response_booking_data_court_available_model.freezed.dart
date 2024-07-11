@@ -23,6 +23,12 @@ ResponseBookingDataCourtAvailableModel
 /// @nodoc
 mixin _$ResponseBookingDataCourtAvailableModel {
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'court_booking_id')
+  String get courtBookingId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  String get updatedAt => throw _privateConstructorUsedError;
   int get totalAllCourtAvailable => throw _privateConstructorUsedError;
   bool get isExpiredAll => throw _privateConstructorUsedError;
   @JsonKey(name: 'all_total_amount')
@@ -48,6 +54,9 @@ abstract class $ResponseBookingDataCourtAvailableModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      @JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'updated_at') String updatedAt,
       int totalAllCourtAvailable,
       bool isExpiredAll,
       @JsonKey(name: 'all_total_amount') int allTotalAmount,
@@ -70,6 +79,9 @@ class _$ResponseBookingDataCourtAvailableModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = null,
+    Object? courtBookingId = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? totalAllCourtAvailable = null,
     Object? isExpiredAll = null,
     Object? allTotalAmount = null,
@@ -80,6 +92,18 @@ class _$ResponseBookingDataCourtAvailableModelCopyWithImpl<$Res,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtBookingId: null == courtBookingId
+          ? _value.courtBookingId
+          : courtBookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
       totalAllCourtAvailable: null == totalAllCourtAvailable
           ? _value.totalAllCourtAvailable
@@ -116,6 +140,9 @@ abstract class _$$ResponseBookingDataCourtAvailableModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      @JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'updated_at') String updatedAt,
       int totalAllCourtAvailable,
       bool isExpiredAll,
       @JsonKey(name: 'all_total_amount') int allTotalAmount,
@@ -137,6 +164,9 @@ class __$$ResponseBookingDataCourtAvailableModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? courtBookingId = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? totalAllCourtAvailable = null,
     Object? isExpiredAll = null,
     Object? allTotalAmount = null,
@@ -147,6 +177,18 @@ class __$$ResponseBookingDataCourtAvailableModelImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtBookingId: null == courtBookingId
+          ? _value.courtBookingId
+          : courtBookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
       totalAllCourtAvailable: null == totalAllCourtAvailable
           ? _value.totalAllCourtAvailable
@@ -178,6 +220,9 @@ class _$ResponseBookingDataCourtAvailableModelImpl
     implements _ResponseBookingDataCourtAvailableModel {
   const _$ResponseBookingDataCourtAvailableModelImpl(
       {this.id = "",
+      @JsonKey(name: 'court_booking_id') this.courtBookingId = "",
+      @JsonKey(name: 'created_at') this.createdAt = "",
+      @JsonKey(name: 'updated_at') this.updatedAt = "",
       this.totalAllCourtAvailable = 0,
       this.isExpiredAll = false,
       @JsonKey(name: 'all_total_amount') this.allTotalAmount = 0,
@@ -193,6 +238,15 @@ class _$ResponseBookingDataCourtAvailableModelImpl
   @override
   @JsonKey()
   final String id;
+  @override
+  @JsonKey(name: 'court_booking_id')
+  final String courtBookingId;
+  @override
+  @JsonKey(name: 'created_at')
+  final String createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final String updatedAt;
   @override
   @JsonKey()
   final int totalAllCourtAvailable;
@@ -216,7 +270,7 @@ class _$ResponseBookingDataCourtAvailableModelImpl
 
   @override
   String toString() {
-    return 'ResponseBookingDataCourtAvailableModel(id: $id, totalAllCourtAvailable: $totalAllCourtAvailable, isExpiredAll: $isExpiredAll, allTotalAmount: $allTotalAmount, date: $date, durationTime: $durationTime)';
+    return 'ResponseBookingDataCourtAvailableModel(id: $id, courtBookingId: $courtBookingId, createdAt: $createdAt, updatedAt: $updatedAt, totalAllCourtAvailable: $totalAllCourtAvailable, isExpiredAll: $isExpiredAll, allTotalAmount: $allTotalAmount, date: $date, durationTime: $durationTime)';
   }
 
   @override
@@ -225,6 +279,12 @@ class _$ResponseBookingDataCourtAvailableModelImpl
         (other.runtimeType == runtimeType &&
             other is _$ResponseBookingDataCourtAvailableModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.courtBookingId, courtBookingId) ||
+                other.courtBookingId == courtBookingId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
             (identical(other.totalAllCourtAvailable, totalAllCourtAvailable) ||
                 other.totalAllCourtAvailable == totalAllCourtAvailable) &&
             (identical(other.isExpiredAll, isExpiredAll) ||
@@ -241,6 +301,9 @@ class _$ResponseBookingDataCourtAvailableModelImpl
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      courtBookingId,
+      createdAt,
+      updatedAt,
       totalAllCourtAvailable,
       isExpiredAll,
       allTotalAmount,
@@ -268,6 +331,9 @@ abstract class _ResponseBookingDataCourtAvailableModel
     implements ResponseBookingDataCourtAvailableModel {
   const factory _ResponseBookingDataCourtAvailableModel(
           {final String id,
+          @JsonKey(name: 'court_booking_id') final String courtBookingId,
+          @JsonKey(name: 'created_at') final String createdAt,
+          @JsonKey(name: 'updated_at') final String updatedAt,
           final int totalAllCourtAvailable,
           final bool isExpiredAll,
           @JsonKey(name: 'all_total_amount') final int allTotalAmount,
@@ -281,6 +347,15 @@ abstract class _ResponseBookingDataCourtAvailableModel
 
   @override
   String get id;
+  @override
+  @JsonKey(name: 'court_booking_id')
+  String get courtBookingId;
+  @override
+  @JsonKey(name: 'created_at')
+  String get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  String get updatedAt;
   @override
   int get totalAllCourtAvailable;
   @override
