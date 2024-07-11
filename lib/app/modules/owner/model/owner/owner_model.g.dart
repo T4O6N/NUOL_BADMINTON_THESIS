@@ -13,8 +13,8 @@ _$OwnerModelImpl _$$OwnerModelImplFromJson(Map<String, dynamic> json) =>
       phone: json['phone'] as String? ?? '',
       password: json['password'] as String? ?? '',
       isActive: json['isActive'] as bool? ?? true,
-      createdAt: json['createdAt'] as String? ?? '',
-      updatedAt: json['updatedAt'] as String? ?? '',
+      createdAt: json['created_at'] as String? ?? '',
+      updatedAt: json['updated_at'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$OwnerModelImplToJson(_$OwnerModelImpl instance) =>
@@ -24,6 +24,6 @@ Map<String, dynamic> _$$OwnerModelImplToJson(_$OwnerModelImpl instance) =>
       'phone': instance.phone,
       'password': instance.password,
       'isActive': instance.isActive,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };

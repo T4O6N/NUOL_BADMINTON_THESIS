@@ -11,8 +11,7 @@ part of 'owner_model.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OwnerModel _$OwnerModelFromJson(Map<String, dynamic> json) {
   return _OwnerModel.fromJson(json);
@@ -30,29 +29,18 @@ mixin _$OwnerModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OwnerModelCopyWith<OwnerModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OwnerModelCopyWith<OwnerModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OwnerModelCopyWith<$Res> {
-  factory $OwnerModelCopyWith(
-          OwnerModel value, $Res Function(OwnerModel) then) =
-      _$OwnerModelCopyWithImpl<$Res, OwnerModel>;
+  factory $OwnerModelCopyWith(OwnerModel value, $Res Function(OwnerModel) then) = _$OwnerModelCopyWithImpl<$Res, OwnerModel>;
   @useResult
-  $Res call(
-      {String id,
-      String username,
-      String phone,
-      String password,
-      bool isActive,
-      String createdAt,
-      String updatedAt});
+  $Res call({String id, String username, String phone, String password, bool isActive, String createdAt, String updatedAt});
 }
 
 /// @nodoc
-class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel>
-    implements $OwnerModelCopyWith<$Res> {
+class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel> implements $OwnerModelCopyWith<$Res> {
   _$OwnerModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,30 +93,16 @@ class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel>
 }
 
 /// @nodoc
-abstract class _$$OwnerModelImplCopyWith<$Res>
-    implements $OwnerModelCopyWith<$Res> {
-  factory _$$OwnerModelImplCopyWith(
-          _$OwnerModelImpl value, $Res Function(_$OwnerModelImpl) then) =
-      __$$OwnerModelImplCopyWithImpl<$Res>;
+abstract class _$$OwnerModelImplCopyWith<$Res> implements $OwnerModelCopyWith<$Res> {
+  factory _$$OwnerModelImplCopyWith(_$OwnerModelImpl value, $Res Function(_$OwnerModelImpl) then) = __$$OwnerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String username,
-      String phone,
-      String password,
-      bool isActive,
-      String createdAt,
-      String updatedAt});
+  $Res call({String id, String username, String phone, String password, bool isActive, String createdAt, String updatedAt});
 }
 
 /// @nodoc
-class __$$OwnerModelImplCopyWithImpl<$Res>
-    extends _$OwnerModelCopyWithImpl<$Res, _$OwnerModelImpl>
-    implements _$$OwnerModelImplCopyWith<$Res> {
-  __$$OwnerModelImplCopyWithImpl(
-      _$OwnerModelImpl _value, $Res Function(_$OwnerModelImpl) _then)
-      : super(_value, _then);
+class __$$OwnerModelImplCopyWithImpl<$Res> extends _$OwnerModelCopyWithImpl<$Res, _$OwnerModelImpl> implements _$$OwnerModelImplCopyWith<$Res> {
+  __$$OwnerModelImplCopyWithImpl(_$OwnerModelImpl _value, $Res Function(_$OwnerModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -177,17 +151,9 @@ class __$$OwnerModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OwnerModelImpl implements _OwnerModel {
-  const _$OwnerModelImpl(
-      {this.id = '',
-      this.username = '',
-      this.phone = '',
-      this.password = '',
-      this.isActive = true,
-      this.createdAt = '',
-      this.updatedAt = ''});
+  const _$OwnerModelImpl({this.id = '', this.username = '', this.phone = '', this.password = '', this.isActive = true, this.createdAt = '', this.updatedAt = ''});
 
-  factory _$OwnerModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OwnerModelImplFromJson(json);
+  factory _$OwnerModelImpl.fromJson(Map<String, dynamic> json) => _$$OwnerModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -218,33 +184,17 @@ class _$OwnerModelImpl implements _OwnerModel {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OwnerModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$OwnerModelImpl && (identical(other.id, id) || other.id == id) && (identical(other.username, username) || other.username == username) && (identical(other.phone, phone) || other.phone == phone) && (identical(other.password, password) || other.password == password) && (identical(other.isActive, isActive) || other.isActive == isActive) && (identical(other.createdAt, createdAt) || other.createdAt == createdAt) && (identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, phone, password,
-      isActive, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, username, phone, password, isActive, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith =>
-      __$$OwnerModelImplCopyWithImpl<_$OwnerModelImpl>(this, _$identity);
+  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith => __$$OwnerModelImplCopyWithImpl<_$OwnerModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -255,17 +205,9 @@ class _$OwnerModelImpl implements _OwnerModel {
 }
 
 abstract class _OwnerModel implements OwnerModel {
-  const factory _OwnerModel(
-      {final String id,
-      final String username,
-      final String phone,
-      final String password,
-      final bool isActive,
-      final String createdAt,
-      final String updatedAt}) = _$OwnerModelImpl;
+  const factory _OwnerModel({final String id, final String username, final String phone, final String password, final bool isActive, final String createdAt, final String updatedAt}) = _$OwnerModelImpl;
 
-  factory _OwnerModel.fromJson(Map<String, dynamic> json) =
-      _$OwnerModelImpl.fromJson;
+  factory _OwnerModel.fromJson(Map<String, dynamic> json) = _$OwnerModelImpl.fromJson;
 
   @override
   String get id;
@@ -283,6 +225,5 @@ abstract class _OwnerModel implements OwnerModel {
   String get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -25,44 +25,47 @@ class OwnerManagementPage extends StatelessWidget {
         if (ownerController.ownersList.isEmpty) {
           return const Center(child: Text('No owners available'));
         }
-        return ListView.builder(
-          itemCount: ownerController.ownersList.length,
-          itemBuilder: (context, index) {
-            final owner = ownerController.ownersList[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: ListTile(
-                leading: CircleAvatar(
-                  child: Text(owner.username[0].toUpperCase()),
+        return RefreshIndicator(
+          onRefresh: () => ownerController.fetchOwners(),
+          child: ListView.builder(
+            itemCount: ownerController.ownersList.length,
+            itemBuilder: (context, index) {
+              final owner = ownerController.ownersList[index];
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text(owner.username[0].toUpperCase()),
+                  ),
+                  title: Text(owner.username),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Phone: ${owner.phone}'),
+                      Text('ID: ${owner.id}'),
+                    ],
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.edit, color: Colors.blue),
+                        onPressed: () {
+                          Get.to(() => UpdateOwnerPage(owner: owner));
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          ownerController.deleteOwner(owner.id);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                title: Text(owner.username),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Phone: ${owner.phone}'),
-                    Text('ID: ${owner.id}'),
-                  ],
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.edit, color: Colors.blue),
-                      onPressed: () {
-                        Get.to(UpdateOwnerPage(owner: owner));
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: () {
-                        ownerController.deleteOwner(owner.id);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         );
       }),
     );

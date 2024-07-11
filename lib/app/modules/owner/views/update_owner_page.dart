@@ -4,80 +4,53 @@ import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_contro
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner/owner_model.dart';
 
 class UpdateOwnerPage extends StatelessWidget {
+  final OwnerController ownerController = Get.find<OwnerController>();
   final OwnerModel owner;
-  final TextEditingController usernameController;
-  final TextEditingController phoneController;
-  final TextEditingController passwordController;
-  final OwnerController ownerController = Get.put(OwnerController());
 
-  UpdateOwnerPage({super.key, required this.owner})
-      : usernameController = TextEditingController(text: owner.username),
-        phoneController = TextEditingController(text: owner.phone),
-        passwordController = TextEditingController(text: owner.password);
+  UpdateOwnerPage({required this.owner});
 
-  void updateOwner(BuildContext context) {
-    final updatedOwner = owner.copyWith(
-      username: usernameController.text,
-      phone: phoneController.text,
-      password: passwordController.text,
-    );
-
-    ownerController.updateOwner(updatedOwner).then((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Owner updated successfully')),
-      );
-      Get.back(); // Navigate back to Owner Management page
-    }).catchError((error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to update owner')),
-      );
-    });
-  }
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    usernameController.text = owner.username;
+    phoneController.text = owner.phone;
+    passwordController.text = owner.password;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Update Owner')),
+      appBar: AppBar(
+        title: const Text('Update Owner'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: usernameController,
-              decoration: const InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.person),
-              ),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
-            const SizedBox(height: 20),
             TextField(
               controller: phoneController,
-              decoration: const InputDecoration(
-                labelText: 'Phone',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.phone),
-              ),
-              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(labelText: 'Phone'),
             ),
-            const SizedBox(height: 20),
             TextField(
               controller: passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
-              ),
+              decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => updateOwner(context),
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: const TextStyle(fontSize: 18),
-              ),
-              child: const Text('Update Owner'),
+              onPressed: () {
+                final updatedOwner = owner.copyWith(
+                  username: usernameController.text,
+                  phone: phoneController.text,
+                  password: passwordController.text,
+                );
+                ownerController.updateOwner(updatedOwner);
+              },
+              child: const Text('Update'),
             ),
           ],
         ),

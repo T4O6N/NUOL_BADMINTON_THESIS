@@ -25,16 +25,17 @@ class RegisterPage extends StatelessWidget {
       password: passwordController.text,
     );
 
-    ownerController.createOwner(owner).then((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Account created successfully')),
-      );
-      Get.back(); // Navigate back to login page
-    }).catchError((error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to create account')),
-      );
-    });
+    // ownerController.createOwner(owner).then((_) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     const SnackBar(content: Text('Account created successfully')),
+    //   );
+    //   Get.back(); // Navigate back to login page
+    // }).catchError((error) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     const SnackBar(content: Text('Failed to create account')),
+    //   );
+    // });
+    ownerController.createOwner(owner);
   }
 
   @override
