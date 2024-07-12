@@ -22,7 +22,7 @@ class UpdateOwnerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'ແກ້ໄຂຂໍ້ມູນ',
+          'ແກ້ໄຂຂໍ້ມູນ Owner',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.green,

@@ -31,69 +31,70 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 60.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'ສ້າງ Account',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              _buildTextField(
-                controller: usernameController,
-                label: 'Username',
-                icon: Icons.person,
-              ),
-              const SizedBox(height: 20),
-              _buildTextField(
-                controller: phoneController,
-                label: 'Phone',
-                icon: Icons.phone,
-                keyboardType: TextInputType.phone,
-              ),
-              const SizedBox(height: 20),
-              _buildTextField(
-                controller: passwordController,
-                label: 'Password',
-                icon: Icons.lock,
-                obscureText: true,
-              ),
-              const SizedBox(height: 20),
-              _buildTextField(
-                controller: confirmPasswordController,
-                label: 'Confirm Password',
-                icon: Icons.lock,
-                obscureText: true,
-              ),
-              const SizedBox(height: 40),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () => register(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 60.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'ສ້າງ Owner Account',
+                    style: TextStyle(
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: const Text(
-                    'ລົງທະບຽນ',
-                    style: TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 40),
+                _buildTextField(
+                  controller: usernameController,
+                  label: 'Username',
+                  icon: Icons.person,
+                ),
+                const SizedBox(height: 20),
+                _buildTextField(
+                  controller: phoneController,
+                  label: 'Phone',
+                  icon: Icons.phone,
+                  keyboardType: TextInputType.phone,
+                ),
+                const SizedBox(height: 20),
+                _buildTextField(
+                  controller: passwordController,
+                  label: 'Password',
+                  icon: Icons.lock,
+                  obscureText: true,
+                ),
+                const SizedBox(height: 20),
+                _buildTextField(
+                  controller: confirmPasswordController,
+                  label: 'Confirm Password',
+                  icon: Icons.lock,
+                  obscureText: true,
+                ),
+                const SizedBox(height: 40),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () => register(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    child: const Text(
+                      'ລົງທະບຽນ',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

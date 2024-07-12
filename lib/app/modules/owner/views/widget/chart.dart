@@ -104,11 +104,11 @@ class Chart extends StatelessWidget {
                             const SizedBox(height: 10),
                             Obx(() {
                               return Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
                                     'ລວມລາຍຮັບປະຈຳອາທິດ: ',
-                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 20),
                                   ),
                                   Text(
                                     NumberFormatter.formatPriceKip(ownerDashboardController.totalWeeklyIncome.value),

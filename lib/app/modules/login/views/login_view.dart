@@ -207,28 +207,28 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    TextButton(
-                      onPressed: () => Get.to(RegisterPage()), // Navigate to register page
-                      child: const Text('Don\'t have an account? Register'),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            // Get.to(const AdminDashboardView());
-                            Get.to(AdminLoginPage());
-                          },
-                          child: const Text("admin"),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Get.to(const OwnerDashboardView());
-                          },
-                          child: const Text("owner"),
-                        ),
-                      ],
-                    ),
+                    // TextButton(
+                    //   onPressed: () => Get.to(RegisterPage()), // Navigate to register page
+                    //   child: const Text('Don\'t have an account? Register'),
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     TextButton(
+                    //       onPressed: () {
+                    //         // Get.to(const AdminDashboardView());
+                    //         Get.to(AdminLoginPage());
+                    //       },
+                    //       child: const Text("admin"),
+                    //     ),
+                    //     TextButton(
+                    //       onPressed: () {
+                    //         Get.to(const OwnerDashboardView());
+                    //       },
+                    //       child: const Text("owner"),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
