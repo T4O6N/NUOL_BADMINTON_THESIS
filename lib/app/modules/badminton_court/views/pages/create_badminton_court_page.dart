@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
+
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_create_badminton_court_model.dart';
 
 class CreateBadmintonCourtPage extends StatelessWidget {
   final TextEditingController courtNumberController = TextEditingController();
@@ -11,10 +12,10 @@ class CreateBadmintonCourtPage extends StatelessWidget {
   CreateBadmintonCourtPage({super.key});
 
   void createCourt(BuildContext context) {
-    final court = BadmintonCourtModel(
+    final court = ParamCreateBadmintonCourtModel(
       courtNumber: courtNumberController.text,
       description: descriptionController.text,
-      courtImage: ["picture1.png", "picture2.png"], // Example images
+      courtImage: ["2.jpg"], // Example images
       available: true,
     );
     courtController.createCourt(court);

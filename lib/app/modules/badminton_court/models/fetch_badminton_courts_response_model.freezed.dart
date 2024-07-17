@@ -23,6 +23,12 @@ FetchBadmintonCourtsResponseModel _$FetchBadmintonCourtsResponseModelFromJson(
 mixin _$FetchBadmintonCourtsResponseModel {
   String get message => throw _privateConstructorUsedError;
   List<BadmintonCourtModel> get data => throw _privateConstructorUsedError;
+  @JsonKey(name: "duration")
+  String get duration => throw _privateConstructorUsedError;
+  @JsonKey(name: "method")
+  String get method => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCode")
+  int get statusCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +44,12 @@ abstract class $FetchBadmintonCourtsResponseModelCopyWith<$Res> {
       _$FetchBadmintonCourtsResponseModelCopyWithImpl<$Res,
           FetchBadmintonCourtsResponseModel>;
   @useResult
-  $Res call({String message, List<BadmintonCourtModel> data});
+  $Res call(
+      {String message,
+      List<BadmintonCourtModel> data,
+      @JsonKey(name: "duration") String duration,
+      @JsonKey(name: "method") String method,
+      @JsonKey(name: "statusCode") int statusCode});
 }
 
 /// @nodoc
@@ -57,6 +68,9 @@ class _$FetchBadmintonCourtsResponseModelCopyWithImpl<$Res,
   $Res call({
     Object? message = null,
     Object? data = null,
+    Object? duration = null,
+    Object? method = null,
+    Object? statusCode = null,
   }) {
     return _then(_value.copyWith(
       message: null == message
@@ -67,6 +81,18 @@ class _$FetchBadmintonCourtsResponseModelCopyWithImpl<$Res,
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BadmintonCourtModel>,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCode: null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -80,7 +106,12 @@ abstract class _$$FetchBadmintonCourtsResponseModelImplCopyWith<$Res>
       __$$FetchBadmintonCourtsResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, List<BadmintonCourtModel> data});
+  $Res call(
+      {String message,
+      List<BadmintonCourtModel> data,
+      @JsonKey(name: "duration") String duration,
+      @JsonKey(name: "method") String method,
+      @JsonKey(name: "statusCode") int statusCode});
 }
 
 /// @nodoc
@@ -98,6 +129,9 @@ class __$$FetchBadmintonCourtsResponseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? data = null,
+    Object? duration = null,
+    Object? method = null,
+    Object? statusCode = null,
   }) {
     return _then(_$FetchBadmintonCourtsResponseModelImpl(
       message: null == message
@@ -108,6 +142,18 @@ class __$$FetchBadmintonCourtsResponseModelImplCopyWithImpl<$Res>
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BadmintonCourtModel>,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCode: null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -117,7 +163,11 @@ class __$$FetchBadmintonCourtsResponseModelImplCopyWithImpl<$Res>
 class _$FetchBadmintonCourtsResponseModelImpl
     implements _FetchBadmintonCourtsResponseModel {
   const _$FetchBadmintonCourtsResponseModelImpl(
-      {this.message = '', final List<BadmintonCourtModel> data = const []})
+      {this.message = '',
+      final List<BadmintonCourtModel> data = const [],
+      @JsonKey(name: "duration") this.duration = '',
+      @JsonKey(name: "method") this.method = '',
+      @JsonKey(name: "statusCode") this.statusCode = 0})
       : _data = data;
 
   factory _$FetchBadmintonCourtsResponseModelImpl.fromJson(
@@ -137,8 +187,18 @@ class _$FetchBadmintonCourtsResponseModelImpl
   }
 
   @override
+  @JsonKey(name: "duration")
+  final String duration;
+  @override
+  @JsonKey(name: "method")
+  final String method;
+  @override
+  @JsonKey(name: "statusCode")
+  final int statusCode;
+
+  @override
   String toString() {
-    return 'FetchBadmintonCourtsResponseModel(message: $message, data: $data)';
+    return 'FetchBadmintonCourtsResponseModel(message: $message, data: $data, duration: $duration, method: $method, statusCode: $statusCode)';
   }
 
   @override
@@ -147,13 +207,18 @@ class _$FetchBadmintonCourtsResponseModelImpl
         (other.runtimeType == runtimeType &&
             other is _$FetchBadmintonCourtsResponseModelImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, message,
+      const DeepCollectionEquality().hash(_data), duration, method, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +239,11 @@ class _$FetchBadmintonCourtsResponseModelImpl
 abstract class _FetchBadmintonCourtsResponseModel
     implements FetchBadmintonCourtsResponseModel {
   const factory _FetchBadmintonCourtsResponseModel(
-          {final String message, final List<BadmintonCourtModel> data}) =
+          {final String message,
+          final List<BadmintonCourtModel> data,
+          @JsonKey(name: "duration") final String duration,
+          @JsonKey(name: "method") final String method,
+          @JsonKey(name: "statusCode") final int statusCode}) =
       _$FetchBadmintonCourtsResponseModelImpl;
 
   factory _FetchBadmintonCourtsResponseModel.fromJson(
@@ -185,6 +254,15 @@ abstract class _FetchBadmintonCourtsResponseModel
   String get message;
   @override
   List<BadmintonCourtModel> get data;
+  @override
+  @JsonKey(name: "duration")
+  String get duration;
+  @override
+  @JsonKey(name: "method")
+  String get method;
+  @override
+  @JsonKey(name: "statusCode")
+  int get statusCode;
   @override
   @JsonKey(ignore: true)
   _$$FetchBadmintonCourtsResponseModelImplCopyWith<

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_login_and_register/admin_login_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/owner/model/admin_model/param_create_admin_model.dart';

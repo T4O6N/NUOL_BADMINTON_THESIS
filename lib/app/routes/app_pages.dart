@@ -148,7 +148,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BADMINTON_COURT,
-      page: () => const BadmintonCourtView(),
+      page: () => BadmintonCourtView(),
       binding: BadmintonCourtBinding(),
     ),
   ];

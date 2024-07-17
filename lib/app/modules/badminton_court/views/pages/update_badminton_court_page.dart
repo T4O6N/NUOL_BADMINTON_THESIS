@@ -13,14 +13,6 @@ class UpdateBadmintonCourtPage extends StatelessWidget {
       : courtNumberController = TextEditingController(text: court.courtNumber),
         descriptionController = TextEditingController(text: court.description);
 
-  void updateCourt(BuildContext context) {
-    final updatedCourt = court.copyWith(
-      courtNumber: courtNumberController.text,
-      description: descriptionController.text,
-    );
-    courtController.updateCourt(updatedCourt);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,12 +49,27 @@ class UpdateBadmintonCourtPage extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () => updateCourt(context),
+                // onPressed: () => updateCourt(context),
+                onPressed: () {
+                  final updatedCourt = BadmintonCourtModel(
+                    id: court.id,
+                    courtNumber: courtNumberController.text,
+                    description: descriptionController.text,
+                  );
+                  courtController.updateCourt(updatedCourt);
+                },
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor: Colors.green,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 15,
+                  ),
                   textStyle: const TextStyle(fontSize: 18),
                 ),
-                child: const Text('Update'),
+                child: const Text(
+                  'ແກ້ໄຂ',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

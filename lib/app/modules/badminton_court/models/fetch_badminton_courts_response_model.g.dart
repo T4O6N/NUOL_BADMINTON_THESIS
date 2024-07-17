@@ -16,6 +16,9 @@ _$FetchBadmintonCourtsResponseModelImpl
                       BadmintonCourtModel.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
+          duration: json['duration'] as String? ?? '',
+          method: json['method'] as String? ?? '',
+          statusCode: (json['statusCode'] as num?)?.toInt() ?? 0,
         );
 
 Map<String, dynamic> _$$FetchBadmintonCourtsResponseModelImplToJson(
@@ -23,4 +26,7 @@ Map<String, dynamic> _$$FetchBadmintonCourtsResponseModelImplToJson(
     <String, dynamic>{
       'message': instance.message,
       'data': instance.data,
+      'duration': instance.duration,
+      'method': instance.method,
+      'statusCode': instance.statusCode,
     };

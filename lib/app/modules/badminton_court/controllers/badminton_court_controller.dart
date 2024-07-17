@@ -5,6 +5,8 @@ import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/fetch_badminton_courts_response_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_create_badminton_court_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminton_court_view.dart';
 
 class BadmintonCourtController extends GetxController {
   final Dio _dio = Dio();
@@ -29,17 +31,33 @@ class BadmintonCourtController extends GetxController {
     }
   }
 
-  Future<void> createCourt(BadmintonCourtModel court) async {
+  Future<void> createCourt(ParamCreateBadmintonCourtModel court) async {
     try {
       log.i("data court : $court");
       final response = await _dio.post(createCourtUrl, data: court.toJson());
       log.d("Response : ${response.data}");
       final createdCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      courtsList.add(createdCourt);
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      modifiableList.add(createdCourt);
+      courtsList.value = modifiableList;
       currentCourt.value = createdCourt;
       log.d("create court data: $createdCourt");
-      Get.back();
-      Get.snackbar('Success', 'Court created successfully', backgroundColor: Colors.green, colorText: Colors.white);
+
+      Get.dialog(
+        AlertDialog(
+          title: const Text('Success'),
+          content: const Text('Court created successfully.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+                Get.to(const BadmintonCourtView());
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
       Get.snackbar('Error', DioErrorHandler.dioErrorHandler(err), backgroundColor: Colors.red, colorText: Colors.white);
@@ -51,35 +69,51 @@ class BadmintonCourtController extends GetxController {
 
   Future<void> updateCourt(BadmintonCourtModel court) async {
     final String updateCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/${court.id}';
-    final updateData = court.toJson();
-    updateData.remove('id');
-    updateData.remove('created_at');
-    updateData.remove('updated_at');
 
     try {
+      final updateData = {
+        "court_number": court.courtNumber,
+        "description": court.description,
+      };
+
       final response = await _dio.patch(updateCourtUrl, data: updateData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      final index = courtsList.indexWhere((c) => c.id == court.id);
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      final index = modifiableList.indexWhere((c) => c.id == court.id);
       if (index != -1) {
-        courtsList[index] = updatedCourt;
+        modifiableList[index] = updatedCourt;
+        courtsList.value = modifiableList;
         courtsList.refresh();
       }
-      Get.back(); // Navigate back to the previous page after update
       Get.snackbar('Success', 'Court updated successfully', backgroundColor: Colors.green, colorText: Colors.white);
+      await fetchCourts();
+      Get.off(const BadmintonCourtView());
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
-      Get.snackbar('Error', DioErrorHandler.dioErrorHandler(err), backgroundColor: Colors.red, colorText: Colors.white);
+      Get.snackbar(
+        'Error',
+        DioErrorHandler.dioErrorHandler(err),
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     } catch (err) {
       log.e("Exception: $err");
-      Get.snackbar('Error', 'Failed to update court', backgroundColor: Colors.red, colorText: Colors.white);
+      Get.snackbar(
+        'Error',
+        'Failed to update court',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 
   Future<void> deleteCourt(String id) async {
     try {
       await _dio.delete('$deleteCourtUrl/$id');
-      courtsList.removeWhere((court) => court.id == id);
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      modifiableList.removeWhere((court) => court.id == id);
+      courtsList.value = modifiableList;
       Get.snackbar('Success', 'Court deleted successfully', backgroundColor: Colors.green, colorText: Colors.white);
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
