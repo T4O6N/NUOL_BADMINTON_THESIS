@@ -23,7 +23,7 @@ class UpdateAdminPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'ແກ້ໄຂແອັດມິນ',
+          'ແກ້ໄຂພະນັກງານເດີ່ນ',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.green,

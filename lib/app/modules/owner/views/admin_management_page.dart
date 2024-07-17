@@ -15,7 +15,7 @@ class AdminManagementPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text(
-          'ຈັກການຂໍ້ມູນແອັດມິນ',
+          'ຈັດການຂໍ້ມູນພະນັກງານເດີ່ນ',
           style: TextStyle(color: Colors.white),
         ),
         actions: [

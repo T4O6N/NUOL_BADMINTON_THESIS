@@ -43,8 +43,8 @@ class OwnerDashboardView extends GetView<OwnerDashboardController> {
               children: [
                 // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 0, label: "ໂປຮຟາຍ"),
                 _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "ລາຍງານ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 1, label: "ຈັດການຜູ້ໃຊ້"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 2, label: "ຈັດການແອັດມິນ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 1, label: "ຈັດການເຈົ້າຂອງເດີ່ນ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 2, label: "ຈັດການພະນັກງານເດີ່ນ"),
 
                 // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
               ],
