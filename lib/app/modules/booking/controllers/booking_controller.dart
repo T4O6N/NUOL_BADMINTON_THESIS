@@ -23,7 +23,7 @@ class BookingController extends GetxController with StateMixin<List<ResponseBook
       final response = await _dio.get(path);
       final json = response.data;
       final res = ResponseBookingHistoryModel.fromJson(json);
-      log.d("this is data: ${res.data.length}");
+      log.d("this is data: ${res.data}");
       bookingList.value = res.data;
       if (res.data.isEmpty) {
         change(bookingList, status: RxStatus.empty());

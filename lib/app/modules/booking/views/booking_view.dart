@@ -87,7 +87,7 @@ class BookingView extends GetView<BookingController> {
                         ],
                       ),
                       const Divider(),
-                      ...historyList.courtBooking.court.map(
+                      ...historyList.courtBooking.courtSession.map(
                         (courtModel) {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,7 +156,7 @@ class BookingView extends GetView<BookingController> {
                                   ),
                                 ],
                               ),
-                              ...historyList.courtBooking.court.map(
+                              ...historyList.courtBooking.courtSession.map(
                                 (courtModel) {
                                   return Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,9 +203,9 @@ class BookingView extends GetView<BookingController> {
           ),
           onLoading: SizedBox(
             height: Get.height * 0.6,
-            width: Get.width,
-            child: Center(
-              child: CircularProgressIndicator(color: Colors.orange.withOpacity(0.2)),
+            child: const Center(
+              child: CircularProgressIndicator(color: Colors.green),
+              // child: LottieBuilder.asset(LottieConstants.batminton),
             ),
           ),
           onError: (error) => ListView(

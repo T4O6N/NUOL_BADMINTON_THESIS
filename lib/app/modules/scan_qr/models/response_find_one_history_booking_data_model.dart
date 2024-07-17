@@ -20,7 +20,7 @@ class ResponseFindOneHistoryBookingDataModel with _$ResponseFindOneHistoryBookin
     @JsonKey(name: 'booked_by') @Default("") String bookedBy,
     @JsonKey(name: 'created_at') @Default("") String createdAt,
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
-    @Default([]) List<ResponseFindOneHistoryBookingDataCourtModel> court,
+    @Default([]) List<ResponseFindOneHistoryBookingDataCourtModel> courtSession,
     @JsonKey(name: 'court_available') @Default([]) List<ResponseBookingDataCourtAvailableModel> courtAvailable,
   }) = _ResponseFindOneHistoryBookingDataModel;
 

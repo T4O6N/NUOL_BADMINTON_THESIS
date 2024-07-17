@@ -7,7 +7,7 @@ class BookingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         height: size.height * 0.06,

@@ -155,13 +155,13 @@ class ChooseScheduleController extends GetxController {
     }
     final bookingRequest = CreateBookingCourtParam(
       phone: phoneNumberController.text,
-      court: selectedCourtModels,
       deviceId: deviceId,
       fullName: usernameController.text,
       courtNumber: courtModel.value.name,
       paymentStatus: 'booked',
       bookedBy: usernameController.text,
       totalAmount: finalTotalPrice.value,
+      courtSession: selectedCourtModels,
     );
 
     logger.d(bookingRequest);

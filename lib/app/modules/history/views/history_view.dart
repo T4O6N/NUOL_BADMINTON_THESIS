@@ -142,8 +142,8 @@ class HistoryView extends GetView<HistoryController> {
           onLoading: SizedBox(
             height: Get.height * 0.6,
             width: Get.width,
-            child: Center(
-              child: CircularProgressIndicator(color: Colors.orange.withOpacity(0.2)),
+            child: const Center(
+              child: CircularProgressIndicator(color: Colors.green),
             ),
           ),
           onError: (error) => ListView(

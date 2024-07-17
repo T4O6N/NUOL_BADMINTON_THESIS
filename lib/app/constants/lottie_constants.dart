@@ -5,4 +5,5 @@ class LottieConstants {
   static const String paymentFail = "assets/lotties/jsons/payment_failed.json";
   static const String empty = "assets/lotties/jsons/empty.json";
   static const String congrats = "assets/lotties/jsons/congrat_animation .json";
+  static const String batminton = "assets/lotties/jsons/batminton.json";
 }

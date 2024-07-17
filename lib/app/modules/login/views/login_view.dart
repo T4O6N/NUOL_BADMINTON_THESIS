@@ -207,10 +207,10 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // TextButton(
-                    //   onPressed: () => Get.to(RegisterPage()), // Navigate to register page
-                    //   child: const Text('Don\'t have an account? Register'),
-                    // ),
+                    TextButton(
+                      onPressed: () => Get.to(RegisterPage()), // Navigate to register page
+                      child: const Text('Don\'t have an account? Register'),
+                    ),
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.center,
                     //   children: [

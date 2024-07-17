@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/models/response_booking_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
+import 'package:nuol_badminton_thesis/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
@@ -41,6 +42,12 @@ class BillPaymentDetail extends StatelessWidget {
         title: const Text(
           "ບິນລາຍລະອຽດການຈອງ",
           style: TextStyle(color: Colors.white),
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Get.off(() => const DashboardView());
+          },
+          child: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         backgroundColor: Colors.green,
       ),

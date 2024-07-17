@@ -34,11 +34,10 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
       resultQr.value = scanData;
       if (resultQr.value != null) {
         final String qrCode = resultQr.value!.code ?? '';
+        qrController.value?.pauseCamera();
         await fetchQrDetailForPayment(qrCode);
-        qrController.value?.pauseCamera(); // Pause the camera before navigating
-
         Get.to(() => QrDataDetail(qrData: qrCode))?.then((_) {
-          qrController.value?.resumeCamera(); // Resume the camera when returning
+          qrController.value?.resumeCamera();
         });
       } else {
         log.w("No QR code scanned");
@@ -50,21 +49,17 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
     log.e(" QR details for: $qr");
     change(courtList, status: RxStatus.loading());
     final path = "$baseUrl$qr";
-
     log.d("path: $path");
     try {
       final response = await _dio.get(path);
       log.d("Response data: ${response.data}");
-
       final responseData = ResponseFindOneHistoryBookingModel.fromJson(response.data);
       log.d("responseData:$responseData");
-
       bookingData.value = responseData.data;
-      courtList.value = responseData.data.court;
+      courtList.value = responseData.data.courtSession;
       courtAvailableList.value = responseData.data.courtAvailable;
       log.d("courtAvailableList:$courtAvailableList");
-
-      if (responseData.data.court.isEmpty) {
+      if (responseData.data.courtSession.isEmpty) {
         change(courtList, status: RxStatus.empty());
       } else {
         change(courtList, status: RxStatus.success());
@@ -79,6 +74,8 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
     }
   }
 
+  //TODOS: this function here -------------------------
+
   Future<void> sendPayment(PaymentParamModel paymentParam) async {
     log.d("Sending payment for: ${paymentParam.toJson()}");
     final path = paymentUrl;
@@ -86,15 +83,13 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
       final response = await _dio.post(path, data: paymentParam.toJson());
       log.d("Payment response data: ${response.data}");
       showSuccessDialog();
-
-      // Handle successful payment response
     } on DioException catch (err) {
+      showFinishDialog();
       final errorMessage = DioErrorHandler.dioErrorHandler(err);
       log.e("DioException: $errorMessage");
-      // Handle payment error
     } catch (err) {
+      showErrDialog();
       log.e("Exception: $err");
-      // Handle unexpected error
     }
   }
 
@@ -145,6 +140,134 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
                     borderRadius: BorderRadius.circular(10),
                   ),
                   backgroundColor: Colors.green,
+                  // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                ),
+                child: const Text(
+                  'OK',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showFinishDialog() {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 80,
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'ສຳເລັດ',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const Text(
+                'ທ່ານໄດ້ຊຳລະເງິນຄັ່ງຫນື່ງເເລ້ວ.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Get.back(); // Close the dialog
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  backgroundColor: Colors.green,
+                  // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                ),
+                child: const Text(
+                  'OK',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showErrDialog() {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.replay_circle_filled_outlined,
+                color: Colors.red,
+                size: 80,
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'ຜິດພາດ',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const Text(
+                'ມິບາງຢ່າງຜິດພາດ.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Get.back(); // Close the dialog
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  backgroundColor: Colors.red,
                   // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 ),
                 child: const Text(

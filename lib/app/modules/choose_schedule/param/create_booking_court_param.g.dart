@@ -16,7 +16,7 @@ _$CreateBookingCourtParamImpl _$$CreateBookingCourtParamImplFromJson(
       paymentStatus: json['payment_status'] as String,
       bookedBy: json['booked_by'] as String,
       totalAmount: (json['total_amount'] as num).toInt(),
-      court: (json['court'] as List<dynamic>)
+      courtSession: (json['courtSession'] as List<dynamic>)
           .map((e) => ListCourt.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -31,5 +31,5 @@ Map<String, dynamic> _$$CreateBookingCourtParamImplToJson(
       'payment_status': instance.paymentStatus,
       'booked_by': instance.bookedBy,
       'total_amount': instance.totalAmount,
-      'court': instance.court,
+      'courtSession': instance.courtSession,
     };

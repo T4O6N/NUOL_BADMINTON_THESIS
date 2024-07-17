@@ -19,7 +19,7 @@ _$ResponseBookingDataModelImpl _$$ResponseBookingDataModelImplFromJson(
       bookedBy: json['booked_by'] as String? ?? "",
       createdAt: json['created_at'] as String? ?? "",
       updatedAt: json['updated_at'] as String? ?? "",
-      court: (json['court'] as List<dynamic>?)
+      courtSession: (json['courtSession'] as List<dynamic>?)
               ?.map((e) => ResponseBookingDataCourtModel.fromJson(
                   e as Map<String, dynamic>))
               .toList() ??
@@ -39,5 +39,5 @@ Map<String, dynamic> _$$ResponseBookingDataModelImplToJson(
       'booked_by': instance.bookedBy,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
-      'court': instance.court,
+      'courtSession': instance.courtSession,
     };

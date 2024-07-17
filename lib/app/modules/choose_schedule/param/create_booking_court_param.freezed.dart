@@ -35,8 +35,8 @@ mixin _$CreateBookingCourtParam {
   String get bookedBy => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_amount')
   int get totalAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'court')
-  List<ListCourt> get court => throw _privateConstructorUsedError;
+  @JsonKey(name: 'courtSession')
+  List<ListCourt> get courtSession => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +58,7 @@ abstract class $CreateBookingCourtParamCopyWith<$Res> {
       @JsonKey(name: 'payment_status') String paymentStatus,
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'total_amount') int totalAmount,
-      @JsonKey(name: 'court') List<ListCourt> court});
+      @JsonKey(name: 'courtSession') List<ListCourt> courtSession});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$CreateBookingCourtParamCopyWithImpl<$Res,
     Object? paymentStatus = null,
     Object? bookedBy = null,
     Object? totalAmount = null,
-    Object? court = null,
+    Object? courtSession = null,
   }) {
     return _then(_value.copyWith(
       deviceId: null == deviceId
@@ -113,9 +113,9 @@ class _$CreateBookingCourtParamCopyWithImpl<$Res,
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      court: null == court
-          ? _value.court
-          : court // ignore: cast_nullable_to_non_nullable
+      courtSession: null == courtSession
+          ? _value.courtSession
+          : courtSession // ignore: cast_nullable_to_non_nullable
               as List<ListCourt>,
     ) as $Val);
   }
@@ -138,7 +138,7 @@ abstract class _$$CreateBookingCourtParamImplCopyWith<$Res>
       @JsonKey(name: 'payment_status') String paymentStatus,
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'total_amount') int totalAmount,
-      @JsonKey(name: 'court') List<ListCourt> court});
+      @JsonKey(name: 'courtSession') List<ListCourt> courtSession});
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
     Object? paymentStatus = null,
     Object? bookedBy = null,
     Object? totalAmount = null,
-    Object? court = null,
+    Object? courtSession = null,
   }) {
     return _then(_$CreateBookingCourtParamImpl(
       deviceId: null == deviceId
@@ -192,9 +192,9 @@ class __$$CreateBookingCourtParamImplCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      court: null == court
-          ? _value._court
-          : court // ignore: cast_nullable_to_non_nullable
+      courtSession: null == courtSession
+          ? _value._courtSession
+          : courtSession // ignore: cast_nullable_to_non_nullable
               as List<ListCourt>,
     ));
   }
@@ -211,8 +211,9 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
       @JsonKey(name: 'payment_status') required this.paymentStatus,
       @JsonKey(name: 'booked_by') required this.bookedBy,
       @JsonKey(name: 'total_amount') required this.totalAmount,
-      @JsonKey(name: 'court') required final List<ListCourt> court})
-      : _court = court;
+      @JsonKey(name: 'courtSession')
+      required final List<ListCourt> courtSession})
+      : _courtSession = courtSession;
 
   factory _$CreateBookingCourtParamImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateBookingCourtParamImplFromJson(json);
@@ -238,18 +239,18 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
   @override
   @JsonKey(name: 'total_amount')
   final int totalAmount;
-  final List<ListCourt> _court;
+  final List<ListCourt> _courtSession;
   @override
-  @JsonKey(name: 'court')
-  List<ListCourt> get court {
-    if (_court is EqualUnmodifiableListView) return _court;
+  @JsonKey(name: 'courtSession')
+  List<ListCourt> get courtSession {
+    if (_courtSession is EqualUnmodifiableListView) return _courtSession;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_court);
+    return EqualUnmodifiableListView(_courtSession);
   }
 
   @override
   String toString() {
-    return 'CreateBookingCourtParam(deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, bookedBy: $bookedBy, totalAmount: $totalAmount, court: $court)';
+    return 'CreateBookingCourtParam(deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, bookedBy: $bookedBy, totalAmount: $totalAmount, courtSession: $courtSession)';
   }
 
   @override
@@ -270,7 +271,8 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
                 other.bookedBy == bookedBy) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
-            const DeepCollectionEquality().equals(other._court, _court));
+            const DeepCollectionEquality()
+                .equals(other._courtSession, _courtSession));
   }
 
   @JsonKey(ignore: true)
@@ -284,7 +286,7 @@ class _$CreateBookingCourtParamImpl implements _CreateBookingCourtParam {
       paymentStatus,
       bookedBy,
       totalAmount,
-      const DeepCollectionEquality().hash(_court));
+      const DeepCollectionEquality().hash(_courtSession));
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +312,8 @@ abstract class _CreateBookingCourtParam implements CreateBookingCourtParam {
           @JsonKey(name: 'payment_status') required final String paymentStatus,
           @JsonKey(name: 'booked_by') required final String bookedBy,
           @JsonKey(name: 'total_amount') required final int totalAmount,
-          @JsonKey(name: 'court') required final List<ListCourt> court}) =
+          @JsonKey(name: 'courtSession')
+          required final List<ListCourt> courtSession}) =
       _$CreateBookingCourtParamImpl;
 
   factory _CreateBookingCourtParam.fromJson(Map<String, dynamic> json) =
@@ -338,8 +341,8 @@ abstract class _CreateBookingCourtParam implements CreateBookingCourtParam {
   @JsonKey(name: 'total_amount')
   int get totalAmount;
   @override
-  @JsonKey(name: 'court')
-  List<ListCourt> get court;
+  @JsonKey(name: 'courtSession')
+  List<ListCourt> get courtSession;
   @override
   @JsonKey(ignore: true)
   _$$CreateBookingCourtParamImplCopyWith<_$CreateBookingCourtParamImpl>

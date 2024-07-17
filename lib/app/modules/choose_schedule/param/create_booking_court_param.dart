@@ -16,7 +16,7 @@ class CreateBookingCourtParam with _$CreateBookingCourtParam {
     @JsonKey(name: 'payment_status') required String paymentStatus,
     @JsonKey(name: 'booked_by') required String bookedBy,
     @JsonKey(name: 'total_amount') required int totalAmount,
-    @JsonKey(name: 'court') required List<ListCourt> court,
+    @JsonKey(name: 'courtSession') required List<ListCourt> courtSession,
   }) = _CreateBookingCourtParam;
 
   factory CreateBookingCourtParam.fromJson(Map<String, dynamic> json) => _$CreateBookingCourtParamFromJson(json);

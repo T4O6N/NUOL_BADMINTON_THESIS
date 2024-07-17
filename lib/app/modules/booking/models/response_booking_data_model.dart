@@ -19,7 +19,7 @@ class ResponseBookingDataModel with _$ResponseBookingDataModel {
     @JsonKey(name: 'booked_by') @Default("") String bookedBy,
     @JsonKey(name: 'created_at') @Default("") String createdAt,
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
-    @Default([]) List<ResponseBookingDataCourtModel> court,
+    @Default([]) List<ResponseBookingDataCourtModel> courtSession,
   }) = _ResponseBookingDataModel;
 
   factory ResponseBookingDataModel.fromJson(Map<String, dynamic> json) => _$ResponseBookingDataModelFromJson(json);

@@ -23,7 +23,7 @@ class HistoryController extends GetxController with StateMixin<List<ResponseFind
       final response = await _dio.get(path);
       final json = response.data;
       final res = ResponseFindManyPaymentHistoryModel.fromJson(json);
-      log.d("this is data: ${res.data.length}");
+      log.d("this is data: ${res.data}");
       paymentList.value = res.data;
       if (res.data.isEmpty) {
         change(paymentList, status: RxStatus.empty());

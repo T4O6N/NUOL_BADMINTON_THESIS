@@ -39,7 +39,7 @@ mixin _$ResponseBookingDataModel {
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
-  List<ResponseBookingDataCourtModel> get court =>
+  List<ResponseBookingDataCourtModel> get courtSession =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ abstract class $ResponseBookingDataModelCopyWith<$Res> {
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      List<ResponseBookingDataCourtModel> court});
+      List<ResponseBookingDataCourtModel> courtSession});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class _$ResponseBookingDataModelCopyWithImpl<$Res,
     Object? bookedBy = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? court = null,
+    Object? courtSession = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -135,9 +135,9 @@ class _$ResponseBookingDataModelCopyWithImpl<$Res,
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      court: null == court
-          ? _value.court
-          : court // ignore: cast_nullable_to_non_nullable
+      courtSession: null == courtSession
+          ? _value.courtSession
+          : courtSession // ignore: cast_nullable_to_non_nullable
               as List<ResponseBookingDataCourtModel>,
     ) as $Val);
   }
@@ -163,7 +163,7 @@ abstract class _$$ResponseBookingDataModelImplCopyWith<$Res>
       @JsonKey(name: 'booked_by') String bookedBy,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      List<ResponseBookingDataCourtModel> court});
+      List<ResponseBookingDataCourtModel> courtSession});
 }
 
 /// @nodoc
@@ -189,7 +189,7 @@ class __$$ResponseBookingDataModelImplCopyWithImpl<$Res>
     Object? bookedBy = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? court = null,
+    Object? courtSession = null,
   }) {
     return _then(_$ResponseBookingDataModelImpl(
       id: null == id
@@ -232,9 +232,9 @@ class __$$ResponseBookingDataModelImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      court: null == court
-          ? _value._court
-          : court // ignore: cast_nullable_to_non_nullable
+      courtSession: null == courtSession
+          ? _value._courtSession
+          : courtSession // ignore: cast_nullable_to_non_nullable
               as List<ResponseBookingDataCourtModel>,
     ));
   }
@@ -254,8 +254,8 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
       @JsonKey(name: 'booked_by') this.bookedBy = "",
       @JsonKey(name: 'created_at') this.createdAt = "",
       @JsonKey(name: 'updated_at') this.updatedAt = "",
-      final List<ResponseBookingDataCourtModel> court = const []})
-      : _court = court;
+      final List<ResponseBookingDataCourtModel> courtSession = const []})
+      : _courtSession = courtSession;
 
   factory _$ResponseBookingDataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseBookingDataModelImplFromJson(json);
@@ -290,18 +290,18 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
   @override
   @JsonKey(name: 'updated_at')
   final String updatedAt;
-  final List<ResponseBookingDataCourtModel> _court;
+  final List<ResponseBookingDataCourtModel> _courtSession;
   @override
   @JsonKey()
-  List<ResponseBookingDataCourtModel> get court {
-    if (_court is EqualUnmodifiableListView) return _court;
+  List<ResponseBookingDataCourtModel> get courtSession {
+    if (_courtSession is EqualUnmodifiableListView) return _courtSession;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_court);
+    return EqualUnmodifiableListView(_courtSession);
   }
 
   @override
   String toString() {
-    return 'ResponseBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
+    return 'ResponseBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, createdAt: $createdAt, updatedAt: $updatedAt, courtSession: $courtSession)';
   }
 
   @override
@@ -327,7 +327,8 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality().equals(other._court, _court));
+            const DeepCollectionEquality()
+                .equals(other._courtSession, _courtSession));
   }
 
   @JsonKey(ignore: true)
@@ -344,7 +345,7 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
       bookedBy,
       createdAt,
       updatedAt,
-      const DeepCollectionEquality().hash(_court));
+      const DeepCollectionEquality().hash(_courtSession));
 
   @JsonKey(ignore: true)
   @override
@@ -373,7 +374,7 @@ abstract class _ResponseBookingDataModel implements ResponseBookingDataModel {
           @JsonKey(name: 'booked_by') final String bookedBy,
           @JsonKey(name: 'created_at') final String createdAt,
           @JsonKey(name: 'updated_at') final String updatedAt,
-          final List<ResponseBookingDataCourtModel> court}) =
+          final List<ResponseBookingDataCourtModel> courtSession}) =
       _$ResponseBookingDataModelImpl;
 
   factory _ResponseBookingDataModel.fromJson(Map<String, dynamic> json) =
@@ -408,7 +409,7 @@ abstract class _ResponseBookingDataModel implements ResponseBookingDataModel {
   @JsonKey(name: 'updated_at')
   String get updatedAt;
   @override
-  List<ResponseBookingDataCourtModel> get court;
+  List<ResponseBookingDataCourtModel> get courtSession;
   @override
   @JsonKey(ignore: true)
   _$$ResponseBookingDataModelImplCopyWith<_$ResponseBookingDataModelImpl>
