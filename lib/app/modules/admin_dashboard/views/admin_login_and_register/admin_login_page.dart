@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_login_and_register/admin_register_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_page.dart';
 
 class AdminLoginPage extends StatelessWidget {
   final OwnerManagementAdminController adminController = Get.put(OwnerManagementAdminController());
@@ -20,7 +18,6 @@ class AdminLoginPage extends StatelessWidget {
       (adm) => adm.username == username && adm.password == password,
     );
     if (admin != null) {
-      // Get.to(AdminManagementPage()); // Navigate to Owner Management Page
       Get.to(const AdminDashboardView());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -41,13 +38,6 @@ class AdminLoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // const Text(
-              //   'Admin Login',
-              //   style: TextStyle(
-              //     fontSize: 32,
-              //     fontWeight: FontWeight.bold,
-              //     color: Colors.green,
-              //   ),
               CircleAvatar(
                 backgroundImage: const AssetImage(AppImages.whiteJongLogo),
                 backgroundColor: Colors.green[500],
@@ -79,9 +69,6 @@ class AdminLoginPage extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add your login logic here
-                    // After successful login, navigate to AdminManagementPage
-                    // Get.to(() => AdminManagementPage());
                     loginForAdmin(context);
                   },
                   style: ElevatedButton.styleFrom(

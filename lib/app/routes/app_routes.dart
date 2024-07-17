@@ -23,6 +23,7 @@ abstract class Routes {
   static const OWNER_DASHBOARD = _Paths.OWNER_DASHBOARD;
   static const CREATE_ADMIN_FOR_OWNER = _Paths.CREATE_ADMIN_FOR_OWNER;
   static const USER_MANAGEMENT = _Paths.USER_MANAGEMENT;
+  static const BADMINTON_COURT = _Paths.BADMINTON_COURT;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const OWNER_DASHBOARD = '/owner-dashboard';
   static const CREATE_ADMIN_FOR_OWNER = '/create-admin-for-owner';
   static const USER_MANAGEMENT = '/user-management';
+  static const BADMINTON_COURT = '/badminton-court';
 }

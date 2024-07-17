@@ -20,10 +20,18 @@ CourtUsageModel _$CourtUsageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourtUsageModel {
-  @JsonKey(name: 'court_number')
-  String get courtNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'booking_count')
+// @JsonKey(name: 'court_number') @Default('') String courtNumber,
+// @JsonKey(name: 'booking_count') @Default(0) int bookingCount,
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "court_used")
+  String get courtUsed => throw _privateConstructorUsedError;
+  @JsonKey(name: "booking_count")
   int get bookingCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,8 +46,11 @@ abstract class $CourtUsageModelCopyWith<$Res> {
       _$CourtUsageModelCopyWithImpl<$Res, CourtUsageModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'court_number') String courtNumber,
-      @JsonKey(name: 'booking_count') int bookingCount});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "court_used") String courtUsed,
+      @JsonKey(name: "booking_count") int bookingCount,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -55,18 +66,33 @@ class _$CourtUsageModelCopyWithImpl<$Res, $Val extends CourtUsageModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? courtNumber = null,
+    Object? id = null,
+    Object? courtUsed = null,
     Object? bookingCount = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
-      courtNumber: null == courtNumber
-          ? _value.courtNumber
-          : courtNumber // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtUsed: null == courtUsed
+          ? _value.courtUsed
+          : courtUsed // ignore: cast_nullable_to_non_nullable
               as String,
       bookingCount: null == bookingCount
           ? _value.bookingCount
           : bookingCount // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -80,8 +106,11 @@ abstract class _$$CourtUsageModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'court_number') String courtNumber,
-      @JsonKey(name: 'booking_count') int bookingCount});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "court_used") String courtUsed,
+      @JsonKey(name: "booking_count") int bookingCount,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -95,18 +124,33 @@ class __$$CourtUsageModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? courtNumber = null,
+    Object? id = null,
+    Object? courtUsed = null,
     Object? bookingCount = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$CourtUsageModelImpl(
-      courtNumber: null == courtNumber
-          ? _value.courtNumber
-          : courtNumber // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courtUsed: null == courtUsed
+          ? _value.courtUsed
+          : courtUsed // ignore: cast_nullable_to_non_nullable
               as String,
       bookingCount: null == bookingCount
           ? _value.bookingCount
           : bookingCount // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -115,22 +159,36 @@ class __$$CourtUsageModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CourtUsageModelImpl implements _CourtUsageModel {
   const _$CourtUsageModelImpl(
-      {@JsonKey(name: 'court_number') this.courtNumber = '',
-      @JsonKey(name: 'booking_count') this.bookingCount = 0});
+      {@JsonKey(name: "id") this.id = '',
+      @JsonKey(name: "court_used") this.courtUsed = '',
+      @JsonKey(name: "booking_count") this.bookingCount = 0,
+      @JsonKey(name: "created_at") this.createdAt = '',
+      @JsonKey(name: "updated_at") this.updatedAt = ''});
 
   factory _$CourtUsageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourtUsageModelImplFromJson(json);
 
+// @JsonKey(name: 'court_number') @Default('') String courtNumber,
+// @JsonKey(name: 'booking_count') @Default(0) int bookingCount,
   @override
-  @JsonKey(name: 'court_number')
-  final String courtNumber;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  @JsonKey(name: 'booking_count')
+  @JsonKey(name: "court_used")
+  final String courtUsed;
+  @override
+  @JsonKey(name: "booking_count")
   final int bookingCount;
+  @override
+  @JsonKey(name: "created_at")
+  final String createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String updatedAt;
 
   @override
   String toString() {
-    return 'CourtUsageModel(courtNumber: $courtNumber, bookingCount: $bookingCount)';
+    return 'CourtUsageModel(id: $id, courtUsed: $courtUsed, bookingCount: $bookingCount, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -138,15 +196,21 @@ class _$CourtUsageModelImpl implements _CourtUsageModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CourtUsageModelImpl &&
-            (identical(other.courtNumber, courtNumber) ||
-                other.courtNumber == courtNumber) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.courtUsed, courtUsed) ||
+                other.courtUsed == courtUsed) &&
             (identical(other.bookingCount, bookingCount) ||
-                other.bookingCount == bookingCount));
+                other.bookingCount == bookingCount) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, courtNumber, bookingCount);
+  int get hashCode => Object.hash(
+      runtimeType, id, courtUsed, bookingCount, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -165,19 +229,32 @@ class _$CourtUsageModelImpl implements _CourtUsageModel {
 
 abstract class _CourtUsageModel implements CourtUsageModel {
   const factory _CourtUsageModel(
-          {@JsonKey(name: 'court_number') final String courtNumber,
-          @JsonKey(name: 'booking_count') final int bookingCount}) =
+          {@JsonKey(name: "id") final String id,
+          @JsonKey(name: "court_used") final String courtUsed,
+          @JsonKey(name: "booking_count") final int bookingCount,
+          @JsonKey(name: "created_at") final String createdAt,
+          @JsonKey(name: "updated_at") final String updatedAt}) =
       _$CourtUsageModelImpl;
 
   factory _CourtUsageModel.fromJson(Map<String, dynamic> json) =
       _$CourtUsageModelImpl.fromJson;
 
+  @override // @JsonKey(name: 'court_number') @Default('') String courtNumber,
+// @JsonKey(name: 'booking_count') @Default(0) int bookingCount,
+  @JsonKey(name: "id")
+  String get id;
   @override
-  @JsonKey(name: 'court_number')
-  String get courtNumber;
+  @JsonKey(name: "court_used")
+  String get courtUsed;
   @override
-  @JsonKey(name: 'booking_count')
+  @JsonKey(name: "booking_count")
   int get bookingCount;
+  @override
+  @JsonKey(name: "created_at")
+  String get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$CourtUsageModelImplCopyWith<_$CourtUsageModelImpl> get copyWith =>

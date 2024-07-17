@@ -10,8 +10,9 @@ import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_cou
 
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
-import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
+import 'package:nuol_badminton_thesis/app/modules/scan_qr/controllers/scan_qr_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/widget/qr_data_detail.dart';
 import 'package:nuol_badminton_thesis/app/widgets/loading_dialog.dart';
 import 'package:nuol_badminton_thesis/app/widgets/snackbar.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
@@ -32,6 +33,7 @@ class ChooseScheduleController extends GetxController {
   var bookingResponse = Rx<ResponseBookingModel?>(null);
   var isLoading = false.obs;
   var logger = Logger();
+  ScanQrController scanQrController = Get.put(ScanQrController());
 
   void toggleSelection(int index) {
     selectedTimes[index] = !selectedTimes[index];
@@ -84,61 +86,6 @@ class ChooseScheduleController extends GetxController {
     return null;
   }
 
-  // Future<void> bookingCourtOrder({required BuildContext context}) async {
-  //   Loading.show();
-  //   final deviceId = dashboardController.deviceInfoModel.value.id;
-  //   final selectedCourtModels = bookingDetails.where((courtModel) => courtModel.durationTime.isNotEmpty).toList();
-
-  //   if (selectedCourtModels.isEmpty) {
-  //     Get.snackbar(
-  //       'Error',
-  //       'Please select at least one time slot',
-  //       backgroundColor: Colors.red,
-  //       colorText: Colors.white,
-  //     );
-  //     return;
-  //   }
-  //   final bookingRequest = CreateBookingCourtParam(
-  //     phone: phoneNumberController.text,
-  //     court: selectedCourtModels,
-  //     deviceId: deviceId,
-  //     fullName: usernameController.text,
-  //     courtNumber: courtModel.value.name,
-  //     paymentStatus: 'booked',
-  //     bookedBy: usernameController.text,
-  //     totalAmount: finalTotalPrice.value,
-  //   );
-
-  //   logger.d(bookingRequest);
-
-  //   final data = await BookingCourtLocalDataSource().createCourtBooking(bookingRequest);
-  //   data.fold(
-  //     (l) {
-  //       Loading.hide();
-  //       warningDialog(context: context, des: l, btnOkOnPress: () {});
-  //     },
-  //     (r) {
-  //       Loading.hide();
-  //       Get.snackbar(
-  //         'ສຳເລັດ',
-  //         'ການຈອງເດີ່ນສຳເລັດ',
-  //         backgroundColor: Colors.white,
-  //         colorText: Colors.black,
-  //       );
-  //       Get.to(
-  //           court: courtModel.value,
-  //           bookingDetails: bookingDetails,
-  //           userName: usernameController.text,
-  //           phoneNumber: phoneNumberController.text,
-  //           finalTotalPrice: finalTotalPrice.value,
-  //           totalPrice: totalPrice.value,
-  //           bookingResponse: r,
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
   Future<void> bookingCourtOrder({required BuildContext context}) async {
     Loading.show();
     final deviceId = dashboardController.deviceInfoModel.value.id;
@@ -172,13 +119,14 @@ class ChooseScheduleController extends GetxController {
         Loading.hide();
         warningDialog(context: context, des: l, btnOkOnPress: () {});
       },
-      (r) {
+      (r) async {
         Loading.hide();
 
         showCustomSnackbar('ສຳເລັດ', 'ການຈອງເດີ່ນສຳເລັດ');
 
         if (usernameController.text.contains('admin')) {
-          Get.to(LoginView()); // Replace with your actual AdminPage
+          await scanQrController.fetchQrDetailForPayment(r.data.id);
+          Get.to(const QrDataDetail()); // Replace with your actual AdminPage
         } else {
           Get.to(
             BillPaymentDetail(

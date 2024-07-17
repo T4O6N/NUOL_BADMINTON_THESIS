@@ -42,7 +42,6 @@ class OwnerDashboard extends GetxController {
     try {
       final response = await _dio.get(path);
       log.d("Response data: ${response.data}");
-
       final responseData = WeeklyIncomeResponseModel.fromJson(response.data);
       weeklyIncomeList.value = responseData.data.weeklyIncome;
       totalWeeklyIncome.value = responseData.data.totalWeeklyIncome;

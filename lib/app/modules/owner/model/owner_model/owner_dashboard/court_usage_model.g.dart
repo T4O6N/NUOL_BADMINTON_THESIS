@@ -9,13 +9,19 @@ part of 'court_usage_model.dart';
 _$CourtUsageModelImpl _$$CourtUsageModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CourtUsageModelImpl(
-      courtNumber: json['court_number'] as String? ?? '',
+      id: json['id'] as String? ?? '',
+      courtUsed: json['court_used'] as String? ?? '',
       bookingCount: (json['booking_count'] as num?)?.toInt() ?? 0,
+      createdAt: json['created_at'] as String? ?? '',
+      updatedAt: json['updated_at'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$CourtUsageModelImplToJson(
         _$CourtUsageModelImpl instance) =>
     <String, dynamic>{
-      'court_number': instance.courtNumber,
+      'id': instance.id,
+      'court_used': instance.courtUsed,
       'booking_count': instance.bookingCount,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };

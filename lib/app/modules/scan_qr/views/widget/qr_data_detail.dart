@@ -10,8 +10,7 @@ import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class QrDataDetail extends StatelessWidget {
-  final String qrData;
-  const QrDataDetail({super.key, required this.qrData});
+  const QrDataDetail({super.key});
 
   @override
   Widget build(BuildContext context) {

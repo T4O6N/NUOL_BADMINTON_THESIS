@@ -8,6 +8,8 @@ import '../modules/admin_dashboard/bindings/admin_dashboard_binding.dart';
 import '../modules/admin_dashboard/views/admin_dashboard_view.dart';
 import '../modules/admin_user_profile/bindings/admin_user_profile_binding.dart';
 import '../modules/admin_user_profile/views/admin_user_profile_view.dart';
+import '../modules/badminton_court/bindings/badminton_court_binding.dart';
+import '../modules/badminton_court/views/badminton_court_view.dart';
 import '../modules/booking/bindings/booking_binding.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/choose_schedule/bindings/choose_schedule_binding.dart';
@@ -36,7 +38,6 @@ import '../modules/shop_detail/bindings/shop_detail_binding.dart';
 import '../modules/shop_detail/views/shop_detail_view.dart';
 import '../modules/shop_profile/bindings/shop_profile_binding.dart';
 import '../modules/shop_profile/views/shop_profile_view.dart';
-
 import '../modules/user_profile/bindings/user_profile_binding.dart';
 import '../modules/user_profile/views/user_profile_view.dart';
 
@@ -144,6 +145,11 @@ class AppPages {
       name: _Paths.CREATE_ADMIN_FOR_OWNER,
       page: () => const CreateAdminForOwnerView(),
       binding: CreateAdminForOwnerBinding(),
+    ),
+    GetPage(
+      name: _Paths.BADMINTON_COURT,
+      page: () => const BadmintonCourtView(),
+      binding: BadmintonCourtBinding(),
     ),
   ];
 }

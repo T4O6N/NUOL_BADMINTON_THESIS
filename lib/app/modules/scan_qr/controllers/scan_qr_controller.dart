@@ -36,7 +36,7 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
         final String qrCode = resultQr.value!.code ?? '';
         qrController.value?.pauseCamera();
         await fetchQrDetailForPayment(qrCode);
-        Get.to(() => QrDataDetail(qrData: qrCode))?.then((_) {
+        Get.to(() => const QrDataDetail())?.then((_) {
           qrController.value?.resumeCamera();
         });
       } else {
@@ -174,7 +174,7 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
             children: [
               const Icon(
                 Icons.check_circle,
-                color: Colors.green,
+                color: Colors.orange,
                 size: 80,
               ),
               const SizedBox(height: 20),
@@ -203,7 +203,7 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.orange,
                   // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 ),
                 child: const Text(

@@ -40,7 +40,7 @@ class Chart extends StatelessWidget {
                                   explode: true,
                                   explodeIndex: 0,
                                   dataSource: ownerDashboardController.courtUsageList,
-                                  xValueMapper: (CourtUsageModel sales, _) => sales.courtNumber,
+                                  xValueMapper: (CourtUsageModel sales, _) => sales.courtUsed,
                                   yValueMapper: (CourtUsageModel sales, _) => sales.bookingCount,
                                   name: 'Sales',
                                   dataLabelSettings: const DataLabelSettings(isVisible: true),
