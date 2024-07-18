@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/OwnerDashboard/views/owner_dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_login_and_register/admin_login_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/register_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_page.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
 
 import 'package:nuol_badminton_thesis/app/widgets/botton_login.dart';
 
@@ -24,12 +21,10 @@ class LoginView extends GetView<LoginController> {
   void login(BuildContext context) {
     final username = usernameController.text;
     final password = passwordController.text;
-
     final owner = ownerController.ownersList.firstWhereOrNull(
       (owner) => owner.username == username && owner.password == password,
     );
     if (owner != null) {
-      // Get.to(OwnerManagementPage()); // Navigate to Owner Management Page
       Get.to(const OwnerDashboardView());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

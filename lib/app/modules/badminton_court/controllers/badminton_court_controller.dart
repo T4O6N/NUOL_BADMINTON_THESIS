@@ -12,7 +12,7 @@ class BadmintonCourtController extends GetxController {
   final Dio _dio = Dio();
   final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
   final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
-  final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Base URL for deletion
+  final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Fixed URL for deletion
   final Logger log = Logger();
   final RxList<BadmintonCourtModel> courtsList = <BadmintonCourtModel>[].obs;
   final Rx<BadmintonCourtModel?> currentCourt = Rx<BadmintonCourtModel?>(null);
@@ -23,9 +23,7 @@ class BadmintonCourtController extends GetxController {
       log.d("Response : ${response.data}");
       final responseData = FetchBadmintonCourtsResponseModel.fromJson(response.data);
       courtsList.value = List<BadmintonCourtModel>.from(responseData.data);
-      log.i("Response map : $courtsList");
-      // courtsList.value = responseData.data;
-      // log.w("Response Data CourtList: $courtsList");
+      log.i("Fetched Courts: ${courtsList.length}");
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
     } catch (err) {
@@ -35,15 +33,13 @@ class BadmintonCourtController extends GetxController {
 
   Future<void> createCourt(ParamCreateBadmintonCourtModel court) async {
     try {
-      log.i("data court : $court");
+      log.i("Creating court: $court");
       final response = await _dio.post(createCourtUrl, data: court.toJson());
       log.d("Response : ${response.data}");
       final createdCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
-      modifiableList.add(createdCourt);
-      courtsList.value = modifiableList;
+      courtsList.add(createdCourt);
       currentCourt.value = createdCourt;
-      log.d("create court data: $createdCourt");
+      log.d("Created court: $createdCourt");
 
       Get.dialog(
         AlertDialog(
@@ -52,10 +48,8 @@ class BadmintonCourtController extends GetxController {
           actions: [
             TextButton(
               onPressed: () async {
-                log.i(court.courtImage.length);
                 await fetchCourts();
                 Get.back();
-
                 Get.to(const BadmintonCourtView());
               },
               child: const Text('OK'),
@@ -74,7 +68,6 @@ class BadmintonCourtController extends GetxController {
 
   Future<void> updateCourt(BadmintonCourtModel court) async {
     final String updateCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/${court.id}';
-
     try {
       final updateData = {
         "court_number": court.courtNumber,
@@ -84,13 +77,11 @@ class BadmintonCourtController extends GetxController {
       final response = await _dio.patch(updateCourtUrl, data: updateData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
-      final index = modifiableList.indexWhere((c) => c.id == court.id);
+      final index = courtsList.indexWhere((c) => c.id == court.id);
       if (index != -1) {
-        modifiableList[index] = updatedCourt;
-        courtsList.value = modifiableList;
-        courtsList.refresh();
+        courtsList[index] = updatedCourt;
       }
+      log.i("Updated court: $updatedCourt");
       Get.snackbar('Success', 'Court updated successfully', backgroundColor: Colors.green, colorText: Colors.white);
       await fetchCourts();
       Get.off(const BadmintonCourtView());
@@ -116,9 +107,8 @@ class BadmintonCourtController extends GetxController {
   Future<void> deleteCourt(String id) async {
     try {
       await _dio.delete('$deleteCourtUrl/$id');
-      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
-      modifiableList.removeWhere((court) => court.id == id);
-      courtsList.value = modifiableList;
+      courtsList.removeWhere((court) => court.id == id);
+      log.i("Deleted court with ID: $id");
       Get.snackbar('Success', 'Court deleted successfully', backgroundColor: Colors.green, colorText: Colors.white);
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");

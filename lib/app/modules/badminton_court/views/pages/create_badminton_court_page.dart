@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -8,7 +10,7 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/ba
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_create_badminton_court_model.dart';
 
 class CreateBadmintonCourtPage extends StatefulWidget {
-  CreateBadmintonCourtPage({super.key});
+  const CreateBadmintonCourtPage({super.key});
 
   @override
   _CreateBadmintonCourtPageState createState() => _CreateBadmintonCourtPageState();
@@ -25,21 +27,21 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
         title: const Text(
-          'Select Image',
+          'ເລືອກຮູບພາບ',
           style: TextStyle(fontSize: 18),
         ),
         actions: <CupertinoActionSheetAction>[
           CupertinoActionSheetAction(
             onPressed: () async => _pickImage(ImageSource.gallery),
             child: const Text(
-              'Gallery',
+              'ຄັງຮູບ',
               style: TextStyle(fontSize: 18),
             ),
           ),
           CupertinoActionSheetAction(
             onPressed: () async => _pickImage(ImageSource.camera),
             child: const Text(
-              'Camera',
+              'ກ້ອງ​ຖ່າຍ​ຮູບ',
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -47,7 +49,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
         cancelButton: CupertinoActionSheetAction(
           onPressed: () => Navigator.pop(context),
           child: const Text(
-            'Cancel',
+            'ຍົກເລີກ',
             style: TextStyle(fontSize: 18, color: Colors.red),
           ),
         ),
@@ -99,14 +101,23 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Court')),
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        centerTitle: true,
+        title: const Text(
+          'ສ້າງຄອດ',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               const Text(
-                'Create Court',
+                '',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -116,7 +127,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               TextField(
                 controller: courtNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Court Number',
+                  labelText: 'ໝາຍເລກຄອດ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.confirmation_number),
                 ),
@@ -125,7 +136,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
-                  labelText: 'Description',
+                  labelText: 'ລາຍລະອຽດ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.description),
                 ),
@@ -151,7 +162,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   textStyle: const TextStyle(fontSize: 18),
                 ),
-                child: const Text('Create'),
+                child: const Text('ສ້າງ'),
               ),
             ],
           ),
