@@ -1,5 +1,5 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/create_badminton_court_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/update_badminton_court_page.dart';
@@ -11,9 +11,14 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
   @override
   Widget build(BuildContext context) {
     final BadmintonCourtController courtController = Get.put(BadmintonCourtController());
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Court Management'),
+        backgroundColor: Colors.green,
+        title: const Text(
+          'ຈັດການຄອດ',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -31,18 +36,25 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
             itemCount: courtController.courtsList.length,
             itemBuilder: (context, index) {
               final court = courtController.courtsList[index];
+              final hasImage = index < courtController.images.length;
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
-                  leading: CircleAvatar(
-                    child: Text(court.courtNumber[0].toUpperCase()),
-                  ),
+                  leading: hasImage
+                      ? Image.file(
+                          File(courtController.images[index].imagePath),
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        )
+                      : const CircleAvatar(
+                          child: Icon(Icons.image_not_supported),
+                        ),
                   title: Text(court.courtNumber),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Description: ${court.description}'),
-                      Text('ID: ${court.id}'),
                     ],
                   ),
                   trailing: Row(
@@ -57,6 +69,7 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
                       IconButton(
                         icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
+                          if (hasImage) courtController.deleteImage(index);
                           courtController.deleteCourt(court.id);
                         },
                       ),

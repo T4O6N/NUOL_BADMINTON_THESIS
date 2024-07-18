@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,8 +7,10 @@ import 'package:logger/logger.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/fetch_badminton_courts_response_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/image_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_create_badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminton_court_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BadmintonCourtController extends GetxController {
   final Dio _dio = Dio();
@@ -16,6 +20,7 @@ class BadmintonCourtController extends GetxController {
   final Logger log = Logger();
   final RxList<BadmintonCourtModel> courtsList = <BadmintonCourtModel>[].obs;
   final Rx<BadmintonCourtModel?> currentCourt = Rx<BadmintonCourtModel?>(null);
+  var images = <ImageModel>[].obs;
 
   Future<void> fetchCourts() async {
     try {
@@ -124,9 +129,34 @@ class BadmintonCourtController extends GetxController {
     }
   }
 
+  void addImage(ImageModel image) {
+    images.add(image);
+    saveImages();
+  }
+
+  void deleteImage(int index) {
+    images.removeAt(index);
+    saveImages();
+  }
+
+  void saveImages() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> imagesJson = images.map((image) => json.encode(image.toJson())).toList();
+    await prefs.setStringList('images', imagesJson);
+  }
+
+  void loadImages() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String>? imagesJson = prefs.getStringList('images');
+    if (imagesJson != null) {
+      images.value = imagesJson.map((imageJson) => ImageModel.fromJson(json.decode(imageJson))).toList();
+    }
+  }
+
   @override
   void onInit() {
     fetchCourts();
+    loadImages();
     super.onInit();
   }
 }
