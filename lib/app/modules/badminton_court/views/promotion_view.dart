@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/promotion_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/create_promotion_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/update_promotion_page.dart';
+import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class PromotionView extends GetView<PromotionController> {
   const PromotionView({Key? key}) : super(key: key);
@@ -13,7 +14,12 @@ class PromotionView extends GetView<PromotionController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Promotion Management'),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+        title: const Text(
+          'ຈັດການໂປຮໂມຊັນ',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -34,12 +40,28 @@ class PromotionView extends GetView<PromotionController> {
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
-                  title: Text(promotion.title),
+                  title: Row(
+                    children: [
+                      const Icon(Icons.info, color: Colors.green, size: 20),
+                      const SizedBox(width: 10),
+                      Text('ລາຍລະອຽດ: ${promotion.title}'),
+                    ],
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Discount: ${promotion.discount}'),
-                      Text('ID: ${promotion.id}'),
+                      Row(
+                        children: [
+                          const Icon(Icons.discount, color: Colors.green, size: 20),
+                          const SizedBox(width: 10),
+                          Row(
+                            children: [
+                              const Text('ສ່ວນຫຼຸດ: '),
+                              Text(NumberFormatter.formatPriceKip(promotionController.currentPromotion.value!.discount)),
+                            ],
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   trailing: Row(
@@ -62,63 +84,50 @@ class PromotionView extends GetView<PromotionController> {
                   onTap: () async {
                     await promotionController.fetchPromotionById(promotion.id);
                     if (promotionController.currentPromotion.value != null) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(
-                              promotionController.currentPromotion.value!.title,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
-                              ),
+                      if (Get.isDialogOpen == true) {
+                        Get.back();
+                      }
+                      Get.dialog(
+                        AlertDialog(
+                          title: Text(
+                            'ລາຍລະອຽດ: ${promotionController.currentPromotion.value!.title}',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
                             ),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.discount, color: Colors.green),
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'Discount: ${promotionController.currentPromotion.value!.discount}',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    Icon(Icons.calendar_today, color: Colors.orange),
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'Created At: ${promotionController.currentPromotion.value!.createdAt}',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    Icon(Icons.update, color: Colors.purple),
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'Updated At: ${promotionController.currentPromotion.value!.updatedAt}',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Get.back(),
-                                child: const Text('Close'),
+                          ),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.discount, color: Colors.green),
+                                  const SizedBox(width: 10),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'ສ່ວນຫຼຸດ: ',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        NumberFormatter.formatPriceKip(promotionController.currentPromotion.value!.discount),
+                                        style: const TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
+                              const SizedBox(height: 10),
                             ],
-                          );
-                        },
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Get.back(),
+                              child: const Text('Close'),
+                            ),
+                          ],
+                        ),
                       );
                     }
                   },

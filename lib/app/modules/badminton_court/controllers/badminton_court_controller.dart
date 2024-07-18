@@ -50,7 +50,7 @@ class BadmintonCourtController extends GetxController {
               onPressed: () async {
                 await fetchCourts();
                 Get.back();
-                Get.to(const BadmintonCourtView());
+                Get.off(const BadmintonCourtView());
               },
               child: const Text('OK'),
             ),

@@ -11,25 +11,11 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/promotio
 class PromotionController extends GetxController {
   final Dio _dio = Dio();
   final String createPromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion';
-  final String fetchPromotionsUrl = 'https://badminton-court-booking-api.onrender.com/promotion/FindMany';
+  final String fetchPromotionsUrl = 'https://badminton-court-booking-api.onrender.com/promotion/FindMay';
   final String deletePromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion/delete'; // Base URL for deletion
   final Logger log = Logger();
   final RxList<PromotionModel> promotionsList = <PromotionModel>[].obs;
   final Rx<PromotionModel?> currentPromotion = Rx<PromotionModel?>(null);
-
-  Future<void> fetchPromotions() async {
-    try {
-      final response = await _dio.get(fetchPromotionsUrl);
-      log.d("Response : ${response.data}");
-      final responseData = FetchPromotionsResponseModel.fromJson(response.data);
-      promotionsList.value = responseData.data;
-      log.d("Response Data: $promotionsList");
-    } on DioException catch (err) {
-      log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
-    } catch (err) {
-      log.e("Exception: $err");
-    }
-  }
 
   Future<void> fetchPromotionById(String id) async {
     final String fetchPromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion/byId/$id';
@@ -55,6 +41,20 @@ class PromotionController extends GetxController {
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
+    }
+  }
+
+  Future<void> fetchPromotions() async {
+    try {
+      final response = await _dio.get(fetchPromotionsUrl);
+      log.d("Response : ${response.data}");
+      final responseData = FetchPromotionsResponseModel.fromJson(response.data);
+      promotionsList.value = responseData.data;
+      log.d("Response Data: $promotionsList");
+    } on DioException catch (err) {
+      log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
+    } catch (err) {
+      log.e("Exception: $err");
     }
   }
 
