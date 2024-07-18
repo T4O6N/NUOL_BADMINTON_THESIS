@@ -22,8 +22,10 @@ class BadmintonCourtController extends GetxController {
       final response = await _dio.get(fetchCourtsUrl);
       log.d("Response : ${response.data}");
       final responseData = FetchBadmintonCourtsResponseModel.fromJson(response.data);
-      courtsList.value = responseData.data;
-      log.d("Response Data: $courtsList");
+      courtsList.value = List<BadmintonCourtModel>.from(responseData.data);
+      log.i("Response map : $courtsList");
+      // courtsList.value = responseData.data;
+      // log.w("Response Data CourtList: $courtsList");
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
     } catch (err) {
@@ -49,8 +51,11 @@ class BadmintonCourtController extends GetxController {
           content: const Text('Court created successfully.'),
           actions: [
             TextButton(
-              onPressed: () {
+              onPressed: () async {
+                log.i(court.courtImage.length);
+                await fetchCourts();
                 Get.back();
+
                 Get.to(const BadmintonCourtView());
               },
               child: const Text('OK'),

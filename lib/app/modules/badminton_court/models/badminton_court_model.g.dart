@@ -13,9 +13,9 @@ _$BadmintonCourtModelImpl _$$BadmintonCourtModelImplFromJson(
       createdAt: json['created_at'] as String? ?? '',
       updatedAt: json['updated_at'] as String? ?? '',
       courtNumber: json['court_number'] as String? ?? '',
-      courtTime: json['court_time'] as String?,
+      courtTime: json['court_time'] as String? ?? '',
       description: json['description'] as String? ?? '',
-      courtImage: (json['courtImage'] as List<dynamic>?)
+      courtImage: (json['court_image'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
@@ -31,6 +31,6 @@ Map<String, dynamic> _$$BadmintonCourtModelImplToJson(
       'court_number': instance.courtNumber,
       'court_time': instance.courtTime,
       'description': instance.description,
-      'courtImage': instance.courtImage,
+      'court_image': instance.courtImage,
       'available': instance.available,
     };

@@ -49,12 +49,13 @@ class UpdateBadmintonCourtPage extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               ElevatedButton(
-                // onPressed: () => updateCourt(context),
                 onPressed: () {
                   final updatedCourt = BadmintonCourtModel(
                     id: court.id,
                     courtNumber: courtNumberController.text,
                     description: descriptionController.text,
+                    courtImage: court.courtImage,
+                    available: court.available,
                   );
                   courtController.updateCourt(updatedCourt);
                 },
@@ -67,7 +68,7 @@ class UpdateBadmintonCourtPage extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 18),
                 ),
                 child: const Text(
-                  'ແກ້ໄຂ',
+                  'Update',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

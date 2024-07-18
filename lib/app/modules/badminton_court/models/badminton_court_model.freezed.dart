@@ -20,17 +20,21 @@ BadmintonCourtModel _$BadmintonCourtModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BadmintonCourtModel {
+  @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
+  @JsonKey(name: "updated_at")
   String get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'court_number')
+  @JsonKey(name: "court_number")
   String get courtNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'court_time')
-  String? get courtTime => throw _privateConstructorUsedError;
+  @JsonKey(name: "court_time")
+  String get courtTime => throw _privateConstructorUsedError;
+  @JsonKey(name: "description")
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "court_image")
   List<String> get courtImage => throw _privateConstructorUsedError;
+  @JsonKey(name: "available")
   bool get available => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,14 +50,14 @@ abstract class $BadmintonCourtModelCopyWith<$Res> {
       _$BadmintonCourtModelCopyWithImpl<$Res, BadmintonCourtModel>;
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      @JsonKey(name: 'updated_at') String updatedAt,
-      @JsonKey(name: 'court_number') String courtNumber,
-      @JsonKey(name: 'court_time') String? courtTime,
-      String description,
-      List<String> courtImage,
-      bool available});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "court_number") String courtNumber,
+      @JsonKey(name: "court_time") String courtTime,
+      @JsonKey(name: "description") String description,
+      @JsonKey(name: "court_image") List<String> courtImage,
+      @JsonKey(name: "available") bool available});
 }
 
 /// @nodoc
@@ -73,7 +77,7 @@ class _$BadmintonCourtModelCopyWithImpl<$Res, $Val extends BadmintonCourtModel>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? courtNumber = null,
-    Object? courtTime = freezed,
+    Object? courtTime = null,
     Object? description = null,
     Object? courtImage = null,
     Object? available = null,
@@ -95,10 +99,10 @@ class _$BadmintonCourtModelCopyWithImpl<$Res, $Val extends BadmintonCourtModel>
           ? _value.courtNumber
           : courtNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      courtTime: freezed == courtTime
+      courtTime: null == courtTime
           ? _value.courtTime
           : courtTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -124,14 +128,14 @@ abstract class _$$BadmintonCourtModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      @JsonKey(name: 'updated_at') String updatedAt,
-      @JsonKey(name: 'court_number') String courtNumber,
-      @JsonKey(name: 'court_time') String? courtTime,
-      String description,
-      List<String> courtImage,
-      bool available});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "court_number") String courtNumber,
+      @JsonKey(name: "court_time") String courtTime,
+      @JsonKey(name: "description") String description,
+      @JsonKey(name: "court_image") List<String> courtImage,
+      @JsonKey(name: "available") bool available});
 }
 
 /// @nodoc
@@ -149,7 +153,7 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? courtNumber = null,
-    Object? courtTime = freezed,
+    Object? courtTime = null,
     Object? description = null,
     Object? courtImage = null,
     Object? available = null,
@@ -171,10 +175,10 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
           ? _value.courtNumber
           : courtNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      courtTime: freezed == courtTime
+      courtTime: null == courtTime
           ? _value.courtTime
           : courtTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -195,40 +199,40 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
   const _$BadmintonCourtModelImpl(
-      {this.id = '',
-      @JsonKey(name: 'created_at') this.createdAt = '',
-      @JsonKey(name: 'updated_at') this.updatedAt = '',
-      @JsonKey(name: 'court_number') this.courtNumber = '',
-      @JsonKey(name: 'court_time') this.courtTime,
-      this.description = '',
-      final List<String> courtImage = const [],
-      this.available = true})
+      {@JsonKey(name: "id") this.id = '',
+      @JsonKey(name: "created_at") this.createdAt = '',
+      @JsonKey(name: "updated_at") this.updatedAt = '',
+      @JsonKey(name: "court_number") this.courtNumber = '',
+      @JsonKey(name: "court_time") this.courtTime = '',
+      @JsonKey(name: "description") this.description = '',
+      @JsonKey(name: "court_image") final List<String> courtImage = const [],
+      @JsonKey(name: "available") this.available = true})
       : _courtImage = courtImage;
 
   factory _$BadmintonCourtModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BadmintonCourtModelImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: "id")
   final String id;
   @override
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: "created_at")
   final String createdAt;
   @override
-  @JsonKey(name: 'updated_at')
+  @JsonKey(name: "updated_at")
   final String updatedAt;
   @override
-  @JsonKey(name: 'court_number')
+  @JsonKey(name: "court_number")
   final String courtNumber;
   @override
-  @JsonKey(name: 'court_time')
-  final String? courtTime;
+  @JsonKey(name: "court_time")
+  final String courtTime;
   @override
-  @JsonKey()
+  @JsonKey(name: "description")
   final String description;
   final List<String> _courtImage;
   @override
-  @JsonKey()
+  @JsonKey(name: "court_image")
   List<String> get courtImage {
     if (_courtImage is EqualUnmodifiableListView) return _courtImage;
     // ignore: implicit_dynamic_type
@@ -236,7 +240,7 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
   }
 
   @override
-  @JsonKey()
+  @JsonKey(name: "available")
   final bool available;
 
   @override
@@ -296,37 +300,42 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
 
 abstract class _BadmintonCourtModel implements BadmintonCourtModel {
   const factory _BadmintonCourtModel(
-      {final String id,
-      @JsonKey(name: 'created_at') final String createdAt,
-      @JsonKey(name: 'updated_at') final String updatedAt,
-      @JsonKey(name: 'court_number') final String courtNumber,
-      @JsonKey(name: 'court_time') final String? courtTime,
-      final String description,
-      final List<String> courtImage,
-      final bool available}) = _$BadmintonCourtModelImpl;
+          {@JsonKey(name: "id") final String id,
+          @JsonKey(name: "created_at") final String createdAt,
+          @JsonKey(name: "updated_at") final String updatedAt,
+          @JsonKey(name: "court_number") final String courtNumber,
+          @JsonKey(name: "court_time") final String courtTime,
+          @JsonKey(name: "description") final String description,
+          @JsonKey(name: "court_image") final List<String> courtImage,
+          @JsonKey(name: "available") final bool available}) =
+      _$BadmintonCourtModelImpl;
 
   factory _BadmintonCourtModel.fromJson(Map<String, dynamic> json) =
       _$BadmintonCourtModelImpl.fromJson;
 
   @override
+  @JsonKey(name: "id")
   String get id;
   @override
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: "created_at")
   String get createdAt;
   @override
-  @JsonKey(name: 'updated_at')
+  @JsonKey(name: "updated_at")
   String get updatedAt;
   @override
-  @JsonKey(name: 'court_number')
+  @JsonKey(name: "court_number")
   String get courtNumber;
   @override
-  @JsonKey(name: 'court_time')
-  String? get courtTime;
+  @JsonKey(name: "court_time")
+  String get courtTime;
   @override
+  @JsonKey(name: "description")
   String get description;
   @override
+  @JsonKey(name: "court_image")
   List<String> get courtImage;
   @override
+  @JsonKey(name: "available")
   bool get available;
   @override
   @JsonKey(ignore: true)

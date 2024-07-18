@@ -21,7 +21,9 @@ FetchBadmintonCourtsResponseModel _$FetchBadmintonCourtsResponseModelFromJson(
 
 /// @nodoc
 mixin _$FetchBadmintonCourtsResponseModel {
+  @JsonKey(name: "message")
   String get message => throw _privateConstructorUsedError;
+  @JsonKey(name: "data")
   List<BadmintonCourtModel> get data => throw _privateConstructorUsedError;
   @JsonKey(name: "duration")
   String get duration => throw _privateConstructorUsedError;
@@ -45,8 +47,8 @@ abstract class $FetchBadmintonCourtsResponseModelCopyWith<$Res> {
           FetchBadmintonCourtsResponseModel>;
   @useResult
   $Res call(
-      {String message,
-      List<BadmintonCourtModel> data,
+      {@JsonKey(name: "message") String message,
+      @JsonKey(name: "data") List<BadmintonCourtModel> data,
       @JsonKey(name: "duration") String duration,
       @JsonKey(name: "method") String method,
       @JsonKey(name: "statusCode") int statusCode});
@@ -107,8 +109,8 @@ abstract class _$$FetchBadmintonCourtsResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String message,
-      List<BadmintonCourtModel> data,
+      {@JsonKey(name: "message") String message,
+      @JsonKey(name: "data") List<BadmintonCourtModel> data,
       @JsonKey(name: "duration") String duration,
       @JsonKey(name: "method") String method,
       @JsonKey(name: "statusCode") int statusCode});
@@ -163,8 +165,8 @@ class __$$FetchBadmintonCourtsResponseModelImplCopyWithImpl<$Res>
 class _$FetchBadmintonCourtsResponseModelImpl
     implements _FetchBadmintonCourtsResponseModel {
   const _$FetchBadmintonCourtsResponseModelImpl(
-      {this.message = '',
-      final List<BadmintonCourtModel> data = const [],
+      {@JsonKey(name: "message") this.message = '',
+      @JsonKey(name: "data") final List<BadmintonCourtModel> data = const [],
       @JsonKey(name: "duration") this.duration = '',
       @JsonKey(name: "method") this.method = '',
       @JsonKey(name: "statusCode") this.statusCode = 0})
@@ -175,11 +177,11 @@ class _$FetchBadmintonCourtsResponseModelImpl
       _$$FetchBadmintonCourtsResponseModelImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: "message")
   final String message;
   final List<BadmintonCourtModel> _data;
   @override
-  @JsonKey()
+  @JsonKey(name: "data")
   List<BadmintonCourtModel> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
@@ -239,8 +241,8 @@ class _$FetchBadmintonCourtsResponseModelImpl
 abstract class _FetchBadmintonCourtsResponseModel
     implements FetchBadmintonCourtsResponseModel {
   const factory _FetchBadmintonCourtsResponseModel(
-          {final String message,
-          final List<BadmintonCourtModel> data,
+          {@JsonKey(name: "message") final String message,
+          @JsonKey(name: "data") final List<BadmintonCourtModel> data,
           @JsonKey(name: "duration") final String duration,
           @JsonKey(name: "method") final String method,
           @JsonKey(name: "statusCode") final int statusCode}) =
@@ -251,8 +253,10 @@ abstract class _FetchBadmintonCourtsResponseModel
       _$FetchBadmintonCourtsResponseModelImpl.fromJson;
 
   @override
+  @JsonKey(name: "message")
   String get message;
   @override
+  @JsonKey(name: "data")
   List<BadmintonCourtModel> get data;
   @override
   @JsonKey(name: "duration")

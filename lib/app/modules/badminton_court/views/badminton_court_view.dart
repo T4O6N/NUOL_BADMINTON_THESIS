@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/create_badminton_court_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/update_badminton_court_page.dart';
-
-import '../controllers/badminton_court_controller.dart';
 
 class BadmintonCourtView extends GetView<BadmintonCourtController> {
   const BadmintonCourtView({Key? key}) : super(key: key);
@@ -35,7 +35,8 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
                   leading: CircleAvatar(
-                    child: Text(court.courtNumber[0].toUpperCase()),
+                    backgroundImage: court.courtImage.isNotEmpty ? FileImage(File(court.courtImage[0])) : null,
+                    child: court.courtImage.isEmpty ? Text(court.courtNumber[0].toUpperCase()) : null,
                   ),
                   title: Text(court.courtNumber),
                   subtitle: Column(
