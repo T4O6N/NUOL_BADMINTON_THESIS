@@ -42,17 +42,16 @@ class OwnerManagementAdminController extends GetxController {
       currentAdmin.value = createdAdmin;
       log.d("create admin data:$createdAdmin");
 
-      // Show dialog and navigate to AdminManagementPage
       Get.dialog(
         AlertDialog(
           title: const Text('Success'),
           content: const Text('Admin created successfully.'),
           actions: [
             TextButton(
-              onPressed: () {
-                Get.back(); // Close the dialog
-                // Get.to(() => AdminManagementPage());
-                // Get.to(() => AdminLoginPage());
+              onPressed: () async {
+                await fetchAdmins();
+                Get.back();
+                Get.off(AdminManagementPage());
               },
               child: const Text('OK'),
             ),

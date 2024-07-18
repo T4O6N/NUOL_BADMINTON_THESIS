@@ -10,7 +10,8 @@ class AdminLoginPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void loginForAdmin(BuildContext context) {
+  Future<void> loginForAdmin(BuildContext context) async {
+    await adminController.fetchAdmins();
     final username = usernameController.text;
     final password = passwordController.text;
 
@@ -86,17 +87,6 @@ class AdminLoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Center(
-              //   child: TextButton(
-              //     onPressed: () {
-              //       Get.to(() => AdminRegisterPage());
-              //     },
-              //     child: const Text(
-              //       "Don't have an account? Register",
-              //       style: TextStyle(color: Colors.black),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

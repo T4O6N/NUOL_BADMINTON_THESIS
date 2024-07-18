@@ -15,10 +15,7 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         centerTitle: true,
-        title: const Text(
-          'ຈັດການຄອດ',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('ຈັດການຄອດ', style: TextStyle(color: Colors.white)),
         actions: [
           PopupMenuButton<String>(
             iconColor: Colors.white,

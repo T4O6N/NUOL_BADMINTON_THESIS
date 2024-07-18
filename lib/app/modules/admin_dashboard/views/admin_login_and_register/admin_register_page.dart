@@ -29,14 +29,6 @@ class AdminRegisterPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // const Text(
-              //   'ລົງທະບຽນແອັດມິນ',
-              //   style: TextStyle(
-              //     fontSize: 32,
-              //     fontWeight: FontWeight.bold,
-              //     color: Colors.green,
-              //   ),
-              // ),
               const SizedBox(height: 40),
               _buildTextField(
                 controller: usernameController,
@@ -83,17 +75,6 @@ class AdminRegisterPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Center(
-              //   child: TextButton(
-              //     onPressed: () {
-              //       Get.to(() => AdminLoginPage());
-              //     },
-              //     child: const Text(
-              //       "Already have an account? Login",
-              //       style: TextStyle(color: Colors.black),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

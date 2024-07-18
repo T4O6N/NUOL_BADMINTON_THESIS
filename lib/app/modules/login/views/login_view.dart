@@ -18,7 +18,8 @@ class LoginView extends GetView<LoginController> {
   final OwnerController ownerController = Get.put(OwnerController());
   final OwnerManagementAdminController adminController = Get.put(OwnerManagementAdminController());
 
-  void login(BuildContext context) {
+  void login(BuildContext context) async {
+    await ownerController.fetchOwners();
     final username = usernameController.text;
     final password = passwordController.text;
     final owner = ownerController.ownersList.firstWhereOrNull(
