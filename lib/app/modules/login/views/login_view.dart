@@ -26,7 +26,7 @@ class LoginView extends GetView<LoginController> {
       (owner) => owner.username == username && owner.password == password,
     );
     if (owner != null) {
-      Get.to(const OwnerDashboardView());
+      Get.off(const OwnerDashboardView());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid username or password')),
@@ -193,10 +193,6 @@ class LoginView extends GetView<LoginController> {
                       height: 50,
                       child: ButtonLogin(
                         onPressed: () {
-                          // if (formKey.currentState!.validate()) {
-                          //   Get.to(OtpPage(onCompleted: (String value) {}, onChange: (String value) {}, phone: '', onSummit: () {}));
-                          // }
-                          // Get.to(const UserManagementView());
                           login(context);
                         },
                         label: 'ເຂົ້າສູ້ລະບົບ',

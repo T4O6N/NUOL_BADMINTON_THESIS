@@ -9,7 +9,7 @@ part 'owner_model.g.dart';
 class OwnerModel with _$OwnerModel {
   const factory OwnerModel({
     @Default('') String id,
-    @Default(false) @JsonKey(name: 'is_active') bool isActive,
+    @Default(true) @JsonKey(name: 'is_active') bool isActive,
     @Default('') String username,
     @Default('') String phone,
     @Default('') String password,

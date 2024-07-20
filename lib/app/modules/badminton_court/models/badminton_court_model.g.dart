@@ -15,10 +15,7 @@ _$BadmintonCourtModelImpl _$$BadmintonCourtModelImplFromJson(
       courtNumber: json['court_number'] as String? ?? '',
       courtTime: json['court_time'] as String? ?? '',
       description: json['description'] as String? ?? '',
-      courtImage: (json['court_image'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      courtImage: json['court_image'] as String? ?? '',
       available: json['available'] as bool? ?? true,
     );
 

@@ -19,7 +19,7 @@ class AdminLoginPage extends StatelessWidget {
       (adm) => adm.username == username && adm.password == password,
     );
     if (admin != null) {
-      Get.to(const AdminDashboardView());
+      Get.off(const AdminDashboardView());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid username or password')),

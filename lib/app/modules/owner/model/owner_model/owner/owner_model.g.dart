@@ -9,7 +9,7 @@ part of 'owner_model.dart';
 _$OwnerModelImpl _$$OwnerModelImplFromJson(Map<String, dynamic> json) =>
     _$OwnerModelImpl(
       id: json['id'] as String? ?? '',
-      isActive: json['is_active'] as bool? ?? false,
+      isActive: json['is_active'] as bool? ?? true,
       username: json['username'] as String? ?? '',
       phone: json['phone'] as String? ?? '',
       password: json['password'] as String? ?? '',

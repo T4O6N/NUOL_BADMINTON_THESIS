@@ -11,10 +11,7 @@ _$ParamCreateBadmintonCourtModelImpl
         _$ParamCreateBadmintonCourtModelImpl(
           courtNumber: json['court_number'] as String? ?? "",
           description: json['description'] as String? ?? "",
-          courtImage: (json['court_image'] as List<dynamic>?)
-                  ?.map((e) => e as String)
-                  .toList() ??
-              const [],
+          courtImage: json['court_image'] ?? "",
           available: json['available'] as bool? ?? true,
         );
 

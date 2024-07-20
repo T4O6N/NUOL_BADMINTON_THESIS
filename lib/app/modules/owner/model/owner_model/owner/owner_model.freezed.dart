@@ -182,7 +182,7 @@ class __$$OwnerModelImplCopyWithImpl<$Res>
 class _$OwnerModelImpl implements _OwnerModel {
   const _$OwnerModelImpl(
       {this.id = '',
-      @JsonKey(name: 'is_active') this.isActive = false,
+      @JsonKey(name: 'is_active') this.isActive = true,
       this.username = '',
       this.phone = '',
       this.password = '',

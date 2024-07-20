@@ -15,7 +15,7 @@ class ParamCreateBadmintonCourtModel with _$ParamCreateBadmintonCourtModel {
   const factory ParamCreateBadmintonCourtModel({
     @JsonKey(name: "court_number") @Default("") String courtNumber,
     @JsonKey(name: "description") @Default("") String description,
-    @JsonKey(name: "court_image") @Default([]) List<String> courtImage,
+    @JsonKey(name: "court_image") @Default("") courtImage,
     @JsonKey(name: "available") @Default(true) bool available,
   }) = _ParamCreateBadmintonCourtModel;
 

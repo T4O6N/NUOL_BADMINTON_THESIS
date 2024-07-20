@@ -3,6 +3,7 @@ import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_dashbo
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/court_usage_model.dart';
 import 'package:flutter/material.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/weekly_income_model.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard_income_model/day_income.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -28,7 +29,7 @@ class Chart extends StatelessWidget {
               children: [
                 Obx(() {
                   return ownerDashboardController.courtUsageList.isEmpty
-                      ? const Center(child: Text('No court usage data available'))
+                      ? const Center(child: Text('ກຳລັງໂຫລດ...'))
                       : Column(
                           children: [
                             SfCircularChart(
@@ -75,13 +76,13 @@ class Chart extends StatelessWidget {
                               title: ChartTitle(text: 'ລາຍງານລາຍຮັບປະຈຳວັນ/ອາທິດ'),
                               legend: Legend(isVisible: true),
                               tooltipBehavior: TooltipBehavior(enable: true),
-                              series: <PieSeries<WeeklyIncomeModel, String>>[
-                                PieSeries<WeeklyIncomeModel, String>(
+                              series: <PieSeries<DayIncome, String>>[
+                                PieSeries<DayIncome, String>(
                                   explode: true,
                                   explodeIndex: 0,
                                   dataSource: ownerDashboardController.weeklyIncomeList,
-                                  xValueMapper: (WeeklyIncomeModel sales, _) => sales.day,
-                                  yValueMapper: (WeeklyIncomeModel sales, _) => sales.incomeAmount,
+                                  xValueMapper: (DayIncome sales, _) => sales.day,
+                                  yValueMapper: (DayIncome sales, _) => sales.income,
                                   name: 'Court Used',
                                   dataLabelSettings: const DataLabelSettings(isVisible: true),
                                 )

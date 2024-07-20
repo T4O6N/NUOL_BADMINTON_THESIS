@@ -33,7 +33,7 @@ mixin _$BadmintonCourtModel {
   @JsonKey(name: "description")
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "court_image")
-  List<String> get courtImage => throw _privateConstructorUsedError;
+  String get courtImage => throw _privateConstructorUsedError;
   @JsonKey(name: "available")
   bool get available => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $BadmintonCourtModelCopyWith<$Res> {
       @JsonKey(name: "court_number") String courtNumber,
       @JsonKey(name: "court_time") String courtTime,
       @JsonKey(name: "description") String description,
-      @JsonKey(name: "court_image") List<String> courtImage,
+      @JsonKey(name: "court_image") String courtImage,
       @JsonKey(name: "available") bool available});
 }
 
@@ -110,7 +110,7 @@ class _$BadmintonCourtModelCopyWithImpl<$Res, $Val extends BadmintonCourtModel>
       courtImage: null == courtImage
           ? _value.courtImage
           : courtImage // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ abstract class _$$BadmintonCourtModelImplCopyWith<$Res>
       @JsonKey(name: "court_number") String courtNumber,
       @JsonKey(name: "court_time") String courtTime,
       @JsonKey(name: "description") String description,
-      @JsonKey(name: "court_image") List<String> courtImage,
+      @JsonKey(name: "court_image") String courtImage,
       @JsonKey(name: "available") bool available});
 }
 
@@ -184,9 +184,9 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       courtImage: null == courtImage
-          ? _value._courtImage
+          ? _value.courtImage
           : courtImage // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -205,9 +205,8 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
       @JsonKey(name: "court_number") this.courtNumber = '',
       @JsonKey(name: "court_time") this.courtTime = '',
       @JsonKey(name: "description") this.description = '',
-      @JsonKey(name: "court_image") final List<String> courtImage = const [],
-      @JsonKey(name: "available") this.available = true})
-      : _courtImage = courtImage;
+      @JsonKey(name: "court_image") this.courtImage = '',
+      @JsonKey(name: "available") this.available = true});
 
   factory _$BadmintonCourtModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BadmintonCourtModelImplFromJson(json);
@@ -230,15 +229,9 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
   @override
   @JsonKey(name: "description")
   final String description;
-  final List<String> _courtImage;
   @override
   @JsonKey(name: "court_image")
-  List<String> get courtImage {
-    if (_courtImage is EqualUnmodifiableListView) return _courtImage;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_courtImage);
-  }
-
+  final String courtImage;
   @override
   @JsonKey(name: "available")
   final bool available;
@@ -264,24 +257,16 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
                 other.courtTime == courtTime) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality()
-                .equals(other._courtImage, _courtImage) &&
+            (identical(other.courtImage, courtImage) ||
+                other.courtImage == courtImage) &&
             (identical(other.available, available) ||
                 other.available == available));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      createdAt,
-      updatedAt,
-      courtNumber,
-      courtTime,
-      description,
-      const DeepCollectionEquality().hash(_courtImage),
-      available);
+  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt,
+      courtNumber, courtTime, description, courtImage, available);
 
   @JsonKey(ignore: true)
   @override
@@ -306,7 +291,7 @@ abstract class _BadmintonCourtModel implements BadmintonCourtModel {
           @JsonKey(name: "court_number") final String courtNumber,
           @JsonKey(name: "court_time") final String courtTime,
           @JsonKey(name: "description") final String description,
-          @JsonKey(name: "court_image") final List<String> courtImage,
+          @JsonKey(name: "court_image") final String courtImage,
           @JsonKey(name: "available") final bool available}) =
       _$BadmintonCourtModelImpl;
 
@@ -333,7 +318,7 @@ abstract class _BadmintonCourtModel implements BadmintonCourtModel {
   String get description;
   @override
   @JsonKey(name: "court_image")
-  List<String> get courtImage;
+  String get courtImage;
   @override
   @JsonKey(name: "available")
   bool get available;
