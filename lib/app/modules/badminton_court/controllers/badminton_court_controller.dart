@@ -1,4 +1,6 @@
-import 'package:dio/dio.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -9,10 +11,10 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_cr
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminton_court_view.dart';
 
 class BadmintonCourtController extends GetxController {
-  final Dio _dio = Dio();
+  final dio.Dio _dio = dio.Dio();
   final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
   final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
-  final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Fixed URL for deletion
+  final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Base URL for deletion
   final Logger log = Logger();
   final RxList<BadmintonCourtModel> courtsList = <BadmintonCourtModel>[].obs;
   final Rx<BadmintonCourtModel?> currentCourt = Rx<BadmintonCourtModel?>(null);
@@ -23,23 +25,32 @@ class BadmintonCourtController extends GetxController {
       log.d("Response : ${response.data}");
       final responseData = FetchBadmintonCourtsResponseModel.fromJson(response.data);
       courtsList.value = List<BadmintonCourtModel>.from(responseData.data);
-      log.i("Fetched Courts: ${courtsList.length}");
-    } on DioException catch (err) {
+      log.i("Response map : $courtsList");
+    } on dio.DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
     } catch (err) {
       log.e("Exception: $err");
     }
   }
 
-  Future<void> createCourt(ParamCreateBadmintonCourtModel court) async {
+  Future<void> createCourt(ParamCreateBadmintonCourtModel court, File imageFile) async {
     try {
-      log.i("Creating court: $court");
-      final response = await _dio.post(createCourtUrl, data: court.toJson());
+      log.i("data court : $court");
+      final formData = dio.FormData.fromMap({
+        "court_number": court.courtNumber,
+        "description": court.description,
+        "court_image": await dio.MultipartFile.fromFile(imageFile.path),
+        "available": court.available,
+      });
+
+      final response = await _dio.post(createCourtUrl, data: formData);
       log.d("Response : ${response.data}");
       final createdCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      courtsList.add(createdCourt);
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      modifiableList.add(createdCourt);
+      courtsList.value = modifiableList;
       currentCourt.value = createdCourt;
-      log.d("Created court: $createdCourt");
+      log.d("create court data: $createdCourt");
 
       Get.dialog(
         AlertDialog(
@@ -48,16 +59,17 @@ class BadmintonCourtController extends GetxController {
           actions: [
             TextButton(
               onPressed: () async {
+                log.i(court.courtImage.length);
                 await fetchCourts();
                 Get.back();
-                Get.off(const BadmintonCourtView());
+                Get.to(const BadmintonCourtView());
               },
               child: const Text('OK'),
             ),
           ],
         ),
       );
-    } on DioException catch (err) {
+    } on dio.DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
       Get.snackbar('Error', DioErrorHandler.dioErrorHandler(err), backgroundColor: Colors.red, colorText: Colors.white);
     } catch (err) {
@@ -66,26 +78,33 @@ class BadmintonCourtController extends GetxController {
     }
   }
 
-  Future<void> updateCourt(BadmintonCourtModel court) async {
+  Future<void> updateCourt(BadmintonCourtModel court, {File? imageFile}) async {
     final String updateCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/${court.id}';
+
     try {
       final updateData = {
         "court_number": court.courtNumber,
         "description": court.description,
+        "court_image": imageFile != null ? await dio.MultipartFile.fromFile(imageFile.path) : court.courtImage,
+        "available": court.available,
       };
 
-      final response = await _dio.patch(updateCourtUrl, data: updateData);
+      final formData = dio.FormData.fromMap(updateData);
+
+      final response = await _dio.patch(updateCourtUrl, data: formData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);
-      final index = courtsList.indexWhere((c) => c.id == court.id);
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      final index = modifiableList.indexWhere((c) => c.id == court.id);
       if (index != -1) {
-        courtsList[index] = updatedCourt;
+        modifiableList[index] = updatedCourt;
+        courtsList.value = modifiableList;
+        courtsList.refresh();
       }
-      log.i("Updated court: $updatedCourt");
       Get.snackbar('Success', 'Court updated successfully', backgroundColor: Colors.green, colorText: Colors.white);
       await fetchCourts();
       Get.off(const BadmintonCourtView());
-    } on DioException catch (err) {
+    } on dio.DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
       Get.snackbar(
         'Error',
@@ -107,10 +126,11 @@ class BadmintonCourtController extends GetxController {
   Future<void> deleteCourt(String id) async {
     try {
       await _dio.delete('$deleteCourtUrl/$id');
-      courtsList.removeWhere((court) => court.id == id);
-      log.i("Deleted court with ID: $id");
+      final modifiableList = List<BadmintonCourtModel>.from(courtsList);
+      modifiableList.removeWhere((court) => court.id == id);
+      courtsList.value = modifiableList;
       Get.snackbar('Success', 'Court deleted successfully', backgroundColor: Colors.green, colorText: Colors.white);
-    } on DioException catch (err) {
+    } on dio.DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");
       Get.snackbar('Error', DioErrorHandler.dioErrorHandler(err), backgroundColor: Colors.red, colorText: Colors.white);
     } catch (err) {
