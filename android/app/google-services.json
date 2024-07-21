@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "556433121376",
+    "project_id": "badminton-thesis",
+    "storage_bucket": "badminton-thesis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556433121376:android:ec6ddae21c452b1b37e305",
+        "android_client_info": {
+          "package_name": "com.example.nuol_badminton_thesis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ1lbGtCv4vyNTUgDCCGvMZPPDHj1KhXo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
