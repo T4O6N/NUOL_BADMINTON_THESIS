@@ -12,8 +12,10 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminto
 
 class BadmintonCourtController extends GetxController {
   final dio.Dio _dio = dio.Dio();
-  final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
-  final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
+  // final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
+  final String createCourtUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts';
+  // final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
+  final String fetchCourtsUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts/FindMany';
   final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Base URL for deletion
   final Logger log = Logger();
   final RxList<BadmintonCourtModel> courtsList = <BadmintonCourtModel>[].obs;

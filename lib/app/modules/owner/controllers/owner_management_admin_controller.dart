@@ -11,7 +11,8 @@ import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_p
 class OwnerManagementAdminController extends GetxController {
   final Dio _dio = Dio();
   final String createAdminUrl = 'https://badminton-court-booking-api.onrender.com/admin';
-  final String fetchAdminsUrl = 'https://badminton-court-booking-api.onrender.com/Admin/FindMany';
+  // final String fetchAdminsUrl = 'https://badminton-court-booking-api.onrender.com/Admin/FindMany';
+  final String fetchAdminsUrl = 'https://618b-202-62-99-236.ngrok-free.app/Admin/FindMany';
   final String deleteAdminUrl = 'https://badminton-court-booking-api.onrender.com/admin/delete';
   final Logger log = Logger();
   final RxList<AdminModel> adminsList = <AdminModel>[].obs;
