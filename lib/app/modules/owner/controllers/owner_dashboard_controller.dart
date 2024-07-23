@@ -11,8 +11,10 @@ import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_
 
 class OwnerDashboard extends GetxController {
   final Dio _dio = Dio();
-  final String courtUseUrl = 'https://badminton-court-booking-api.onrender.com/dashboard/court-used-report';
-  final String incomeUrl = 'https://badminton-court-booking-api.onrender.com/dashboard/income-report';
+  // final String courtUseUrl = 'https://badminton-court-booking-api.onrender.com/dashboard/court-used-report';
+  final String courtUseUrl = 'https://618b-202-62-99-236.ngrok-free.app/dashboard/court-used-report';
+  // final String incomeUrl = 'https://badminton-court-booking-api.onrender.com/dashboard/income-report';
+  final String incomeUrl = 'https://618b-202-62-99-236.ngrok-free.app/dashboard/income-report';
   final Logger log = Logger();
   final RxInt totalWeeklyIncome = 0.obs;
 

@@ -13,7 +13,8 @@ import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_p
 class OwnerController extends GetxController {
   final Dio _dio = Dio();
   final String createOwnerUrl = 'https://badminton-court-booking-api.onrender.com/user-owner';
-  final String fetchOwnersUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/FIndMany';
+  // final String fetchOwnersUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/FIndMany';
+  final String fetchOwnersUrl = 'https://618b-202-62-99-236.ngrok-free.app/user-owner/FIndMany';
   final String deleteOwnerUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/delete';
   final Logger log = Logger();
   final RxList<OwnerModel> ownersList = <OwnerModel>[].obs;
