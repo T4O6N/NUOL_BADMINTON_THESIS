@@ -15,7 +15,7 @@ class BookingCourtLocalDataSource {
 
     final data = bookingRequest.toJson();
     try {
-      final response = await dio.post("$url/$bookingUrl", data: data);
+      final response = await dio.post("$url$bookingUrl", data: data);
       final res = ResponseBookingModel.fromJson(response.data);
       return Right(res);
     } on DioException catch (e) {

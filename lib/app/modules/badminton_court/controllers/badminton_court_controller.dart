@@ -83,8 +83,6 @@ class BadmintonCourtController extends GetxController {
   }
 
   Future<void> updateCourt(BadmintonCourtModel court, {File? imageFile}) async {
-    final String updateCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/${court.id}';
-
     try {
       final updateData = {
         "court_number": court.courtNumber,
