@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/fetch_promotions_response_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/promotion_model.dart';
@@ -14,13 +15,14 @@ class PromotionController extends GetxController {
   final String fetchPromotionsUrl = 'https://badminton-court-booking-api.onrender.com/promotion/FindMay';
   final String deletePromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion/delete'; // Base URL for deletion
   final Logger log = Logger();
+  final url = AppApiConstant.baseUrl;
   final RxList<PromotionModel> promotionsList = <PromotionModel>[].obs;
   final Rx<PromotionModel?> currentPromotion = Rx<PromotionModel?>(null);
 
   Future<void> fetchPromotionById(String id) async {
-    final String fetchPromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion/byId/$id';
+    // final String fetchPromotionUrl = 'https://badminton-court-booking-api.onrender.com/promotion/byId/$id';
     try {
-      final response = await _dio.get(fetchPromotionUrl);
+      final response = await _dio.get("$url/promotion/byId/$id");
       log.d("Response : ${response.data}");
       final promotion = PromotionModel.fromJson(response.data['data']);
       currentPromotion.value = promotion;
@@ -46,7 +48,7 @@ class PromotionController extends GetxController {
 
   Future<void> fetchPromotions() async {
     try {
-      final response = await _dio.get(fetchPromotionsUrl);
+      final response = await _dio.get("$url/promotion/FindMay");
       log.d("Response : ${response.data}");
       final responseData = FetchPromotionsResponseModel.fromJson(response.data);
       promotionsList.value = responseData.data;
@@ -61,7 +63,7 @@ class PromotionController extends GetxController {
   Future<void> createPromotion(ParamCreatePromotionModel promotion) async {
     try {
       log.i("Creating promotion: $promotion");
-      final response = await _dio.post(createPromotionUrl, data: promotion.toJson());
+      final response = await _dio.post("$url/promotion", data: promotion.toJson());
       log.d("Response : ${response.data}");
       final createdPromotion = PromotionModel.fromJson(response.data['data']);
       promotionsList.add(createdPromotion);
@@ -101,7 +103,7 @@ class PromotionController extends GetxController {
         "discount": promotion.discount,
       };
 
-      final response = await _dio.patch(updatePromotionUrl, data: updateData);
+      final response = await _dio.patch("$url/promotion/${promotion.id}", data: updateData);
       log.d("Response : ${response.data}");
       final updatedPromotion = PromotionModel.fromJson(response.data['data']);
       final index = promotionsList.indexWhere((p) => p.id == promotion.id);

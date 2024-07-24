@@ -1,4 +1,4 @@
 class AppApiConstant {
-  static const baseUrl = "https://badminton-court-booking-api.onrender.com";
+  static const baseUrl = "https://anteater-pet-urgently.ngrok-free.app";
   static const courtBooking = "/court-booking";
 }

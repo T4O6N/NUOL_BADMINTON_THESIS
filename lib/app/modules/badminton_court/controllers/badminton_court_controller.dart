@@ -4,6 +4,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/fetch_badminton_courts_response_model.dart';
@@ -15,15 +16,16 @@ class BadmintonCourtController extends GetxController {
   // final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
   final String createCourtUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts';
   // final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
-  final String fetchCourtsUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts/FindMany';
+  // final String fetchCourtsUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts/FindMany';
   final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Base URL for deletion
   final Logger log = Logger();
+  final url = AppApiConstant.baseUrl;
   final RxList<BadmintonCourtModel> courtsList = <BadmintonCourtModel>[].obs;
   final Rx<BadmintonCourtModel?> currentCourt = Rx<BadmintonCourtModel?>(null);
 
   Future<void> fetchCourts() async {
     try {
-      final response = await _dio.get(fetchCourtsUrl);
+      final response = await _dio.get("$url/courts/FindMany");
       log.d("Response : ${response.data}");
       final responseData = FetchBadmintonCourtsResponseModel.fromJson(response.data);
       courtsList.value = List<BadmintonCourtModel>.from(responseData.data);
@@ -45,7 +47,7 @@ class BadmintonCourtController extends GetxController {
         "available": court.available,
       });
 
-      final response = await _dio.post(createCourtUrl, data: formData);
+      final response = await _dio.post("$url/courts", data: formData);
       log.d("Response : ${response.data}");
       final createdCourt = BadmintonCourtModel.fromJson(response.data['data']);
       final modifiableList = List<BadmintonCourtModel>.from(courtsList);
@@ -93,7 +95,7 @@ class BadmintonCourtController extends GetxController {
 
       final formData = dio.FormData.fromMap(updateData);
 
-      final response = await _dio.patch(updateCourtUrl, data: formData);
+      final response = await _dio.patch("$url/courts/${court.id}", data: formData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);
       final modifiableList = List<BadmintonCourtModel>.from(courtsList);
