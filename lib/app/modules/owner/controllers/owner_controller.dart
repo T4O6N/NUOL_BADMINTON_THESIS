@@ -104,7 +104,7 @@ class OwnerController extends GetxController {
 
   Future<void> deleteOwner(String id) async {
     try {
-      await _dio.delete('$deleteOwnerUrl/$id');
+      await _dio.delete('$url/user-owner/delete/$id');
       final modifiableList = List<OwnerModel>.from(ownersList);
       modifiableList.removeWhere((owner) => owner.id == id);
       ownersList.value = modifiableList; // Assign the new modifiable list

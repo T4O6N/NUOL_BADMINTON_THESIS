@@ -102,7 +102,7 @@ class OwnerManagementAdminController extends GetxController {
 
   Future<void> deleteAdmin(String id) async {
     try {
-      await _dio.delete('$deleteAdminUrl/$id');
+      await _dio.delete('$url/admin/delete/$id');
       final modifiableList = List<AdminModel>.from(adminsList);
       modifiableList.removeWhere((admin) => admin.id == id);
       adminsList.value = modifiableList;

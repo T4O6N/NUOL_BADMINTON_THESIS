@@ -13,10 +13,9 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminto
 
 class BadmintonCourtController extends GetxController {
   final dio.Dio _dio = dio.Dio();
-  // final String createCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts';
+
   final String createCourtUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts';
-  // final String fetchCourtsUrl = 'https://badminton-court-booking-api.onrender.com/courts/FindMany';
-  // final String fetchCourtsUrl = 'https://618b-202-62-99-236.ngrok-free.app/courts/FindMany';
+
   final String deleteCourtUrl = 'https://badminton-court-booking-api.onrender.com/courts/delete'; // Base URL for deletion
   final Logger log = Logger();
   final url = AppApiConstant.baseUrl;
@@ -93,6 +92,7 @@ class BadmintonCourtController extends GetxController {
 
       final formData = dio.FormData.fromMap(updateData);
 
+     
       final response = await _dio.patch("$url/courts/${court.id}", data: formData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);
@@ -127,7 +127,7 @@ class BadmintonCourtController extends GetxController {
 
   Future<void> deleteCourt(String id) async {
     try {
-      await _dio.delete('$deleteCourtUrl/$id');
+      await _dio.delete("$url/courts/delete/$id");
       final modifiableList = List<BadmintonCourtModel>.from(courtsList);
       modifiableList.removeWhere((court) => court.id == id);
       courtsList.value = modifiableList;

@@ -135,7 +135,7 @@ class PromotionController extends GetxController {
 
   Future<void> deletePromotion(String id) async {
     try {
-      await _dio.delete('$deletePromotionUrl/$id');
+      await _dio.delete('$url/promotion/delete/$id');
       promotionsList.removeWhere((promotion) => promotion.id == id);
       log.i("Deleted promotion with ID: $id");
       Get.snackbar('Success', 'Promotion deleted successfully', backgroundColor: Colors.green, colorText: Colors.white);
