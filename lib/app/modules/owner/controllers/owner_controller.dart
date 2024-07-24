@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/modules/login/views/login_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/create_owner/response_create_owner_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/find_many_owner/fetch_owners_response_model.dart';
@@ -13,15 +14,17 @@ import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_p
 class OwnerController extends GetxController {
   final Dio _dio = Dio();
   final String createOwnerUrl = 'https://badminton-court-booking-api.onrender.com/user-owner';
-  final String fetchOwnersUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/FIndMany';
+  // final String fetchOwnersUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/FIndMany';
+  final String fetchOwnersUrl = 'https://618b-202-62-99-236.ngrok-free.app/user-owner/FIndMany';
   final String deleteOwnerUrl = 'https://badminton-court-booking-api.onrender.com/user-owner/delete';
   final Logger log = Logger();
   final RxList<OwnerModel> ownersList = <OwnerModel>[].obs;
   final Rx<OwnerModel?> currentOwner = Rx<OwnerModel?>(null);
+  final url = AppApiConstant.baseUrl;
 
   Future<void> fetchOwners() async {
     try {
-      final response = await _dio.get(fetchOwnersUrl);
+      final response = await _dio.get("$url/user-owner/FIndMany");
       log.d("Response : ${response.data}");
       final responseData = FetchOwnersResponseModel.fromJson(response.data);
       ownersList.value = List<OwnerModel>.from(responseData.data); // Ensure it's a modifiable list
@@ -35,7 +38,7 @@ class OwnerController extends GetxController {
 
   Future<void> createOwner(ParamCreateOwnerModel owner) async {
     try {
-      final response = await _dio.post(createOwnerUrl, data: owner.toJson());
+      final response = await _dio.post("$url/user-owner", data: owner.toJson());
       log.d("Response : ${response.data}");
       final createdOwner = ResponseCreateOwnerModel.fromJson(response.data);
       final modifiableList = List<OwnerModel>.from(ownersList);
@@ -77,8 +80,7 @@ class OwnerController extends GetxController {
         "phone": owner.phone,
         "password": owner.password,
       };
-
-      final response = await _dio.patch(updateOwnerUrl, data: updateData);
+      final response = await _dio.patch("$url/user-owner/${owner.id}", data: updateData);
       log.d("Response : ${response.data}");
       final updatedOwner = OwnerModel.fromJson(response.data['data']);
       final modifiableList = List<OwnerModel>.from(ownersList); // Create a modifiable list
@@ -102,7 +104,7 @@ class OwnerController extends GetxController {
 
   Future<void> deleteOwner(String id) async {
     try {
-      await _dio.delete('$deleteOwnerUrl/$id');
+      await _dio.delete('$url/user-owner/delete/$id');
       final modifiableList = List<OwnerModel>.from(ownersList);
       modifiableList.removeWhere((owner) => owner.id == id);
       ownersList.value = modifiableList; // Assign the new modifiable list

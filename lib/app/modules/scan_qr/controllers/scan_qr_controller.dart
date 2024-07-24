@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/models/response_booking_data_court_available_model.dart';
@@ -21,7 +22,7 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
   final Dio _dio = Dio();
   final String baseUrl = 'https://badminton-court-booking-api.onrender.com/court-booking/ById/';
   final String paymentUrl = "https://badminton-court-booking-api.onrender.com/court-booking-payment";
-
+  final url = AppApiConstant.baseUrl;
   final Logger log = Logger();
 
   final RxList<ResponseFindOneHistoryBookingDataCourtModel> courtList = <ResponseFindOneHistoryBookingDataCourtModel>[].obs;
@@ -48,10 +49,8 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
   Future<void> fetchQrDetailForPayment(String qr) async {
     log.e(" QR details for: $qr");
     change(courtList, status: RxStatus.loading());
-    final path = "$baseUrl$qr";
-    log.d("path: $path");
     try {
-      final response = await _dio.get(path);
+      final response = await _dio.get("$url/court-booking/ById/$qr");
       log.d("Response data: ${response.data}");
       final responseData = ResponseFindOneHistoryBookingModel.fromJson(response.data);
       log.d("responseData:$responseData");
@@ -74,13 +73,10 @@ class ScanQrController extends GetxController with StateMixin<List<ResponseFindO
     }
   }
 
-  //TODOS: this function here -------------------------
-
   Future<void> sendPayment(PaymentParamModel paymentParam) async {
     log.d("Sending payment for: ${paymentParam.toJson()}");
-    final path = paymentUrl;
     try {
-      final response = await _dio.post(path, data: paymentParam.toJson());
+      final response = await _dio.post("$url/court-booking-payment", data: paymentParam.toJson());
       log.d("Payment response data: ${response.data}");
       showSuccessDialog();
     } on DioException catch (err) {

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/constants/app_api_constants.dart';
 import 'package:nuol_badminton_thesis/app/constants/dio_error_handle.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/admin_model/admin_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/admin_model/fetch_admins_response_model.dart';
@@ -11,15 +12,17 @@ import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_p
 class OwnerManagementAdminController extends GetxController {
   final Dio _dio = Dio();
   final String createAdminUrl = 'https://badminton-court-booking-api.onrender.com/admin';
-  final String fetchAdminsUrl = 'https://badminton-court-booking-api.onrender.com/Admin/FindMany';
+  // final String fetchAdminsUrl = 'https://badminton-court-booking-api.onrender.com/Admin/FindMany';
+  final String fetchAdminsUrl = 'https://618b-202-62-99-236.ngrok-free.app/Admin/FindMany';
   final String deleteAdminUrl = 'https://badminton-court-booking-api.onrender.com/admin/delete';
   final Logger log = Logger();
   final RxList<AdminModel> adminsList = <AdminModel>[].obs;
   final Rx<AdminModel?> currentAdmin = Rx<AdminModel?>(null);
+  final url = AppApiConstant.baseUrl;
 
   Future<void> fetchAdmins() async {
     try {
-      final response = await _dio.get(fetchAdminsUrl);
+      final response = await _dio.get("$url/Admin/FindMany");
       log.d("Response : ${response.data}");
       final responseData = FetchAdminsResponseModel.fromJson(response.data);
       adminsList.value = List<AdminModel>.from(responseData.data);
@@ -33,7 +36,7 @@ class OwnerManagementAdminController extends GetxController {
 
   Future<void> createAdmin(ParamCreateAdminModel admin) async {
     try {
-      final response = await _dio.post(createAdminUrl, data: admin.toJson());
+      final response = await _dio.post("$url/admin", data: admin.toJson());
       log.d("Response : ${response.data}");
       final createdAdmin = AdminModel.fromJson(response.data['data']);
       final modifiableList = List<AdminModel>.from(adminsList);
@@ -75,7 +78,7 @@ class OwnerManagementAdminController extends GetxController {
         "password": admin.password,
       };
 
-      final response = await _dio.patch(updateAdminUrl, data: updateData);
+      final response = await _dio.patch("$url/admin/${admin.id}", data: updateData);
       log.d("Response : ${response.data}");
       final updatedAdmin = AdminModel.fromJson(response.data['data']);
       final modifiableList = List<AdminModel>.from(adminsList);
@@ -99,7 +102,7 @@ class OwnerManagementAdminController extends GetxController {
 
   Future<void> deleteAdmin(String id) async {
     try {
-      await _dio.delete('$deleteAdminUrl/$id');
+      await _dio.delete('$url/admin/delete/$id');
       final modifiableList = List<AdminModel>.from(adminsList);
       modifiableList.removeWhere((admin) => admin.id == id);
       adminsList.value = modifiableList;
