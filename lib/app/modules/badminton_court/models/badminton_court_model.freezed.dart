@@ -34,6 +34,10 @@ mixin _$BadmintonCourtModel {
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "court_image")
   String get courtImage => throw _privateConstructorUsedError;
+  @JsonKey(name: "court_price")
+  String get courtPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "promotion")
+  String get promotion => throw _privateConstructorUsedError;
   @JsonKey(name: "available")
   bool get available => throw _privateConstructorUsedError;
 
@@ -57,6 +61,8 @@ abstract class $BadmintonCourtModelCopyWith<$Res> {
       @JsonKey(name: "court_time") String courtTime,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "court_image") String courtImage,
+      @JsonKey(name: "court_price") String courtPrice,
+      @JsonKey(name: "promotion") String promotion,
       @JsonKey(name: "available") bool available});
 }
 
@@ -80,6 +86,8 @@ class _$BadmintonCourtModelCopyWithImpl<$Res, $Val extends BadmintonCourtModel>
     Object? courtTime = null,
     Object? description = null,
     Object? courtImage = null,
+    Object? courtPrice = null,
+    Object? promotion = null,
     Object? available = null,
   }) {
     return _then(_value.copyWith(
@@ -111,6 +119,14 @@ class _$BadmintonCourtModelCopyWithImpl<$Res, $Val extends BadmintonCourtModel>
           ? _value.courtImage
           : courtImage // ignore: cast_nullable_to_non_nullable
               as String,
+      courtPrice: null == courtPrice
+          ? _value.courtPrice
+          : courtPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      promotion: null == promotion
+          ? _value.promotion
+          : promotion // ignore: cast_nullable_to_non_nullable
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -135,6 +151,8 @@ abstract class _$$BadmintonCourtModelImplCopyWith<$Res>
       @JsonKey(name: "court_time") String courtTime,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "court_image") String courtImage,
+      @JsonKey(name: "court_price") String courtPrice,
+      @JsonKey(name: "promotion") String promotion,
       @JsonKey(name: "available") bool available});
 }
 
@@ -156,6 +174,8 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
     Object? courtTime = null,
     Object? description = null,
     Object? courtImage = null,
+    Object? courtPrice = null,
+    Object? promotion = null,
     Object? available = null,
   }) {
     return _then(_$BadmintonCourtModelImpl(
@@ -187,6 +207,14 @@ class __$$BadmintonCourtModelImplCopyWithImpl<$Res>
           ? _value.courtImage
           : courtImage // ignore: cast_nullable_to_non_nullable
               as String,
+      courtPrice: null == courtPrice
+          ? _value.courtPrice
+          : courtPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      promotion: null == promotion
+          ? _value.promotion
+          : promotion // ignore: cast_nullable_to_non_nullable
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -206,6 +234,8 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
       @JsonKey(name: "court_time") this.courtTime = '',
       @JsonKey(name: "description") this.description = '',
       @JsonKey(name: "court_image") this.courtImage = '',
+      @JsonKey(name: "court_price") this.courtPrice = '',
+      @JsonKey(name: "promotion") this.promotion = '',
       @JsonKey(name: "available") this.available = true});
 
   factory _$BadmintonCourtModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -233,12 +263,18 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
   @JsonKey(name: "court_image")
   final String courtImage;
   @override
+  @JsonKey(name: "court_price")
+  final String courtPrice;
+  @override
+  @JsonKey(name: "promotion")
+  final String promotion;
+  @override
   @JsonKey(name: "available")
   final bool available;
 
   @override
   String toString() {
-    return 'BadmintonCourtModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, courtNumber: $courtNumber, courtTime: $courtTime, description: $description, courtImage: $courtImage, available: $available)';
+    return 'BadmintonCourtModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, courtNumber: $courtNumber, courtTime: $courtTime, description: $description, courtImage: $courtImage, courtPrice: $courtPrice, promotion: $promotion, available: $available)';
   }
 
   @override
@@ -259,14 +295,28 @@ class _$BadmintonCourtModelImpl implements _BadmintonCourtModel {
                 other.description == description) &&
             (identical(other.courtImage, courtImage) ||
                 other.courtImage == courtImage) &&
+            (identical(other.courtPrice, courtPrice) ||
+                other.courtPrice == courtPrice) &&
+            (identical(other.promotion, promotion) ||
+                other.promotion == promotion) &&
             (identical(other.available, available) ||
                 other.available == available));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt,
-      courtNumber, courtTime, description, courtImage, available);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createdAt,
+      updatedAt,
+      courtNumber,
+      courtTime,
+      description,
+      courtImage,
+      courtPrice,
+      promotion,
+      available);
 
   @JsonKey(ignore: true)
   @override
@@ -292,6 +342,8 @@ abstract class _BadmintonCourtModel implements BadmintonCourtModel {
           @JsonKey(name: "court_time") final String courtTime,
           @JsonKey(name: "description") final String description,
           @JsonKey(name: "court_image") final String courtImage,
+          @JsonKey(name: "court_price") final String courtPrice,
+          @JsonKey(name: "promotion") final String promotion,
           @JsonKey(name: "available") final bool available}) =
       _$BadmintonCourtModelImpl;
 
@@ -319,6 +371,12 @@ abstract class _BadmintonCourtModel implements BadmintonCourtModel {
   @override
   @JsonKey(name: "court_image")
   String get courtImage;
+  @override
+  @JsonKey(name: "court_price")
+  String get courtPrice;
+  @override
+  @JsonKey(name: "promotion")
+  String get promotion;
   @override
   @JsonKey(name: "available")
   bool get available;

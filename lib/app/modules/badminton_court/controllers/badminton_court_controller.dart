@@ -44,6 +44,8 @@ class BadmintonCourtController extends GetxController {
         "description": court.description,
         "court_image": await dio.MultipartFile.fromFile(imageFile.path),
         "available": court.available,
+        "court_price": court.courtPrice,
+        "promotion": court.promotion,
       });
 
       final response = await _dio.post("$url/courts", data: formData);
@@ -88,6 +90,8 @@ class BadmintonCourtController extends GetxController {
         "description": court.description,
         "court_image": imageFile != null ? await dio.MultipartFile.fromFile(imageFile.path) : court.courtImage,
         // "available": court.available,
+        "court_price": court.courtPrice,
+        "promotion": court.promotion,
       };
 
       final formData = dio.FormData.fromMap(updateData);

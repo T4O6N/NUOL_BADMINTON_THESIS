@@ -16,6 +16,8 @@ class CreateBadmintonCourtPage extends StatefulWidget {
 class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
   final TextEditingController courtNumberController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController prizeController = TextEditingController();
+  final TextEditingController promotionController = TextEditingController();
   final BadmintonCourtController courtController = Get.put(BadmintonCourtController());
   File? image;
 
@@ -89,6 +91,8 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
       description: descriptionController.text,
       courtImage: image!.path,
       available: true,
+      courtPrice: prizeController.text,
+      promotion: promotionController.text,
     );
     courtController.createCourt(court, image!);
   }
@@ -96,14 +100,14 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Court')),
+      appBar: AppBar(title: const Text(' ສ້າງຄອດ')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               const Text(
-                'Create Court',
+                '',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -113,7 +117,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               TextField(
                 controller: courtNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Court Number',
+                  labelText: 'ເລກຄອດ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.confirmation_number),
                 ),
@@ -122,9 +126,27 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
-                  labelText: 'Description',
+                  labelText: 'ຄຳອະທິບາຍ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.description),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: prizeController,
+                decoration: const InputDecoration(
+                  labelText: 'ລາຄາ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: promotionController,
+                decoration: const InputDecoration(
+                  labelText: 'ສ່ວນຫລຸດ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
                 ),
               ),
               const SizedBox(height: 20),
@@ -132,13 +154,13 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => pickImageGallery(),
-                child: const Text('Pick Image from Gallery'),
+                child: const Text('ເລືອກຮູບພາບ'),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => pickImageCamera(),
-                child: const Text('Pick Image from Camera'),
-              ),
+              // const SizedBox(height: 10),
+              // ElevatedButton(
+              //   onPressed: () => pickImageCamera(),
+              //   child: const Text('ຸ'),
+              // ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => createCourt(context),
@@ -146,7 +168,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   textStyle: const TextStyle(fontSize: 18),
                 ),
-                child: const Text('Create'),
+                child: const Text('ສ້າງ'),
               ),
             ],
           ),

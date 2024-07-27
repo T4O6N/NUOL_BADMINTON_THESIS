@@ -17,6 +17,8 @@ class ParamCreateBadmintonCourtModel with _$ParamCreateBadmintonCourtModel {
     @JsonKey(name: "description") @Default("") String description,
     @JsonKey(name: "court_image") @Default("") String courtImage,
     @JsonKey(name: "available") @Default(true) bool available,
+    @JsonKey(name: "court_price") @Default("") String courtPrice,
+    @JsonKey(name: "promotion") @Default("") String promotion,
   }) = _ParamCreateBadmintonCourtModel;
 
   factory ParamCreateBadmintonCourtModel.fromJson(Map<String, dynamic> json) => _$ParamCreateBadmintonCourtModelFromJson(json);

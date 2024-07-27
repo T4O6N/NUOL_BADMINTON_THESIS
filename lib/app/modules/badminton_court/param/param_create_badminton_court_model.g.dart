@@ -13,6 +13,8 @@ _$ParamCreateBadmintonCourtModelImpl
           description: json['description'] as String? ?? "",
           courtImage: json['court_image'] as String? ?? "",
           available: json['available'] as bool? ?? true,
+          courtPrice: json['court_price'] as String? ?? "",
+          promotion: json['promotion'] as String? ?? "",
         );
 
 Map<String, dynamic> _$$ParamCreateBadmintonCourtModelImplToJson(
@@ -22,4 +24,6 @@ Map<String, dynamic> _$$ParamCreateBadmintonCourtModelImplToJson(
       'description': instance.description,
       'court_image': instance.courtImage,
       'available': instance.available,
+      'court_price': instance.courtPrice,
+      'promotion': instance.promotion,
     };

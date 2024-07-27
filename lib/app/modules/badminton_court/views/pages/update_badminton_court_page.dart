@@ -18,6 +18,8 @@ class UpdateBadmintonCourtPage extends StatefulWidget {
 class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
   late TextEditingController courtNumberController;
   late TextEditingController descriptionController;
+  late TextEditingController prizeController;
+  late TextEditingController promotionController;
   final BadmintonCourtController courtController = Get.put(BadmintonCourtController());
   File? image;
 
@@ -26,6 +28,8 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
     super.initState();
     courtNumberController = TextEditingController(text: widget.court.courtNumber);
     descriptionController = TextEditingController(text: widget.court.description);
+    prizeController = TextEditingController(text: widget.court.courtPrice);
+    promotionController = TextEditingController(text: widget.court.promotion);
   }
 
   Future<void> pickImageGallery() async {
@@ -83,6 +87,8 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
       description: descriptionController.text,
       courtImage: image != null ? image!.path : widget.court.courtImage,
       available: widget.court.available,
+      courtPrice: prizeController.text,
+      promotion: promotionController.text,
     );
     courtController.updateCourt(updatedCourt, imageFile: image);
   }
@@ -107,7 +113,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               TextField(
                 controller: courtNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Court Number',
+                  labelText: 'ເລກຄອດ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.confirmation_number),
                 ),
@@ -116,9 +122,29 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
-                  labelText: 'Description',
+                  labelText: 'ຄຳອະທິບາຍ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.description),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: prizeController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'ລາຄາ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: promotionController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'ສ່ວນຫລຸດ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
                 ),
               ),
               const SizedBox(height: 20),
@@ -126,13 +152,13 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => pickImageGallery(),
-                child: const Text('Pick Image from Gallery'),
+                child: const Text('ເລືອກຮູບພາບ'),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => pickImageCamera(),
-                child: const Text('Pick Image from Camera'),
-              ),
+              // const SizedBox(height: 10),
+              // ElevatedButton(
+              //   onPressed: () => pickImageCamera(),
+              //   child: const Text('Pick Image from Camera'),
+              // ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => updateCourt(),
@@ -145,7 +171,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
                   textStyle: const TextStyle(fontSize: 18),
                 ),
                 child: const Text(
-                  'Update',
+                  'ອັບເດດ',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

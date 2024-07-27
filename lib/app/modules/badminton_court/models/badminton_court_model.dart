@@ -20,6 +20,8 @@ class BadmintonCourtModel with _$BadmintonCourtModel {
     @JsonKey(name: "court_time") @Default('') String courtTime,
     @JsonKey(name: "description") @Default('') String description,
     @JsonKey(name: "court_image") @Default('') String courtImage,
+    @JsonKey(name: "court_price") @Default('') String courtPrice,
+    @JsonKey(name: "promotion") @Default('') String promotion,
     @JsonKey(name: "available") @Default(true) bool available,
   }) = _BadmintonCourtModel;
 
