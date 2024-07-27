@@ -20,7 +20,7 @@ class HistoryController extends GetxController with StateMixin<List<ResponseFind
     change(paymentList, status: RxStatus.loading());
     final deviceId = dashboardController.deviceInfoModel.value.id;
     try {
-      final response = await _dio.get("$url/$deviceId");
+      final response = await _dio.get("$url/court-booking-payment/payment-history/$deviceId");
       final json = response.data;
       final res = ResponseFindManyPaymentHistoryModel.fromJson(json);
       log.d("this is data: ${res.data}");

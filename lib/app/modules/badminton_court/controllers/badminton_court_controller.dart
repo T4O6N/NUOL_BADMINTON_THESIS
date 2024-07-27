@@ -87,12 +87,11 @@ class BadmintonCourtController extends GetxController {
         "court_number": court.courtNumber,
         "description": court.description,
         "court_image": imageFile != null ? await dio.MultipartFile.fromFile(imageFile.path) : court.courtImage,
-        "available": court.available,
+        // "available": court.available,
       };
 
       final formData = dio.FormData.fromMap(updateData);
 
-     
       final response = await _dio.patch("$url/courts/${court.id}", data: formData);
       log.d("Response : ${response.data}");
       final updatedCourt = BadmintonCourtModel.fromJson(response.data['data']);

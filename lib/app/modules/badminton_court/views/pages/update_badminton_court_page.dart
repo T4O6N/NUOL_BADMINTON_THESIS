@@ -90,14 +90,14 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Update Court')),
+      appBar: AppBar(title: const Text('ອັບເດດຄອດ')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               const Text(
-                'Update Court',
+                '',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.isNotEmpty) Image.file(File(widget.court.courtImage), width: 100, height: 100, fit: BoxFit.cover) else const Text('No image selected'),
+              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.startsWith('http')) Image.network(widget.court.courtImage, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.isNotEmpty) Image.file(File(widget.court.courtImage), width: 100, height: 100, fit: BoxFit.cover) else const Text('No image selected'),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => pickImageGallery(),

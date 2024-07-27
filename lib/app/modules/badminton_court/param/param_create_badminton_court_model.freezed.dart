@@ -26,7 +26,7 @@ mixin _$ParamCreateBadmintonCourtModel {
   @JsonKey(name: "description")
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "court_image")
-  dynamic get courtImage => throw _privateConstructorUsedError;
+  String get courtImage => throw _privateConstructorUsedError;
   @JsonKey(name: "available")
   bool get available => throw _privateConstructorUsedError;
 
@@ -47,7 +47,7 @@ abstract class $ParamCreateBadmintonCourtModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "court_number") String courtNumber,
       @JsonKey(name: "description") String description,
-      @JsonKey(name: "court_image") dynamic courtImage,
+      @JsonKey(name: "court_image") String courtImage,
       @JsonKey(name: "available") bool available});
 }
 
@@ -67,7 +67,7 @@ class _$ParamCreateBadmintonCourtModelCopyWithImpl<$Res,
   $Res call({
     Object? courtNumber = null,
     Object? description = null,
-    Object? courtImage = freezed,
+    Object? courtImage = null,
     Object? available = null,
   }) {
     return _then(_value.copyWith(
@@ -79,10 +79,10 @@ class _$ParamCreateBadmintonCourtModelCopyWithImpl<$Res,
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      courtImage: freezed == courtImage
+      courtImage: null == courtImage
           ? _value.courtImage
           : courtImage // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$ParamCreateBadmintonCourtModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "court_number") String courtNumber,
       @JsonKey(name: "description") String description,
-      @JsonKey(name: "court_image") dynamic courtImage,
+      @JsonKey(name: "court_image") String courtImage,
       @JsonKey(name: "available") bool available});
 }
 
@@ -122,7 +122,7 @@ class __$$ParamCreateBadmintonCourtModelImplCopyWithImpl<$Res>
   $Res call({
     Object? courtNumber = null,
     Object? description = null,
-    Object? courtImage = freezed,
+    Object? courtImage = null,
     Object? available = null,
   }) {
     return _then(_$ParamCreateBadmintonCourtModelImpl(
@@ -134,7 +134,10 @@ class __$$ParamCreateBadmintonCourtModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      courtImage: freezed == courtImage ? _value.courtImage! : courtImage,
+      courtImage: null == courtImage
+          ? _value.courtImage
+          : courtImage // ignore: cast_nullable_to_non_nullable
+              as String,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -165,7 +168,7 @@ class _$ParamCreateBadmintonCourtModelImpl
   final String description;
   @override
   @JsonKey(name: "court_image")
-  final dynamic courtImage;
+  final String courtImage;
   @override
   @JsonKey(name: "available")
   final bool available;
@@ -184,16 +187,16 @@ class _$ParamCreateBadmintonCourtModelImpl
                 other.courtNumber == courtNumber) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality()
-                .equals(other.courtImage, courtImage) &&
+            (identical(other.courtImage, courtImage) ||
+                other.courtImage == courtImage) &&
             (identical(other.available, available) ||
                 other.available == available));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, courtNumber, description,
-      const DeepCollectionEquality().hash(courtImage), available);
+  int get hashCode =>
+      Object.hash(runtimeType, courtNumber, description, courtImage, available);
 
   @JsonKey(ignore: true)
   @override
@@ -216,7 +219,7 @@ abstract class _ParamCreateBadmintonCourtModel
   const factory _ParamCreateBadmintonCourtModel(
           {@JsonKey(name: "court_number") final String courtNumber,
           @JsonKey(name: "description") final String description,
-          @JsonKey(name: "court_image") final dynamic courtImage,
+          @JsonKey(name: "court_image") final String courtImage,
           @JsonKey(name: "available") final bool available}) =
       _$ParamCreateBadmintonCourtModelImpl;
 
@@ -231,7 +234,7 @@ abstract class _ParamCreateBadmintonCourtModel
   String get description;
   @override
   @JsonKey(name: "court_image")
-  dynamic get courtImage;
+  String get courtImage;
   @override
   @JsonKey(name: "available")
   bool get available;

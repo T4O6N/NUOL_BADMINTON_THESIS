@@ -11,7 +11,7 @@ _$ParamCreateBadmintonCourtModelImpl
         _$ParamCreateBadmintonCourtModelImpl(
           courtNumber: json['court_number'] as String? ?? "",
           description: json['description'] as String? ?? "",
-          courtImage: json['court_image'] ?? "",
+          courtImage: json['court_image'] as String? ?? "",
           available: json['available'] as bool? ?? true,
         );
 

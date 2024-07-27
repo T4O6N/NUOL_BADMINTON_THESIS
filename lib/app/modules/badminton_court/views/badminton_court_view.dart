@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/create_badminton_court_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/pages/update_badminton_court_page.dart';
@@ -71,7 +72,7 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(CreateBadmintonCourtPage()),
+        onPressed: () => Get.to(const CreateBadmintonCourtPage()),
         child: const Icon(Icons.add),
       ),
     );
@@ -79,7 +80,7 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
 
   ImageProvider<Object> _getImageProvider(String imagePath) {
     if (imagePath.startsWith('http') || imagePath.startsWith('https')) {
-      // Handle remote URLs
+      // Use CachedNetworkImage for remote URLs
       return NetworkImage(imagePath);
     } else {
       // Handle local paths
