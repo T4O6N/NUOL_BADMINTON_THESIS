@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/data/booking_court_local_data_source.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/models/response_booking_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_booking_court_param.dart';
@@ -29,7 +30,8 @@ class ChooseScheduleController extends GetxController {
   RxInt totalPrice = 0.obs;
   RxString formattedDate = "".obs;
   List<ListCourt> bookingDetails = [];
-  Rx<Court> courtModel = const Court().obs;
+  // Rx<Court> courtModel = const Court().obs;
+  Rx<BadmintonCourtModel> courtModel = const BadmintonCourtModel().obs;
   var bookingResponse = Rx<ResponseBookingModel?>(null);
   var isLoading = false.obs;
   var logger = Logger();
@@ -104,7 +106,7 @@ class ChooseScheduleController extends GetxController {
       phone: phoneNumberController.text,
       deviceId: deviceId,
       fullName: usernameController.text,
-      courtNumber: courtModel.value.name,
+      courtNumber: courtModel.value.courtNumber,
       paymentStatus: 'booked',
       bookedBy: usernameController.text,
       totalAmount: finalTotalPrice.value,

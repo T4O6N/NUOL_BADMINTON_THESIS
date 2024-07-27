@@ -140,6 +140,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               const SizedBox(height: 20),
               TextField(
                 controller: promotionController,
+                maxLength: 5,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   labelText: 'ສ່ວນຫລຸດ',
