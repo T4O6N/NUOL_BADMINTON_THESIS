@@ -36,13 +36,18 @@ class BadmintonCourtView extends GetView<BadmintonCourtController> {
             itemBuilder: (context, index) {
               final court = courtController.courtsList[index];
               return Card(
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundImage: getImageProvider(court.courtImage),
                     child: court.courtImage.isEmpty ? Text(court.courtNumber[0].toUpperCase()) : null,
                   ),
-                  title: Text(court.courtNumber),
+                  title: Row(
+                    children: [
+                      const Text('ຄອດ: '),
+                      Text(court.courtNumber),
+                    ],
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

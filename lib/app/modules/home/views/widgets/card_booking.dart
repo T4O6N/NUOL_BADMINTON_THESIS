@@ -33,17 +33,17 @@ class CardBooking extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: .30 * size.height,
+        height: .35 * size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 10,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.5),
+          //     spreadRadius: 2,
+          //     blurRadius: 10,
+          //     offset: const Offset(0, 3), // changes position of shadow
+          //   ),
+          // ],
         ),
         child: Column(
           children: [
@@ -64,7 +64,7 @@ class CardBooking extends StatelessWidget {
               ),
             ),
             Container(
-              height: .10 * size.height,
+              height: .13 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
               decoration: const BoxDecoration(

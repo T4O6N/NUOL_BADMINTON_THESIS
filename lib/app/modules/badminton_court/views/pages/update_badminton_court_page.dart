@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class UpdateBadmintonCourtPage extends StatefulWidget {
   final BadmintonCourtModel court;
@@ -162,7 +163,14 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               // ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => updateCourt(),
+                // onPressed: () => updateCourt(),
+                onPressed: () {
+                  if (int.parse(prizeController.text) <= int.parse(promotionController.text)) {
+                    warningDialog(des: "ກະລຸນາເພີ່ມໂປຮໂມຊັນໃຫ້ຖືກຕ້ອງ", context: context, btnOkOnPress: () {});
+                  } else {
+                    updateCourt();
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   padding: const EdgeInsets.symmetric(

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/promotion_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/param/param_create_badminton_court_model.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class CreateBadmintonCourtPage extends StatefulWidget {
   const CreateBadmintonCourtPage({super.key});
@@ -150,7 +152,7 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else const Text('No image selected'),
+              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else const Text('ກະລຸນາເລືອກຮູບພາບ'),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => pickImageGallery(),
@@ -163,7 +165,14 @@ class _CreateBadmintonCourtPageState extends State<CreateBadmintonCourtPage> {
               // ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => createCourt(context),
+                // onPressed: () => createCourt(context),
+                onPressed: () {
+                  if (int.parse(prizeController.text) <= int.parse(promotionController.text)) {
+                    warningDialog(des: "ກະລຸນາເພີ່ມໂປຮໂມຊັນໃຫ້ຖືກຕ້ອງ", context: context, btnOkOnPress: () {});
+                  } else {
+                    createCourt(context);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   textStyle: const TextStyle(fontSize: 18),
