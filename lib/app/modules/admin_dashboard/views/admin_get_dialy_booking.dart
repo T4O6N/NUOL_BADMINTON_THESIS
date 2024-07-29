@@ -11,7 +11,7 @@ class BookingDailyHistoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ປະຫວັດການຈອງປະຈຳວັນ'),
+        title: const Text('ລາຍການທີ່ຈອງໄວ້ມື້ນີ້'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

@@ -48,17 +48,17 @@ class BookingView extends GetView<BookingController> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          const Text('ວັນທີ່ຈອງ: '),
-                          Text(
-                            DateFormat('yyyy-MM-dd').format(
-                              DateTime.parse(historyList.courtBooking.createdAt),
-                            ),
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     const Text('ວັນທີ່ຈອງ: '),
+                      //     Text(
+                      //       DateFormat('yyyy-MM-dd').format(
+                      //         DateTime.parse(historyList.bookingTime),
+                      //       ),
+                      //       style: const TextStyle(fontWeight: FontWeight.bold),
+                      //     ),
+                      //   ],
+                      // ),
                       Row(
                         children: [
                           const Text('ຊື່:'),
