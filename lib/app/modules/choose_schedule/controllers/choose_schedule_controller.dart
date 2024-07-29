@@ -10,7 +10,6 @@ import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/create_b
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/payment_detail/views/widget/bill_payment_detail.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/controllers/scan_qr_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/widget/qr_data_detail.dart';

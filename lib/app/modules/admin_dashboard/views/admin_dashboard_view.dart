@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/controllers/admin_dashboard_controller.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_get_dialy_booking.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/views/badminton_court_view.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/views/scan_qr_view.dart';
@@ -69,7 +71,8 @@ class _AdminDashboardViewState extends State<AdminDashboardView> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           ScanQrView(),
-          BadmintonCourtView(),
+          const BadmintonCourtView(),
+          BookingDailyHistoryView(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -91,6 +94,12 @@ class _AdminDashboardViewState extends State<AdminDashboardView> {
                 icon: AppImagesSvg.bookingIcon,
                 page: 1,
                 label: "ຈັດການ",
+              ),
+              _bottomAppBarItem(
+                context,
+                icon: AppImagesSvg.historyIcon,
+                page: 2,
+                label: "ການຈອງລາຍວັນ",
               ),
             ],
           ),

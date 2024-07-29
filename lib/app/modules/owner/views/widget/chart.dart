@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_dashboard_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/court_usage_model.dart';
 import 'package:flutter/material.dart';
-import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard/weekly_income_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/model/owner_model/owner_dashboard_income_model/day_income.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -49,19 +48,6 @@ class Chart extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 10),
-                            // const Text(
-                            //   'Court Usage Summary',
-                            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            // ),
-                            // Align(
-                            //   alignment: Alignment.centerLeft,
-                            //   child: Column(
-                            //     crossAxisAlignment: CrossAxisAlignment.start,
-                            //     children: ownerDashboardController.courtUsageList.map((courtUsage) {
-                            //       return Text('${courtUsage.courtNumber} : ${courtUsage.bookingCount}');
-                            //     }).toList(),
-                            //   ),
-                            // ),
                           ],
                         );
                 }),
@@ -103,6 +89,7 @@ class Chart extends StatelessWidget {
                             //   ),
                             // ),
                             const SizedBox(height: 10),
+
                             Obx(() {
                               return Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
