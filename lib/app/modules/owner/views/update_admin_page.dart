@@ -8,7 +8,7 @@ class UpdateAdminPage extends StatelessWidget {
   final OwnerManagementAdminController adminController = Get.find<OwnerManagementAdminController>();
   final AdminModel admin;
 
-  UpdateAdminPage({required this.admin});
+  UpdateAdminPage({super.key, required this.admin});
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();

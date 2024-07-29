@@ -26,6 +26,7 @@ class OwnerManagementAdminController extends GetxController {
       log.d("Response : ${response.data}");
       final responseData = FetchAdminsResponseModel.fromJson(response.data);
       adminsList.value = List<AdminModel>.from(responseData.data);
+      log.d("admin tung merd: ${adminsList.length}");
       log.d("Response Data: $adminsList");
     } on DioException catch (err) {
       log.e("DioException: ${DioErrorHandler.dioErrorHandler(err)}");

@@ -15,7 +15,6 @@ class QrDataDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScanQrController controller = Get.put(ScanQrController());
-
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -209,6 +208,7 @@ class QrDataDetail extends StatelessWidget {
                             courtAvailableId: controller.courtAvailableList[0].id,
                             deviceId: deviceId,
                             courtBookingId: controller.bookingData.value.id,
+                            adminId: '',
                           );
                           await controller.sendPayment(paymentArgument);
                         } else {

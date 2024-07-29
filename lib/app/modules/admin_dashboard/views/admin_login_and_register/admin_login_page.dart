@@ -1,30 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/controllers/auth_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/views/admin_dashboard_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/controllers/owner_management_admin_controller.dart';
 
 class AdminLoginPage extends StatelessWidget {
   final OwnerManagementAdminController adminController = Get.put(OwnerManagementAdminController());
-
+  final AuthController authController = Get.put(AuthController());
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  Future<void> loginForAdmin(BuildContext context) async {
-    await adminController.fetchAdmins();
+  // Future<void> loginForAdmin(BuildContext context) async {
+  //   await adminController.fetchAdmins();
+  //   final username = usernameController.text;
+  //   final password = passwordController.text;
+
+  //   final admin = adminController.adminsList.firstWhereOrNull(
+  //     (adm) => adm.username == username && adm.password == password,
+  //   );
+  //   if (admin != null) {
+  //     Get.off(const AdminDashboardView());
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: Text('Invalid username or password')),
+  //     );
+  //   }
+  // }
+
+  void login(BuildContext context) {
     final username = usernameController.text;
     final password = passwordController.text;
 
-    final admin = adminController.adminsList.firstWhereOrNull(
-      (adm) => adm.username == username && adm.password == password,
-    );
-    if (admin != null) {
-      Get.off(const AdminDashboardView());
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid username or password')),
-      );
-    }
+    authController.login(username, password).then((_) {
+      if (authController.loggedInAdmin.value != null) {
+        Get.offAll(const AdminDashboardView()); // Navigate to the dashboard after successful login
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Login failed')),
+        );
+      }
+    });
   }
 
   AdminLoginPage({super.key});
@@ -70,7 +86,7 @@ class AdminLoginPage extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    loginForAdmin(context);
+                    login(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
