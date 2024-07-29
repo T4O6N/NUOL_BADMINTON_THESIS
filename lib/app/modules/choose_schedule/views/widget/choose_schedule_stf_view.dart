@@ -2,15 +2,18 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/detail_booking_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
+import 'package:nuol_badminton_thesis/app/widgets/getImageProvider.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class ChooseScheduleStfView extends StatefulWidget {
-  final Court court;
+  // final Court court;
+  final BadmintonCourtModel court;
   const ChooseScheduleStfView({super.key, required this.court});
 
   @override
@@ -20,10 +23,9 @@ class ChooseScheduleStfView extends StatefulWidget {
 class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
   final List<String> timeSlots = ['9:00 AM - 10:00 AM', '10:00 AM - 11:00 AM', '11:00 AM - 12:00 PM', '12:00 PM - 1:00 PM', '1:00 PM - 2:00 PM', '2:00 PM - 3:00 PM', '3:00 PM - 4:00 PM', '4:00 PM - 5:00 PM', '5:00 PM - 6:00 PM', '6:00 PM - 7:00 PM', '7:00 PM - 8:00 PM', '8:00 PM - 9:00 PM', '9:00 PM - 10:00 PM', '10:00 PM - 11:00 PM'];
 
-  ListCourt bookingDetails = ListCourt(date: '', durationTime: []);
+  ListCourt bookingDetails = const ListCourt(date: '', durationTime: []);
   DateTime _selectedDate = DateTime.now();
   int totalPrice = 0;
-  final int pricePerSlot = 80000;
 
   @override
   void initState() {
@@ -38,6 +40,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
   }
 
   void _calculateTotalPrice() {
+    final int pricePerSlot = int.parse(widget.court.courtPrice.toString());
     totalPrice = bookingDetails.durationTime.length * pricePerSlot;
   }
 
@@ -108,7 +111,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                               borderRadius: BorderRadius.circular(8),
                               color: Colors.white,
                               image: DecorationImage(
-                                image: AssetImage(widget.court.imageUrl),
+                                image: getImageProvider(widget.court.courtImage), //Todos ----------------------
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -123,7 +126,7 @@ class _ChooseScheduleStfViewState extends State<ChooseScheduleStfView> {
                                   "ເດີ່ນຕີດອກ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Text("ຄອດ : ${widget.court.name}"),
+                                Text("ຄອດ : ${widget.court.courtNumber}"),
                               ],
                             ),
                           ),

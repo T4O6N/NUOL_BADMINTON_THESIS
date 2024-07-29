@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
@@ -12,7 +13,8 @@ import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class DetailBookingView extends StatelessWidget {
-  final Court court;
+  // final Court court;
+  final BadmintonCourtModel court;
   List<ListCourt> bookingDetails;
   final int totalPrice;
   DetailBookingView({
@@ -21,10 +23,10 @@ class DetailBookingView extends StatelessWidget {
     required this.bookingDetails,
     required this.totalPrice,
   });
-  final int discount = 20000;
 
   @override
   Widget build(BuildContext context) {
+    final int discount = int.parse(court.promotion.toString());
     Size size = MediaQuery.of(context).size;
     final int finalTotalPrice = totalPrice - discount;
     ChooseScheduleController chooseScheduleController = Get.put(ChooseScheduleController());
@@ -82,7 +84,7 @@ class DetailBookingView extends StatelessWidget {
                           ),
                         ),
                         const Divider(),
-                        Text("ຄອດ : ${court.name}",
+                        Text("ຄອດ : ${court.courtNumber}",
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -188,7 +190,7 @@ class DetailBookingView extends StatelessWidget {
                               style: TextStyle(color: Colors.blue),
                             ),
                             Text(
-                              NumberFormatter.formatPriceKip(discount),
+                              NumberFormatter.formatPriceKip(int.parse(court.promotion.toString())),
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ],

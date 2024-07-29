@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/controllers/badminton_court_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
+import 'package:nuol_badminton_thesis/app/widgets/warning_dialog.dart';
 
 class UpdateBadmintonCourtPage extends StatefulWidget {
   final BadmintonCourtModel court;
@@ -18,6 +19,8 @@ class UpdateBadmintonCourtPage extends StatefulWidget {
 class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
   late TextEditingController courtNumberController;
   late TextEditingController descriptionController;
+  late TextEditingController prizeController;
+  late TextEditingController promotionController;
   final BadmintonCourtController courtController = Get.put(BadmintonCourtController());
   File? image;
 
@@ -26,6 +29,8 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
     super.initState();
     courtNumberController = TextEditingController(text: widget.court.courtNumber);
     descriptionController = TextEditingController(text: widget.court.description);
+    prizeController = TextEditingController(text: widget.court.courtPrice);
+    promotionController = TextEditingController(text: widget.court.promotion);
   }
 
   Future<void> pickImageGallery() async {
@@ -83,6 +88,8 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
       description: descriptionController.text,
       courtImage: image != null ? image!.path : widget.court.courtImage,
       available: widget.court.available,
+      courtPrice: prizeController.text,
+      promotion: promotionController.text,
     );
     courtController.updateCourt(updatedCourt, imageFile: image);
   }
@@ -90,14 +97,14 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Update Court')),
+      appBar: AppBar(title: const Text('ອັບເດດຄອດ')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               const Text(
-                'Update Court',
+                '',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -107,7 +114,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               TextField(
                 controller: courtNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Court Number',
+                  labelText: 'ເລກຄອດ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.confirmation_number),
                 ),
@@ -116,26 +123,54 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
               TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
-                  labelText: 'Description',
+                  labelText: 'ຄຳອະທິບາຍ',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.description),
                 ),
               ),
               const SizedBox(height: 20),
-              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.isNotEmpty) Image.file(File(widget.court.courtImage), width: 100, height: 100, fit: BoxFit.cover) else const Text('No image selected'),
+              TextField(
+                controller: prizeController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'ລາຄາ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: promotionController,
+                maxLength: 5,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'ສ່ວນຫລຸດ',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.money),
+                ),
+              ),
+              const SizedBox(height: 20),
+              if (image != null) Image.file(image!, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.startsWith('http')) Image.network(widget.court.courtImage, width: 100, height: 100, fit: BoxFit.cover) else if (widget.court.courtImage.isNotEmpty) Image.file(File(widget.court.courtImage), width: 100, height: 100, fit: BoxFit.cover) else const Text('No image selected'),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => pickImageGallery(),
-                child: const Text('Pick Image from Gallery'),
+                child: const Text('ເລືອກຮູບພາບ'),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => pickImageCamera(),
-                child: const Text('Pick Image from Camera'),
-              ),
+              // const SizedBox(height: 10),
+              // ElevatedButton(
+              //   onPressed: () => pickImageCamera(),
+              //   child: const Text('Pick Image from Camera'),
+              // ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => updateCourt(),
+                // onPressed: () => updateCourt(),
+                onPressed: () {
+                  if (int.parse(prizeController.text) <= int.parse(promotionController.text)) {
+                    warningDialog(des: "ກະລຸນາເພີ່ມໂປຮໂມຊັນໃຫ້ຖືກຕ້ອງ", context: context, btnOkOnPress: () {});
+                  } else {
+                    updateCourt();
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   padding: const EdgeInsets.symmetric(
@@ -145,7 +180,7 @@ class _UpdateBadmintonCourtPageState extends State<UpdateBadmintonCourtPage> {
                   textStyle: const TextStyle(fontSize: 18),
                 ),
                 child: const Text(
-                  'Update',
+                  'ອັບເດດ',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

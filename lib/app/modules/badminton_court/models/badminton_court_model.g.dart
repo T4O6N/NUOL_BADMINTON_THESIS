@@ -16,6 +16,8 @@ _$BadmintonCourtModelImpl _$$BadmintonCourtModelImplFromJson(
       courtTime: json['court_time'] as String? ?? '',
       description: json['description'] as String? ?? '',
       courtImage: json['court_image'] as String? ?? '',
+      courtPrice: json['court_price'] as String? ?? '',
+      promotion: json['promotion'] as String? ?? '',
       available: json['available'] as bool? ?? true,
     );
 
@@ -29,5 +31,7 @@ Map<String, dynamic> _$$BadmintonCourtModelImplToJson(
       'court_time': instance.courtTime,
       'description': instance.description,
       'court_image': instance.courtImage,
+      'court_price': instance.courtPrice,
+      'promotion': instance.promotion,
       'available': instance.available,
     };

@@ -12,14 +12,14 @@ class BookingController extends GetxController with StateMixin<List<ResponseBook
   DashboardController dashboardController = Get.put(DashboardController());
   RxList<ResponseBookingHistoryDataModel> bookingList = <ResponseBookingHistoryDataModel>[].obs;
   var log = Logger();
-final url = AppApiConstant.baseUrl;
+  final url = AppApiConstant.baseUrl;
   final Dio _dio = Dio();
 
   Future<void> fetchBookingHistory() async {
     change(bookingList, status: RxStatus.loading());
     final deviceId = dashboardController.deviceInfoModel.value.id;
     try {
-      final response = await _dio.get("$url/$deviceId");
+      final response = await _dio.get("$url/court-booking/history/$deviceId");
       final json = response.data;
       final res = ResponseBookingHistoryModel.fromJson(json);
       log.d("this is data: ${res.data}");

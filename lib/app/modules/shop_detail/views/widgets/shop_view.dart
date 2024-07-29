@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/shop_detail/controllers/shop_detail_controller.dart';
 
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
+import 'package:nuol_badminton_thesis/app/widgets/getImageProvider.dart';
+import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';
 
 class ShopView extends StatefulWidget {
-  final Court court;
+  // final Court court;
+  final BadmintonCourtModel court;
   const ShopView({super.key, required this.court});
 
   @override
@@ -59,7 +63,7 @@ class _ShopViewState extends State<ShopView> {
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
                     // image: AssetImage("assets/images/court.jpeg"),
-                    image: AssetImage(widget.court.imageUrl),
+                    image: getImageProvider(widget.court.courtImage), //Todos ----------
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -83,19 +87,19 @@ class _ShopViewState extends State<ShopView> {
                       children: [
                         const Text("ຄອດ :"),
                         Text(
-                          " ${widget.court.name}",
+                          " ${widget.court.courtNumber}",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Text(
-                          "ລາຄາ : 80,000 ₭ ",
+                          'ລາຄາ: ${widget.court.courtPrice.toString().isEmpty ? "0" : NumberFormatter.formatPriceKip(int.parse(widget.court.courtPrice.toString()))} ₭/ ຊົ່ວໂມງ',
                           // "ລາຄາ : XXXXXXXX",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(
+                        const Text(
                           "/ ຊົ່ວໂມງ",
                           style: TextStyle(color: Colors.grey),
                         ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/models/response_booking_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/dashboard/views/dashboard_view.dart';
@@ -13,7 +14,8 @@ import 'package:nuol_badminton_thesis/app/widgets/wave_clipper.dart';
 import '../../../../widgets/number_format.dart';
 
 class BillPaymentDetail extends StatelessWidget {
-  final Court court;
+  // final Court court;
+  final BadmintonCourtModel court;
   List<ListCourt> bookingDetails;
   final String userName;
   final String phoneNumber;
@@ -124,7 +126,7 @@ class BillPaymentDetail extends StatelessWidget {
                             children: [
                               const Text("ຄອດ", style: TextStyle(color: Colors.grey)),
                               Text(
-                                court.name,
+                                court.courtNumber,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),

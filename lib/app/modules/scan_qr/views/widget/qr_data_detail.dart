@@ -209,6 +209,7 @@ class QrDataDetail extends StatelessWidget {
                             courtAvailableId: controller.courtAvailableList[0].id,
                             deviceId: deviceId,
                             courtBookingId: controller.bookingData.value.id,
+                            adminId: '',
                           );
                           await controller.sendPayment(paymentArgument);
                         } else {

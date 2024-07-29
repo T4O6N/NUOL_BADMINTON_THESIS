@@ -1,8 +1,10 @@
 //card booking for home page
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
 import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/shop_detail/views/widgets/shop_view.dart';
+import 'package:nuol_badminton_thesis/app/widgets/getImageProvider.dart';
 
 class CardBooking extends StatelessWidget {
   const CardBooking({
@@ -12,13 +14,16 @@ class CardBooking extends StatelessWidget {
     required this.court,
     required this.indexCourt,
     required this.courtIndex,
+    required this.promotion,
   });
 
   final String imageAsset;
   final String court;
   final String price;
   final int indexCourt;
-  final Court courtIndex;
+  final String promotion;
+  // final Court courtIndex;
+  final BadmintonCourtModel courtIndex;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,17 +33,17 @@ class CardBooking extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: .30 * size.height,
+        height: .35 * size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 10,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.5),
+          //     spreadRadius: 2,
+          //     blurRadius: 10,
+          //     offset: const Offset(0, 3), // changes position of shadow
+          //   ),
+          // ],
         ),
         child: Column(
           children: [
@@ -53,13 +58,13 @@ class CardBooking extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   //image must scale width screen 500 * 250 pixel
-                  image: AssetImage(imageAsset),
+                  image: getImageProvider(imageAsset),
                   fit: BoxFit.fill,
                 ),
               ),
             ),
             Container(
-              height: .10 * size.height,
+              height: .13 * size.height,
               padding: EdgeInsets.zero,
               width: double.infinity,
               decoration: const BoxDecoration(
@@ -74,17 +79,40 @@ class CardBooking extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      court,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        const Text('ຄອດ: '),
+                        Text(
+                          court,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      price,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        const Text('ລາຄາ: '),
+                        Text(
+                          price,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Text(' / ຊົ່ວໂມງ'),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text('ສ່ວນຫລຸດ: '),
+                        Text(
+                          promotion,
+                          style: const TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
