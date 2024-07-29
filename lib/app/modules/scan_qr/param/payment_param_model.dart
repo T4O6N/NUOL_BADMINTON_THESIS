@@ -11,7 +11,6 @@ class PaymentParamModel with _$PaymentParamModel {
     @JsonKey(name: 'court_booking_id') @Default('') String courtBookingId,
     @JsonKey(name: 'court_available_id') @Default('') String courtAvailableId,
     @JsonKey(name: 'device_id') @Default('') String deviceId,
-    @JsonKey(name: 'admin_id') @Default('') String adminId,
   }) = _PaymentParamModel;
 
   factory PaymentParamModel.fromJson(Map<String, dynamic> json) => _$PaymentParamModelFromJson(json);

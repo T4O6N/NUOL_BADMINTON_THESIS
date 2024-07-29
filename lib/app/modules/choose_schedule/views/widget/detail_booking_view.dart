@@ -6,7 +6,6 @@ import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badmint
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/controllers/choose_schedule_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/param/list_court.dart';
 import 'package:nuol_badminton_thesis/app/modules/choose_schedule/views/widget/choose_schedule_stf_view.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
 import 'package:nuol_badminton_thesis/app/widgets/contact_info_widget.dart';
 import 'package:nuol_badminton_thesis/app/widgets/number_format.dart';

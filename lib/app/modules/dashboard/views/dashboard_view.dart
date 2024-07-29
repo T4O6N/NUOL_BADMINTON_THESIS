@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
