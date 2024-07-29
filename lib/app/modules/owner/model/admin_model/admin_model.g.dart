@@ -8,7 +8,7 @@ part of 'admin_model.dart';
 
 _$AdminModelImpl _$$AdminModelImplFromJson(Map<String, dynamic> json) =>
     _$AdminModelImpl(
-      id: json['id'] as String? ?? '',
+      id: json['id'] as String? ?? "",
       isActive: json['isActive'] as bool? ?? false,
       username: json['username'] as String? ?? '',
       phone: json['phone'] as String? ?? '',

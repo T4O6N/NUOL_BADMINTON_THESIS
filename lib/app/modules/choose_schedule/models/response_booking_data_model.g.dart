@@ -17,6 +17,7 @@ _$ResponseBookingDataModelImpl _$$ResponseBookingDataModelImplFromJson(
       paymentStatus: json['payment_status'] as String? ?? "",
       totalAmount: (json['total_amount'] as num?)?.toInt() ?? 0,
       bookedBy: json['booked_by'] as String? ?? "",
+      bookingTime: json['booking_time'] as String? ?? "",
       createdAt: json['created_at'] as String? ?? "",
       updatedAt: json['updated_at'] as String? ?? "",
       court: (json['court'] as List<dynamic>?)
@@ -37,6 +38,7 @@ Map<String, dynamic> _$$ResponseBookingDataModelImplToJson(
       'payment_status': instance.paymentStatus,
       'total_amount': instance.totalAmount,
       'booked_by': instance.bookedBy,
+      'booking_time': instance.bookingTime,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'court': instance.court,

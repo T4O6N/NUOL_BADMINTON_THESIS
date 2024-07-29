@@ -35,6 +35,8 @@ mixin _$ResponseBookingDataModel {
   int get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'booked_by')
   String get bookedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'booking_time')
+  String get bookingTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -63,6 +65,7 @@ abstract class $ResponseBookingDataModelCopyWith<$Res> {
       @JsonKey(name: 'payment_status') String paymentStatus,
       @JsonKey(name: 'total_amount') int totalAmount,
       @JsonKey(name: 'booked_by') String bookedBy,
+      @JsonKey(name: 'booking_time') String bookingTime,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
       List<ResponseBookingDataCourtModel> court});
@@ -90,6 +93,7 @@ class _$ResponseBookingDataModelCopyWithImpl<$Res,
     Object? paymentStatus = null,
     Object? totalAmount = null,
     Object? bookedBy = null,
+    Object? bookingTime = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? court = null,
@@ -127,6 +131,10 @@ class _$ResponseBookingDataModelCopyWithImpl<$Res,
           ? _value.bookedBy
           : bookedBy // ignore: cast_nullable_to_non_nullable
               as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -161,6 +169,7 @@ abstract class _$$ResponseBookingDataModelImplCopyWith<$Res>
       @JsonKey(name: 'payment_status') String paymentStatus,
       @JsonKey(name: 'total_amount') int totalAmount,
       @JsonKey(name: 'booked_by') String bookedBy,
+      @JsonKey(name: 'booking_time') String bookingTime,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
       List<ResponseBookingDataCourtModel> court});
@@ -187,6 +196,7 @@ class __$$ResponseBookingDataModelImplCopyWithImpl<$Res>
     Object? paymentStatus = null,
     Object? totalAmount = null,
     Object? bookedBy = null,
+    Object? bookingTime = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? court = null,
@@ -224,6 +234,10 @@ class __$$ResponseBookingDataModelImplCopyWithImpl<$Res>
           ? _value.bookedBy
           : bookedBy // ignore: cast_nullable_to_non_nullable
               as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -252,6 +266,7 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
       @JsonKey(name: 'payment_status') this.paymentStatus = "",
       @JsonKey(name: 'total_amount') this.totalAmount = 0,
       @JsonKey(name: 'booked_by') this.bookedBy = "",
+      @JsonKey(name: 'booking_time') this.bookingTime = "",
       @JsonKey(name: 'created_at') this.createdAt = "",
       @JsonKey(name: 'updated_at') this.updatedAt = "",
       final List<ResponseBookingDataCourtModel> court = const []})
@@ -285,6 +300,9 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
   @JsonKey(name: 'booked_by')
   final String bookedBy;
   @override
+  @JsonKey(name: 'booking_time')
+  final String bookingTime;
+  @override
   @JsonKey(name: 'created_at')
   final String createdAt;
   @override
@@ -301,7 +319,7 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
 
   @override
   String toString() {
-    return 'ResponseBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
+    return 'ResponseBookingDataModel(id: $id, deviceId: $deviceId, phone: $phone, fullName: $fullName, courtNumber: $courtNumber, paymentStatus: $paymentStatus, totalAmount: $totalAmount, bookedBy: $bookedBy, bookingTime: $bookingTime, createdAt: $createdAt, updatedAt: $updatedAt, court: $court)';
   }
 
   @override
@@ -323,6 +341,8 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
                 other.totalAmount == totalAmount) &&
             (identical(other.bookedBy, bookedBy) ||
                 other.bookedBy == bookedBy) &&
+            (identical(other.bookingTime, bookingTime) ||
+                other.bookingTime == bookingTime) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -342,6 +362,7 @@ class _$ResponseBookingDataModelImpl implements _ResponseBookingDataModel {
       paymentStatus,
       totalAmount,
       bookedBy,
+      bookingTime,
       createdAt,
       updatedAt,
       const DeepCollectionEquality().hash(_court));
@@ -371,6 +392,7 @@ abstract class _ResponseBookingDataModel implements ResponseBookingDataModel {
           @JsonKey(name: 'payment_status') final String paymentStatus,
           @JsonKey(name: 'total_amount') final int totalAmount,
           @JsonKey(name: 'booked_by') final String bookedBy,
+          @JsonKey(name: 'booking_time') final String bookingTime,
           @JsonKey(name: 'created_at') final String createdAt,
           @JsonKey(name: 'updated_at') final String updatedAt,
           final List<ResponseBookingDataCourtModel> court}) =
@@ -401,6 +423,9 @@ abstract class _ResponseBookingDataModel implements ResponseBookingDataModel {
   @override
   @JsonKey(name: 'booked_by')
   String get bookedBy;
+  @override
+  @JsonKey(name: 'booking_time')
+  String get bookingTime;
   @override
   @JsonKey(name: 'created_at')
   String get createdAt;

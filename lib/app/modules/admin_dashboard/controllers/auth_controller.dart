@@ -22,7 +22,7 @@ class AuthController extends GetxController {
       if (response.statusCode == 201) {
         final adminData = AdminModel.fromJson(response.data['data']);
         loggedInAdmin.value = adminData;
-        log.e("data: $loggedInAdmin");
+        log.e("data: ${loggedInAdmin.value?.id}");
         log.i("Admin logged in: ${adminData.username}");
       } else {
         log.e("Login failed: ${response.data['message']}");

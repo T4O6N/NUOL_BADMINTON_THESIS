@@ -14,6 +14,7 @@ _$ResponseBookingHistoryDataModelImpl
           updatedAt: json['updated_at'] as String? ?? "",
           deviceId: json['device_id'] as String? ?? "",
           courtBookingId: json['court_booking_id'] as String? ?? "",
+          bookingTime: json['booking_time'] as String? ?? "",
           courtBooking: ResponseBookingDataModel.fromJson(
               json['court_booking'] as Map<String, dynamic>),
         );
@@ -26,5 +27,6 @@ Map<String, dynamic> _$$ResponseBookingHistoryDataModelImplToJson(
       'updated_at': instance.updatedAt,
       'device_id': instance.deviceId,
       'court_booking_id': instance.courtBookingId,
+      'booking_time': instance.bookingTime,
       'court_booking': instance.courtBooking,
     };

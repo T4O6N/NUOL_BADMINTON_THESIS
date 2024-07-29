@@ -6,6 +6,7 @@ import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/admin_management_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_management_page.dart';
 import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_view.dart';
+import 'package:nuol_badminton_thesis/app/modules/owner/views/owner_viewer_all_admin_page.dart';
 
 import '../controllers/owner_dashboard_controller.dart';
 
@@ -24,6 +25,7 @@ class OwnerDashboardView extends GetView<OwnerDashboardController> {
           const OwnerView(),
           OwnerManagementPage(),
           AdminManagementPage(),
+          OwnerViewerAllAdminPage(),
           // CreateAdminForOwnerView(),
           // UserManagementView(),
           // ScanQrView(),
@@ -43,8 +45,9 @@ class OwnerDashboardView extends GetView<OwnerDashboardController> {
               children: [
                 // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 0, label: "ໂປຮຟາຍ"),
                 _buttomAppBarItem(context, icon: AppImagesSvg.homeIcon, page: 0, label: "ລາຍງານ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 1, label: "ຈັດການເຈົ້າຂອງເດີ່ນ"),
-                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 2, label: "ຈັດການພະນັກງານເດີ່ນ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 1, label: "ເຈົ້າຂອງ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 2, label: "ພະນັກງານ"),
+                _buttomAppBarItem(context, icon: AppImagesSvg.versionIcon, page: 3, label: "ຕິດຕາມ"),
 
                 // _buttomAppBarItem(context, icon: AppImagesSvg.userProfileIcon, page: 3, label: "ໂປຮຟາຍ"),
               ],

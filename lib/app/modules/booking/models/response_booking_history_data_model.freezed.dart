@@ -30,6 +30,8 @@ mixin _$ResponseBookingHistoryDataModel {
   String get deviceId => throw _privateConstructorUsedError;
   @JsonKey(name: 'court_booking_id')
   String get courtBookingId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'booking_time')
+  String get bookingTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'court_booking')
   ResponseBookingDataModel get courtBooking =>
       throw _privateConstructorUsedError;
@@ -54,6 +56,7 @@ abstract class $ResponseBookingHistoryDataModelCopyWith<$Res> {
       @JsonKey(name: 'updated_at') String updatedAt,
       @JsonKey(name: 'device_id') String deviceId,
       @JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'booking_time') String bookingTime,
       @JsonKey(name: 'court_booking') ResponseBookingDataModel courtBooking});
 
   $ResponseBookingDataModelCopyWith<$Res> get courtBooking;
@@ -78,6 +81,7 @@ class _$ResponseBookingHistoryDataModelCopyWithImpl<$Res,
     Object? updatedAt = null,
     Object? deviceId = null,
     Object? courtBookingId = null,
+    Object? bookingTime = null,
     Object? courtBooking = null,
   }) {
     return _then(_value.copyWith(
@@ -100,6 +104,10 @@ class _$ResponseBookingHistoryDataModelCopyWithImpl<$Res,
       courtBookingId: null == courtBookingId
           ? _value.courtBookingId
           : courtBookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
               as String,
       courtBooking: null == courtBooking
           ? _value.courtBooking
@@ -133,6 +141,7 @@ abstract class _$$ResponseBookingHistoryDataModelImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') String updatedAt,
       @JsonKey(name: 'device_id') String deviceId,
       @JsonKey(name: 'court_booking_id') String courtBookingId,
+      @JsonKey(name: 'booking_time') String bookingTime,
       @JsonKey(name: 'court_booking') ResponseBookingDataModel courtBooking});
 
   @override
@@ -157,6 +166,7 @@ class __$$ResponseBookingHistoryDataModelImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? deviceId = null,
     Object? courtBookingId = null,
+    Object? bookingTime = null,
     Object? courtBooking = null,
   }) {
     return _then(_$ResponseBookingHistoryDataModelImpl(
@@ -180,6 +190,10 @@ class __$$ResponseBookingHistoryDataModelImplCopyWithImpl<$Res>
           ? _value.courtBookingId
           : courtBookingId // ignore: cast_nullable_to_non_nullable
               as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
       courtBooking: null == courtBooking
           ? _value.courtBooking
           : courtBooking // ignore: cast_nullable_to_non_nullable
@@ -198,6 +212,7 @@ class _$ResponseBookingHistoryDataModelImpl
       @JsonKey(name: 'updated_at') this.updatedAt = "",
       @JsonKey(name: 'device_id') this.deviceId = "",
       @JsonKey(name: 'court_booking_id') this.courtBookingId = "",
+      @JsonKey(name: 'booking_time') this.bookingTime = "",
       @JsonKey(name: 'court_booking') required this.courtBooking});
 
   factory _$ResponseBookingHistoryDataModelImpl.fromJson(
@@ -220,12 +235,15 @@ class _$ResponseBookingHistoryDataModelImpl
   @JsonKey(name: 'court_booking_id')
   final String courtBookingId;
   @override
+  @JsonKey(name: 'booking_time')
+  final String bookingTime;
+  @override
   @JsonKey(name: 'court_booking')
   final ResponseBookingDataModel courtBooking;
 
   @override
   String toString() {
-    return 'ResponseBookingHistoryDataModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deviceId: $deviceId, courtBookingId: $courtBookingId, courtBooking: $courtBooking)';
+    return 'ResponseBookingHistoryDataModel(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, deviceId: $deviceId, courtBookingId: $courtBookingId, bookingTime: $bookingTime, courtBooking: $courtBooking)';
   }
 
   @override
@@ -242,6 +260,8 @@ class _$ResponseBookingHistoryDataModelImpl
                 other.deviceId == deviceId) &&
             (identical(other.courtBookingId, courtBookingId) ||
                 other.courtBookingId == courtBookingId) &&
+            (identical(other.bookingTime, bookingTime) ||
+                other.bookingTime == bookingTime) &&
             (identical(other.courtBooking, courtBooking) ||
                 other.courtBooking == courtBooking));
   }
@@ -249,7 +269,7 @@ class _$ResponseBookingHistoryDataModelImpl
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt,
-      deviceId, courtBookingId, courtBooking);
+      deviceId, courtBookingId, bookingTime, courtBooking);
 
   @JsonKey(ignore: true)
   @override
@@ -275,6 +295,7 @@ abstract class _ResponseBookingHistoryDataModel
           @JsonKey(name: 'updated_at') final String updatedAt,
           @JsonKey(name: 'device_id') final String deviceId,
           @JsonKey(name: 'court_booking_id') final String courtBookingId,
+          @JsonKey(name: 'booking_time') final String bookingTime,
           @JsonKey(name: 'court_booking')
           required final ResponseBookingDataModel courtBooking}) =
       _$ResponseBookingHistoryDataModelImpl;
@@ -296,6 +317,9 @@ abstract class _ResponseBookingHistoryDataModel
   @override
   @JsonKey(name: 'court_booking_id')
   String get courtBookingId;
+  @override
+  @JsonKey(name: 'booking_time')
+  String get bookingTime;
   @override
   @JsonKey(name: 'court_booking')
   ResponseBookingDataModel get courtBooking;

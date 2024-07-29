@@ -14,6 +14,7 @@ class ResponseBookingHistoryDataModel with _$ResponseBookingHistoryDataModel {
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
     @JsonKey(name: 'device_id') @Default("") String deviceId,
     @JsonKey(name: 'court_booking_id') @Default("") String courtBookingId,
+    @JsonKey(name: 'booking_time') @Default("") String bookingTime,
     @JsonKey(name: 'court_booking') required ResponseBookingDataModel courtBooking,
   }) = _ResponseBookingHistoryDataModel;
 

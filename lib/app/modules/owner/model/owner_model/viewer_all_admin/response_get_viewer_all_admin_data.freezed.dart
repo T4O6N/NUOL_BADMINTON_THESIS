@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'admin_model.dart';
+part of 'response_get_viewer_all_admin_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-AdminModel _$AdminModelFromJson(Map<String, dynamic> json) {
-  return _AdminModel.fromJson(json);
+ResponseGetViewerAllAdminData _$ResponseGetViewerAllAdminDataFromJson(
+    Map<String, dynamic> json) {
+  return _ResponseGetViewerAllAdminData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AdminModel {
+mixin _$ResponseGetViewerAllAdminData {
   String get id => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
@@ -29,18 +30,22 @@ mixin _$AdminModel {
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
+  List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+      get courtBookingPaymentHistory => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AdminModelCopyWith<AdminModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ResponseGetViewerAllAdminDataCopyWith<ResponseGetViewerAllAdminData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AdminModelCopyWith<$Res> {
-  factory $AdminModelCopyWith(
-          AdminModel value, $Res Function(AdminModel) then) =
-      _$AdminModelCopyWithImpl<$Res, AdminModel>;
+abstract class $ResponseGetViewerAllAdminDataCopyWith<$Res> {
+  factory $ResponseGetViewerAllAdminDataCopyWith(
+          ResponseGetViewerAllAdminData value,
+          $Res Function(ResponseGetViewerAllAdminData) then) =
+      _$ResponseGetViewerAllAdminDataCopyWithImpl<$Res,
+          ResponseGetViewerAllAdminData>;
   @useResult
   $Res call(
       {String id,
@@ -49,13 +54,16 @@ abstract class $AdminModelCopyWith<$Res> {
       String phone,
       String password,
       @JsonKey(name: 'created_at') String createdAt,
-      @JsonKey(name: 'updated_at') String updatedAt});
+      @JsonKey(name: 'updated_at') String updatedAt,
+      List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+          courtBookingPaymentHistory});
 }
 
 /// @nodoc
-class _$AdminModelCopyWithImpl<$Res, $Val extends AdminModel>
-    implements $AdminModelCopyWith<$Res> {
-  _$AdminModelCopyWithImpl(this._value, this._then);
+class _$ResponseGetViewerAllAdminDataCopyWithImpl<$Res,
+        $Val extends ResponseGetViewerAllAdminData>
+    implements $ResponseGetViewerAllAdminDataCopyWith<$Res> {
+  _$ResponseGetViewerAllAdminDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -72,6 +80,7 @@ class _$AdminModelCopyWithImpl<$Res, $Val extends AdminModel>
     Object? password = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? courtBookingPaymentHistory = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -102,16 +111,21 @@ class _$AdminModelCopyWithImpl<$Res, $Val extends AdminModel>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      courtBookingPaymentHistory: null == courtBookingPaymentHistory
+          ? _value.courtBookingPaymentHistory
+          : courtBookingPaymentHistory // ignore: cast_nullable_to_non_nullable
+              as List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$AdminModelImplCopyWith<$Res>
-    implements $AdminModelCopyWith<$Res> {
-  factory _$$AdminModelImplCopyWith(
-          _$AdminModelImpl value, $Res Function(_$AdminModelImpl) then) =
-      __$$AdminModelImplCopyWithImpl<$Res>;
+abstract class _$$ResponseGetViewerAllAdminDataImplCopyWith<$Res>
+    implements $ResponseGetViewerAllAdminDataCopyWith<$Res> {
+  factory _$$ResponseGetViewerAllAdminDataImplCopyWith(
+          _$ResponseGetViewerAllAdminDataImpl value,
+          $Res Function(_$ResponseGetViewerAllAdminDataImpl) then) =
+      __$$ResponseGetViewerAllAdminDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,15 +135,19 @@ abstract class _$$AdminModelImplCopyWith<$Res>
       String phone,
       String password,
       @JsonKey(name: 'created_at') String createdAt,
-      @JsonKey(name: 'updated_at') String updatedAt});
+      @JsonKey(name: 'updated_at') String updatedAt,
+      List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+          courtBookingPaymentHistory});
 }
 
 /// @nodoc
-class __$$AdminModelImplCopyWithImpl<$Res>
-    extends _$AdminModelCopyWithImpl<$Res, _$AdminModelImpl>
-    implements _$$AdminModelImplCopyWith<$Res> {
-  __$$AdminModelImplCopyWithImpl(
-      _$AdminModelImpl _value, $Res Function(_$AdminModelImpl) _then)
+class __$$ResponseGetViewerAllAdminDataImplCopyWithImpl<$Res>
+    extends _$ResponseGetViewerAllAdminDataCopyWithImpl<$Res,
+        _$ResponseGetViewerAllAdminDataImpl>
+    implements _$$ResponseGetViewerAllAdminDataImplCopyWith<$Res> {
+  __$$ResponseGetViewerAllAdminDataImplCopyWithImpl(
+      _$ResponseGetViewerAllAdminDataImpl _value,
+      $Res Function(_$ResponseGetViewerAllAdminDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,8 +160,9 @@ class __$$AdminModelImplCopyWithImpl<$Res>
     Object? password = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? courtBookingPaymentHistory = null,
   }) {
-    return _then(_$AdminModelImpl(
+    return _then(_$ResponseGetViewerAllAdminDataImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -172,24 +191,33 @@ class __$$AdminModelImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      courtBookingPaymentHistory: null == courtBookingPaymentHistory
+          ? _value._courtBookingPaymentHistory
+          : courtBookingPaymentHistory // ignore: cast_nullable_to_non_nullable
+              as List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AdminModelImpl implements _AdminModel {
-  const _$AdminModelImpl(
-      {this.id = "",
-      this.isActive = false,
+class _$ResponseGetViewerAllAdminDataImpl
+    implements _ResponseGetViewerAllAdminData {
+  const _$ResponseGetViewerAllAdminDataImpl(
+      {this.id = '',
+      this.isActive = true,
       this.username = '',
       this.phone = '',
       this.password = '',
       @JsonKey(name: 'created_at') this.createdAt = '',
-      @JsonKey(name: 'updated_at') this.updatedAt = ''});
+      @JsonKey(name: 'updated_at') this.updatedAt = '',
+      final List<ResponseGetViewerAllAdminCourtBookingPaymentHistory> courtBookingPaymentHistory =
+          const <ResponseGetViewerAllAdminCourtBookingPaymentHistory>[]})
+      : _courtBookingPaymentHistory = courtBookingPaymentHistory;
 
-  factory _$AdminModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AdminModelImplFromJson(json);
+  factory _$ResponseGetViewerAllAdminDataImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ResponseGetViewerAllAdminDataImplFromJson(json);
 
   @override
   @JsonKey()
@@ -212,17 +240,28 @@ class _$AdminModelImpl implements _AdminModel {
   @override
   @JsonKey(name: 'updated_at')
   final String updatedAt;
+  final List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+      _courtBookingPaymentHistory;
+  @override
+  @JsonKey()
+  List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+      get courtBookingPaymentHistory {
+    if (_courtBookingPaymentHistory is EqualUnmodifiableListView)
+      return _courtBookingPaymentHistory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_courtBookingPaymentHistory);
+  }
 
   @override
   String toString() {
-    return 'AdminModel(id: $id, isActive: $isActive, username: $username, phone: $phone, password: $password, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ResponseGetViewerAllAdminData(id: $id, isActive: $isActive, username: $username, phone: $phone, password: $password, createdAt: $createdAt, updatedAt: $updatedAt, courtBookingPaymentHistory: $courtBookingPaymentHistory)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AdminModelImpl &&
+            other is _$ResponseGetViewerAllAdminDataImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
@@ -234,40 +273,56 @@ class _$AdminModelImpl implements _AdminModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality().equals(
+                other._courtBookingPaymentHistory,
+                _courtBookingPaymentHistory));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, isActive, username, phone,
-      password, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      isActive,
+      username,
+      phone,
+      password,
+      createdAt,
+      updatedAt,
+      const DeepCollectionEquality().hash(_courtBookingPaymentHistory));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AdminModelImplCopyWith<_$AdminModelImpl> get copyWith =>
-      __$$AdminModelImplCopyWithImpl<_$AdminModelImpl>(this, _$identity);
+  _$$ResponseGetViewerAllAdminDataImplCopyWith<
+          _$ResponseGetViewerAllAdminDataImpl>
+      get copyWith => __$$ResponseGetViewerAllAdminDataImplCopyWithImpl<
+          _$ResponseGetViewerAllAdminDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AdminModelImplToJson(
+    return _$$ResponseGetViewerAllAdminDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _AdminModel implements AdminModel {
-  const factory _AdminModel(
+abstract class _ResponseGetViewerAllAdminData
+    implements ResponseGetViewerAllAdminData {
+  const factory _ResponseGetViewerAllAdminData(
       {final String id,
       final bool isActive,
       final String username,
       final String phone,
       final String password,
       @JsonKey(name: 'created_at') final String createdAt,
-      @JsonKey(name: 'updated_at') final String updatedAt}) = _$AdminModelImpl;
+      @JsonKey(name: 'updated_at') final String updatedAt,
+      final List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+          courtBookingPaymentHistory}) = _$ResponseGetViewerAllAdminDataImpl;
 
-  factory _AdminModel.fromJson(Map<String, dynamic> json) =
-      _$AdminModelImpl.fromJson;
+  factory _ResponseGetViewerAllAdminData.fromJson(Map<String, dynamic> json) =
+      _$ResponseGetViewerAllAdminDataImpl.fromJson;
 
   @override
   String get id;
@@ -286,7 +341,11 @@ abstract class _AdminModel implements AdminModel {
   @JsonKey(name: 'updated_at')
   String get updatedAt;
   @override
+  List<ResponseGetViewerAllAdminCourtBookingPaymentHistory>
+      get courtBookingPaymentHistory;
+  @override
   @JsonKey(ignore: true)
-  _$$AdminModelImplCopyWith<_$AdminModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ResponseGetViewerAllAdminDataImplCopyWith<
+          _$ResponseGetViewerAllAdminDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

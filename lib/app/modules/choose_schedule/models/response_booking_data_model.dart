@@ -17,6 +17,7 @@ class ResponseBookingDataModel with _$ResponseBookingDataModel {
     @JsonKey(name: 'payment_status') @Default("") String paymentStatus,
     @JsonKey(name: 'total_amount') @Default(0) int totalAmount,
     @JsonKey(name: 'booked_by') @Default("") String bookedBy,
+    @JsonKey(name: 'booking_time') @Default("") String bookingTime,
     @JsonKey(name: 'created_at') @Default("") String createdAt,
     @JsonKey(name: 'updated_at') @Default("") String updatedAt,
     @Default([]) List<ResponseBookingDataCourtModel> court,

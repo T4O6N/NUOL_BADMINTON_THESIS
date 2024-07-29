@@ -8,7 +8,7 @@ part 'admin_model.g.dart';
 @freezed
 class AdminModel with _$AdminModel {
   const factory AdminModel({
-    @Default('') String id,
+    @Default("") String id,
     @Default(false) bool isActive,
     @Default('') String username,
     @Default('') String phone,

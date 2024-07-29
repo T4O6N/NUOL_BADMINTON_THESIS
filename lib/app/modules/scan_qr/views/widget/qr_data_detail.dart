@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nuol_badminton_thesis/app/constants/app_image.dart';
 import 'package:nuol_badminton_thesis/app/constants/lottie_constants.dart';
+import 'package:nuol_badminton_thesis/app/modules/admin_dashboard/controllers/auth_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/controllers/scan_qr_controller.dart';
 import 'package:nuol_badminton_thesis/app/modules/scan_qr/param/payment_param_model.dart';
 import 'package:nuol_badminton_thesis/app/widgets/booking_botton.dart';
@@ -15,6 +16,7 @@ class QrDataDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScanQrController controller = Get.put(ScanQrController());
+    final AuthController authController = Get.put(AuthController());
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -208,7 +210,7 @@ class QrDataDetail extends StatelessWidget {
                             courtAvailableId: controller.courtAvailableList[0].id,
                             deviceId: deviceId,
                             courtBookingId: controller.bookingData.value.id,
-                            adminId: '',
+                            adminId: authController.loggedInAdmin.value!.id,
                           );
                           await controller.sendPayment(paymentArgument);
                         } else {

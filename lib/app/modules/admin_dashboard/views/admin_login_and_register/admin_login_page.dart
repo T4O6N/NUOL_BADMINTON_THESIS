@@ -34,7 +34,7 @@ class AdminLoginPage extends StatelessWidget {
 
     authController.login(username, password).then((_) {
       if (authController.loggedInAdmin.value != null) {
-        Get.offAll(const AdminDashboardView()); // Navigate to the dashboard after successful login
+        Get.off(const AdminDashboardView()); // Navigate to the dashboard after successful login
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login failed')),
