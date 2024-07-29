@@ -13,6 +13,7 @@ class Chart extends StatelessWidget {
   Future<void> _refreshData() async {
     await ownerDashboardController.fetchCourtUsage();
     await ownerDashboardController.fetchWeeklyIncome();
+    await ownerDashboardController.fetchDailyIncomeReport();
   }
 
   @override
@@ -53,61 +54,72 @@ class Chart extends StatelessWidget {
                 }),
                 const SizedBox(height: 10),
                 const Divider(thickness: 8),
-                Obx(() {
-                  return ownerDashboardController.weeklyIncomeList.isEmpty
-                      ? const Center(child: Text('No weekly income data available'))
-                      : Column(
-                          children: [
-                            SfCircularChart(
-                              title: ChartTitle(text: 'ລາຍງານລາຍຮັບປະຈຳວັນ/ອາທິດ'),
-                              legend: Legend(isVisible: true),
-                              tooltipBehavior: TooltipBehavior(enable: true),
-                              series: <PieSeries<DayIncome, String>>[
-                                PieSeries<DayIncome, String>(
-                                  explode: true,
-                                  explodeIndex: 0,
-                                  dataSource: ownerDashboardController.weeklyIncomeList,
-                                  xValueMapper: (DayIncome sales, _) => sales.day,
-                                  yValueMapper: (DayIncome sales, _) => sales.income,
-                                  name: 'Court Used',
-                                  dataLabelSettings: const DataLabelSettings(isVisible: true),
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            // const Text(
-                            //   'Weekly Income Summary',
-                            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            // ),
-                            // Align(
-                            //   alignment: Alignment.centerLeft,
-                            //   child: Column(
-                            //     crossAxisAlignment: CrossAxisAlignment.start,
-                            //     children: ownerDashboardController.weeklyIncomeList.map((income) {
-                            //       return Text('${income.day} : ${NumberFormatter.formatPriceKip(income.incomeAmount)}');
-                            //     }).toList(),
-                            //   ),
-                            // ),
-                            const SizedBox(height: 10),
-
-                            Obx(() {
-                              return Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'ລວມລາຍຮັບປະຈຳອາທິດ: ',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                  Text(
-                                    NumberFormatter.formatPriceKip(ownerDashboardController.totalWeeklyIncome.value),
-                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
-                                  ),
+                Obx(
+                  () {
+                    return ownerDashboardController.weeklyIncomeList.isEmpty
+                        ? const Center(child: Text(''))
+                        : Column(
+                            children: [
+                              SfCircularChart(
+                                title: ChartTitle(text: 'ລາຍງານລາຍຮັບປະຈຳວັນ/ອາທິດ'),
+                                legend: Legend(isVisible: true),
+                                tooltipBehavior: TooltipBehavior(enable: true),
+                                series: <PieSeries<DayIncome, String>>[
+                                  PieSeries<DayIncome, String>(
+                                    explode: true,
+                                    explodeIndex: 0,
+                                    dataSource: ownerDashboardController.weeklyIncomeList,
+                                    xValueMapper: (DayIncome sales, _) => sales.day,
+                                    yValueMapper: (DayIncome sales, _) => sales.income,
+                                    name: 'Court Used',
+                                    dataLabelSettings: const DataLabelSettings(isVisible: true),
+                                  )
                                 ],
-                              );
-                            }),
-                          ],
-                        );
-                }),
+                              ),
+                              const SizedBox(height: 10),
+                              Obx(
+                                () {
+                                  final dailyIncomeData = ownerDashboardController.dailyIncomeData.value;
+                                  if (dailyIncomeData == null) {
+                                    return const Center(child: CircularProgressIndicator());
+                                  }
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'ລວມລາຍຮັບປະຈຳວັນ: ',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      Text(
+                                        NumberFormatter.formatPriceKip(dailyIncomeData.dailyIncome),
+                                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                              const SizedBox(height: 10),
+                              Obx(
+                                () {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'ລວມລາຍຮັບປະຈຳອາທິດ: ',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      Text(
+                                        NumberFormatter.formatPriceKip(ownerDashboardController.totalWeeklyIncome.value),
+                                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                  },
+                ),
               ],
             ),
           ),

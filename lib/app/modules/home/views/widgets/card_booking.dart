@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuol_badminton_thesis/app/modules/badminton_court/models/badminton_court_model.dart';
-import 'package:nuol_badminton_thesis/app/modules/home/model/court.dart';
 import 'package:nuol_badminton_thesis/app/modules/shop_detail/views/widgets/shop_view.dart';
 import 'package:nuol_badminton_thesis/app/widgets/getImageProvider.dart';
 
@@ -22,7 +21,6 @@ class CardBooking extends StatelessWidget {
   final String price;
   final int indexCourt;
   final String promotion;
-  // final Court courtIndex;
   final BadmintonCourtModel courtIndex;
   @override
   Widget build(BuildContext context) {
@@ -34,17 +32,7 @@ class CardBooking extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: .35 * size.height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.grey.withOpacity(0.5),
-          //     spreadRadius: 2,
-          //     blurRadius: 10,
-          //     offset: const Offset(0, 3), // changes position of shadow
-          //   ),
-          // ],
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0)),
         child: Column(
           children: [
             Container(
@@ -118,83 +106,6 @@ class CardBooking extends StatelessWidget {
                 ),
               ),
             ),
-            // Container(
-            //   width: double.infinity,
-            //   decoration: BoxDecoration(color: Colors.black.withOpacity(.5), borderRadius: BorderRadius.circular(15)),
-            // ),
-            // Padding(
-            //   padding: EdgeInsets.only(left: size.width * .03, bottom: size.width * .03, right: size.width * .02),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     children: [
-            //       Padding(
-            //         padding: const EdgeInsets.only(bottom: 10),
-            //         child: SizedBox(
-            //           width: size.width * .79,
-            //           child: Text(
-            //             namePlace,
-            //             style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-            //           ),
-            //         ),
-            //       ),
-            //       Row(
-            //         children: [
-            //           SvgPicture.asset(
-            //             AppImagesSvg.positionIcon,
-            //             height: 25,
-            //           ),
-            //           SizedBox(
-            //             width: size.width * .74,
-            //             child: Text(
-            //               location,
-            //               style: const TextStyle(color: Colors.white, fontSize: 15, overflow: TextOverflow.ellipsis),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //       const SizedBox(
-            //         height: 10,
-            //       ),
-            //       Row(
-            //         children: [
-            //           SvgPicture.asset(AppImagesSvg.startIcon, height: 25),
-            //           Text(
-            //             point.toString(),
-            //             style: const TextStyle(color: Colors.white, fontSize: 15),
-            //           ),
-            //           const SizedBox(width: 10),
-            //           Text(
-            //             date,
-            //             style: const TextStyle(color: Colors.white, fontSize: 15),
-            //           ),
-            //           const SizedBox(width: 10),
-            //           Text(
-            //             price,
-            //             style: const TextStyle(color: Colors.white, fontSize: 15),
-            //           ),
-            //         ],
-            //       ),
-            //       const SizedBox(
-            //         height: 5,
-            //       ),
-            //       Row(children: [
-            //         ButtonTime(
-            //           durationLabel: '16:00-17:00',
-            //           color: Colors.green,
-            //         ),
-            //         ButtonTime(
-            //           durationLabel: '17:00-18:00',
-            //           color: AppColors.secondaryColor,
-            //         ),
-            //         ButtonTime(
-            //           durationLabel: '18:00-19:00',
-            //           color: AppColors.secondaryColor,
-            //         ),
-            //       ])
-            //     ],
-            //   ),
-            // )
           ],
         ),
       ),

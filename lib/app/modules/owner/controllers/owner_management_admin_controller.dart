@@ -69,8 +69,6 @@ class OwnerManagementAdminController extends GetxController {
   }
 
   Future<void> updateAdmin(AdminModel admin) async {
-    final String updateAdminUrl = 'https://badminton-court-booking-api.onrender.com/admin/${admin.id}';
-
     try {
       final updateData = {
         "username": admin.username,

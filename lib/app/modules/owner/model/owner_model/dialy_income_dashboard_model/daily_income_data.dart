@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'daily_income_data.freezed.dart';
@@ -10,6 +12,5 @@ class DailyIncomeData with _$DailyIncomeData {
     @JsonKey(name: "daily_income") @Default(0) int dailyIncome,
   }) = _DailyIncomeData;
 
-  factory DailyIncomeData.fromJson(Map<String, dynamic> json) =>
-      _$DailyIncomeDataFromJson(json);
+  factory DailyIncomeData.fromJson(Map<String, dynamic> json) => _$DailyIncomeDataFromJson(json);
 }
